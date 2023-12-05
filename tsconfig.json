@@ -22,9 +22,17 @@
       "@/*": ["./src/*"],
       "@pageComponents": ["/pageComponents/index.ts"],
       "@components": ["/components/index.ts"],
-      "@utils": ["/utils/index.ts"]
+      "@utils": ["/lib/utils/index.ts"],
+      "@lib": ["/lib/index.ts"],
+      "@hooks": ["/hooks/index.ts"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/lib/contex/sectionContex.tsx"
+  ],
   "exclude": ["node_modules"]
 }

@@ -7,7 +7,7 @@ import { dividerAnimations } from "./animations";
 motion;
 export const Divider = ({ line }: { line?: boolean }) => {
   return (
-    <motion.div {...dividerAnimations}>
+    <motion.div className="mb-20" {...dividerAnimations}>
       {line ? (
         <div className={style["divider-line"]}>
           <span className={style["line"]}></span>

@@ -7,13 +7,15 @@ import Link from "next/link";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
-import style from "./intro.module.scss";
 import { introAnimations } from "./animations";
 import clsx from "clsx";
+import { useSectionInView } from "@/hooks/useSectionInView";
+import style from "./intro.module.scss";
 
-export default function Intro() {
+export const Intro = () => {
+  const { ref } = useSectionInView("About");
   return (
-    <section id="home" className={style["section-wrapper"]}>
+    <section ref={ref} id="home" className={style["section-wrapper"]}>
       <div className={style["image-wrapper"]}>
         <motion.div {...introAnimations.imageAnim}>
           <Image
@@ -81,4 +83,4 @@ export default function Intro() {
       </motion.div>
     </section>
   );
-}
+};

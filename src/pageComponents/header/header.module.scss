@@ -16,7 +16,7 @@
       @apply h-3/4 flex items-center justify-center relative;
 
       a {
-        @apply flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300;
+        @apply flex text-black w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition;
       }
     }
   }
