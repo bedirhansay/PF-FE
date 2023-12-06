@@ -8,7 +8,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -20,11 +20,12 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@pageComponents": ["/pageComponents/index.ts"],
       "@components": ["/components/index.ts"],
+      "@components/ui": ["/components/ui/index.ts"],
       "@utils": ["/lib/utils/index.ts"],
       "@lib": ["/lib/index.ts"],
-      "@hooks": ["/hooks/index.ts"]
+      "@hooks": ["./hooks/index.ts"],
+      "@container": ["./container/index.ts"]
     }
   },
   "include": [
@@ -32,7 +33,16 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/lib/contex/sectionContex.tsx"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "pageComponents/**/*.ts",
+    "pageComponents/**/*.tsx",
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "lib/utils/**/*.ts",
+    "lib/**/*.ts",
+    "hooks/**/*.ts"
   ],
+
   "exclude": ["node_modules"]
 }

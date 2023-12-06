@@ -128,4 +128,8 @@
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #7878a3;
   }
+
+  .flex-between {
+    @apply flex items-center justify-center;
+  }
 }

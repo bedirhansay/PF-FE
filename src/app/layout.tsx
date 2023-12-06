@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/pageComponents/header/header";
+import { Header } from "@/components/header/header";
 import { ActiveSectionProvider } from "@/lib/contex/sectionContex";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Urbanist({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
   title: "Bedirhan Say - Freelance Hizmetler ve Portfolyo",
@@ -31,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 `}
+        className={`${inter.className} bg-gray-50 text-gray-950 max-w-7xl mx-auto p-10 relative pt-28 sm:pt-36 `}
       >
         <div className="bg-[#fbe2e3] absolute top-[-1rem] -z-10 right-[0rem] h-[100vh] w-[50%]  blur-[12rem] rounded-md "></div>
         <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-1rem] h-[100vh] w-[50%]  blur-[12rem] rounded-3xl"></div>

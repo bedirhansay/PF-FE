@@ -1,0 +1,10 @@
+.heading-wrapper {
+  @apply flex justify-between mb-4 mt-10;
+
+  a {
+    @apply text-white px-8 py-1 rounded-xl items-center bg-btnColor hover:opacity-75 transition-all ease-out duration-300;
+  }
+  strong {
+    @apply text-2xl;
+  }
+}

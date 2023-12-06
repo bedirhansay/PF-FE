@@ -20,6 +20,9 @@ const config: Config = {
       animation: {
         bounceUpDown: "bounceUpDown 1s infinite alternate",
       },
+      colors: {
+        btnColor: "#232748",
+      },
       keyframes: {
         bounceUpDown: {
           "0%": {
