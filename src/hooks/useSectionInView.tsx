@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import type { SectionName } from "@/lib/types/sectionType";
 import { useActiveSection } from "./useActiveSection";
@@ -13,14 +13,17 @@ export const useSectionInView = (
     threshold,
   });
   const { setActiveSection, timeOfLastClick } = useActiveSection();
+  const [view, setView] = useState(false);
 
   useEffect(() => {
     if (inView && Date.now() - timeOfLastClick > 1000) {
+      setView(true);
       setActiveSection(sectionName);
     }
   }, [inView, setActiveSection, timeOfLastClick, sectionName]);
 
   return {
     ref,
+    view,
   };
 };

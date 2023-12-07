@@ -39,7 +39,7 @@ export const ProjectCard = ({
             {tags.map((tag, index) => (
               <li
                 className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-black rounded-full dark:text-white/70"
-                key={index}
+                key={index + "card"}
               >
                 {tag}
               </li>

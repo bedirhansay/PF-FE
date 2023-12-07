@@ -1,4 +1,11 @@
-import { AboutSection, Intro, Projects, Skills } from "@/components";
+import {
+  AboutSection,
+  Experience,
+  Intro,
+  Projects,
+  Skills,
+  Contact,
+} from "@/components";
 import { Divider } from "@/components/ui";
 
 export default function Home() {
@@ -12,7 +19,9 @@ export default function Home() {
       <Divider line />
       <Skills />
       <Divider line />
-      {/* <Experience /> */}
+      <Experience />
+      <Divider line />
+      <Contact />
     </main>
   );
 }

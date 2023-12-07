@@ -14,7 +14,7 @@ export const Projects = () => {
       <Heading title="Projeler" link="projects" />
       <div>
         {projectsData.map((project, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={index + "projects"}>
             <ProjectCard {...project} />
           </React.Fragment>
         ))}

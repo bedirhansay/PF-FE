@@ -1,57 +1,48 @@
 "use client";
 
-import React from "react";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
-import { useSectionInView } from "@/hooks";
+import React, { Fragment } from "react";
+import { useActiveSection, useSectionInView } from "@/hooks";
 import { experiencesData } from "@/lib/data";
+import style from "./experience.module.scss";
+import { Heading } from "../ui";
+import { motion } from "framer-motion";
 
 export const Experience = () => {
-  const { ref } = useSectionInView("Experience");
+  const { ref, view } = useSectionInView("Experience", 0.9);
+
+  const { activeSection } = useActiveSection();
 
   const theme = "light";
 
   return (
-    <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
-      <h2>My experience</h2>
-      <VerticalTimeline lineColor="">
-        {experiencesData.map((item, index) => (
-          <React.Fragment key={index}>
-            <VerticalTimelineElement
-              contentStyle={{
-                background:
-                  theme === "light" ? "#478" : "rgba(255, 255, 255, 0.05)",
-                boxShadow: "none",
-                border: "1px solid rgba(0, 0, 0, 0.05)",
-                textAlign: "left",
-                padding: "1.3rem 2rem",
+    <section id="experience" ref={ref} className={style["section-wrapper"]}>
+      {view && (
+        <Fragment>
+          <Heading title="Deneyim" link="experience"></Heading>
+          {experiencesData.map((item, index) => (
+            <motion.div
+              animate={{
+                opacity: [0, 1],
               }}
-              contentArrowStyle={{
-                borderRight:
-                  theme === "light"
-                    ? "0.4rem solid #9ca3af"
-                    : "0.4rem solid rgba(255, 255, 255, 0.5)",
+              transition={{
+                delay: index,
               }}
-              date={item.date}
-              icon={item.icon}
-              iconStyle={{
-                background:
-                  theme === "light" ? "white" : "rgba(255, 255, 255, 0.15)",
-                fontSize: "1.5rem",
+              viewport={{
+                once: true,
               }}
+              className={style["box-wrapper"]}
+              key={index + "vertical"}
             >
-              <h3 className="font-semibold capitalize">{item.title}</h3>
-              <p className="font-normal !mt-0">{item.location}</p>
-              <p className="!mt-1 !font-normal text-gray-700 ">
-                {item.description}
-              </p>
-            </VerticalTimelineElement>
-          </React.Fragment>
-        ))}
-      </VerticalTimeline>
+              <motion.span>{item.icon}</motion.span>
+              <motion.div className={style["text-wrapper"]}>
+                <h3>{item.title} </h3>
+                <p>{item.location}</p>
+                <p>{item.description}</p>
+              </motion.div>
+            </motion.div>
+          ))}
+        </Fragment>
+      )}
     </section>
   );
 };

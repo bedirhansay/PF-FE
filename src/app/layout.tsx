@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header/header";
 import { ActiveSectionProvider } from "@/lib/contex/sectionContex";
+import { Toaster } from "react-hot-toast";
 
 const inter = Urbanist({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
         <ActiveSectionProvider>
           <Header />
           {children}
+          <Toaster position="top-right" />
         </ActiveSectionProvider>
       </body>
     </html>

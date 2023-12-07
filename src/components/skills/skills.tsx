@@ -29,7 +29,7 @@ export const Skills = () => {
       <ul>
         {skillsData.map((skill, index) => (
           <motion.li
-            key={index}
+            key={index + "skills"}
             variants={fadeInAnimationVariants}
             initial="initial"
             whileInView="animate"

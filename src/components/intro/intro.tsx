@@ -14,7 +14,7 @@ import { useSectionInView } from "@/hooks";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Home");
-  console.log(ref);
+
   return (
     <section ref={ref} id="home" className={style["section-wrapper"]}>
       <div className={style["image-wrapper"]}>
