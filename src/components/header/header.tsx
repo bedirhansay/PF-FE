@@ -1,56 +1,96 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import { HeaderAnimations } from "./animation";
 import { NavLinks } from "@/lib/data";
 import Link from "next/link";
-import { useActiveSection } from "@/hooks";
+import { useActiveSection } from "@/lib/hooks";
 import style from "./header.module.scss";
+import { IoClose } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 export const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSection();
 
   return (
-    <header className="z-[999] relative">
-      <motion.div
-        className={style["header-wrapper"]}
-        {...HeaderAnimations.headerAnimation}
-      />
+    <header className={style["header-wrapper"]}>
+      <div className={style["web-wrapper"]}>
+        <motion.div
+          className={style["web"]}
+          {...HeaderAnimations.headerAnimation}
+        />
 
-      <nav className={style["nav-wrapper"]}>
-        <ul>
+        <nav className={style["nav-wrapper"]}>
+          <ul>
+            {NavLinks.map((link, i) => (
+              <motion.li
+                {...HeaderAnimations.liAnimation}
+                key={"navLink" + link.hash}
+                data-active={link.name === activeSection}
+                onClick={() => {
+                  setActiveSection(link.name);
+                  setTimeOfLastClick(Date.now());
+                }}
+              >
+                <Link href={link.hash}>
+                  {link.name}
+
+                  {link.name === activeSection && (
+                    <motion.span
+                      className={style["bg-mask"]}
+                      layoutId="activeSection"
+                      transition={HeaderAnimations.maskAnim}
+                    ></motion.span>
+                  )}
+                </Link>
+              </motion.li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+      <motion.button
+        variants={HeaderAnimations.variant}
+        animate={isOpen ? "open" : "closed"}
+        className={style["button"]}
+        onClick={() => setIsOpen((isOpen) => !isOpen)}
+      >
+        {isOpen ? <IoClose /> : <RxHamburgerMenu />}
+      </motion.button>
+
+      {isOpen && (
+        <motion.nav
+          variants={HeaderAnimations.variant}
+          data-active={isOpen}
+          className={style["mobile-header"]}
+          animate={isOpen ? "open" : "closed"}
+        >
           {NavLinks.map((link, i) => (
             <motion.li
               {...HeaderAnimations.liAnimation}
-              key={"navLink" + link.hash}
-              data-active={link.name === activeSection}
+              key={i + "mobile"}
+              variants={HeaderAnimations.fadeInAnimationVariants}
+              custom={i}
               onClick={() => {
+                setIsOpen(false);
                 setActiveSection(link.name);
                 setTimeOfLastClick(Date.now());
               }}
             >
-              <Link href={link.hash}>
+              <Link
+                className={style["active"]}
+                href={link.hash}
+                data-active={link.name === activeSection}
+              >
                 {link.name}
-
-                {link.name === activeSection && (
-                  <motion.span
-                    className="bg-gray-300 absolute inset-0 rounded-2xl -z-10 "
-                    layoutId="activeSection"
-                    transition={{
-                      type: "spring",
-                      stiffness: 380,
-                      damping: 40,
-                      restDelta: 2,
-                    }}
-                  ></motion.span>
-                )}
               </Link>
             </motion.li>
           ))}
-        </ul>
-      </nav>
+        </motion.nav>
+      )}
     </header>
   );
 };

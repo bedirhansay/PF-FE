@@ -10,7 +10,8 @@ import { FaGithubSquare } from "react-icons/fa";
 import { introAnimations } from "./animations";
 import clsx from "clsx";
 import style from "./intro.module.scss";
-import { useSectionInView } from "@/hooks";
+import { useSectionInView } from "@/lib/hooks";
+import profilePic from "../../../public/profile-pic.png";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Home");
@@ -20,7 +21,7 @@ export const Intro = () => {
       <div className={style["image-wrapper"]}>
         <motion.div {...introAnimations.imageAnim}>
           <Image
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=368&h=368&q=100"
+            src={profilePic}
             alt="Ricardo portrait"
             width="292"
             height="292"
@@ -37,9 +38,9 @@ export const Intro = () => {
         {...introAnimations.titleAnim}
       >
         <span>Merhaba, ben Bedirhan,</span>
-        <span>3 yıldır full-stack geliştirici olarak </span>
-        <span>sitenin ve mobil uygulamanın </span>
-        <span>yaratılma sürecinden keyif alıyorum. </span>
+        <span>3 yıldır Frontend geliştirici olarak </span>
+        <span>mobil ve web uygulamalarının </span>
+        <span>geliştirilme sürecini keyif ile sürdürüyorum. </span>
         <span>Odaklandığım teknolojiler arasında </span>
         <span>React (Next.js) ve React Native yer almaktadır.</span>
       </motion.h1>
@@ -68,7 +69,7 @@ export const Intro = () => {
         <div className={style["social-icons"]}>
           <a
             className={style["social"]}
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/bedirhansay/"
             target="_blank"
           >
             <BsLinkedin />
@@ -76,7 +77,7 @@ export const Intro = () => {
 
           <a
             className={style["social"]}
-            href="https://linkedin.com"
+            href="https://github.com/bedirhansay"
             target="_blank"
           >
             <FaGithubSquare />

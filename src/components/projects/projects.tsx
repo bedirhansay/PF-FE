@@ -2,7 +2,7 @@
 
 import React from "react";
 import { projectsData } from "@/lib/data";
-import { useSectionInView } from "@/hooks";
+import { useSectionInView } from "@/lib/hooks";
 import style from "./projects.module.scss";
 import { Heading, ProjectCard } from "@/components/ui";
 

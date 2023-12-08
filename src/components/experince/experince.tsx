@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment } from "react";
-import { useActiveSection, useSectionInView } from "@/hooks";
+import { useActiveSection, useSectionInView } from "@/lib/hooks";
 import { experiencesData } from "@/lib/data";
 import style from "./experience.module.scss";
 import { Heading } from "../ui";

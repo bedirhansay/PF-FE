@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import { Heading } from "../ui";
-import { useSectionInView } from "@/hooks";
+import { useSectionInView } from "@/lib/hooks";
 import { Button } from "../ui/button/button";
 import { sendEmail } from "@/lib/actions/_sendMail.action";
 import { ContactAnimations } from "./animations";
