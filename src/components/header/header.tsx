@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { HeaderAnimations } from "./animation";
-import { NavLinks } from "@/lib/constant/data";
 import Link from "next/link";
 import { useActiveSection } from "@/lib/hooks";
 import style from "./header.module.scss";
 import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { NavLinks } from "@/lib/constant/navLinks";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
