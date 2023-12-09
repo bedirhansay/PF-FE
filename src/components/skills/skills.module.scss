@@ -2,10 +2,21 @@
   @apply mb-28 text-black mx-auto scroll-mt-28 text-center sm:mb-20;
 
   ul {
-    @apply flex flex-wrap justify-center py-10 gap-2 text-lg;
+    @apply flex flex-wrap justify-center py-10 gap-2 text-sm px-4;
 
     li {
-      @apply bg-white border-spacing-6 rounded-xl px-5 py-3;
+      @apply bg-white  rounded-xl;
     }
   }
+}
+
+.ul-container {
+  display: grid !important;
+  gap: 20px;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+}
+
+.card {
+  @apply h-full pt-8 rounded shadow-xl;
 }

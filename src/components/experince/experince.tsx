@@ -2,7 +2,7 @@
 
 import React, { Fragment } from "react";
 import { useActiveSection, useSectionInView } from "@/lib/hooks";
-import { experiencesData } from "@/lib/data";
+import { experiencesData } from "@/lib/constant/data";
 import style from "./experience.module.scss";
 import { Heading } from "../ui";
 import { motion } from "framer-motion";

@@ -6,6 +6,7 @@ import {
   Skills,
   Contact,
 } from "@/components";
+import { Projeler } from "@/components/projeler/projeler";
 import { Divider } from "@/components/ui";
 
 export default function Home() {
@@ -15,8 +16,10 @@ export default function Home() {
       <Divider />
       <AboutSection />
       <Divider line />
-      <Projects />
+      <Projeler />
       <Divider line />
+      {/* <Projects />
+      <Divider line /> */}
       <Skills />
       <Divider line />
       <Experience />

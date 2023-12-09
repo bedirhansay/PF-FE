@@ -22,7 +22,8 @@
     "react-vertical-timeline-component": "^3.6.0",
     "resend": "0.16.0",
     "sass": "^1.69.5",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@types/node": "^20",

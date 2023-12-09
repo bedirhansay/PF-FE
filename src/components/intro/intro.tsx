@@ -12,6 +12,7 @@ import clsx from "clsx";
 import style from "./intro.module.scss";
 import { useSectionInView } from "@/lib/hooks";
 import profilePic from "../../../public/profile-pic.png";
+import { MdMarkEmailUnread } from "react-icons/md";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Home");
@@ -31,6 +32,31 @@ export const Intro = () => {
         </motion.div>
 
         <motion.span {...introAnimations.handEmoAnim}>👋</motion.span>
+      </div>
+
+      <div className={style["socialIcons"]}>
+        <a
+          className={style["social"]}
+          href="https://www.linkedin.com/in/bedirhansay/"
+          target="_blank"
+        >
+          <BsLinkedin fontSize={24} />
+        </a>
+
+        <a
+          className={style["social"]}
+          href="https://github.com/bedirhansay"
+          target="_blank"
+        >
+          <FaGithubSquare fontSize={24} />
+        </a>
+        <a
+          className={style["social"]}
+          href="mailto:bedirhan.sayy@gmail.com"
+          target="_blank"
+        >
+          <MdMarkEmailUnread fontSize={28} />
+        </a>
       </div>
 
       <motion.h1
@@ -66,23 +92,6 @@ export const Intro = () => {
             className={clsx(style["icon"], "group-hover:translate-y-2")}
           />
         </a>
-        <div className={style["social-icons"]}>
-          <a
-            className={style["social"]}
-            href="https://www.linkedin.com/in/bedirhansay/"
-            target="_blank"
-          >
-            <BsLinkedin />
-          </a>
-
-          <a
-            className={style["social"]}
-            href="https://github.com/bedirhansay"
-            target="_blank"
-          >
-            <FaGithubSquare />
-          </a>
-        </div>
       </motion.div>
     </section>
   );

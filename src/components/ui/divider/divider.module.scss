@@ -2,10 +2,10 @@
   @apply text-black relative -z-10  bg-gray-900 h-16 mt-20 rounded-2xl w-8 mx-auto;
 
   .roll {
-    @apply w-full h-8 bg-gray-300 rounded-2xl z-10 absolute animate-bounceUpDown;
+    @apply w-full h-8 bg-gray-200 rounded-2xl z-10 absolute animate-bounceUpDown;
   }
 }
 
 .divider-line {
-  @apply h-16 w-2 bg-gray-200 rounded-2xl mx-auto mt-10;
+  @apply h-16 w-2 bg-gray-300 rounded-2xl mx-auto mt-10;
 }

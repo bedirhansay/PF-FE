@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { HeaderAnimations } from "./animation";
-import { NavLinks } from "@/lib/data";
+import { NavLinks } from "@/lib/constant/data";
 import Link from "next/link";
 import { useActiveSection } from "@/lib/hooks";
 import style from "./header.module.scss";
