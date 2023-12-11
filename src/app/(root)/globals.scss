@@ -1,0 +1,64 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer components {
+  .layout {
+    @apply bg-gray-100 overflow-x-hidden px-0 text-gray-950  mx-auto p-10 relative pt-28 sm:pt-36;
+  }
+
+  .header-left-color {
+    @apply bg-[#fbe2e3] absolute top-[-1rem] -z-10 right-[0rem] h-[100vh] w-[50%]  blur-[12rem] rounded-md;
+  }
+  .header-right-color {
+    @apply bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-1rem] h-[100vh] w-[50%]  blur-[12rem] rounded-3xl;
+  }
+
+  .flex-between {
+    @apply flex justify-center items-center;
+  }
+
+  .widthContainer {
+    width: clamp(0px, 90%, 1100px);
+  }
+}
+
+@layer utilities {
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+}
+
+@layer base {
+}
+.swiper-button-next {
+  background: url("../../../public/arrow_right.png") no-repeat center / contain !important;
+  width: 36px !important;
+  height: 36px !important;
+  box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 0.15);
+  border-radius: 100%;
+  cursor: pointer;
+  position: absolute;
+  left: -16px;
+  top: calc(50% - 16px);
+  z-index: 20;
+  &::after {
+    display: none;
+  }
+}
+
+.swiper-button-prev {
+  background: url("../../../public/arrow_left.png") no-repeat center / contain !important;
+  width: 36px !important;
+  height: 36px !important;
+  box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 0.15);
+  border-radius: 100%;
+  cursor: pointer;
+  position: absolute;
+  left: -16px;
+  top: calc(50% - 16px);
+  z-index: 20;
+  &::after {
+    display: none;
+  }
+}

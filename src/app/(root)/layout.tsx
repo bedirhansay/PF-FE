@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
-import "./globals.css";
 import { Header } from "@/components/header/header";
 import { ActiveSectionProvider } from "@/lib/contex/sectionContex";
 import { Toaster } from "react-hot-toast";
+import "./globals.scss";
 
 const inter = Urbanist({
   subsets: ["latin"],

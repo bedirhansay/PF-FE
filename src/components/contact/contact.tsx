@@ -42,7 +42,7 @@ export const Contact = () => {
             }}
           >
             <input
-              className="h-14 px-4 rounded-lg  dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+              className="h-14 px-4 rounded-lg border dark:bg-opacity-80 dark:focus:bg-opacity-900 transition-all dark:outline-none"
               name="senderEmail"
               type="email"
               required
@@ -50,7 +50,7 @@ export const Contact = () => {
               placeholder="Your email"
             />
             <textarea
-              className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+              className="h-52 my-3 rounded-lg border borderBlack p-4 dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
               name="message"
               placeholder="Your message"
               required
@@ -65,7 +65,7 @@ export const Contact = () => {
               <FaRegHandPointer />
             </span>
           </div>
-          <span className="!mt-20 text-white !text-center font-semibold text-lg">
+          <span className="!mt-20   text-white !text-end pl-2 py-2 rounded w-full font-semibold text-lg">
             Copyright Bedirhan Say 2023 all Rights Reserved
           </span>
         </div>

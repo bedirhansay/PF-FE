@@ -25,13 +25,13 @@
   @apply sm:top-[1.7rem] sm:h-[initial] sm:py-0;
 
   ul {
-    @apply w-[28rem] flex-wrap flex-between gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5;
+    @apply w-[28rem] flex-wrap flex justify-center items-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5;
 
     li {
-      @apply h-3/4 flex-between relative;
+      @apply h-3/4 flex justify-center items-center relative;
 
       a {
-        @apply flex-between text-black w-full px-3 py-3 hover:text-gray-950;
+        @apply flex justify-center items-center text-black w-full px-3 py-3 hover:text-gray-950;
       }
     }
   }

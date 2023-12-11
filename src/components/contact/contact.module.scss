@@ -1,5 +1,5 @@
 .section-wrapper {
-  @apply mx-auto h-full text-center bg-gray-200 rounded-lg p-4;
+  @apply mx-auto max-w-7xl p-10  h-full text-center bg-gray-900  rounded-lg;
   // @apply  w-[min(100%,38rem)]
 
   background-image: url("../../../public/footer-bg.png");

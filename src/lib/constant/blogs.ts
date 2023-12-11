@@ -2,6 +2,7 @@ import blogImage from "../../../public/blog.jpg";
 import blogImage1 from "../../../public/blog-1.jpg";
 import blogImage2 from "../../../public/blog-2.jpg";
 import blogImage3 from "../../../public/blog-3.jpg";
+import html from "../../../public/html.jpg";
 
 export const blog = [
   {
@@ -35,7 +36,7 @@ export const blog = [
       "Günlük hayatınızı daha etkili bir şekilde yönetmek için kullanabileceğiniz pratik zaman yönetimi stratejilerini öğrenin.",
     date: "2023-12-13",
     viewCount: 632,
-    image: blogImage2,
+    image: html,
     author: {
       name: "Ayşe Yılmaz",
       bio: "Ayşe Yılmaz, kişisel gelişim ve etkili zaman yönetimi konularında uzmanlaşmış bir yaşam koçu ve yazardır.",

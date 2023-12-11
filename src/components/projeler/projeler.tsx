@@ -14,7 +14,7 @@ export const Projeler = () => {
   };
 
   return (
-    <div id="projects">
+    <div id="projects" className="max-w-7xl px-4  mx-auto">
       <h2 className="text-center text-4xl font-semibold mb-8">Projeler</h2>
       <div className="flex flex-col ">
         <div className="">
@@ -61,9 +61,8 @@ export const Projeler = () => {
                 >
                   <Image
                     alt={projectDatas[activeProject].description}
-                    className="rounded"
+                    className="rounded !mx-auto"
                     src={projectDatas[activeProject].image}
-                    objectFit="fill"
                   ></Image>
                 </div>
                 <div className="flex flex-col ml-4 justify-between">
