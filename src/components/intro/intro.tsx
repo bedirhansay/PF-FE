@@ -34,30 +34,42 @@ export const Intro = () => {
         <motion.span {...introAnimations.handEmoAnim}>👋</motion.span>
       </div>
 
-      <div className={style["socialIcons"]}>
-        <a
+      <motion.div
+        animate={{
+          opacity: [0, 0.4, 1],
+        }}
+        className={style["socialIcons"]}
+      >
+        <motion.a
+          whileInView="true"
           className={style["social"]}
           href="https://www.linkedin.com/in/bedirhansay/"
           target="_blank"
         >
           <BsLinkedin fontSize={24} />
-        </a>
+        </motion.a>
 
-        <a
+        <motion.a
+          animate={{
+            opacity: [0, 1],
+          }}
           className={style["social"]}
           href="https://github.com/bedirhansay"
           target="_blank"
         >
           <FaGithubSquare fontSize={24} />
-        </a>
-        <a
+        </motion.a>
+        <motion.a
+          animate={{
+            opacity: [0, 1],
+          }}
           className={style["social"]}
           href="mailto:bedirhan.sayy@gmail.com"
           target="_blank"
         >
           <MdMarkEmailUnread fontSize={28} />
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
 
       <motion.h1
         className={style["title-wrapper"]}

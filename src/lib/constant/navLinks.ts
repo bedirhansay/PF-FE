@@ -4,6 +4,10 @@ export const NavLinks = [
     hash: "#home",
   },
   {
+    name: "Blog",
+    hash: "#blog",
+  },
+  {
     name: "About",
     hash: "#about",
   },

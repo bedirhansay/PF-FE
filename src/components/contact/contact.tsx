@@ -24,45 +24,49 @@ export const Contact = () => {
       {...ContactAnimations.wrapper}
     >
       <Heading title="Contact Me" link="contact" />
+      <div>
+        <div className={style["banner"]}>
+          <form
+            className="flex flex-col dark:text-black"
+            action={async (formData) => {
+              const { data, error } = await sendEmail(formData);
 
-      <div className={style["banner"]}>
-        <form
-          className="flex flex-col dark:text-black"
-          action={async (formData) => {
-            const { data, error } = await sendEmail(formData);
+              console.log("data", error);
 
-            console.log("data", error);
+              if (error) {
+                toast.error(error);
+                return;
+              }
 
-            if (error) {
-              toast.error(error);
-              return;
-            }
+              toast.success("Email sent successfully!");
+            }}
+          >
+            <input
+              className="h-14 px-4 rounded-lg  dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+              name="senderEmail"
+              type="email"
+              required
+              maxLength={500}
+              placeholder="Your email"
+            />
+            <textarea
+              className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+              name="message"
+              placeholder="Your message"
+              required
+              maxLength={5000}
+            />
 
-            toast.success("Email sent successfully!");
-          }}
-        >
-          <input
-            className="h-14 px-4 rounded-lg  dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-            name="senderEmail"
-            type="email"
-            required
-            maxLength={500}
-            placeholder="Your email"
-          />
-          <textarea
-            className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-            name="message"
-            placeholder="Your message"
-            required
-            maxLength={5000}
-          />
-
-          <Button status={pending} />
-        </form>
-        <div className={style["tap"]}>
-          <p>Fikriniz mi var?</p>
-          <span className="animate-ping">
-            <FaRegHandPointer />
+            <Button status={pending} />
+          </form>
+          <div className={style["tap"]}>
+            <p>Fikriniz mi var?</p>
+            <span className="animate-ping">
+              <FaRegHandPointer />
+            </span>
+          </div>
+          <span className="!mt-20 text-white !text-center font-semibold text-lg">
+            Copyright Bedirhan Say 2023 all Rights Reserved
           </span>
         </div>
       </div>

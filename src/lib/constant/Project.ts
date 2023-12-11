@@ -307,4 +307,37 @@ export const projectDatas = [
       "Resmi lansman",
     ],
   },
+  {
+    projectName: "Kidonki",
+    time: "1 Year",
+    logo: "",
+    image: avis,
+    area: "Online Zirai Drone Satışı",
+    tags: ["web", "e-commerce", "agriculture", "drone", "online"],
+    description:
+      "Avis Agri, müşterilere online zirai drone satışı ve rezervasyon hizmetleri sunan bir web uygulamasıdır.",
+    goals: [
+      "Müşterilere kolay zirai drone satın alma imkanı sağlamak",
+      "Zirai drone teknolojisinin kullanımını artırmak",
+      "Müşterilere özel uçuş ve rezervasyon seçenekleri sunmak",
+    ],
+    scope:
+      "Kullanıcı hesapları, ürün rezervasyon işlemleri, ödeme sistemi, zirai drone yönetimi",
+    requirements: [
+      "React.js",
+      "Node.js",
+      "MongoDB",
+      "Express.js",
+      "Payment Gateway API",
+      "Drone Management System",
+    ],
+    tasks: [
+      "Temel altyapı oluşturma",
+      "Kullanıcı hesapları ve zirai drone rezervasyon ekranı geliştirme",
+      "Ödeme sistemi entegrasyonu",
+      "Zirai drone yönetimi ve satış ekranı geliştirme",
+      "Beta sürüm çıkışı ve testler",
+      "Resmi lansman",
+    ],
+  },
 ];
