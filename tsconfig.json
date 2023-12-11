@@ -24,7 +24,7 @@
       "@components/ui": ["/components/ui/index.ts"],
       "@utils": ["/lib/utils/index.ts"],
       "@lib": ["/lib/index.ts"],
-      "@hooks": ["./hooks/index.ts"],
+      "@hooks": ["./lib/hooks/index.ts"],
       "@container": ["./container/index.ts"]
     }
   },

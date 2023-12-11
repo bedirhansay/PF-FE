@@ -4,15 +4,15 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { introAnimations } from "./animations";
+import clsx from "clsx";
+import profilePic from "../../../public/profile-pic.png";
+import { MdMarkEmailUnread } from "react-icons/md";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
-import { introAnimations } from "./animations";
-import clsx from "clsx";
 import style from "./intro.module.scss";
 import { useSectionInView } from "@/lib/hooks";
-import profilePic from "../../../public/profile-pic.png";
-import { MdMarkEmailUnread } from "react-icons/md";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Home");
@@ -35,40 +35,31 @@ export const Intro = () => {
       </div>
 
       <motion.div
-        animate={{
-          opacity: [0, 0.4, 1],
-        }}
+        {...introAnimations.titleAnim}
         className={style["socialIcons"]}
       >
-        <motion.a
-          whileInView="true"
+        <a
           className={style["social"]}
           href="https://www.linkedin.com/in/bedirhansay/"
           target="_blank"
         >
           <BsLinkedin fontSize={24} />
-        </motion.a>
+        </a>
 
-        <motion.a
-          animate={{
-            opacity: [0, 1],
-          }}
+        <a
           className={style["social"]}
           href="https://github.com/bedirhansay"
           target="_blank"
         >
           <FaGithubSquare fontSize={24} />
-        </motion.a>
-        <motion.a
-          animate={{
-            opacity: [0, 1],
-          }}
+        </a>
+        <a
           className={style["social"]}
           href="mailto:bedirhan.sayy@gmail.com"
           target="_blank"
         >
           <MdMarkEmailUnread fontSize={28} />
-        </motion.a>
+        </a>
       </motion.div>
 
       <motion.h1
