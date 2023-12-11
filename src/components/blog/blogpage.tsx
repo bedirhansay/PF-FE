@@ -29,16 +29,18 @@ export const BlogPage = () => {
             <Image
               style={{
                 height: "250px",
-                borderRadius: "10px",
+                width: "100%",
               }}
               src={item.image}
               alt={item.title}
             />
-            <span className="absolute bg-gray-300 px-2 rounded  flex items-center gap-2 font-bold top-2 right-3 text-black text-xs">
+            <span className="absolute bg-gray-300 rounded  flex items-center gap-2 font-bold top-2 right-3 text-black text-xs">
               <BsEye /> {item.viewCount}
             </span>
-            <h2 className="absolute px-4 bottom-6 text-white">{item.title}</h2>
-            <span className="absolute bottom-2 flex items-center gap-2 text-white text-xs font-bold px-4">
+            <h2 className=" bg-gray-50 rounded text-gray-400 absolute px-4 bottom-6 text-sm">
+              {item.title}
+            </h2>
+            <span className="absolute bottom-2 flex items-center gap-2 text-white text-xs font-bold px-4 ">
               <IoCalendarNumber />
               {item.date}
             </span>
