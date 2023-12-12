@@ -6,7 +6,13 @@ export const aboutAnimations = {
   },
 };
 
-export const pAnim = ({ delay }: { delay: number }) => {
+export const pAnim = ({
+  delay,
+  controls,
+}: {
+  delay: number;
+  controls: any;
+}) => {
   return {
     initial: { opacity: 0, y: 800 },
     animate: { opacity: 1, y: 0 },

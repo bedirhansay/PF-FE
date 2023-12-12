@@ -8,16 +8,19 @@ import "swiper/css";
 import { motion } from "framer-motion";
 import style from "./projeler.module.scss";
 import { ProjectsAnim } from "./animations";
+import { useSectionInView } from "@/lib/hooks";
 
 export const Projeler = () => {
   const [activeProject, setActiveProject] = useState(0);
+
+  const { ref } = useSectionInView("Projeler");
 
   const handleClick = (index: number) => {
     setActiveProject(index);
   };
 
   return (
-    <div id="projects" className={style["projects-container"]}>
+    <div ref={ref} id="projects" className={style["projects-container"]}>
       <h2>Projeler</h2>
 
       <div className="">
@@ -30,9 +33,7 @@ export const Projeler = () => {
             <SwiperSlide
               key={item.projectName}
               className={`text-base cursor-pointer !w-32 text-white  ${
-                index === activeProject
-                  ? "bg-white rounded-md !text-gray-600"
-                  : ""
+                index === activeProject ? "bg-gray-600 rounded-md " : ""
               }`}
               onClick={() => handleClick(index)}
             >

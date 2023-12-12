@@ -14,8 +14,6 @@ export default function Home() {
       <Divider line />
       <Projeler />
       <Divider line />
-      {/* <Projects />
-      <Divider line /> */}
       <Skills />
       <Divider line />
       <Experience />

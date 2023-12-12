@@ -1,6 +1,6 @@
 export const NavLinks = [
   {
-    name: "Home",
+    name: "Anasayfa",
     hash: "#home",
   },
   {
@@ -8,23 +8,23 @@ export const NavLinks = [
     hash: "#blog",
   },
   {
-    name: "About",
+    name: "Hakkımda",
     hash: "#about",
   },
   {
-    name: "Projects",
+    name: "Projeler",
     hash: "#projects",
   },
   {
-    name: "Skills",
+    name: "Yetenekler",
     hash: "#skills",
   },
   {
-    name: "Experience",
+    name: "Deneyim",
     hash: "#experience",
   },
   {
-    name: "Contact",
+    name: "İletişim",
     hash: "#contact",
   },
 ] as const;

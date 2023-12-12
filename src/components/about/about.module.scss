@@ -2,6 +2,9 @@
   @apply max-w-7xl px-4  mx-auto  text-justify leading-8 scroll-mt-28;
 }
 
-.button {
-  @apply bg-darkBlue mx-auto flex text-white  px-5 rounded;
+.box-wrapper {
+  @apply flex;
+  .button {
+    @apply bg-darkBlue mx-auto flex text-white  px-5 rounded;
+  }
 }

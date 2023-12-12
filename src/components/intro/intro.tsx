@@ -13,9 +13,10 @@ import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
 import style from "./intro.module.scss";
 import { useSectionInView } from "@/lib/hooks";
+import { Divider } from "../ui";
 
 export const Intro = () => {
-  const { ref } = useSectionInView("Home");
+  const { ref } = useSectionInView("Anasayfa");
 
   return (
     <section ref={ref} id="home" className={style["section-wrapper"]}>
@@ -66,12 +67,7 @@ export const Intro = () => {
         className={style["title-wrapper"]}
         {...introAnimations.titleAnim}
       >
-        <span>Merhaba, ben Bedirhan,</span>
-        <span>3 yıldır Frontend geliştirici olarak </span>
-        <span>mobil ve web uygulamalarının </span>
-        <span>geliştirilme sürecini keyif ile sürdürüyorum. </span>
-        <span>Odaklandığım teknolojiler arasında </span>
-        <span>React (Next.js) ve React Native yer almaktadır.</span>
+        <span>Kodun iki yüzü, bir geliştiricinin elinde birleşiyor!</span>
       </motion.h1>
 
       <motion.div

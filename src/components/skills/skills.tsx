@@ -10,7 +10,7 @@ import Image from "next/image";
 import { fadeInAnimationVariants, skillsAnim } from "./animations";
 
 export const Skills = () => {
-  const { ref } = useSectionInView("Skills");
+  const { ref } = useSectionInView("Yetenekler");
 
   return (
     <section id="skills" ref={ref} className={style["section-wrapper"]}>

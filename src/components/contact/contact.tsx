@@ -13,18 +13,18 @@ import { useFormStatus } from "react-dom";
 import { FaRegHandPointer } from "react-icons/fa";
 
 export const Contact = () => {
-  const { ref } = useSectionInView("Contact");
+  const { ref } = useSectionInView("İletişim");
   const { pending } = useFormStatus();
 
   return (
     <motion.section
       id="contact"
       ref={ref}
-      className={style["section-wrapper"]}
+      className={style["section"]}
       {...ContactAnimations.wrapper}
     >
-      <Heading title="Contact Me" link="contact" />
-      <div>
+      <Heading title="İletişim" link="contact" />
+      <div className={style["section-wrapper"]}>
         <div className={style["banner"]}>
           <form
             className="flex flex-col dark:text-black"
@@ -42,7 +42,7 @@ export const Contact = () => {
             }}
           >
             <input
-              className="h-14 px-4 rounded-lg border dark:bg-opacity-80 dark:focus:bg-opacity-900 transition-all dark:outline-none"
+              className="h-14 px-4 rounded-lg dark:focus:bg-opacity-900 border-2 border-darkBlue transition-all dark:outline-none text-white bg-darkBlue placeholder:text-white"
               name="senderEmail"
               type="email"
               required
@@ -50,7 +50,7 @@ export const Contact = () => {
               placeholder="Your email"
             />
             <textarea
-              className="h-52 my-3 rounded-lg border borderBlack p-4 dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+              className="h-52 my-3  border-2  p-4 dark:focus:bg-opacity-100 transition-all dark:outline-none  bg-darkBlue text-white placeholder:text-white rounded-md "
               name="message"
               placeholder="Your message"
               required
@@ -59,13 +59,13 @@ export const Contact = () => {
 
             <Button status={pending} />
           </form>
-          <div className={style["tap"]}>
+          {/* <div className={style["tap"]}>
             <p>Fikriniz mi var?</p>
             <span className="animate-ping">
               <FaRegHandPointer />
             </span>
-          </div>
-          <span className="!mt-20   text-white !text-end pl-2 py-2 rounded w-full font-semibold text-lg">
+          </div> */}
+          <span className=" text-white  backdrop-blur-md !text-end pl-2 py-2 rounded w-full font-semibold text-lg">
             Copyright Bedirhan Say 2023 all Rights Reserved
           </span>
         </div>

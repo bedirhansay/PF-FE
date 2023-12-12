@@ -1,68 +1,37 @@
 .parent {
-  @apply relative scroll-mt-28 max-w-7xl px-4 mx-auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 12px;
-  grid-row-gap: 12px;
-  > div {
-    @apply shadow-xl hover:scale-105 transition ease-in-out duration-300;
-  }
+  @apply relative max-w-7xl px-4  mx-auto scroll-mt-28;
+}
+.box-wrapper {
+  @apply flex flex-col p-2 gap-2;
 }
 
+.sub-text {
+  @apply flex justify-between;
+}
 .blogImage {
-  @apply w-full rounded h-48 sm:h-72;
+  @apply w-full rounded h-52 sm:h-80;
 }
 
 .viewCount {
-  @apply absolute bg-gray-300 rounded  flex items-center gap-2 font-bold top-2 right-3 text-black text-xs;
+  @apply rounded  flex items-center gap-2 font-bold text-black text-xs;
 }
 
 .date {
-  @apply absolute bottom-2 flex items-center gap-2 text-white text-xs font-bold px-4;
+  @apply bottom-2 flex items-center gap-2 text-black text-xs font-bold;
 }
 
 .title {
-  @apply bg-gray-50 rounded text-gray-400 absolute px-4 bottom-6 text-sm;
+  @apply bg-gray-50 rounded text-gray-400  mt-4 mb-4 bottom-6 text-sm;
 }
 
 .sliderImage {
-  @apply h-72 rounded;
+  @apply h-72 rounded-md;
 }
 
-.div1 {
-  grid-area: 1 / 1 / 2 / 3;
-  @apply relative;
+.swiperSlide {
+  @apply shadow-lg bg-white rounded-md;
 }
-.div2 {
-  grid-area: 1 / 3 / 2 / 4;
-  @apply relative;
-}
-.div3 {
-  grid-area: 2 / 2 / 3 / 4;
-  @apply relative;
-}
-.div4 {
-  grid-area: 3 / 3 / 4 / 5;
-  @apply relative;
-}
-.div5 {
-  grid-area: 3 / 2 / 4 / 3;
-  @apply relative;
-}
-.div6 {
-  grid-area: 2 / 1 / 3 / 2;
-  @apply relative;
-}
-.div7 {
-  grid-area: 3 / 1 / 4 / 2;
-  @apply relative;
-}
-.div8 {
-  grid-area: 1 / 4 / 2 / 5;
-  @apply relative;
-}
-.div9 {
-  grid-area: 2 / 4 / 3 / 5;
-  @apply relative;
+
+.text-wrapper {
+  @apply p-4 flex flex-col gap-3;
 }

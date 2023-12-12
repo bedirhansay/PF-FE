@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment } from "react";
+import React from "react";
 import { useActiveSection, useSectionInView } from "@/lib/hooks";
 import style from "./experience.module.scss";
 import { Heading } from "../ui";
@@ -9,13 +9,13 @@ import { experiencesData } from "@/lib/constant/Experience";
 import { experinceAnimations } from "./animations";
 
 export const Experience = () => {
-  const { ref, view } = useSectionInView("Experience", 0.9);
-
+  const { ref, view } = useSectionInView("Deneyim", 0.9);
   const { activeSection } = useActiveSection();
 
   return (
     <section id="experience" ref={ref} className={style["section-wrapper"]}>
       <Heading title="Deneyim" link="experience"></Heading>
+
       {experiencesData.map((item, index) => (
         <motion.div
           {...experinceAnimations(index)}
@@ -32,13 +32,19 @@ export const Experience = () => {
                 {item.date} / {item.position}{" "}
               </p>
             </div>
+            <ul className={style["resp"]}>
+              {item.responsibilities.map((skill, index) => (
+                <li className="list-disc " key={index + "span"}>
+                  {skill}
+                </li>
+              ))}
+            </ul>
 
-            <p>{item.description}</p>
-            <p className="flex gap-3 flex-wrap">
+            <div className={style["tech"]}>
               {item.skills.map((skill, index) => (
                 <span key={index + "span"}>{skill}</span>
               ))}
-            </p>
+            </div>
           </motion.div>
         </motion.div>
       ))}

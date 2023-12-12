@@ -1,5 +1,6 @@
 .section-wrapper {
-  @apply mb-20  max-w-7xl px-4 flex justify-center items-center flex-col mx-auto text-center sm:mb-0 scroll-mt-[100rem];
+  @apply max-w-7xl px-4 flex justify-center items-center flex-col mx-auto text-center scroll-mt-28;
+  height: 60vh;
 }
 
 .image-wrapper {
@@ -14,21 +15,13 @@
 }
 
 .title-wrapper {
-  @apply mb-1 mt-1 sm:text-xl font-medium text-center leading-[1.5] px-4;
+  @apply mb-4 mt-4 sm:text-xl font-medium text-center leading-[1.5] px-4;
   @apply sm:text-2xl;
   @apply md:text-3xl mb-10 mt-10;
   @apply lg:text-4xl;
 
   span {
-    @apply font-bold;
-
-    :nth-child(4) {
-      @apply italic;
-    }
-
-    :nth-last-child(n) {
-      @apply underline;
-    }
+    @apply font-bold text-5xl capitalize mt-4 mb-4;
   }
 }
 

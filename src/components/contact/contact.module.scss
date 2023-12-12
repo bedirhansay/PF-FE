@@ -1,12 +1,16 @@
-.section-wrapper {
-  @apply mx-auto max-w-7xl p-10  h-full text-center bg-gray-900  rounded-lg;
-  // @apply  w-[min(100%,38rem)]
-
+.section {
+  @apply backdrop-blur-3xl pt-1;
   background-image: url("../../../public/footer-bg.png");
+  backdrop-filter: blur(1008px);
+}
+
+.section-wrapper {
+  @apply mx-auto p-10 max-w-7xl h-full text-center  rounded-lg;
+  // @apply  w-[min(100%,38rem)]
 }
 
 .banner {
-  @apply grid grid-cols-2 gap-5 items-center;
+  @apply gap-5 items-center;
   form {
     @apply h-full;
   }
