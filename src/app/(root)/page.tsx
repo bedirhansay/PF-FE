@@ -1,11 +1,4 @@
-import {
-  AboutSection,
-  Experience,
-  Intro,
-  Projects,
-  Skills,
-  Contact,
-} from "@/components";
+import { AboutSection, Experience, Intro, Skills, Contact } from "@/components";
 import { BlogPage } from "@/components/blog/blogpage";
 import { Projeler } from "@/components/projeler/projeler";
 import { Divider } from "@/components/ui";

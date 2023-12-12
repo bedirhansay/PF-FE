@@ -3,22 +3,22 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
-import style from "./about.module.scss";
 import { Heading } from "../ui";
 import { aboutAnimations, pAnim } from "./animations";
 import { about } from "@/lib/constant/about";
+import style from "./about.module.scss";
 
 export const AboutSection = () => {
   const [count, setCount] = useState(2);
-  const { ref, view } = useSectionInView("About");
+  const { ref } = useSectionInView("About");
 
   const data = about.slice(0, count);
 
   return (
     <motion.section
-      ref={ref}
-      {...aboutAnimations.wrapperAnim}
       className={style["about-wrapper"]}
+      {...aboutAnimations.wrapperAnim}
+      ref={ref}
       id="about"
     >
       <Heading link="about" title="Hakkımda" />
@@ -33,7 +33,7 @@ export const AboutSection = () => {
 
       <button
         onClick={() => setCount((prev) => prev + 1)}
-        className="bg-darkBlue mx-auto flex text-white  px-5 rounded"
+        className={style["button"]}
       >
         Okumaya devam et
       </button>

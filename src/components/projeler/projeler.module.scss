@@ -1,0 +1,58 @@
+// projeler.module.scss
+.projects-container {
+  @apply max-w-7xl px-4 mx-auto;
+
+  h2 {
+    @apply text-center text-4xl font-semibold mb-8;
+  }
+
+  .swiper-container {
+    @apply flex justify-between max-w-7xl mx-auto flex-wrap rounded-lg  bg-darkBlue mb-8 p-8 py-3 text-center;
+  }
+}
+
+.active-project {
+  @apply px-2 border p-4 bg-gray-50 rounded-md shadow-lg;
+}
+
+.image-wrapper {
+  @apply relative sm:max-w-[50%]  items-center flex;
+
+  img {
+    @apply rounded mx-auto;
+  }
+}
+
+.text-wrapper {
+  @apply flex flex-col ml-4 justify-between;
+
+  h2 {
+    @apply text-2xl mt-4 sm:mt-0 font-bold mb-2;
+  }
+
+  h3 {
+    @apply mb-1 bg-gray-400 text-gray-100 text-xs px-2 rounded w-fit;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  h4 {
+    @apply text-lg font-bold mb-2;
+  }
+  ul {
+    @apply list-inside list-disc;
+
+    li {
+      @apply mb-1;
+    }
+  }
+  .requirements {
+    @apply flex gap-2 flex-wrap;
+
+    li {
+      @apply mb-1 bg-black/[0.7] text-gray-200 text-xs px-2 rounded;
+    }
+  }
+}

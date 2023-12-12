@@ -25,7 +25,8 @@ export const metadata: Metadata = {
     "Tasarım",
     "E-Ticaret",
   ],
-  authors: [{ name: "Next.js Team", url: "https://nextjs.org" }],
+  authors: [{ name: "Bedirhan Say" }],
+  
 };
 
 export default function RootLayout({

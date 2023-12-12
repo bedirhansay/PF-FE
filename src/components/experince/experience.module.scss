@@ -13,9 +13,28 @@
   @apply border border-gray-400  flex flex-col text-center gap-y-8 px-4 py-4 w-full rounded-md;
 
   h3 {
-    @apply font-semibold capitalize;
+    @apply font-semibold capitalize bg-darkBlue w-fit mx-auto text-center text-white px-7 rounded;
   }
   p {
     @apply font-normal;
+  }
+}
+
+.blog-detail {
+  @apply flex justify-between items-center;
+
+  .sub {
+    @apply flex space-x-4 items-center;
+  }
+  .p-text {
+    @apply bg-gray-400 px-2 py-0 rounded text-white;
+  }
+  .p-text-2 {
+    @apply border-b-2 border-darkBlue;
+  }
+
+  span {
+    font-size: 12px !important;
+    @apply px-2  border-none bg-black/[0.7] text-xs py-0 rounded text-white;
   }
 }

@@ -1,119 +1,122 @@
-import blogImage from "../../../public/blog.jpg";
-import blogImage1 from "../../../public/blog-1.jpg";
-import blogImage2 from "../../../public/blog-2.jpg";
-import blogImage3 from "../../../public/blog-3.jpg";
-import html from "../../../public/html.jpg";
+import softwareBlogImage from "../../../public/blog/blog-3.jpg";
+import techBlogImage1 from "../../../public/blog/blog-1.jpg";
+import techBlogImage2 from "../../../public/blog/blog-2.jpg";
+import techBlogImage3 from "../../../public/blog/codeSnipset.jpg";
+import codeSnippetImage from "../../../public/blog/coding.jpg";
+import test from "../../../public/blog/test.jpg";
+import html from "../../../public/blog/html.jpg";
+import blogs from "../../../public/blog/blog.jpg";
+import css from "../../../public/skills/css.png";
 
 export const blog = [
   {
-    title: "Doğayla Buluşma: Sürdürülebilir Yaşam Tarzı İçin İpuçları -1 ",
+    title: "Sürdürülebilir Kodlama: Çevre Dostu Yazılım Geliştirme -1 ",
     description:
-      "Sürdürülebilir yaşam tarzına geçiş yaparken doğayla nasıl uyum içinde olabilirsiniz? Bu yazıda, çevre dostu alışkanlıklar edinmenin yollarını keşfedin.",
+      "Yazılım geliştirirken çevre dostu yaklaşımlar! Bu yazıda, sürdürülebilir kodlama pratiği ve çevre dostu yazılım geliştirme stratejilerini keşfedin.",
     date: "2023-12-11",
     viewCount: 512,
-    image: blogImage,
+    image: softwareBlogImage,
     author: {
       name: "Elif Aydın",
-      bio: "Elif Aydın, çevre konularına duyarlı bir doğa sever ve sürdürülebilir yaşam savunucusudur.",
+      bio: "Elif Aydın, çevre konularına duyarlı bir yazılım geliştirici ve sürdürülebilir yazılım savunucusudur.",
     },
   },
   {
-    title: "Teknolojik Gelecek: Hayatımızı Şekillendirecek Trendler -2 ",
+    title: "Geleceğin Teknolojileri: Yazılım Dünyasında Yeni Trendler -2 ",
     description:
-      "Gelecekteki teknolojik gelişmeleri keşfedin! Bu yazıda, hayatımızı kökten değiştirecek olan teknolojik trendlere dair ilginç bilgiler bulacaksınız.",
+      "Yazılım dünyasındaki gelecek teknolojileri! Bu yazıda, hayatımızı kökten değiştirecek olan yazılım trendlerine dair ilginç bilgiler bulacaksınız.",
     date: "2023-12-12",
     viewCount: 789,
-    image: blogImage3,
+    image: techBlogImage3,
     author: {
       name: "Murat Demir",
       bio: "Murat Demir, teknolojiye olan ilgisiyle bilinen bir yazılım mühendisidir.",
     },
   },
   {
-    title:
-      "Zamanın Efendisi Olmak: Etkili Zaman Yönetimi İçin Pratik Taktikler -3 ",
+    title: "Etkili Kod Yönetimi: Pratik Taktikler ve İpuçları -3 ",
     description:
-      "Günlük hayatınızı daha etkili bir şekilde yönetmek için kullanabileceğiniz pratik zaman yönetimi stratejilerini öğrenin.",
+      "Yazılım projelerinizde kodu daha etkili bir şekilde yönetmek için kullanabileceğiniz pratik kod yönetimi stratejilerini öğrenin.",
     date: "2023-12-13",
     viewCount: 632,
+    image: codeSnippetImage,
+    author: {
+      name: "Ayşe Yılmaz",
+      bio: "Ayşe Yılmaz, yazılım geliştirme ve kod yönetimi konularında uzmanlaşmış bir yazılım mühendisi ve yazardır.",
+    },
+  },
+  {
+    title: "Yazılım Güvenliği: Tehditlere Karşı Savunma Stratejileri -4",
+    description:
+      "Yazılım güvenliğini artırmanın yolları! Bu yazıda, güvenli yazılım geliştirme pratiği ve tehditlere karşı savunma stratejilerini keşfedin.",
+    date: "2023-12-11",
+    viewCount: 512,
+    image: techBlogImage1,
+    author: {
+      name: "Elif Aydın",
+      bio: "Elif Aydın, güvenlik konularına duyarlı bir yazılım güvenlik uzmanı ve sürdürülebilir yazılım savunucusudur.",
+    },
+  },
+  {
+    title: "Yazılım Mimarisi: Modüler Yaklaşımlar ve Best Practices -5",
+    description:
+      "Etkili yazılım mimarisi oluşturmanın yolları! Bu yazıda, modüler yaklaşımlar ve en iyi uygulamalar hakkında bilgiler bulacaksınız.",
+    date: "2023-12-12",
+    viewCount: 789,
+    image: techBlogImage2,
+    author: {
+      name: "Murat Demir",
+      bio: "Murat Demir, yazılım mimarisi konusunda uzmanlaşmış bir yazılım mühendisidir.",
+    },
+  },
+  {
+    title:
+      "Yazılım Testi: Güçlü Bir Yazılım Geliştirme Süreci İçin İpuçları -6 ",
+    description:
+      "Yazılım testi stratejileri ve en iyi uygulamalar! Güçlü bir yazılım geliştirme süreci için test etme yöntemlerini öğrenin.",
+    date: "2023-12-13",
+    viewCount: 632,
+    image: css,
+    author: {
+      name: "Ayşe Yılmaz",
+      bio: "Ayşe Yılmaz, yazılım testi konularında uzmanlaşmış bir yazılım mühendisi ve yazardır.",
+    },
+  },
+  {
+    title: "Veri Analitiği ve Yazılım Geliştirme: Güçlü Bir Birliktelik -7 ",
+    description:
+      "Veri analitiği ve yazılım geliştirme birlikteliği! Bu yazıda, veri analitiği ile yazılım geliştirme arasındaki güçlü ilişkiyi keşfedin.",
+    date: "2023-12-11",
+    viewCount: 512,
     image: html,
     author: {
-      name: "Ayşe Yılmaz",
-      bio: "Ayşe Yılmaz, kişisel gelişim ve etkili zaman yönetimi konularında uzmanlaşmış bir yaşam koçu ve yazardır.",
-    },
-  },
-  {
-    title: "Doğayla Buluşma: Sürdürülebilir Yaşam Tarzı İçin İpuçları -4",
-    description:
-      "Sürdürülebilir yaşam tarzına geçiş yaparken doğayla nasıl uyum içinde olabilirsiniz? Bu yazıda, çevre dostu alışkanlıklar edinmenin yollarını keşfedin.",
-    date: "2023-12-11",
-    viewCount: 512,
-    image: blogImage1,
-    author: {
       name: "Elif Aydın",
-      bio: "Elif Aydın, çevre konularına duyarlı bir doğa sever ve sürdürülebilir yaşam savunucusudur.",
-    },
-  },
-  {
-    title: "Teknolojik Gelecek: Hayatımızı Şekillendirecek Trendler -5",
-    description:
-      "Gelecekteki teknolojik gelişmeleri keşfedin! Bu yazıda, hayatımızı kökten değiştirecek olan teknolojik trendlere dair ilginç bilgiler bulacaksınız.",
-    date: "2023-12-12",
-    viewCount: 789,
-    image: blogImage2,
-    author: {
-      name: "Murat Demir",
-      bio: "Murat Demir, teknolojiye olan ilgisiyle bilinen bir yazılım mühendisidir.",
+      bio: "Elif Aydın, veri analitiği ve yazılım geliştirme konularında uzmanlaşmış bir yazılım mühendisi ve veri analisti.",
     },
   },
   {
     title:
-      "Zamanın Efendisi Olmak: Etkili Zaman Yönetimi İçin Pratik Taktikler -6 ",
+      "Yazılım Testi: Güçlü Bir Yazılım Geliştirme Süreci İçin İpuçları -6 ",
     description:
-      "Günlük hayatınızı daha etkili bir şekilde yönetmek için kullanabileceğiniz pratik zaman yönetimi stratejilerini öğrenin.",
+      "Yazılım testi stratejileri ve en iyi uygulamalar! Güçlü bir yazılım geliştirme süreci için test etme yöntemlerini öğrenin.",
     date: "2023-12-13",
     viewCount: 632,
-    image: blogImage,
+    image: blogs,
     author: {
       name: "Ayşe Yılmaz",
-      bio: "Ayşe Yılmaz, kişisel gelişim ve etkili zaman yönetimi konularında uzmanlaşmış bir yaşam koçu ve yazardır.",
+      bio: "Ayşe Yılmaz, yazılım testi konularında uzmanlaşmış bir yazılım mühendisi ve yazardır.",
     },
   },
   {
-    title: "Doğayla Buluşma: Sürdürülebilir Yaşam Tarzı İçin İpuçları -7 ",
+    title: "Veri Analitiği ve Yazılım Geliştirme: Güçlü Bir Birliktelik -7 ",
     description:
-      "Sürdürülebilir yaşam tarzına geçiş yaparken doğayla nasıl uyum içinde olabilirsiniz? Bu yazıda, çevre dostu alışkanlıklar edinmenin yollarını keşfedin.",
+      "Veri analitiği ve yazılım geliştirme birlikteliği! Bu yazıda, veri analitiği ile yazılım geliştirme arasındaki güçlü ilişkiyi keşfedin.",
     date: "2023-12-11",
     viewCount: 512,
-    image: blogImage2,
+    image: test,
     author: {
       name: "Elif Aydın",
-      bio: "Elif Aydın, çevre konularına duyarlı bir doğa sever ve sürdürülebilir yaşam savunucusudur.",
-    },
-  },
-  {
-    title: "Teknolojik Gelecek: Hayatımızı Şekillendirecek Trendler -8",
-    description:
-      "Gelecekteki teknolojik gelişmeleri keşfedin! Bu yazıda, hayatımızı kökten değiştirecek olan teknolojik trendlere dair ilginç bilgiler bulacaksınız.",
-    date: "2023-12-12",
-    viewCount: 789,
-    image: blogImage3,
-    author: {
-      name: "Murat Demir",
-      bio: "Murat Demir, teknolojiye olan ilgisiyle bilinen bir yazılım mühendisidir.",
-    },
-  },
-  {
-    title:
-      "Zamanın Efendisi Olmak: Etkili Zaman Yönetimi İçin Pratik Taktikler -9",
-    description:
-      "Günlük hayatınızı daha etkili bir şekilde yönetmek için kullanabileceğiniz pratik zaman yönetimi stratejilerini öğrenin.",
-    date: "2023-12-13",
-    viewCount: 632,
-    image: blogImage,
-    author: {
-      name: "Ayşe Yılmaz",
-      bio: "Ayşe Yılmaz, kişisel gelişim ve etkili zaman yönetimi konularında uzmanlaşmış bir yaşam koçu ve yazardır.",
+      bio: "Elif Aydın, veri analitiği ve yazılım geliştirme konularında uzmanlaşmış bir yazılım mühendisi ve veri analisti.",
     },
   },
 ];

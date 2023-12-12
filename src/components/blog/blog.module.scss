@@ -3,46 +3,66 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
   > div {
     @apply shadow-xl hover:scale-105 transition ease-in-out duration-300;
   }
 }
 
+.blogImage {
+  @apply w-full rounded h-48 sm:h-72;
+}
+
+.viewCount {
+  @apply absolute bg-gray-300 rounded  flex items-center gap-2 font-bold top-2 right-3 text-black text-xs;
+}
+
+.date {
+  @apply absolute bottom-2 flex items-center gap-2 text-white text-xs font-bold px-4;
+}
+
+.title {
+  @apply bg-gray-50 rounded text-gray-400 absolute px-4 bottom-6 text-sm;
+}
+
+.sliderImage {
+  @apply h-72 rounded;
+}
+
 .div1 {
-  @apply relative;
   grid-area: 1 / 1 / 2 / 3;
+  @apply relative;
 }
 .div2 {
+  grid-area: 1 / 3 / 2 / 4;
   @apply relative;
-  grid-area: 2 / 2 / 3 / 4;
 }
 .div3 {
+  grid-area: 2 / 2 / 3 / 4;
   @apply relative;
-  grid-area: 3 / 3 / 4 / 5;
 }
 .div4 {
+  grid-area: 3 / 3 / 4 / 5;
   @apply relative;
-  grid-area: 2 / 4 / 3 / 5;
 }
 .div5 {
+  grid-area: 3 / 2 / 4 / 3;
   @apply relative;
-  grid-area: 2 / 1 / 3 / 2;
 }
 .div6 {
+  grid-area: 2 / 1 / 3 / 2;
   @apply relative;
-  grid-area: 1 / 3 / 2 / 4;
 }
 .div7 {
+  grid-area: 3 / 1 / 4 / 2;
   @apply relative;
-  grid-area: 1 / 4 / 2 / 5;
 }
 .div8 {
+  grid-area: 1 / 4 / 2 / 5;
   @apply relative;
-  grid-area: 3 / 2 / 4 / 3;
 }
 .div9 {
+  grid-area: 2 / 4 / 3 / 5;
   @apply relative;
-  grid-area: 3 / 1 / 4 / 2;
 }

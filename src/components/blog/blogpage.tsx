@@ -1,7 +1,7 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import style from "./blog.module.scss";
 import { Heading } from "../ui";
 import { blog } from "@/lib/constant/blogs";
@@ -12,43 +12,36 @@ import { motion } from "framer-motion";
 import { useSize } from "@/lib/hooks/useSize";
 import "swiper/css";
 import "swiper/css/navigation";
+import { ParentAnim } from "./animations";
+import toast from "react-hot-toast";
 
 export const BlogPage = () => {
-  // const [data, setData] = useState([]);
   const data = blog.slice(0, 9);
 
   const [width] = useSize();
-  console.log(width);
 
   return (
-    <div>
+    <div className="px-2">
       <Heading title="Blog Yazıları" link="blog" />
       {width > 650 ? (
         <div className={style["parent"]}>
           {data.map((item, index) => (
             <motion.div
-              animate={{
-                opacity: [0, 1],
-                transition: {
-                  delay: index / 5,
-                },
-              }}
+              onClick={() => toast.error("Blog Sayfaları hazırlanmaktadır.")}
+              {...ParentAnim(index)}
               key={index}
               className={style[`div${index + 1}`]}
             >
               <Image
-                className="h-48 w-full sm:h-72 rounded "
+                className={style["blogImage"]}
                 src={item.image}
                 alt={item.title}
-                loading="lazy"
               />
-              <span className="absolute bg-gray-300 rounded  flex items-center gap-2 font-bold top-2 right-3 text-black text-xs">
+              <span className={style["viewCount"]}>
                 <BsEye /> {item.viewCount}
               </span>
-              <h2 className=" bg-gray-50 rounded text-gray-400 absolute px-4 bottom-6 text-sm">
-                {item.title}
-              </h2>
-              <span className="absolute bottom-2 flex items-center gap-2 text-white text-xs font-bold px-4 ">
+              <h2 className={style["title"]}>{item.title}</h2>
+              <span className={style["date"]}>
                 <IoCalendarNumber />
                 {item.date}
               </span>
@@ -56,22 +49,25 @@ export const BlogPage = () => {
           ))}
         </div>
       ) : (
-        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        <Swiper
+          navigation={true}
+          modules={[Navigation]}
+          onClick={() => toast.error("Blog Sayfaları hazırlanmaktadır.")}
+          className="mySwiper"
+        >
           {data.map((item, i) => (
             <SwiperSlide key={"swiper" + i}>
               <Image
-                className=" w-full h-72 rounded "
+                className={style["sliderImage"]}
                 src={item.image}
                 alt={item.title}
                 loading="lazy"
               />
-              <span className="absolute px-2 bg-gray-300 rounded  flex items-center gap-2 font-bold top-2 right-3 text-gray-600 text-xs">
+              <span className={style["viewCount"]}>
                 <BsEye /> {item.viewCount}
               </span>
-              <h2 className=" bg-gray-50 rounded text-gray-400 absolute px-4 bottom-6 text-sm">
-                {item.title}
-              </h2>
-              <span className="absolute bottom-2 flex items-center gap-2 text-white text-xs font-bold px-4 ">
+              <h2 className={style["title"]}>{item.title}</h2>
+              <span className={style["date"]}>
                 <IoCalendarNumber />
                 {item.date}
               </span>

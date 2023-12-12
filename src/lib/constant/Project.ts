@@ -1,12 +1,11 @@
-import citio from "../../../public/6.png";
-import design from "../../../public/2.png";
-import broccoli from "../../../public/3.png";
-import sass from "../../../public/4.png";
-import medioApp from "../../../public/5.png";
-import saka from "../../../public/Saka.jpeg";
-import avis from "../../../public/Avis.jpeg";
-import losbutik from "../../../public/losbutik.jpeg";
-import ora from "../../../public/Ora.png";
+import citio from "../../../public/projects/citio.png";
+import broccoli from "../../../public/projects/broccoli.png";
+import medioApp from "../../../public/projects/medio.png";
+import saka from "../../../public/projects/Saka.jpeg";
+import avis from "../../../public/projects/avis.jpeg";
+import losbutik from "../../../public/projects/losbutik.jpeg";
+import ora from "../../../public/projects/ora.png";
+import roma from "../../../public/projects/roma.png";
 
 export const projectDatas = [
   {
@@ -178,7 +177,7 @@ export const projectDatas = [
     projectName: "Roma Solution",
     time: "1 Year",
     logo: "",
-    image: design,
+    image: roma,
     area: "Online İş Talepleri ve Proje Yönetimi",
     tags: ["web", "project management", "international", "online"],
     description:

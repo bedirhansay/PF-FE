@@ -23,7 +23,7 @@ export const Intro = () => {
         <motion.div {...introAnimations.imageAnim}>
           <Image
             src={profilePic}
-            alt="Ricardo portrait"
+            alt="Bedirhan Portrait"
             width="292"
             height="292"
             quality="95"

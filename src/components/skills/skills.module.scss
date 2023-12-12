@@ -19,4 +19,16 @@
 
 .card {
   @apply h-full pt-8 rounded shadow-xl;
+
+  h2 {
+    @apply text-white font-semibold text-xl py-2 mx-8 rounded-md;
+  }
+
+  img {
+    @apply mx-auto py-8;
+  }
+
+  ul li {
+    @apply text-white px-4 rounded-md py-1;
+  }
 }
