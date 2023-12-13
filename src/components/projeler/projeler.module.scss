@@ -41,11 +41,11 @@
   h4 {
     @apply text-lg font-bold mb-2;
   }
-  ul {
-    @apply list-inside list-disc;
+  .task {
+    @apply list-inside list-disc mb-4;
 
     li {
-      @apply mb-1;
+      @apply py-1;
     }
   }
   .requirements {

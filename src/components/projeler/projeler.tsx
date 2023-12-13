@@ -65,11 +65,9 @@ export const Projeler = () => {
                 <h3>{projectDatas[activeProject].area}</h3>
                 <p>{projectDatas[activeProject].description}</p>
                 <h4>Görevler</h4>
-                <ul>
+                <ul className={style["task"]}>
                   {projectDatas[activeProject].tasks.map((task, taskIndex) => (
-                    <li key={taskIndex + "Task"} className="mb-1">
-                      {task}
-                    </li>
+                    <li key={taskIndex + "Task"}>{task}</li>
                   ))}
                 </ul>
                 {/* //! Gereksinimler */}
