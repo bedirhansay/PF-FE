@@ -7,12 +7,12 @@
   }
 
   .swiper-container {
-    @apply flex justify-between max-w-7xl mx-auto flex-wrap rounded-lg  bg-darkBlue mb-8 p-8 py-3 text-center;
+    @apply rounded-lg  bg-darkBlue mb-8  py-3 text-center;
   }
 }
 
 .active-project {
-  @apply px-2 border p-4 bg-gray-50 rounded-md shadow-lg;
+  @apply px-2 border bg-gray-50 rounded-md shadow-lg;
 }
 
 .image-wrapper {
