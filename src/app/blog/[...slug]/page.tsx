@@ -8,6 +8,7 @@ import { CiShare2 } from "react-icons/ci";
 import { BsClock } from "react-icons/bs";
 import { Share } from "@/components/share/Share";
 import { Truncate } from "@/lib/utils/truncate";
+import style from "./slug.module.scss";
 
 type Props = {
   params: { slug: string };
@@ -32,7 +33,7 @@ export default function BlogPage({ params }: Props) {
   const otherBlogs = blog.filter((item) => item.slug != params.slug);
 
   return (
-    <div className="max-w-7xl mt-10 mx-auto my-10 px-4">
+    <div className="max-w-7xl mt-10 mx-auto my-10 px-2">
       <div className="flex flex-col gap-10 px-4">
         <h1 className="bg-grays text-white flex flex-col text-center font-bold rounded shadow-md text-base sm:text-3xl py-10">
           {selectedBlog?.title}
@@ -57,7 +58,7 @@ export default function BlogPage({ params }: Props) {
             />
 
             <div
-              className="bg-white px-4 my-10 prose flex !gap-4"
+              className={style["outer-html"]}
               dangerouslySetInnerHTML={{
                 __html: selectedBlog?.description || "",
               }}

@@ -57,7 +57,7 @@ export const experiencesData = [
     location: "İstanbul / Türkiye",
     position: "İş Yerinde",
     date: "2021 - 2023",
-    skills: ["Python", "ML", "Office Uygulamları", "BioRad"],
+    skills: ["Python", "Makine Öğrenmesi", "Office Uygulamları", "BioRad"],
 
     responsibilities: [
       "Firma içindeki projelerin Moleküler Biyoloji ve Genetik alanlarında aktif rol alarak, laboratuvar çalışmalarını yönettim ve koordine ettim.",

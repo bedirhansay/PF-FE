@@ -1,9 +1,9 @@
 import softwareBlogImage from "../../../public/blog/blog-3.jpg";
-import techBlogImage1 from "../../../public/blog/blog-1.jpg";
-import techBlogImage2 from "../../../public/blog/blog-2.jpg";
-import techBlogImage3 from "../../../public/blog/codeSnipset.jpg";
-import codeSnippetImage from "../../../public/blog/coding.jpg";
-import css from "../../../public/skills/css.png";
+import techBlogImage1 from "../../../public/blog/sm-2.jpg";
+import techBlogImage2 from "../../../public/blog/sm-3.jpg";
+import techBlogImage3 from "../../../public/blog/sm-1.jpg";
+import codeSnippetImage from "../../../public/blog/Item1.jpg";
+import css from "../../../public/blog/sm-1.jpg";
 
 export const blog = [
   {
@@ -62,9 +62,10 @@ export const blog = [
       </li>
     </ol>
   `,
-    date: "11-12-2023",
+    date: "11 Aug 2023",
     viewCount: 512,
     image: codeSnippetImage,
+    category: "Seo",
     author: {
       name: "Elif Aydın",
       bio: "Elif Aydın, çevre konularına duyarlı bir yazılım geliştirici ve sürdürülebilir yazılım savunucusudur.",
@@ -76,8 +77,9 @@ export const blog = [
     slug: "gelecegin-teknolojileri-yazilim-dunyasinda-yeni-trendler",
     description:
       "Yazılım dünyasındaki gelecek teknolojileri! Bu yazıda, hayatımızı kökten değiştirecek olan yazılım trendlerine dair ilginç bilgiler bulacaksınız.",
-    date: "2023-12-12",
+    date: "12 Jun 2023",
     viewCount: 789,
+    category: "Javascript",
     image: techBlogImage3,
     author: {
       name: "Murat Demir",
@@ -90,8 +92,9 @@ export const blog = [
     slug: "etkili-kod-yonetimi-pratik-taktikler-ve-ipuclari",
     description:
       "Yazılım projelerinizde kodu daha etkili bir şekilde yönetmek için kullanabileceğiniz pratik kod yönetimi stratejilerini öğrenin.",
-    date: "2023-12-13",
+    date: "13 Jun 2023",
     viewCount: 632,
+    category: "React Js",
     image: codeSnippetImage,
     author: {
       name: "Ayşe Yılmaz",
@@ -100,11 +103,12 @@ export const blog = [
   },
   {
     id: 4,
+    category: "TypeScript",
     title: "Yazılım Güvenliği: Tehditlere Karşı Savunma Stratejileri",
     slug: "yazilim-testi-guclu-bir-yazilim-gelistirme-sureci-icin-ipuclari",
     description:
       "Yazılım güvenliğini artırmanın yolları! Bu yazıda, güvenli yazılım geliştirme pratiği ve tehditlere karşı savunma stratejilerini keşfedin.",
-    date: "2023-12-11",
+    date: "17 Jun 2023",
     viewCount: 512,
     image: techBlogImage1,
     author: {
@@ -118,8 +122,9 @@ export const blog = [
     slug: "yazilim-mimarisi-moduler-yaklasimlar-ve-best-practices",
     description:
       "Etkili yazılım mimarisi oluşturmanın yolları! Bu yazıda, modüler yaklaşımlar ve en iyi uygulamalar hakkında bilgiler bulacaksınız.",
-    date: "2023-12-12",
+    date: "24 Jun 2023",
     viewCount: 789,
+    category: "React JS",
     image: techBlogImage2,
     author: {
       name: "Murat Demir",
@@ -132,8 +137,9 @@ export const blog = [
     slug: "yazilim-testi-guclu-bir-yazilim-gelistirme-sureci-icin-ipuclari",
     description:
       "Yazılım testi stratejileri ve en iyi uygulamalar! Güçlü bir yazılım geliştirme süreci için test etme yöntemlerini öğrenin.",
-    date: "2023-12-13",
+    date: "26 Jun 2023",
     viewCount: 632,
+    category: "Next JS",
     image: css,
     author: {
       name: "Ayşe Yılmaz",

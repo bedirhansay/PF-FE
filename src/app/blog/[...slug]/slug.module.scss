@@ -1,0 +1,11 @@
+.outer-html {
+  @apply px-4;
+
+  ol ul {
+    @apply flex flex-col m-2;
+
+    li {
+      @apply list-disc;
+    }
+  }
+}

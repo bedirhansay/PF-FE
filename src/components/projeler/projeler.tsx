@@ -32,7 +32,7 @@ export const Projeler = () => {
           {projectDatas.map((item, index) => (
             <SwiperSlide
               key={item.projectName}
-              className={` text-sm  sm:text-base cursor-pointer text-white  ${
+              className={`  ml-2 !w-32 text-sm  sm:text-base cursor-pointer text-white  ${
                 index === activeProject ? "bg-gray-600 rounded-md " : ""
               }`}
               onClick={() => handleClick(index)}
