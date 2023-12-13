@@ -13,7 +13,6 @@ import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
 import style from "./intro.module.scss";
 import { useSectionInView } from "@/lib/hooks";
-import { Divider } from "../ui";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Anasayfa");
@@ -79,14 +78,14 @@ export const Intro = () => {
           className={clsx(style["contact"], "group")}
           onClick={() => {}}
         >
-          Contact me here
+          Benimle iletişime geç
           <BsArrowRight
             className={clsx(style["icon"], "group-hover:translate-x-4")}
           />
         </Link>
 
         <a className={clsx(style["download"], "group")} href="/CV.pdf" download>
-          Download CV{" "}
+          CV{" "}
           <HiDownload
             className={clsx(style["icon"], "group-hover:translate-y-2")}
           />

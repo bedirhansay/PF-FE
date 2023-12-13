@@ -6,6 +6,8 @@ import avis from "../../../public/projects/avis.jpeg";
 import losbutik from "../../../public/projects/losbutik.jpeg";
 import ora from "../../../public/projects/ora.png";
 import roma from "../../../public/projects/roma.png";
+import kidonki from "../../../public/projects/kidonki.png";
+import panel from "../../../public/projects/panel.png";
 
 export const projectDatas = [
   {
@@ -333,7 +335,7 @@ export const projectDatas = [
     projectName: "CMS Panel",
     time: "1 Year",
     logo: "",
-    image: avis,
+    image: panel,
     area: "Online Zirai Drone Satışı",
     tags: ["web", "e-commerce", "agriculture", "drone", "online"],
     description:
@@ -365,7 +367,7 @@ export const projectDatas = [
     projectName: "Kidonki",
     time: "1 Year",
     logo: "",
-    image: avis,
+    image: kidonki,
     area: "Online Zirai Drone Satışı",
     tags: ["web", "e-commerce", "agriculture", "drone", "online"],
     description:
