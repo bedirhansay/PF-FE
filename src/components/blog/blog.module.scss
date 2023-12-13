@@ -24,18 +24,18 @@
   @apply font-bold  mt-4 mb-4 bottom-6 text-sm sm:text-xl;
 }
 .swiperSlide {
-  @apply shadow-lg w-fit p-4 flex items-center bg-white rounded-md;
+  @apply shadow-lg w-fit p-4 flex flex-col sm:flex-row items-center bg-white rounded-md;
 }
 
 .sliderImage {
-  @apply w-44 h-44  rounded-md;
+  @apply h-44  sm:h-44 sm:w-44 rounded-md;
 }
 
 .text-wrapper {
-  @apply p-2 flex flex-col gap-3;
+  @apply p-2 flex w-full flex-col  py-8 sm:py-0;
 
   .first-text {
-    @apply flex justify-between;
+    @apply flex  justify-between;
     span {
       @apply text-xs font-semibold;
     }

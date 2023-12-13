@@ -65,8 +65,8 @@ export const BlogPage = () => {
 
               <h2 className={style["title"]}>{item.title}</h2>
 
-              <div className="flex justify-between items-center">
-                <div className="flex gap-3 items-center">
+              <div className="flex  justify-between items-center">
+                <div className="flex  gap-3 items-center">
                   <Image
                     height={40}
                     alt="profile"
