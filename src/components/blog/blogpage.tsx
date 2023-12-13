@@ -7,13 +7,13 @@ import { blog } from "@/lib/constant/blogs";
 import Image from "next/image";
 import { BsEye } from "react-icons/bs";
 import { IoCalendarNumber } from "react-icons/io5";
-import toast from "react-hot-toast";
 import { useSize } from "@/lib/hooks/useSize";
 import { Truncate } from "@/lib/utils/truncate";
 import { useSectionInView } from "@/lib/hooks";
 import "swiper/css";
 import "swiper/css/navigation";
 import style from "./blog.module.scss";
+import Link from "next/link";
 
 export const BlogPage = () => {
   const data = blog.slice(0, 9);
@@ -27,14 +27,13 @@ export const BlogPage = () => {
       <Swiper
         navigation={true}
         modules={[Navigation]}
-        onClick={() => toast.error("Blog Sayfaları hazırlanmaktadır.")}
         className="mySwiper"
         slidesPerView={width < 750 ? 1 : 3}
         spaceBetween={30}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {data.map((item, i) => (
-          <SwiperSlide className={style["swiperSlide"]} key={"swiper" + i}>
+          <SwiperSlide key={"swiper" + i} className={style["swiperSlide"]}>
             <Image
               className={style["sliderImage"]}
               src={item.image}
@@ -51,6 +50,8 @@ export const BlogPage = () => {
                   <BsEye /> {item.viewCount}
                 </span>
               </div>
+
+              <Link href={`/blog/${item.slug}`}>Daha fazla Oku</Link>
             </div>
           </SwiperSlide>
         ))}

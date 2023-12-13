@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { introAnimations } from "./animations";
 import clsx from "clsx";
-import profilePic from "../../../public/profile-pic.png";
+import profilePic from "../../../public/profile-picc.png";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
