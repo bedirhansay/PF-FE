@@ -7,6 +7,7 @@ import Image from "next/image";
 import { CiShare2 } from "react-icons/ci";
 import { BsClock } from "react-icons/bs";
 import { Share } from "@/components/share/Share";
+import { Truncate } from "@/lib/utils/truncate";
 
 type Props = {
   params: { slug: string };
@@ -81,11 +82,13 @@ export default function BlogPage({ params }: Props) {
                         }}
                         className="rounded"
                         alt="im"
-                        width={120}
+                        width={90}
                         src={otherBlog.image}
                       ></Image>
-                      <div className="flex flex-col justify-between px-2">
-                        <span className="font-medium"> {otherBlog?.title}</span>
+                      <div className="flex flex-col px-2 justify-between">
+                        <span className="font-medium text-left">
+                          {otherBlog?.title}
+                        </span>
                         <div className="flex gap-2 items-center">
                           <span className="text-sm">5 min Read</span>
                           <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
