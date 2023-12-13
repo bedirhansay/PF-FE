@@ -8,8 +8,8 @@ import css from "../../../public/skills/css.png";
 export const blog = [
   {
     id: 1,
-    title: "Sürdürülebilir Kodlama: Çevre Dostu Yazılım Geliştirme",
-    slug: "surdurulebilir-kodlama-cevre-dostu-yazilim-gelistirme",
+    title: "Seo Metrikleri ve Performans Metrikleri Nelerdir?",
+    slug: "seo-metricleri-nelerdir",
     description: `
     <ol>
       <li><strong>Largest Contentful Paint (LCP):</strong>
@@ -62,9 +62,9 @@ export const blog = [
       </li>
     </ol>
   `,
-    date: "2023-12-11",
+    date: "11-12-2023",
     viewCount: 512,
-    image: softwareBlogImage,
+    image: codeSnippetImage,
     author: {
       name: "Elif Aydın",
       bio: "Elif Aydın, çevre konularına duyarlı bir yazılım geliştirici ve sürdürülebilir yazılım savunucusudur.",
