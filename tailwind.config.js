@@ -24,6 +24,10 @@ module.exports = {
         darkGray: "#454555",
         lightGray: "#aaaabc",
         lightGrays: "#f8f8f8",
+        lightBlue: "#0065A7",
+        blue: "#0065a7",
+        grays: "#3e4756",
+        lightYellow: "#eee8a9",
       },
       keyframes: {
         bounceUpDown: {

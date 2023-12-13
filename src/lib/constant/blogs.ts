@@ -3,9 +3,6 @@ import techBlogImage1 from "../../../public/blog/blog-1.jpg";
 import techBlogImage2 from "../../../public/blog/blog-2.jpg";
 import techBlogImage3 from "../../../public/blog/codeSnipset.jpg";
 import codeSnippetImage from "../../../public/blog/coding.jpg";
-import test from "../../../public/blog/test.jpg";
-import html from "../../../public/blog/html.jpg";
-import blogs from "../../../public/blog/blog.jpg";
 import css from "../../../public/skills/css.png";
 
 export const blog = [
@@ -13,8 +10,58 @@ export const blog = [
     id: 1,
     title: "Sürdürülebilir Kodlama: Çevre Dostu Yazılım Geliştirme",
     slug: "surdurulebilir-kodlama-cevre-dostu-yazilim-gelistirme",
-    description:
-      "Yazılım geliştirirken çevre dostu yaklaşımlar! Bu yazıda, sürdürülebilir kodlama pratiği ve çevre dostu yazılım geliştirme stratejilerini keşfedin.",
+    description: `
+    <ol>
+      <li><strong>Largest Contentful Paint (LCP):</strong>
+        <ul>
+          <li>LCP, sayfanın yüklendikten sonraki en büyük içeriğin kullanılabilir hale gelmesi süresini ölçer. Bu genellikle ana içerik veya görsellerdir.</li>
+          <li>LCP'nin iyi olması, kullanıcıların web sitenizin içeriğine daha hızlı erişebileceği anlamına gelir. Hızlı yükleme süreleri, SEO sıralamanızı artırabilir.</li>
+        </ul>
+      </li>
+      <li><strong>First Contentful Paint (FCP):</strong>
+        <ul>
+          <li>FCP, sayfanın yüklendikten sonra ilk içerik parçasının görüntülenmeye başlama süresini ölçer.</li>
+          <li>İlk içerik parçasının hızlı bir şekilde görünür hale gelmesi, kullanıcıların sayfanın yüklenme sürecini olumlu bir şekilde deneyimlemesine yardımcı olur.</li>
+        </ul>
+      </li>
+      <li><strong>Cumulative Layout Shift (CLS):</strong>
+        <ul>
+          <li>CLS, sayfanın yüklendiği sırada sayfa öğelerinin yer değiştirme durumunu ölçer. Bu, sayfa yüklenirken aniden değişen düzenleri ifade eder.</li>
+          <li>İyi bir CLS, kullanıcıların sayfa içinde dolaşırken ani ve rahatsız edici kaydırmaları önler. Bu da kullanıcı deneyimini olumlu etkiler.</li>
+        </ul>
+      </li>
+      <li><strong>Mobile Friendly (Mobil Dostu):</strong>
+        <ul>
+          <li>Mobil cihazlara uygun bir tasarım ve kullanılabilirlik, SEO için önemlidir. Google'ın mobil cihazlara öncelik vermesi nedeniyle mobil uyumluluk büyük bir faktördür.</li>
+        </ul>
+      </li>
+      <li><strong>Page Speed (Sayfa Hızı):</strong>
+        <ul>
+          <li>Sayfa hızı, web sitenizin yükleme hızını ölçer. Hızlı yükleme süreleri, kullanıcıların sitenizi daha iyi deneyimlemesine ve arama motorlarının sitenizi daha yüksek sıralarda listelemesine yardımcı olabilir.</li>
+        </ul>
+      </li>
+      <li><strong>Sitemaps (Site Haritaları):</strong>
+        <ul>
+          <li>Site haritaları, arama motorlarına web sitenizin yapısını ve içeriğini bildirir. Doğru bir şekilde yapılandırılmış site haritaları, arama motorlarının sitenizi daha iyi indekslemesine yardımcı olabilir.</li>
+        </ul>
+      </li>
+      <li><strong>Robots.txt ve Meta Robots:</strong>
+        <ul>
+          <li>Robots.txt ve meta robots etiketleri, arama motorlarına hangi sayfaların indekslenip indekslenmeyeceğini belirler. Bu, istenmeyen sayfaların indekslenmesini önler ve arama motorlarına hangi içeriğin önemli olduğunu gösterir.</li>
+        </ul>
+      </li>
+      <li><strong>Backlink Kalitesi ve Sayısı:</strong>
+        <ul>
+          <li>Yüksek kaliteli ve sayıda geri bağlantı (backlink), web sitenizin otoritesini artırabilir. Ancak düşük kaliteli veya spam bağlantılar, SEO'ya zarar verebilir.</li>
+        </ul>
+      </li>
+      <li><strong>Kaliteli İçerik:</strong>
+        <ul>
+          <li>Kaliteli, bilgilendirici ve ilgi çekici içerik, kullanıcıların sitenizi daha uzun süre ziyaret etmelerine ve tekrar ziyaret etmelerine neden olabilir. Bu da SEO'ya olumlu katkı sağlar.</li>
+        </ul>
+      </li>
+    </ol>
+  `,
     date: "2023-12-11",
     viewCount: 512,
     image: softwareBlogImage,
