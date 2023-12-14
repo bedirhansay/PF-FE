@@ -1,11 +1,19 @@
 .outer-html {
-  @apply px-4;
-
-  ol ul {
-    @apply flex flex-col m-2;
-
-    li {
-      @apply list-disc;
+  @apply px-4 py-4;
+  ul {
+    @apply flex flex-col gap-2 my-2 px-2;
+  }
+  h2 {
+    @apply my-4 flex items-center gap-2 font-semibold underline;
+    &::before {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      bottom: -4px;
+      left: 0;
+      border-radius: 20px;
+      background-color: #3498db;
     }
   }
 }

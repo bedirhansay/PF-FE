@@ -15,7 +15,7 @@ import style from "./blog.module.scss";
 import profilePic from "../../../public/profile-picc.png";
 import { IoMdArrowForward } from "react-icons/io";
 import Link from "next/link";
-import { GetBadgeColor } from "@/lib/utils/getBadgeColor";
+import { GetBadgeIcon } from "@/lib/utils/getBadgeIcon";
 
 export const BlogPage = () => {
   const data = blog.slice(0, 9);
@@ -46,16 +46,13 @@ export const BlogPage = () => {
             />
             <div className={style["text-wrapper"]}>
               <div className={style["first-text"]}>
-                <span>
-                  <span
+                <span className="flex items-center">
+                  <Image
+                    alt=""
+                    width={50}
+                    src={GetBadgeIcon(item.category) || ""}
                     className="px-2 rounded py-1 mr-2 "
-                    style={{
-                      backgroundColor: GetBadgeColor(item.category).bg,
-                      color: GetBadgeColor(item.category).text,
-                    }}
-                  >
-                    {item.category}
-                  </span>{" "}
+                  ></Image>
                   <span className="text-gray-500">{item.date}</span>
                 </span>
                 <span className={style["viewCount"]}>
@@ -65,7 +62,7 @@ export const BlogPage = () => {
 
               <h2 className={style["title"]}>{item.title}</h2>
 
-              <div className="flex  justify-between items-center">
+              <div className="flex justify-between items-center">
                 <div className="flex  gap-3 items-center">
                   <Image
                     height={40}
@@ -79,11 +76,7 @@ export const BlogPage = () => {
                   </div>
                 </div>
                 <Link
-                  style={{
-                    backgroundColor: GetBadgeColor(item.category).bg,
-                    color: GetBadgeColor(item.category).text,
-                  }}
-                  className="text-xs  px-2 py-1 rounded underline flex items-center gap-2"
+                  className="text-xs  px-2 py-2 rounded underline flex items-center gap-2"
                   href={`/blog/${item.slug}`}
                 >
                   Daha fazla <IoMdArrowForward />

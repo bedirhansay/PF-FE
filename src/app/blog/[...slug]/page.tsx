@@ -66,6 +66,20 @@ export default function BlogPage({ params }: Props) {
           </div>
 
           <div>
+            <div className="bg-white rounded shadow-lg mb-2  text-center">
+              <h3 className="border-b-2 py-1 bg-blue rounded-md text-white">
+                Categoriler
+              </h3>
+              {blog.map((i) => (
+                <div
+                  className="flex px-4 py-1 justify-between gap-2"
+                  key={i + "input"}
+                >
+                  <label htmlFor="">{i.category}</label>
+                  <input type="checkbox" />
+                </div>
+              ))}
+            </div>
             <div className="bg-white px-4 py-10 text-sm">
               <h2 className="text-lg text-center font-bold mb-4">
                 Diğer Bloglar
