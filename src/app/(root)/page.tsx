@@ -7,13 +7,11 @@ import {
   BlogPage,
   Projeler,
 } from "@/components";
-import { FromPage } from "@/components/form";
 import { Divider } from "@/components/ui";
 
 export default async function Home() {
   return (
     <main>
-      <FromPage />
       <Intro />
       <Divider />
       <BlogPage />
