@@ -1,17 +1,21 @@
 import mongoose from "mongoose";
 
+let isConnected = false;
+
 export const connectDB = async () => {
-  const URI = process.env.MONGO_URI;
+  if (!process.env.MONGODB_URL) return console.log("Missing MongoDB URL");
+
+  if (isConnected) {
+    console.log("MongoDB connection already established");
+    return;
+  }
+
   try {
-    await mongoose.connect(
-      URI as string,
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      } as any
-    );
-    console.log("MongoDB Connected");
+    await mongoose.connect(process.env.MONGODB_URL);
+
+    isConnected = true;
+    console.log("MongoDB connected");
   } catch (error) {
-    process.exit(1);
+    console.log(error);
   }
 };
