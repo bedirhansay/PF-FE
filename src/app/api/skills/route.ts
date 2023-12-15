@@ -5,8 +5,8 @@ import {
   SkillModel,
   SkillValidation,
   UpdateSkill,
-} from "@/lib/models/SkillsModel";
-import { connectDB } from "@/lib/utils/ConnectMongo";
+} from "@models";
+import { connectDB } from "@utils";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
@@ -24,7 +24,6 @@ export async function POST(req: NextRequest) {
   try {
     await connectDB();
     const postData = await req.json();
-
     const validationResult = SkillValidation(postData);
 
     if (validationResult.error) {
