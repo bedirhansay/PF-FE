@@ -4,17 +4,14 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Link from "next/link";
 import Image from "next/image";
-import { CiShare2 } from "react-icons/ci";
 import { BsClock } from "react-icons/bs";
 import { Share } from "@/components/share/Share";
-import { Truncate } from "@/lib/utils/truncate";
+
 import style from "./slug.module.scss";
 
 type Props = {
   params: { slug: string };
 };
-
-// Paylaşma fonksiyonu
 
 export async function generateMetadata(
   { params }: Props,

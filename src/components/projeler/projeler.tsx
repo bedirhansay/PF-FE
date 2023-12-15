@@ -1,15 +1,14 @@
 "use client";
-
-import React, { useState } from "react";
-import { projectDatas } from "@/lib/constant/Project";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import "swiper/css";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { projectDatas } from "@constant";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useSectionInView } from "@hooks";
 import style from "./projeler.module.scss";
 import { ProjectsAnim } from "./animations";
-import { useSectionInView } from "@/lib/hooks";
 
+import "swiper/css";
 export const Projeler = () => {
   const [activeProject, setActiveProject] = useState(0);
 

@@ -11,7 +11,6 @@ export const SkillsDatas = [
     items: ["JavaScript", "Python", "R"],
     bgColor: "#FFF07D",
     image: progLang,
-
     itemColor: "#E7C100",
   },
   {

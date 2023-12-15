@@ -1,12 +1,11 @@
 "use client";
-
-import { motion } from "framer-motion";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { useActiveSection } from "@/lib/hooks";
+import { useActiveSection } from "@hooks";
 import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { NavLinks } from "@/lib/constant/navLinks";
+import { NavLinks } from "@constant";
 import style from "./header.module.scss";
 import { HeaderAnimations } from "./animation";
 

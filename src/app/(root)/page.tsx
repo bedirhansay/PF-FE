@@ -1,11 +1,19 @@
-import { AboutSection, Experience, Intro, Skills, Contact } from "@/components";
-import { BlogPage } from "@/components/blog/blogpage";
-import { Projeler } from "@/components/projeler/projeler";
+import {
+  AboutSection,
+  Experience,
+  Intro,
+  Skills,
+  Contact,
+  BlogPage,
+  Projeler,
+} from "@/components";
+import { FromPage } from "@/components/form";
 import { Divider } from "@/components/ui";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
+      <FromPage />
       <Intro />
       <Divider />
       <BlogPage />

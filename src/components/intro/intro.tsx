@@ -1,18 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { MdMarkEmailUnread } from "react-icons/md";
+import { BsArrowRight, BsLinkedin, BsDownload, BsGithub } from "react-icons/bs";
+import { useSectionInView } from "@hooks";
+import { ProfilePic } from "@public";
 import { introAnimations } from "./animations";
 import clsx from "clsx";
-import profilePic from "../../../public/profile-picc.png";
-import { MdMarkEmailUnread } from "react-icons/md";
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
-import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
 import style from "./intro.module.scss";
-import { useSectionInView } from "@/lib/hooks";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Anasayfa");
@@ -22,7 +19,7 @@ export const Intro = () => {
       <div className={style["image-wrapper"]}>
         <motion.div {...introAnimations.imageAnim}>
           <Image
-            src={profilePic}
+            src={ProfilePic}
             alt="Bedirhan Portrait"
             width="292"
             height="292"
@@ -51,7 +48,7 @@ export const Intro = () => {
           href="https://github.com/bedirhansay"
           target="_blank"
         >
-          <FaGithubSquare fontSize={24} />
+          <BsGithub fontSize={24} />
         </a>
         <a
           className={style["social"]}
@@ -86,7 +83,7 @@ export const Intro = () => {
 
         <a className={clsx(style["download"], "group")} href="/CV.pdf" download>
           CV{" "}
-          <HiDownload
+          <BsDownload
             className={clsx(style["icon"], "group-hover:translate-y-2")}
           />
         </a>

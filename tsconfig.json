@@ -21,11 +21,15 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components": ["/components/index.ts"],
-      "@components/ui": ["/components/ui/index.ts"],
-      "@utils": ["/lib/utils/index.ts"],
-      "@lib": ["/lib/index.ts"],
-      "@hooks": ["./lib/hooks/index.ts"],
-      "@container": ["./container/index.ts"]
+      "@components/ui": ["./src/components/ui/index.ts"],
+      "@utils": ["./src/lib/utils/index.ts"],
+      "@hooks": ["./src/lib/hooks/index.ts"],
+      "@models": ["./src/lib/models/index.ts"],
+      "@types": ["./src/lib/types/index.ts"],
+      "@context": ["./src/lib/context/index.ts"],
+      "@actions": ["./src/lib/actions/index.ts"],
+      "@public": ["./public/index.ts"],
+      "@constant": ["./src/lib/constant/index.ts"]
     }
   },
   "include": [

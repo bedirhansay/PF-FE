@@ -1,21 +1,18 @@
 "use client";
-import React from "react";
+
+import Link from "next/link";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { Heading } from "../ui";
-import { blog } from "@/lib/constant/blogs";
-import Image from "next/image";
-import { BsEye } from "react-icons/bs";
-import { useSize } from "@/lib/hooks/useSize";
-import { Truncate } from "@/lib/utils/truncate";
-import { useSectionInView } from "@/lib/hooks";
+import { Heading } from "@components/ui";
+import { blog } from "@constant";
+import { BsEye, BsArrowRightShort } from "react-icons/bs";
+import { useSize, useSectionInView } from "@hooks";
+import { ProfilePic } from "@public";
+import { GetBadgeIcon } from "@utils";
+import style from "./blog.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
-import style from "./blog.module.scss";
-import profilePic from "../../../public/profile-picc.png";
-import { IoMdArrowForward } from "react-icons/io";
-import Link from "next/link";
-import { GetBadgeIcon } from "@/lib/utils/getBadgeIcon";
 
 export const BlogPage = () => {
   const data = blog.slice(0, 9);
@@ -66,8 +63,9 @@ export const BlogPage = () => {
                 <div className="flex  gap-3 items-center">
                   <Image
                     height={40}
+                    width={40}
                     alt="profile"
-                    src={profilePic}
+                    src={ProfilePic}
                     className="rounded-md "
                   ></Image>
                   <div className="flex flex-col">
@@ -79,7 +77,7 @@ export const BlogPage = () => {
                   className="text-xs  px-2 py-2 rounded underline flex items-center gap-2"
                   href={`/blog/${item.slug}`}
                 >
-                  Daha fazla <IoMdArrowForward />
+                  Daha fazla <BsArrowRightShort />
                 </Link>
               </div>
             </div>

@@ -1,11 +1,10 @@
 "use client";
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { useSectionInView } from "@/lib/hooks";
-import { Heading } from "../ui";
-import { aboutAnimations, pAnim } from "./animations";
-import { about } from "@/lib/constant/about";
+import { useSectionInView } from "@hooks";
+import { Heading } from "@components/ui";
+import { about } from "@constant";
+import { pAnim } from "./animations";
 import style from "./about.module.scss";
 
 export const AboutSection = () => {

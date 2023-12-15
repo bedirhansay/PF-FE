@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
-import { useActiveSection, useSectionInView } from "@/lib/hooks";
-import style from "./experience.module.scss";
-import { Heading } from "../ui";
+import { useActiveSection, useSectionInView } from "@hooks";
+import { Heading } from "@components/ui";
 import { motion } from "framer-motion";
-import { experiencesData } from "@/lib/constant/Experience";
+import { experiencesData } from "@constant";
 import { experinceAnimations } from "./animations";
+import style from "./experience.module.scss";
 
 export const Experience = () => {
   const { ref, view } = useSectionInView("Deneyim", 0.9);
