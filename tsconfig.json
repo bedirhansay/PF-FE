@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@components": ["/components/index.ts"],
+      "@components": ["./src/components/index.ts"],
       "@components/ui": ["./src/components/ui/index.ts"],
       "@utils": ["./src/lib/utils/index.ts"],
       "@hooks": ["./src/lib/hooks/index.ts"],

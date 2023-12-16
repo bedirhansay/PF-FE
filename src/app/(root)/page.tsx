@@ -6,12 +6,13 @@ import {
   Contact,
   BlogPage,
   Projeler,
-} from "@/components";
+} from "@components";
 import { Divider } from "@/components/ui";
 
 export default async function Home() {
   return (
     <main>
+      
       <Intro />
       <Divider />
       <BlogPage />

@@ -6,6 +6,8 @@ export async function POST(req: Request) {
   try {
     await connectDB();
 
+   
+
     const fileData = await req.formData();
 
     const id = fileData.get("id");
@@ -18,15 +20,16 @@ export async function POST(req: Request) {
       image: image as string,
       name: name as string,
     };
-    console.log(filesData);
+
 
     const url = await uploadImageToFirabase(filesData);
+  
 
     const updateData = {
-      image: url,
+      image: url.url,
     };
 
-    await UpdateSkill(id as string, updateData);
+    const update = id && await UpdateSkill(id as string, updateData);
 
     return NextResponse.json({
       status: 201,

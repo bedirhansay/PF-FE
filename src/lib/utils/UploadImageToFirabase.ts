@@ -18,24 +18,30 @@ export const uploadImageToFirabase = async (filesData: FilesData) => {
     const imgRef = ref(imageDb, `${field}/${name}`);
 
     try {
+    
       const existingMetadata = await getMetadata(imgRef);
 
       if (existingMetadata) {
+        
         const existingUrl = await getDownloadURL(imgRef);
-        return existingUrl;
+        return { status: 200, url: existingUrl };
       }
     } catch (error) {
-      console.log(error);
+      console.log("Dosya bulunamadı. Yeni bir dosya yükleniyor.");
     }
 
+    
     const blob = new Blob([image]);
     await uploadBytes(imgRef, blob);
 
+
     const url = await getDownloadURL(imgRef);
 
-    return url;
+    return {
+      status: 201,
+      url: url,
+    };
   } catch (error) {
-    console.error("Error uploading image:", error);
     return {
       status: 500,
       message: error,
