@@ -1,5 +1,5 @@
-import { GetSkillById, UpdateSkill } from "@models";
-import { connectDb } from "@utils";
+import { GetSkillById } from "@models";
+
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
@@ -9,7 +9,6 @@ export async function GET(
 ) {
   const id = params.id;
   try {
-    await connectDb();
     const allSkills = await GetSkillById(id);
 
     return NextResponse.json({ data: allSkills, status: 200 });

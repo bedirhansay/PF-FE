@@ -40,7 +40,7 @@ export const AboutSection = () => {
             dangerouslySetInnerHTML={{ __html: item.p }}
             key={index + "item"}
             {...pAnim({ delay: 0.1 * index, controls })}
-          ></motion.span>
+          />
         ))}
       </motion.div>
       <div className={style["box-wrapper"]}>

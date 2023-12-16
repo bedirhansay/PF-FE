@@ -1,5 +1,5 @@
 import { createUser, getUserByEmail } from "@models";
-import { connectDB, generateToken } from "@utils";
+import { generateToken } from "@utils";
 import { loginValidation } from "@validations";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -24,8 +24,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
         error: "E-posta ve şifre gereklidir",
       });
     }
-
-    await connectDB();
 
     // E-posta ile kullanıcı sorgula
     const existingUser = await getUserByEmail(email);

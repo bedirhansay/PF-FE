@@ -6,12 +6,14 @@ import {
   SkillModel,
   UpdateSkill,
 } from "@models";
-import { connectDb } from "@utils";
+
 import { NextRequest, NextResponse } from "next/server";
+import { connectDb } from "../../../../lib/utils/ConnectDb";
+import { connectToDb } from "../../../../lib/utils/ConnectToDb";
 
 export async function GET() {
   try {
-    await connectDb();
+    await connectToDb();
     const allSkills = await GetAllSkills();
     return NextResponse.json({ data: allSkills, status: 200 });
   } catch (error) {
@@ -22,7 +24,6 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
-    await connectDb();
     const postData = await req.json();
     const validationResult = SkillValidation(postData);
 
@@ -42,7 +43,6 @@ export async function POST(req: NextRequest) {
 
 export async function PATCH(req: Request) {
   try {
-    await connectDb();
     const patchData = await req.json();
 
     const id = patchData._id;

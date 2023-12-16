@@ -12,36 +12,36 @@ export const Experience = () => {
   const { activeSection } = useActiveSection();
 
   return (
-    <section id="experience" ref={ref} className={style["section-wrapper"]}>
-      <Heading title="Deneyim" link="experience"></Heading>
+    <section id="experience" ref={ref} className={style.sectionWrapper}>
+      <Heading title="Deneyim" link="experience" />
 
       {experiencesData.map((item, index) => (
         <motion.div
           {...experinceAnimations(index)}
-          className={style["box-wrapper"]}
-          key={index + "vertical"}
+          className={style.boxWrapper}
+          key={item.title + "vertical"}
         >
-          <motion.div className={style["text-wrapper"]}>
+          <motion.div className={style.textWrapper}>
             <h3>{item.title} </h3>
-            <div className={style["blog-detail"]}>
-              <div className={style["sub"]}>
-                <p className={style["p-text"]}>{item.location}</p>
+            <div className={style.blogDetail}>
+              <div className={style.sub}>
+                <p className={style.pText}>{item.location}</p>
               </div>
-              <p className={style["p-text"]}>
+              <p className={style.pText}>
                 {item.date} / {item.position}{" "}
               </p>
             </div>
-            <ul className={style["resp"]}>
-              {item.responsibilities.map((skill, index) => (
-                <li className="list-disc " key={index + "span"}>
+            <ul className={style.resp}>
+              {item.responsibilities.map((skill, innerIndex) => (
+                <li className="list-disc" key={item.title + innerIndex}>
                   {skill}
                 </li>
               ))}
             </ul>
 
-            <div className={style["tech"]}>
-              {item.skills.map((skill, index) => (
-                <span key={index + "span"}>{skill}</span>
+            <div className={style.tech}>
+              {item.skills.map((skill, innerIndex) => (
+                <span key={item.title + innerIndex}>{skill}</span>
               ))}
             </div>
           </motion.div>

@@ -1,13 +1,9 @@
 import { UpdateSkill } from "@models";
-import { connectDB, uploadImageToFirabase } from "@utils";
+import { uploadImageToFirabase } from "@utils";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    await connectDB();
-
-   
-
     const fileData = await req.formData();
 
     const id = fileData.get("id");
@@ -21,15 +17,13 @@ export async function POST(req: Request) {
       name: name as string,
     };
 
-
     const url = await uploadImageToFirabase(filesData);
-  
 
     const updateData = {
       image: url.url,
     };
 
-    const update = id && await UpdateSkill(id as string, updateData);
+    const update = id && (await UpdateSkill(id as string, updateData));
 
     return NextResponse.json({
       status: 201,

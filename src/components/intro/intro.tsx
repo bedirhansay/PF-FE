@@ -17,7 +17,7 @@ export const Intro = () => {
   return (
     <section ref={ref} id="home" className={style["section-wrapper"]}>
       <div className={style["image-wrapper"]}>
-        <motion.div {...introAnimations.imageAnim}>
+        <motion.div key={"motion-div"} {...introAnimations.imageAnim}>
           <Image
             src={ProfilePic}
             alt="Bedirhan Portrait"

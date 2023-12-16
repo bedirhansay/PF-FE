@@ -3,11 +3,9 @@ export const ProjectsAnim = (activeProject: any) => {
     animate: {
       opacity: [0, 0.4, 0.8, 1],
     },
-    key: activeProject,
     whileInView: "true",
     transition: {
       delay: 0.3,
     },
   };
 };
- 
