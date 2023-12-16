@@ -1,13 +1,7 @@
 "use client";
 
+import { ContextProps } from "@types";
 import React, { createContext, useMemo, useState } from "react";
-
-export type ContextProps = {
-  activeSection: string;
-  setActiveSection: React.Dispatch<React.SetStateAction<string>>;
-  timeOfLastClick: number;
-  setTimeOfLastClick: React.Dispatch<React.SetStateAction<number>>;
-};
 
 export const ActiveSectionContext = createContext<ContextProps | undefined>(
   undefined

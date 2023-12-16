@@ -1,5 +1,5 @@
-import { GetSkillById, UpdateSkill } from "@/lib/models/SkillsModel";
-import { connectDB } from "@/lib/utils/ConnectMongo";
+import { GetSkillById, UpdateSkill } from "@models";
+import { connectDB } from "@utils";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
@@ -8,7 +8,6 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   const id = params.id;
-  console.log(params);
   try {
     await connectDB();
     const allSkills = await GetSkillById(id);

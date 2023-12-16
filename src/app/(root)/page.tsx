@@ -7,9 +7,12 @@ import {
   BlogPage,
   Projeler,
 } from "@components";
-import { Divider } from "@/components/ui";
+import { Divider } from "@components/ui";
+
 
 export default async function Home() {
+
+
   return (
     <main>
       

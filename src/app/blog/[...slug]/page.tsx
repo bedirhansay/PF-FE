@@ -1,11 +1,11 @@
-import { blog } from "@/lib/constant/blogs";
+import { blog } from "@constant";
 import React from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Link from "next/link";
 import Image from "next/image";
 import { BsClock } from "react-icons/bs";
-import { Share } from "@/components/share/Share";
+import { Share } from "@components";
 
 import style from "./slug.module.scss";
 

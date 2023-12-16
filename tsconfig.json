@@ -19,7 +19,6 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
       "@components": ["./src/components/index.ts"],
       "@components/ui": ["./src/components/ui/index.ts"],
       "@utils": ["./src/lib/utils/index.ts"],
@@ -29,7 +28,8 @@
       "@context": ["./src/lib/context/index.ts"],
       "@actions": ["./src/lib/actions/index.ts"],
       "@public": ["./public/index.ts"],
-      "@constant": ["./src/lib/constant/index.ts"]
+      "@constant": ["./src/lib/constant/index.ts"],
+      "@validations": ["./src/lib/validation/index.ts"]
     }
   },
   "include": [

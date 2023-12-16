@@ -2,10 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { useSectionInView } from "@/lib/hooks";
+import { useSectionInView } from "@hooks";
 import { Heading } from "../ui";
 import style from "./skills.module.scss";
-import { SkillsDatas } from "@/lib/constant/skills";
+import { SkillsDatas } from "@constant";
 import Image from "next/image";
 import { fadeInAnimationVariants, skillsAnim } from "./animations";
 

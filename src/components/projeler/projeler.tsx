@@ -30,7 +30,7 @@ export const Projeler = () => {
         >
           {projectDatas.map((item, index) => (
             <SwiperSlide
-              key={item.projectName}
+              key={"projeler" + index}
               className={`  ml-2 !w-32 text-sm  sm:text-base cursor-pointer text-white  ${
                 index === activeProject ? "bg-gray-600 rounded-md " : ""
               }`}

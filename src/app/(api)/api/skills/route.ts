@@ -1,9 +1,9 @@
+import { SkillValidation } from "@validations";
 import {
   DeleteSkill,
   GetAllSkills,
   GetSkillById,
   SkillModel,
-  SkillValidation,
   UpdateSkill,
 } from "@models";
 import { connectDB } from "@utils";
