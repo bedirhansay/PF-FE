@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BsClock, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
+import { BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { CiShare2 } from "react-icons/ci";
 
 export const Share = ({ blog }: { blog: any }) => {

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import type { SectionName } from "@/lib/types/sectionType";
+import type { SectionName } from "@types";
 import { useActiveSection } from "./useActiveSection";
 
 export const useSectionInView = (

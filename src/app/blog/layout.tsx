@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
-import { Header } from "@/components/header/header";
-import { ActiveSectionProvider } from "@/lib/contex/sectionContex";
-import { Toaster } from "react-hot-toast";
 import "../(root)/globals.scss";
 
 const inter = Urbanist({

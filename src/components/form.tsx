@@ -7,7 +7,7 @@ export const FormPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [tFile, setTFile] = useState(null);
 
-  const handleFileChange = async (event) => {
+  const handleFileChange = async (event:any) => {
     const file = event.target.files[0];
 
     if (file) {
@@ -16,6 +16,7 @@ export const FormPage = () => {
       try {
         // Dosyayı sıkıştır ve sıkıştırılmış dosyayı al
         let tempFile = await ImageCompressor(file);
+        //@ts-ignore
         setTFile(tempFile);
 
         // Sıkıştırılmış ve orijinal dosyaların boyutlarını al
@@ -35,24 +36,24 @@ export const FormPage = () => {
   };
 
   const handleSubmit = async () => {
-    try {
-      // FormData oluştur
-      const formData = new FormData();
-      formData.append('file', tFile || selectedFile);
-      formData.append("field", "skills");
-      formData.append("name", (tFile && tFile.name) || selectedFile.name);
+    // try {
+    //   // FormData oluştur
+    //   const formData = new FormData();
+    //   formData.append('file', tFile || selectedFile);
+    //   formData.append("field", "skills");
+    //   formData.append("name", (tFile && tFile.name) || selectedFile.name);
 
-      // POST isteği yap
-      const response = await fetch('http://127.0.0.1:3000/api/images', {
-        method: 'POST',
-        body: formData,
+    //   // POST isteği yap
+    //   const response = await fetch('http://127.0.0.1:3000/api/images', {
+    //     method: 'POST',
+    //     body: formData,
        
-      });
+    //   });
 
-     console.log(response)
-    } catch (error) {
-      console.error('Error uploading image:', error);
-    }
+    //  console.log(response)
+    // } catch (error) {
+    //   console.error('Error uploading image:', error);
+    // }
   };
 
   return (
@@ -61,8 +62,6 @@ export const FormPage = () => {
       {selectedFile && (
         <div>
           <p>Seçilen Dosya Bilgileri:</p>
-          <p>Adı: {selectedFile.name}</p>
-          <p>Boyutu: {selectedFile.size} bayt</p>
         </div>
       )}
       <br />
