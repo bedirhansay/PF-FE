@@ -1,6 +1,6 @@
 "use client";
 
-import { useActiveSection, useSectionInView } from "@hooks";
+import { useSectionInView } from "@hooks";
 import { Heading } from "@components/ui";
 import { motion } from "framer-motion";
 import { experiencesData } from "@constant";
@@ -9,7 +9,6 @@ import style from "./experience.module.scss";
 
 export const Experience = () => {
   const { ref, view } = useSectionInView("Deneyim", 0.9);
-  const { activeSection } = useActiveSection();
 
   return (
     <section id="experience" ref={ref} className={style.sectionWrapper}>

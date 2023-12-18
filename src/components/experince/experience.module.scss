@@ -1,15 +1,15 @@
-.section-wrapper {
+.sectionWrapper {
   @apply scroll-mt-28 max-w-7xl mx-auto  flex flex-col   px-4;
 }
 
-.box-wrapper {
+.boxWrapper {
   @apply flex bg-gray-200 rounded-md shadow-xl gap-5  mb-10 items-center;
   span {
     @apply text-xl border border-black p-2 rounded-full shadow-xl;
   }
 }
 
-.text-wrapper {
+.textWrapper {
   @apply border border-gray-400  flex flex-col text-center gap-y-8 px-4 py-4 w-full rounded-md;
 
   h3 {
@@ -32,7 +32,7 @@
   }
 }
 
-.blog-detail {
+.blogDetail {
   @apply flex justify-between items-center;
 
   .sub {

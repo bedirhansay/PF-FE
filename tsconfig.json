@@ -46,7 +46,7 @@
     "lib/utils/**/*.ts",
     "lib/**/*.ts",
     "hooks/**/*.ts"
-  ],
+, "src/lib/utils/ConnectDb.ts"  ],
 
   "exclude": ["node_modules"]
 }
