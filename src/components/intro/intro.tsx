@@ -82,7 +82,7 @@ export const Intro = () => {
         </Link>
 
         <a className={clsx(style["download"], "group")} href="/CV.pdf" download>
-          CV{" "}
+          CV
           <BsDownload
             className={clsx(style["icon"], "group-hover:translate-y-2")}
           />
