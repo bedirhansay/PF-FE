@@ -5,7 +5,7 @@ type ButtonProps = {
   status?: boolean;
 };
 
-export const Button: FC<ButtonProps> = ({ status }) => {
+export const SmtButton: FC<ButtonProps> = ({ status }) => {
   return (
     <button
       type="submit"

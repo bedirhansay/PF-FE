@@ -1,4 +1,5 @@
-export * from "./getBadgeIcon";
+export * from "./badge.icon";
 export * from "./truncate";
-export * from "./ImageCompressor";
+export * from "./image.compressor";
 export * from "./Token/VerifiedToken";
+export * from "./tailwind.merge";

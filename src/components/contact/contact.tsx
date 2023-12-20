@@ -12,6 +12,7 @@ import { ContactAnimations } from "./animations";
 export const Contact = () => {
   const { ref } = useSectionInView("İletişim");
   const { pending } = useFormStatus();
+  console.log("Contact", pending);
 
   return (
     <motion.section
@@ -54,7 +55,9 @@ export const Contact = () => {
               maxLength={5000}
             />
 
-            <Button status={pending} />
+            <Button variant="secondary" className="" status={pending}>
+              Gönder
+            </Button>
           </form>
           {/* <div className={style["tap"]}>
             <p>Fikriniz mi var?</p>
