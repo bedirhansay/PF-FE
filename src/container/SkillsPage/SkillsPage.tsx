@@ -24,8 +24,10 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
     resolver: joiResolver(SkillSchema),
   });
 
+  console.log(skills);
+
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState<string | undefined>();
+  const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string>("");
@@ -35,7 +37,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   const onSubmit = async (data: SkillsDTO) => {
     setLoading(true);
     let itemList = data.items.toString();
-    let itemsArray = itemList.split(",").map((item) => item.trim());
+    let itemsArray = itemList?.split(",").map((item) => item.trim());
 
     const payload = {
       ...data,
@@ -67,8 +69,8 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
         const res = await createSkills({ payloads });
         console.log(res);
         toast.success("Yetenek Eklendi");
-        // setSelectedImage(null);
-        // reset();
+        setSelectedImage(null);
+        reset();
       } catch (error: any) {
         toast.error("Yetenek Eklenemedi" + error.message);
       } finally {

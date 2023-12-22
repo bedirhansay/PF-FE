@@ -8,7 +8,8 @@ export async function middleware(request: NextRequest) {
 
   const pathname = new URL(url).pathname;
   const token = await ReadToken();
-  const hasVerifiedToken = await verifiedToken({ token });
+  const hasVerifiedToken = await verifiedToken(token as string);
+  console.log(token);
 
   if (hasVerifiedToken) {
     if (pathname == "/api/auth/login" || pathname == "/api/auth/register") {

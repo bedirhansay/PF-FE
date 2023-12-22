@@ -12,7 +12,6 @@ import { ContactAnimations } from "./animations";
 export const Contact = () => {
   const { ref } = useSectionInView("İletişim");
   const { pending } = useFormStatus();
-  console.log("Contact", pending);
 
   return (
     <motion.section

@@ -9,8 +9,8 @@ export const getAllSkills = async () => {
   try {
     const response = await apiWorker.instance.get("/skills");
     return response.data;
-  } catch (error) {
-    return { status: 400, data: [] };
+  } catch (error: any) {
+    return { status: 400, data: error.message };
   }
 };
 

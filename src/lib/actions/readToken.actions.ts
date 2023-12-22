@@ -2,13 +2,19 @@
 
 import { cookies } from "next/headers";
 
-export default async function ReadToken() {
+async function getCookieData() {
   const cookieStore = cookies();
   const token = cookieStore.get("admin-token");
 
-  if (token) {
-    const accessToken = token.value;
-    return accessToken;
-  }
-  return null;
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      if (token) {
+        resolve(token.value);
+      } else {
+        resolve(null);
+      }
+    }, 1000)
+  );
 }
+
+export default getCookieData;

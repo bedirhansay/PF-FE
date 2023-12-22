@@ -8,7 +8,7 @@ const getJWTSecret = () => {
   return new TextEncoder().encode(secretKey);
 };
 
-export const verifiedToken = async ({ token }: { token: string | null }) => {
+export const verifiedToken = async (token: string | null) => {
   try {
     const { payload } = await jwtVerify(token as string, getJWTSecret());
     return true;

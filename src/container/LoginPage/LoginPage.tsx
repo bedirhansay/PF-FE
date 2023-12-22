@@ -21,10 +21,8 @@ export const Login = () => {
 
   const onSubmit = async (data: LoginDTO) => {
     setLoading(true);
-    console.log(data);
 
     const res = await login(data);
-    console.log(res);
 
     if (res.error) {
       toast.error(res.error);
