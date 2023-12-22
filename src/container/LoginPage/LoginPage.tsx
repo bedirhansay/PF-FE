@@ -7,6 +7,7 @@ import { LoginDTO } from "@types";
 import { LoginSchema } from "@validations";
 import { Input, Button, Heading } from "@components/ui";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -20,17 +21,21 @@ export const Login = () => {
 
   const onSubmit = async (data: LoginDTO) => {
     setLoading(true);
-    try {
-      const res = await login(data);
-      console.log(res);
+    console.log(data);
+
+    const res = await login(data);
+    console.log(res);
+
+    if (res.error) {
+      toast.error(res.error);
       setLoading(false);
-      if (res) {
+    } else {
+      toast.success("Başarıyla Giriş yapıldı");
+      setLoading(false);
+
+      setTimeout(() => {
         window.location.href = "/admin/blog";
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
+      }, 1000);
     }
   };
 

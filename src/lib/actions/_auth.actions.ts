@@ -27,8 +27,8 @@ export const login = async (payload: LoginDTO) => {
 
     await apiWorker.setAuth(data.token);
     return data;
-  } catch (e) {
-    return { kind: e };
+  } catch (e: any) {
+    return { error: e.response.data };
   }
 };
 
