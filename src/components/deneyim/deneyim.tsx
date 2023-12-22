@@ -7,7 +7,7 @@ import { experiencesData } from "@constant";
 import { experinceAnimations } from "./animations";
 import style from "./experience.module.scss";
 
-export const Experience = () => {
+export const Deneyim = () => {
   const { ref, view } = useSectionInView("Deneyim", 0.9);
 
   return (

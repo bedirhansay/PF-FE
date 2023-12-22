@@ -5,8 +5,9 @@ import {
   Contact,
   BlogPage,
   Projeler,
+  Deneyim,
 } from "@components";
-import { Experience } from "../../components/experience/experince";
+
 import { Divider } from "@components/ui";
 
 export default async function Home() {
@@ -22,7 +23,7 @@ export default async function Home() {
       <Divider line />
       <Skills />
       <Divider line />
-      <Experience />
+      <Deneyim />
       <Divider line />
       <Contact />
     </main>
