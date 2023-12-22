@@ -5,8 +5,8 @@ import {
   Contact,
   BlogPage,
   Projeler,
-  Experience,
 } from "@components";
+import { Experience } from "../../components/experience/experince";
 import { Divider } from "@components/ui";
 
 export default async function Home() {
