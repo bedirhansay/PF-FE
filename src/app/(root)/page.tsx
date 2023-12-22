@@ -1,11 +1,11 @@
 import {
   AboutSection,
-  Experience,
   Intro,
   Skills,
   Contact,
   BlogPage,
   Projeler,
+  Experience,
 } from "@components";
 import { Divider } from "@components/ui";
 
