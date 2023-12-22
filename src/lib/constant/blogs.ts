@@ -175,4 +175,129 @@ export const blog = [
       bio: "Elif Aydın, güvenlik konularına duyarlı bir yazılım güvenlik uzmanı ve sürdürülebilir yazılım savunucusudur.",
     },
   },
+  {
+    id: 4,
+    category: "TypeScript",
+    title: "Browser storage kavramları nelerdir?",
+    slug: "browser-storage-kavramlari-nelerdir",
+    description: `
+    <div>
+      <h2>Cookies</h2>
+      <p>Cookies, web sunucusu ve tarayıcı arasında veri alışverişi yapmak için kullanılan küçük metin dosyalarıdır. Tarayıcı tarafından otomatik olarak her HTTP isteğiyle sunucuya gönderilir. Cookies, belirli bir süre boyunca veya belirli bir tarihte geçerlilik süresi olan verileri depolayabilir. Cookies, kullanıcı tarafından silinmediği sürece kalıcıdır ve tarayıcıyı kapattığınızda bile saklanır. Cookies, sınırlı boyutlara (genellikle 4KB) sahiptir ve her HTTP isteğiyle sunucuya gönderildiği için ağ trafiğini artırabilir. Cookies, sunucu tarafında oluşturulurlar ve HTTP yanıt başlıklarında gönderilirler. Cookies, tarayıcı ayarları veya JavaScript kullanılarak okunabilir ve yazılabilir.</p>
+
+      <h2>Local Storage</h2>
+      <p>Local Storage, tarayıcıda kalıcı olarak veri depolamak için kullanılan bir web depolama mekanizmasıdır. Local Storage, daha büyük boyutlarda veri depolama imkanı sağlar (genellikle 5MB veya daha fazla). Veriler, tarayıcı kapatılsa bile kalıcı olarak saklanır ve daha sonraki ziyaretlerde kullanılabilir. Local Storage, JavaScript aracılığıyla tarayıcı tarafından okunabilir ve yazılabilir. Local Storage, sunucu ile otomatik olarak etkileşimde bulunmaz, sadece tarayıcıda depolanır. Local Storage, tarayıcı sekmeleri veya farklı pencereler arasında paylaşılır.</p>
+
+      <h2>Session Storage</h2>
+      <p>Session Storage, tarayıcıda geçici olarak veri depolamak için kullanılan bir web depolama mekanizmasıdır. Session Storage, daha küçük boyutlarda veri depolama imkanı sağlar (genellikle 5MB veya daha fazla). Veriler, tarayıcı oturumu devam ettiği sürece saklanır. Tarayıcı kapatıldığında veya sekme kapatıldığında veriler silinir. Session Storage, JavaScript aracılığıyla tarayıcı tarafından okunabilir ve yazılabilir. Session Storage, tarayıcı sekmeleri veya farklı pencereler arasında paylaşılmaz.</p>
+    </div>
+    `,
+    date: "17 Jun 2023",
+    viewCount: 512,
+    image: techBlogImage1,
+    author: {
+      name: "Elif Aydın",
+      bio: "Elif Aydın, güvenlik konularına duyarlı bir yazılım güvenlik uzmanı ve sürdürülebilir yazılım savunucusudur.",
+    },
+  },
+  {
+    id: 4,
+    category: "TypeScript",
+    title: "Browser storage kavramları nelerdir?",
+    slug: "browser-storage-kavramlari-nelerdir",
+    description: `
+    <div>
+      <h2>Cookies</h2>
+      <p>Cookies, web sunucusu ve tarayıcı arasında veri alışverişi yapmak için kullanılan küçük metin dosyalarıdır. Tarayıcı tarafından otomatik olarak her HTTP isteğiyle sunucuya gönderilir. Cookies, belirli bir süre boyunca veya belirli bir tarihte geçerlilik süresi olan verileri depolayabilir. Cookies, kullanıcı tarafından silinmediği sürece kalıcıdır ve tarayıcıyı kapattığınızda bile saklanır. Cookies, sınırlı boyutlara (genellikle 4KB) sahiptir ve her HTTP isteğiyle sunucuya gönderildiği için ağ trafiğini artırabilir. Cookies, sunucu tarafında oluşturulurlar ve HTTP yanıt başlıklarında gönderilirler. Cookies, tarayıcı ayarları veya JavaScript kullanılarak okunabilir ve yazılabilir.</p>
+
+      <h2>Local Storage</h2>
+      <p>Local Storage, tarayıcıda kalıcı olarak veri depolamak için kullanılan bir web depolama mekanizmasıdır. Local Storage, daha büyük boyutlarda veri depolama imkanı sağlar (genellikle 5MB veya daha fazla). Veriler, tarayıcı kapatılsa bile kalıcı olarak saklanır ve daha sonraki ziyaretlerde kullanılabilir. Local Storage, JavaScript aracılığıyla tarayıcı tarafından okunabilir ve yazılabilir. Local Storage, sunucu ile otomatik olarak etkileşimde bulunmaz, sadece tarayıcıda depolanır. Local Storage, tarayıcı sekmeleri veya farklı pencereler arasında paylaşılır.</p>
+
+      <h2>Session Storage</h2>
+      <p>Session Storage, tarayıcıda geçici olarak veri depolamak için kullanılan bir web depolama mekanizmasıdır. Session Storage, daha küçük boyutlarda veri depolama imkanı sağlar (genellikle 5MB veya daha fazla). Veriler, tarayıcı oturumu devam ettiği sürece saklanır. Tarayıcı kapatıldığında veya sekme kapatıldığında veriler silinir. Session Storage, JavaScript aracılığıyla tarayıcı tarafından okunabilir ve yazılabilir. Session Storage, tarayıcı sekmeleri veya farklı pencereler arasında paylaşılmaz.</p>
+    </div>
+    `,
+    date: "17 Jun 2023",
+    viewCount: 512,
+    image: techBlogImage1,
+    author: {
+      name: "Elif Aydın",
+      bio: "Elif Aydın, güvenlik konularına duyarlı bir yazılım güvenlik uzmanı ve sürdürülebilir yazılım savunucusudur.",
+    },
+  },
+  {
+    id: 4,
+    category: "TypeScript",
+    title: "Browser storage kavramları nelerdir?",
+    slug: "browser-storage-kavramlari-nelerdir",
+    description: `
+    <div>
+      <h2>Cookies</h2>
+      <p>Cookies, web sunucusu ve tarayıcı arasında veri alışverişi yapmak için kullanılan küçük metin dosyalarıdır. Tarayıcı tarafından otomatik olarak her HTTP isteğiyle sunucuya gönderilir. Cookies, belirli bir süre boyunca veya belirli bir tarihte geçerlilik süresi olan verileri depolayabilir. Cookies, kullanıcı tarafından silinmediği sürece kalıcıdır ve tarayıcıyı kapattığınızda bile saklanır. Cookies, sınırlı boyutlara (genellikle 4KB) sahiptir ve her HTTP isteğiyle sunucuya gönderildiği için ağ trafiğini artırabilir. Cookies, sunucu tarafında oluşturulurlar ve HTTP yanıt başlıklarında gönderilirler. Cookies, tarayıcı ayarları veya JavaScript kullanılarak okunabilir ve yazılabilir.</p>
+
+      <h2>Local Storage</h2>
+      <p>Local Storage, tarayıcıda kalıcı olarak veri depolamak için kullanılan bir web depolama mekanizmasıdır. Local Storage, daha büyük boyutlarda veri depolama imkanı sağlar (genellikle 5MB veya daha fazla). Veriler, tarayıcı kapatılsa bile kalıcı olarak saklanır ve daha sonraki ziyaretlerde kullanılabilir. Local Storage, JavaScript aracılığıyla tarayıcı tarafından okunabilir ve yazılabilir. Local Storage, sunucu ile otomatik olarak etkileşimde bulunmaz, sadece tarayıcıda depolanır. Local Storage, tarayıcı sekmeleri veya farklı pencereler arasında paylaşılır.</p>
+
+      <h2>Session Storage</h2>
+      <p>Session Storage, tarayıcıda geçici olarak veri depolamak için kullanılan bir web depolama mekanizmasıdır. Session Storage, daha küçük boyutlarda veri depolama imkanı sağlar (genellikle 5MB veya daha fazla). Veriler, tarayıcı oturumu devam ettiği sürece saklanır. Tarayıcı kapatıldığında veya sekme kapatıldığında veriler silinir. Session Storage, JavaScript aracılığıyla tarayıcı tarafından okunabilir ve yazılabilir. Session Storage, tarayıcı sekmeleri veya farklı pencereler arasında paylaşılmaz.</p>
+    </div>
+    `,
+    date: "17 Jun 2023",
+    viewCount: 512,
+    image: techBlogImage1,
+    author: {
+      name: "Elif Aydın",
+      bio: "Elif Aydın, güvenlik konularına duyarlı bir yazılım güvenlik uzmanı ve sürdürülebilir yazılım savunucusudur.",
+    },
+  },
+  {
+    id: 4,
+    category: "TypeScript",
+    title: "Browser storage kavramları nelerdir?",
+    slug: "browser-storage-kavramlari-nelerdir",
+    description: `
+    <div>
+      <h2>Cookies</h2>
+      <p>Cookies, web sunucusu ve tarayıcı arasında veri alışverişi yapmak için kullanılan küçük metin dosyalarıdır. Tarayıcı tarafından otomatik olarak her HTTP isteğiyle sunucuya gönderilir. Cookies, belirli bir süre boyunca veya belirli bir tarihte geçerlilik süresi olan verileri depolayabilir. Cookies, kullanıcı tarafından silinmediği sürece kalıcıdır ve tarayıcıyı kapattığınızda bile saklanır. Cookies, sınırlı boyutlara (genellikle 4KB) sahiptir ve her HTTP isteğiyle sunucuya gönderildiği için ağ trafiğini artırabilir. Cookies, sunucu tarafında oluşturulurlar ve HTTP yanıt başlıklarında gönderilirler. Cookies, tarayıcı ayarları veya JavaScript kullanılarak okunabilir ve yazılabilir.</p>
+
+      <h2>Local Storage</h2>
+      <p>Local Storage, tarayıcıda kalıcı olarak veri depolamak için kullanılan bir web depolama mekanizmasıdır. Local Storage, daha büyük boyutlarda veri depolama imkanı sağlar (genellikle 5MB veya daha fazla). Veriler, tarayıcı kapatılsa bile kalıcı olarak saklanır ve daha sonraki ziyaretlerde kullanılabilir. Local Storage, JavaScript aracılığıyla tarayıcı tarafından okunabilir ve yazılabilir. Local Storage, sunucu ile otomatik olarak etkileşimde bulunmaz, sadece tarayıcıda depolanır. Local Storage, tarayıcı sekmeleri veya farklı pencereler arasında paylaşılır.</p>
+
+      <h2>Session Storage</h2>
+      <p>Session Storage, tarayıcıda geçici olarak veri depolamak için kullanılan bir web depolama mekanizmasıdır. Session Storage, daha küçük boyutlarda veri depolama imkanı sağlar (genellikle 5MB veya daha fazla). Veriler, tarayıcı oturumu devam ettiği sürece saklanır. Tarayıcı kapatıldığında veya sekme kapatıldığında veriler silinir. Session Storage, JavaScript aracılığıyla tarayıcı tarafından okunabilir ve yazılabilir. Session Storage, tarayıcı sekmeleri veya farklı pencereler arasında paylaşılmaz.</p>
+    </div>
+    `,
+    date: "17 Jun 2023",
+    viewCount: 512,
+    image: techBlogImage1,
+    author: {
+      name: "Elif Aydın",
+      bio: "Elif Aydın, güvenlik konularına duyarlı bir yazılım güvenlik uzmanı ve sürdürülebilir yazılım savunucusudur.",
+    },
+  },
+  {
+    id: 4,
+    category: "TypeScript",
+    title: "Browser storage kavramları nelerdir?",
+    slug: "browser-storage-kavramlari-nelerdir",
+    description: `
+    <div>
+      <h2>Cookies</h2>
+      <p>Cookies, web sunucusu ve tarayıcı arasında veri alışverişi yapmak için kullanılan küçük metin dosyalarıdır. Tarayıcı tarafından otomatik olarak her HTTP isteğiyle sunucuya gönderilir. Cookies, belirli bir süre boyunca veya belirli bir tarihte geçerlilik süresi olan verileri depolayabilir. Cookies, kullanıcı tarafından silinmediği sürece kalıcıdır ve tarayıcıyı kapattığınızda bile saklanır. Cookies, sınırlı boyutlara (genellikle 4KB) sahiptir ve her HTTP isteğiyle sunucuya gönderildiği için ağ trafiğini artırabilir. Cookies, sunucu tarafında oluşturulurlar ve HTTP yanıt başlıklarında gönderilirler. Cookies, tarayıcı ayarları veya JavaScript kullanılarak okunabilir ve yazılabilir.</p>
+
+      <h2>Local Storage</h2>
+      <p>Local Storage, tarayıcıda kalıcı olarak veri depolamak için kullanılan bir web depolama mekanizmasıdır. Local Storage, daha büyük boyutlarda veri depolama imkanı sağlar (genellikle 5MB veya daha fazla). Veriler, tarayıcı kapatılsa bile kalıcı olarak saklanır ve daha sonraki ziyaretlerde kullanılabilir. Local Storage, JavaScript aracılığıyla tarayıcı tarafından okunabilir ve yazılabilir. Local Storage, sunucu ile otomatik olarak etkileşimde bulunmaz, sadece tarayıcıda depolanır. Local Storage, tarayıcı sekmeleri veya farklı pencereler arasında paylaşılır.</p>
+
+      <h2>Session Storage</h2>
+      <p>Session Storage, tarayıcıda geçici olarak veri depolamak için kullanılan bir web depolama mekanizmasıdır. Session Storage, daha küçük boyutlarda veri depolama imkanı sağlar (genellikle 5MB veya daha fazla). Veriler, tarayıcı oturumu devam ettiği sürece saklanır. Tarayıcı kapatıldığında veya sekme kapatıldığında veriler silinir. Session Storage, JavaScript aracılığıyla tarayıcı tarafından okunabilir ve yazılabilir. Session Storage, tarayıcı sekmeleri veya farklı pencereler arasında paylaşılmaz.</p>
+    </div>
+    `,
+    date: "17 Jun 2023",
+    viewCount: 512,
+    image: techBlogImage1,
+    author: {
+      name: "Elif Aydın",
+      bio: "Elif Aydın, güvenlik konularına duyarlı bir yazılım güvenlik uzmanı ve sürdürülebilir yazılım savunucusudur.",
+    },
+  },
 ];

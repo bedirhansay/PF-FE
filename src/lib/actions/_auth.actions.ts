@@ -3,6 +3,7 @@
 import { LoginDTO, RegisterDTO } from "@types";
 import { apiWorker } from "../api/api";
 import { cookies } from "next/headers";
+import { setCookie } from "cookies-next";
 
 // 2 - login
 export const login = async (payload: LoginDTO) => {
@@ -12,7 +13,18 @@ export const login = async (payload: LoginDTO) => {
       return { kind: "error" };
     }
     const { data } = response;
-    cookies().set("admin-token", data.token);
+
+    const oneMonth = 24 * 60 * 60 * 1000 * 30;
+    const expirationDate = new Date();
+    expirationDate.setTime(expirationDate.getTime() + oneMonth);
+
+    // setCookie("admin-token", data.token, {
+    //   expires: expirationDate,
+    // });
+    cookies().set("admin-token", data.token, {
+      expires: expirationDate,
+    });
+
     await apiWorker.setAuth(data.token);
     return data;
   } catch (e) {

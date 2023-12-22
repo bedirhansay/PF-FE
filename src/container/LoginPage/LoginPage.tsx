@@ -6,8 +6,10 @@ import { login } from "@actions";
 import { LoginDTO } from "@types";
 import { LoginSchema } from "@validations";
 import { Input, Button, Heading } from "@components/ui";
+import { useState } from "react";
 
-const Login = () => {
+export const Login = () => {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -17,9 +19,18 @@ const Login = () => {
   });
 
   const onSubmit = async (data: LoginDTO) => {
-    const res = await login(data);
-    if (res) {
-      window.location.href = "/";
+    setLoading(true);
+    try {
+      const res = await login(data);
+      console.log(res);
+      setLoading(false);
+      if (res) {
+        window.location.href = "/admin/blog";
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -78,6 +89,7 @@ const Login = () => {
 
           <div>
             <Button
+              status={loading}
               variant="outline"
               type="submit"
               className="flex w-full justify-center hover:bg-slate-300 text-white"
@@ -90,5 +102,3 @@ const Login = () => {
     </div>
   );
 };
-
-export default Login;

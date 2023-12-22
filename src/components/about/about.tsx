@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useSectionInView } from "@hooks";

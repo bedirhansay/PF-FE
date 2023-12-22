@@ -1,1 +1,1 @@
-// export * from "./UploadImageToFirabase";
+export * from "./UploadImageToFirabase";

@@ -1,6 +1,10 @@
-import { apiWorker } from "@api";
+"use server";
 
-//! Get All Orders
+import { apiWorker } from "@api";
+import { SkillsDTO } from "../types/types";
+import { revalidatePath } from "next/cache";
+
+//! Get All Skills
 export const getAllSkills = async () => {
   try {
     const response = await apiWorker.instance.get("/skills");
@@ -10,7 +14,7 @@ export const getAllSkills = async () => {
   }
 };
 
-// ! Find single ORders by id
+// ! Find single
 
 export const findSingleSkill = async ({ id }: { id: string }) => {
   try {
@@ -19,5 +23,39 @@ export const findSingleSkill = async ({ id }: { id: string }) => {
   } catch (error) {
     console.log(error);
     return { status: 400, data: [] };
+  }
+};
+
+export const UpdateSkills = async ({ payload }: { payload: SkillsDTO }) => {
+  try {
+    const response = await apiWorker.instance.patch(`/skills`, payload);
+    revalidatePath("/admin/skills");
+    return response.data;
+  } catch (error: any) {
+    return { status: 400, error: error.message };
+  }
+};
+
+export const createSkills = async ({ payloads }: { payloads: SkillsDTO }) => {
+  try {
+    const response = await apiWorker.instance.post(`/skills`, payloads);
+    revalidatePath("/admin/skills");
+    return response.data;
+  } catch (error: any) {
+    return { status: 400, error: error.message };
+  }
+};
+type DeleteProps = {
+  _id: string;
+};
+
+export const deleteSkill = async ({ payload }: { payload: DeleteProps }) => {
+  try {
+    const response = await apiWorker.instance.post(`/skills`, payload);
+    revalidatePath("/admin/skills");
+    console.log(response);
+    return response.data;
+  } catch (error: any) {
+    return { status: 400, error: error.message };
   }
 };

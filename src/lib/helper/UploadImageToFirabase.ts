@@ -1,48 +1,49 @@
-// import {
-//   getDownloadURL,
-//   ref,
-//   uploadBytes,
-//   getMetadata,
-// } from "firebase/storage";
-// import { imageDb } from "./FirebaseConfig";
+import { imageDb } from "@utils";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  getMetadata,
+} from "firebase/storage";
+import toast from "react-hot-toast";
 
-// type FilesData = {
-//   field: string;
-//   image: string;
-//   name: string;
-// };
+type FilesData = {
+  field: string;
+  image: File | Blob;
+  name: string;
+};
 
-// export const uploadImageToFirabase = async (filesData: FilesData) => {
-//   try {
-//     const { name, field, image } = filesData;
-//     const imgRef = ref(imageDb, `${field}/${name}`);
+export const uploadImageToFirabase = async (filesData: FormData) => {
+  try {
+    const name = filesData.get("name");
+    const field = filesData.get("field");
+    const image = filesData.get("image");
 
-//     try {
+    const imgRef = ref(imageDb, `${field}/${name}`);
 
-//       const existingMetadata = await getMetadata(imgRef);
+    try {
+      const existingMetadata = await getMetadata(imgRef);
 
-//       if (existingMetadata) {
+      if (existingMetadata) {
+        const existingUrl = await getDownloadURL(imgRef);
+        toast.success("Resim başarıyla yüklendi.");
+        return { status: 200, url: existingUrl };
+      }
+    } catch (error) {
+      toast.success("Resim başarıyla yüklendi.");
+      console.log("Dosya bulunamadı. Yeni bir dosya yükleniyor.");
+    }
 
-//         const existingUrl = await getDownloadURL(imgRef);
-//         return { status: 200, url: existingUrl };
-//       }
-//     } catch (error) {
-//       console.log("Dosya bulunamadı. Yeni bir dosya yükleniyor.");
-//     }
+    const blob = new Blob([image as Blob]);
+    await uploadBytes(imgRef, blob);
 
-//     const blob = new Blob([image]);
-//     await uploadBytes(imgRef, blob);
+    const url = await getDownloadURL(imgRef);
 
-//     const url = await getDownloadURL(imgRef);
-
-//     return {
-//       status: 201,
-//       url: url,
-//     };
-//   } catch (error) {
-//     return {
-//       status: 500,
-//       message: error,
-//     };
-//   }
-// };
+    return {
+      status: 201,
+      url: url,
+    };
+  } catch (error: any) {
+    toast.error("Hata:" + error.message);
+  }
+};

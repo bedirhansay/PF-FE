@@ -6,10 +6,11 @@ export type ContextProps = {
 };
 
 export type SkillsDTO = {
+  _id?: string;
   title: string;
   items: string[];
   bgColor: string;
-  image: string;
+  image: string | undefined;
   itemColor: string;
 };
 
