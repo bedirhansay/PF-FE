@@ -8,5 +8,4 @@ export * from "./projeler/projeler";
 export * from "./share/Share";
 export * from "./skills/skills";
 export * from "./Sidebar/sidebar";
-export * from "./ui/breadcrupms";
 export * from "./Slider/slider";
