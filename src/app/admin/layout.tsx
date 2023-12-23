@@ -28,7 +28,7 @@ export default function AdminLayout({
       <div className="fixed z-10 left-0 top-0 bottom-0">
         <Sidebar />
       </div>
-      <div className="ml-36 w-full overflow-x-hidden">{children}</div>
+      <div className="ml-0 sm:ml-36 w-full overflow-x-hidden">{children}</div>
     </main>
   );
 }

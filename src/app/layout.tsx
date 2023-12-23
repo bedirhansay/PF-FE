@@ -33,7 +33,7 @@ export default function MainLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} `}>
+      <body className={`${inter.className} bg-[#F3F4F6] `}>
         {children}
         <Toaster position="top-right" />
       </body>

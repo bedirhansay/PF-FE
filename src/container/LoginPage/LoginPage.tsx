@@ -38,7 +38,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="absolute -40 border rounded shadow-lg  left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex w-96  flex-col justify-center px-6 py-12 lg:px-8 mx-auto">
+    <div className="absolute  border rounded shadow-lg  left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex  w-80 sm:w-96  flex-col justify-center px-6 py-12 lg:px-8 mx-auto">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <Heading link="" title="Login" />
       </div>

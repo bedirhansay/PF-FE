@@ -16,8 +16,6 @@ export const SkillCard: FC<CardProps> = ({
   setSelectedId,
   setOperation,
 }) => {
-  console.log(skills);
-
   if (!skills) {
     return null;
   }

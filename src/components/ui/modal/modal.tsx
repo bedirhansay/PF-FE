@@ -14,8 +14,8 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, children, onClose }) => {
   }
 
   return (
-    <div className="absolute w-screen h-screen inset-0 backdrop-blur-sm z-30 border rounded shadow-lg   ">
-      <div className="absolute p-4 bg-white rounded-lg h-fit inset-0 w-1/2 left-1/2 top-[40%] transform -translate-x-1/2 -translate-y-1/2">
+    <div className="fixed w-screen h-screen inset-0 backdrop-blur-sm z-30 border rounded shadow-lg   ">
+      <div className="absolute top-4 left-2 right-2 p-4 bg-white rounded-lg h-fit inset-0 sm:w-1/2 sm:left-1/2 sm:top-[40%] transform sm:-translate-x-1/2 sm:-translate-y-1/2">
         <span
           className="bg-gray-100 border p-2 cursor-pointer"
           onClick={() => onClose(!open)}
