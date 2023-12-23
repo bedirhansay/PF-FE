@@ -51,9 +51,11 @@ type DeleteProps = {
 
 export const deleteSkill = async ({ payload }: { payload: DeleteProps }) => {
   try {
-    const response = await apiWorker.instance.post(`/skills`, payload);
+    const response = await apiWorker.instance.delete(`/skills`, {
+      data: payload,
+    });
+
     revalidatePath("/admin/skills");
-    console.log(response);
     return response.data;
   } catch (error: any) {
     return { status: 400, error: error.message };

@@ -24,8 +24,6 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
     resolver: joiResolver(SkillSchema),
   });
 
-  console.log(skills);
-
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
@@ -33,6 +31,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   const [selectedId, setSelectedId] = useState<string>("");
   const [operation, setOperation] = useState("");
   const [selectedItem, setSelectedItem] = useState<SkillsDTO>();
+  const [deleting, setDeleting] = useState(false);
 
   const onSubmit = async (data: SkillsDTO) => {
     setLoading(true);
@@ -65,10 +64,9 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
     }
     if (operation == "create") {
       try {
-        console.log(payload);
         const res = await createSkills({ payloads });
-        console.log(res);
         toast.success("Yetenek Eklendi");
+        setOpen(false);
         setSelectedImage(null);
         reset();
       } catch (error: any) {
@@ -111,18 +109,21 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   };
 
   const onDelete = async () => {
-    console.log(selectedId);
+    setDeleting(true);
     try {
       const payload = {
         _id: selectedId,
       };
       const res = await deleteSkill({ payload });
-      console.log(res);
+      setOpen(false);
+
       toast.success("Yetenek silindi");
-      console.log(res);
     } catch (error) {
       toast.error("Yetenek Silinemedi");
+      setOpen(false);
       console.log(error);
+    } finally {
+      setDeleting(false);
     }
   };
 
@@ -162,7 +163,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
             </strong>
             <strong></strong>
             <Button onClick={() => onDelete()} variant="outline">
-              Sil
+              {loading ? <LoaderIcon /> : "Onayla"}
             </Button>
           </div>
         )}
