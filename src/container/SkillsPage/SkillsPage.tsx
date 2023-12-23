@@ -144,9 +144,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
       setOpen(true);
       setSelectedItem(selectedSkill);
     }
-  }, [selectedId, operation, skills]);
-
-  console.log(open);
+  }, [selectedId, operation]);
 
   return (
     <section className="basis !w-full flex-col mb-20  p-2">
@@ -169,7 +167,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
         setOperation={setOperation}
       />
 
-      <Modal key={selectedId} onClose={setOpen} isOpen={open}>
+      <Modal onClose={setOpen} isOpen={open}>
         {operation === "del" && (
           <div className="flex flex-col items-center">
             <strong className="my-40 ">
