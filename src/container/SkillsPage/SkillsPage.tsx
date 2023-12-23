@@ -61,6 +61,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
         res = await updateSkills({ payload });
         if (res.kind === "ok") {
           toast.success("Yetenek Güncellendi");
+          setSelectedId("");
         } else {
           console.log(res);
           toast.error("Yetenek güncellenemedi" + res.error.message);
@@ -124,9 +125,10 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
         _id: selectedId,
       };
       const res = await deleteSkill({ payload });
-      setOpen(false);
-
-      toast.success("Yetenek silindi");
+      if ((res.kind = "ok")) {
+        setOpen(false);
+        toast.success("Yetenek silindi");
+      }
     } catch (error) {
       toast.error("Yetenek Silinemedi");
       setOpen(false);
@@ -142,7 +144,9 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
       setOpen(true);
       setSelectedItem(selectedSkill);
     }
-  }, [selectedId, operation]);
+  }, [selectedId, operation, skills]);
+
+  console.log(open);
 
   return (
     <section className="basis !w-full flex-col mb-20  p-2">
@@ -159,12 +163,13 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
         </Button>
       </div>
       <SkillCard
+        setOpen={setOpen}
         skills={skills}
         setSelectedId={setSelectedId}
         setOperation={setOperation}
       />
 
-      <Modal onClose={setOpen} isOpen={open}>
+      <Modal key={selectedId} onClose={setOpen} isOpen={open}>
         {operation === "del" && (
           <div className="flex flex-col items-center">
             <strong className="my-40 ">
