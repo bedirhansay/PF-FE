@@ -32,6 +32,7 @@ const callApi = async ({
         break;
       case "post":
         response = await apiWorker.instance.post(path, payload);
+        revalidatePath("/admin/skills");
         break;
       case "patch":
         response = await apiWorker.instance.patch(path, payload);

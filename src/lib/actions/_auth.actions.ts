@@ -10,9 +10,6 @@ const setTokenCookie = (token: string) => {
   const expirationDate = new Date();
   expirationDate.setTime(expirationDate.getTime() + oneMonth);
 
-  // setCookie("admin-token", token, {
-  //   expires: expirationDate,
-  // });
   cookies().set("admin-token", token, {
     expires: expirationDate,
   });
@@ -22,7 +19,6 @@ const handleResponse = (response: any) => {
   if (response.status !== 200) {
     return { kind: "error" };
   }
-
   const { data } = response;
   return { kind: "ok", data };
 };
