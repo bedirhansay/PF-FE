@@ -9,9 +9,19 @@ import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion } from "framer-motion";
 import { HeaderAnimations } from "../header/animation";
+import { logout } from "@actions";
+import toast from "react-hot-toast";
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  async function out() {
+    const res = await logout();
+    if (res?.kind) {
+      toast.success("Başarıyla Çıkış yapıldı");
+      window.location.href = "/auth/login";
+    }
+  }
   return (
     <div>
       <div className=" hidden sm:flex flex-between py-6 flex-col h-screen bg-gray-200 ">
@@ -27,7 +37,11 @@ export const Sidebar = () => {
             </Link>
           ))}
         </div>
-        <Button variant="outline" className="flex tex-white items-center gap-2">
+        <Button
+          onClick={() => out()}
+          variant="outline"
+          className="flex tex-white items-center gap-2"
+        >
           <MdOutlineLogout size={24} />
           Logout
         </Button>
@@ -69,6 +83,7 @@ export const Sidebar = () => {
               ))}
             </motion.div>
             <Button
+              onClick={() => out()}
               variant="outline"
               className="flex tex-white items-center gap-2"
             >

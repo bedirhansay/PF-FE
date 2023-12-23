@@ -12,7 +12,7 @@ import { ImageCompressor } from "@utils";
 import { FaArrowRight } from "react-icons/fa";
 import { FaFileCirclePlus } from "react-icons/fa6";
 import { uploadImageToFirabase } from "../../lib/helper/UploadImageToFirabase";
-import { UpdateSkills, createSkills, deleteSkill } from "@actions";
+import { updateSkills, createSkills, deleteSkill } from "@actions";
 
 export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   const {
@@ -35,8 +35,11 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
 
   const onSubmit = async (data: SkillsDTO) => {
     setLoading(true);
-    let itemList = data.items.toString();
-    let itemsArray = itemList?.split(",").map((item) => item.trim());
+
+    const itemsArray = data.items
+      ?.toString()
+      .split(",")
+      .map((item) => item.trim());
 
     const payload = {
       ...data,
@@ -44,36 +47,42 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
       items: itemsArray,
       image: imageUrl?.toString() || selectedItem?.image,
     };
+
     const payloads = {
       ...data,
       items: itemsArray,
       image: imageUrl?.toString() || "",
     };
 
-    if (operation == "edit") {
-      try {
-        const res = await UpdateSkills({ payload });
-        toast.success("Yetenek Güncellendi");
-        setOpen(!open);
-        setSelectedImage(null);
-      } catch (error: any) {
-        toast.error("Yetenek Güncellenemedi" + error.message);
-      } finally {
-        setLoading(false);
+    try {
+      let res;
+
+      if (operation === "edit") {
+        res = await updateSkills({ payload });
+        if (res.kind === "ok") {
+          toast.success("Yetenek Güncellendi");
+        } else {
+          console.log(res);
+          toast.error("Yetenek güncellenemedi" + res.error.message);
+        }
+      } else if (operation === "create") {
+        res = await createSkills({ payloads });
+        if (res.kind === "ok") {
+          toast.success("Yetenek Eklendi");
+          reset();
+        } else {
+          toast.error("Yetenek Eklenemedi" + res.error.message);
+        }
       }
-    }
-    if (operation == "create") {
-      try {
-        const res = await createSkills({ payloads });
-        toast.success("Yetenek Eklendi");
-        setOpen(false);
-        setSelectedImage(null);
-        reset();
-      } catch (error: any) {
-        toast.error("Yetenek Eklenemedi" + error.message);
-      } finally {
-        setLoading(false);
-      }
+    } catch (error: any) {
+      toast.error(
+        `Yetenek ${operation === "edit" ? "Güncellenemedi" : "Eklenemedi"} ${
+          error.message
+        }`
+      );
+    } finally {
+      setOpen(false);
+      setLoading(false);
     }
   };
 

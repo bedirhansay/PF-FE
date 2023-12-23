@@ -3,32 +3,52 @@
 import { LoginDTO, RegisterDTO } from "@types";
 import { apiWorker } from "../api/api";
 import { cookies } from "next/headers";
-import { setCookie } from "cookies-next";
+import { redirect } from "next/navigation";
+
+const setTokenCookie = (token: string) => {
+  const oneMonth = 24 * 60 * 60 * 1000 * 30;
+  const expirationDate = new Date();
+  expirationDate.setTime(expirationDate.getTime() + oneMonth);
+
+  // setCookie("admin-token", token, {
+  //   expires: expirationDate,
+  // });
+  cookies().set("admin-token", token, {
+    expires: expirationDate,
+  });
+};
+
+const handleResponse = (response: any) => {
+  if (response.status !== 200) {
+    return { kind: "error" };
+  }
+
+  const { data } = response;
+  return { kind: "ok", data };
+};
+
+const handleError = (e: any) => {
+  return { kind: "error", error: e.response?.data };
+};
+
+const handleRedirect = (url: string) => {
+  redirect(url);
+};
 
 // 2 - login
 export const login = async (payload: LoginDTO) => {
   try {
     const response = await apiWorker.instance.post(`auth/login`, payload);
-    if (response.status !== 200) {
-      return { kind: "error" };
+    if (response.status === 200) {
+      const { data } = response;
+      setTokenCookie(data.token);
+      await apiWorker.setAuth(data.token);
+      return data;
+    } else {
+      return handleResponse(response);
     }
-    const { data } = response;
-
-    const oneMonth = 24 * 60 * 60 * 1000 * 30;
-    const expirationDate = new Date();
-    expirationDate.setTime(expirationDate.getTime() + oneMonth);
-
-    // setCookie("admin-token", data.token, {
-    //   expires: expirationDate,
-    // });
-    cookies().set("admin-token", data.token, {
-      expires: expirationDate,
-    });
-
-    await apiWorker.setAuth(data.token);
-    return data;
   } catch (e: any) {
-    return { error: e.response.data };
+    return handleError(e);
   }
 };
 
@@ -36,13 +56,9 @@ export const login = async (payload: LoginDTO) => {
 export const getUser = async () => {
   try {
     const response = await apiWorker.instance.get(`/user`);
-    if (response.status !== 200) {
-      return { kind: "error" };
-    }
-    const { data } = response;
-    return { kind: "ok", data };
+    return handleResponse(response);
   } catch (e) {
-    return { kind: "invalid-creds" };
+    return handleError(e);
   }
 };
 
@@ -50,15 +66,16 @@ export const getUser = async () => {
 export const registerUser = async (payLoad: RegisterDTO) => {
   try {
     const response = await apiWorker.instance.post(`/register`, payLoad);
-    if (!(response.status === 200)) {
-      return { kind: "error" };
+    if (response.status === 200) {
+      const { data } = response;
+      await apiWorker.setAuth(data.token);
+      handleRedirect("/admin/blog");
+      return { kind: "ok", data };
+    } else {
+      return handleResponse(response);
     }
-    const { data } = response;
-    await apiWorker.setAuth(data.token);
-    window.location.href = "/";
-    return { kind: "ok", data };
   } catch (e) {
-    return { kind: "invalid-creds" };
+    return handleError(e);
   }
 };
 
@@ -66,16 +83,16 @@ export const registerUser = async (payLoad: RegisterDTO) => {
 export const logout = async () => {
   try {
     const response = await apiWorker.instance.post(`/logout`);
-    if (response.status !== 200 || response.data.message !== "Logged out") {
-      return { kind: "error" };
+    if (response.status === 200 && response.data.message === "Logged out") {
+      apiWorker.setAuth("");
+      cookies().delete("admin-token");
+      handleRedirect("/auth/login");
+      return response.data;
+    } else {
+      return handleResponse(response);
     }
-    const { data } = response;
-    apiWorker.setAuth("");
-    cookies().delete("name");
-    window.location.href = "/login";
-    return data;
   } catch (e) {
-    return { kind: "invalid-creds" };
+    return handleError(e);
   }
 };
 
@@ -83,13 +100,9 @@ export const logout = async () => {
 export const updateUser = async (payLoad: any) => {
   try {
     const response = await apiWorker.instance.put(`/users/update`, payLoad);
-    if (response.status !== 200) {
-      return { kind: "error" };
-    }
-    const { data } = response;
-    return { kind: "ok", data };
+    return handleResponse(response);
   } catch (e) {
-    return { kind: "invalid-creds" };
+    return handleError(e);
   }
 };
 
@@ -101,12 +114,8 @@ export const testJWT = async (jwt: string) => {
         Authorization: `Bearer ${jwt}`,
       },
     });
-    if (response.status !== 200) {
-      return { kind: "error" };
-    }
-    const { data } = response;
-    return { kind: "ok", data };
+    return handleResponse(response);
   } catch (e) {
-    return { kind: "invalid-creds" };
+    return handleError(e);
   }
 };

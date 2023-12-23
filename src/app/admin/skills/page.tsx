@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 };
 export const dynamic = "force-dynamic";
 export default async function page() {
-  const skills = await getAllSkills();
+  const { data } = await getAllSkills();
   return (
     <section>
       <Breadcrumb page="Yetenekler" />
-      <SkillsPage skills={skills} />
+      <SkillsPage skills={data} />
     </section>
   );
 }
