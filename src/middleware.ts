@@ -12,7 +12,7 @@ export async function middleware(request: NextRequest) {
   console.log(token);
 
   if (hasVerifiedToken) {
-    if (pathname == "/api/auth/login" || pathname == "/api/auth/register") {
+    if (pathname == "/admin/login" || pathname == "/admin/register") {
       return NextResponse.json(
         { error: "Zaten giriş yaptınız" },
         { status: 400 }
@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
     }
     return NextResponse.next();
   } else {
-    if (pathname == "/api/auth/login" || pathname == "/api/auth/register") {
+    if (pathname == "/admin/login" || pathname == "/admin/register") {
       return NextResponse.next();
     } else {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
