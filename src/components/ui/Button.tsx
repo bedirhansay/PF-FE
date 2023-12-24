@@ -19,8 +19,8 @@ const buttonVariants = cva(
           "bg-green-500 y text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground border ",
         link: "text-primary underline-offset-4 hover:underline",
-        save: "bg-green-400 text-white w-full",
-        close: "",
+        save: "bg-green-400 text-white w-full hover:bg-green-500",
+        close: "hover:bg-gray-300", // Örnek bir hover efekti
       },
       size: {
         default: "h-10 px-4 py-2",

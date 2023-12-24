@@ -9,3 +9,4 @@ export * from "./share/Share";
 export * from "./skills/skills";
 export * from "./Sidebar/sidebar";
 export * from "./Slider/slider";
+export * from "./Editor";

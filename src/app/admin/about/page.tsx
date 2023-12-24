@@ -1,6 +1,8 @@
 import React from "react";
 import { Metadata } from "next";
 import { Breadcrumb } from "@components/ui";
+import { AboutPage } from "../../../container/AboutPage/AboutPage";
+import { getAbout } from "../../../lib/actions/__about.action";
 export const metadata: Metadata = {
   title: "About",
   description:
@@ -18,11 +20,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Bedirhan Say" }],
 };
-export default function page() {
+export const dynamic = "force-dynamic";
+export default async function page() {
+  const { data } = await getAbout();
+
   return (
-    <div>
+    <div className="">
       <Breadcrumb page="Hakkımda" />
-      About
+      <AboutPage about={data} />
     </div>
   );
 }

@@ -23,3 +23,8 @@ export type RegisterDTO = {
   email?: string;
   password: string;
 };
+
+export type AboutDTO = {
+  _id?: string;
+  content: string;
+};
