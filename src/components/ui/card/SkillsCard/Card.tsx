@@ -1,9 +1,13 @@
-import React, { Dispatch, FC, SetStateAction } from "react";
+"use client";
+
+import { Dispatch, FC, SetStateAction } from "react";
 import { SkillsDTO } from "@types";
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import Image from "next/image";
 import { Button } from "../../Button";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface CardProps {
   skills: SkillsDTO[];
@@ -18,6 +22,8 @@ export const SkillCard: FC<CardProps> = ({
   setOperation,
   setOpen,
 }) => {
+  const pathname = usePathname();
+  const router = useRouter();
   return (
     <div className="text-black px-4  mx-auto scroll-mt-28 text-center">
       <ul className="ul-container ">
@@ -55,27 +61,22 @@ export const SkillCard: FC<CardProps> = ({
               </ul>
               <div className="flex items-center justify-center gap-4 mt-4">
                 <Button
+                  leftIcon={() => <FaRegEdit color="white" fontSize={20} />}
+                  variant="secondary"
                   onClick={() => {
-                    setOperation("edit");
-                    setSelectedId(skill._id || "");
-                    scrollTo(0, 0);
-                    setOpen(true);
+                    router.push(`${pathname}/${skill._id}`);
                   }}
-                  className="bg-green-500 text-white shadow-md rounded p-2"
-                >
-                  <FaRegEdit fontSize={20} />
-                </Button>
+                ></Button>
                 <Button
+                  leftIcon={() => <MdDelete fontSize={20} />}
+                  variant="delete"
                   onClick={() => {
                     setSelectedId(skill._id || "");
                     setOperation("del");
                     scrollTo(0, 0);
                     setOpen(true);
                   }}
-                  className="bg-red-600 text-white p-2 rounded shadow-md"
-                >
-                  <MdDelete fontSize={20} />
-                </Button>
+                ></Button>
               </div>
             </div>
           </li>

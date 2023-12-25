@@ -1,6 +1,10 @@
 import React from "react";
 import { Metadata } from "next";
 import { Breadcrumb } from "@components/ui";
+import { getAllSkills } from "../../../lib/actions/__skills.action";
+import { callApi } from "../../../lib/actions/__api.actions";
+import { BlogPage } from "@container";
+
 export const metadata: Metadata = {
   title: "Blog",
   description:
@@ -18,11 +22,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Bedirhan Say" }],
 };
-export default function page() {
-  return (
-    <div>
-      <Breadcrumb page="Blog" />
-      page
-    </div>
-  );
+export default async function page() {
+  const { data } = await callApi({ method: "get", path: "blog" });
+  console.log(data);
+  return <BlogPage Blogs={data} />;
 }

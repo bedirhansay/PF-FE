@@ -1,11 +1,9 @@
-export const Truncate = (
-  text: string,
-  maxLength: number,
-  indicator = "..."
-) => {
-  if (text.length <= maxLength) {
-    return text;
-  } else {
-    return text.substring(0, maxLength) + indicator;
+export const Truncate = (text: string, maxLength: number) => {
+  if (text === undefined) {
+    return "Not defined";
   }
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + "...";
+  }
+  return text;
 };

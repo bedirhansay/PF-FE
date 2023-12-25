@@ -1,6 +1,9 @@
 import React from "react";
 import { Metadata } from "next";
 import { Breadcrumb } from "@components/ui";
+import { ExperiencePage } from "@container";
+import { callApi } from "../../../lib/actions/__api.actions";
+
 export const metadata: Metadata = {
   title: "Experince",
   description:
@@ -18,11 +21,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Bedirhan Say" }],
 };
-export default function page() {
-  return (
-    <div>
-      <Breadcrumb page="Deneyim" />
-      page
-    </div>
-  );
+export const dynamic = "force-dynamic";
+export default async function page() {
+  const { data } = await callApi({ method: "get", path: "experience" });
+
+  return <ExperiencePage experience={data} />;
 }

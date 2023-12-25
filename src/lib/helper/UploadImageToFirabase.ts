@@ -1,4 +1,4 @@
-import { imageDb } from "@utils";
+import { ImageCompressor, imageDb } from "@utils";
 import {
   getDownloadURL,
   ref,
@@ -8,18 +8,21 @@ import {
 import toast from "react-hot-toast";
 
 type FilesData = {
-  field: string;
-  image: File | Blob;
+  path: string;
+  image: File;
   name: string;
 };
 
-export const uploadImageToFirabase = async (filesData: FormData) => {
+export const uploadImageToFirabase = async (file: FilesData) => {
   try {
-    const name = filesData.get("name");
-    const field = filesData.get("field");
-    const image = filesData.get("image");
+    if (!file) {
+      throw new Error("Lütfen bir dosya seçin.");
+    }
 
-    const imgRef = ref(imageDb, `${field}/${name}`);
+    const { image, path, name } = file;
+    let compressedImage = await ImageCompressor(image);
+
+    const imgRef = ref(imageDb, `${path}/${name}`);
 
     try {
       const existingMetadata = await getMetadata(imgRef);
@@ -34,7 +37,7 @@ export const uploadImageToFirabase = async (filesData: FormData) => {
       console.log("Dosya bulunamadı. Yeni bir dosya yükleniyor.");
     }
 
-    const blob = new Blob([image as Blob]);
+    const blob = new Blob([compressedImage as Blob]);
     await uploadBytes(imgRef, blob);
 
     const url = await getDownloadURL(imgRef);

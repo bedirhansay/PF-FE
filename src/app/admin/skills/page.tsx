@@ -1,8 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
-import { Breadcrumb } from "@components/ui";
 import { SkillsPage } from "@container";
-import { getAllSkills } from "../../../lib/actions/__skills.action";
+import { callApi } from "../../../lib/actions/__api.actions";
 
 export const metadata: Metadata = {
   title: "Skills",
@@ -22,12 +21,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Bedirhan Say" }],
 };
 export const dynamic = "force-dynamic";
+
 export default async function page() {
-  const { data } = await getAllSkills();
-  return (
-    <section>
-      <Breadcrumb page="Yetenekler" />
-      <SkillsPage skills={data} />
-    </section>
-  );
+  const { data } = await callApi({ method: "get", path: "skills" });
+  return <SkillsPage skills={data} />;
 }

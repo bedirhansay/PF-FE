@@ -6,7 +6,6 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -38,6 +37,20 @@ module.exports = {
           "50%": {
             top: "32px",
             backgroundColor: "#dbd7fb",
+          },
+        },
+        animIn: {
+          "100%": {
+            opacity: 0,
+            borderRadius: 0,
+            width: "600px",
+            height: "600px",
+          },
+          "0%": {
+            width: "0px",
+            height: "0px",
+            borderRadius: "100%",
+            opacity: "20%",
           },
         },
       },

@@ -28,3 +28,49 @@ export type AboutDTO = {
   _id?: string;
   content: string;
 };
+
+export type ProjectDTO = {
+  _id: string;
+  company: string;
+  projectName: string;
+  url?: string;
+  time: number;
+  area: string;
+  tags?: string[];
+  description?: string;
+  goals?: string[];
+  scope?: string;
+  requirements?: string[];
+  tasks?: string[];
+  createdAt?: string;
+};
+
+export type CategoryDTO = {
+  _id: string;
+  name: string;
+  image: string;
+  createdAt?: string;
+};
+
+export type ExperienceDTO = {
+  _id: string;
+  title: string;
+  location: string;
+  position: string;
+  description: string;
+  url: string;
+  date: string;
+  skills: string[];
+  createdAt?: string;
+};
+
+export type BlogDTO = {
+  _id: string;
+  title: string;
+  slug?: string;
+  description?: string;
+  image?: string;
+  viewCount?: number;
+  category?: CategoryDTO;
+  createdAt?: string;
+};

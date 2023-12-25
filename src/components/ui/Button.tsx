@@ -3,7 +3,11 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@utils";
-import { LoaderIcon, CheckmarkIcon } from "react-hot-toast";
+import loader from "../../../public/icon/loader.svg";
+import loader1 from "../../../public/icon/loader1.svg";
+import Image from "next/image";
+import { LoaderIcon } from "react-hot-toast";
+import Link from "next/link";
 
 const buttonVariants = cva(
   "flex items-center justify-center cursor-pointer rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
@@ -11,16 +15,15 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "gradient text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        save: "bg-green-500 hover:bg-green-600 py-3 px-8 rounded-lg text-yellow-100 border-b-4 border-green-700 hover:border-green-700 transition duration-300",
+        delete:
+          "bg-red-600 text-white hover:bg-red-700 py-3 px-4 rounded-lg  border-b-4 border-red-800 hover:border-red-900 transition duration-300",
         outline:
-          "border bg-darkBlue border-input text-white hover:bg-accent transition ease-in-out duration-300 hover:text-accent-foreground",
+          "border bg-darkBlue text-white border-2 hover:shadow-xl hover:bg-darkBlue/90 border-darkBlue transition ease-in-out duration-300 hover:text-accent-foreground",
         secondary:
-          "bg-green-500 y text-secondary-foreground hover:bg-secondary/80",
+          "bg-[#6D92A1] text-[#374955] font-semibold border-b-4 hover:border-b-4 border-[#374955]  hover:bg-opacity-75",
         ghost: "hover:bg-accent hover:text-accent-foreground border ",
-        link: "text-primary underline-offset-4 hover:underline",
-        save: "bg-green-400 text-white w-full hover:bg-green-500",
-        close: "hover:bg-gray-300", // Örnek bir hover efekti
+        close: "hover:bg-gray-300",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -40,7 +43,12 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  asLink?: boolean;
   status?: boolean;
+  href?: string;
+  isLoading?: boolean;
+  leftIcon?: () => React.ReactNode;
+  rightIcon?: () => React.ReactNode;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -50,14 +58,21 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       type,
       size,
+      isLoading,
+      leftIcon,
+      rightIcon,
       children,
       status,
+      asLink,
+      href,
       asChild = false,
       ...props
     },
     ref
   ) => {
     const Comp = "button";
+    const LIcon = leftIcon;
+    const RIcon = rightIcon;
 
     return (
       <button
@@ -67,11 +82,21 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {children}
-        {status && (
-          <span className="ml-4 ">
-            <LoaderIcon />
-          </span>
+        {asLink && href && <Link href={href}></Link>}
+        {isLoading ? (
+          <Image
+            className="text-white"
+            alt="loader"
+            width={30}
+            height={30}
+            src={loader1}
+          ></Image>
+        ) : (
+          <>
+            {LIcon && <LIcon />}
+            {children}
+            {RIcon && <RIcon />}
+          </>
         )}
       </button>
     );

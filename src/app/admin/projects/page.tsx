@@ -1,6 +1,6 @@
-import React from "react";
 import { Metadata } from "next";
-import { Breadcrumb } from "@components/ui";
+import { callApi } from "../../../lib/actions/__api.actions";
+import { ProjectsPage } from "../../../container/ProjectsPage/ProjectsPage";
 export const metadata: Metadata = {
   title: "Projects",
   description:
@@ -18,11 +18,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Bedirhan Say" }],
 };
-export default function page() {
-  return (
-    <div>
-      <Breadcrumb page="Projeler" />
-      page
-    </div>
-  );
+export default async function page() {
+  const { data } = await callApi({ method: "get", path: "projects" });
+  console.log(data);
+  return <ProjectsPage projects={data} />;
 }
