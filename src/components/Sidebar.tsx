@@ -8,7 +8,7 @@ import { Button } from "@components/ui";
 import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion } from "framer-motion";
-import { HeaderAnimations } from "../header/animation";
+import { HeaderAnimations } from "../container/HomePage/header/animation";
 import { logout } from "@actions";
 import toast from "react-hot-toast";
 

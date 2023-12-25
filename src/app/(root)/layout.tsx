@@ -1,4 +1,5 @@
-import { Header } from "@components";
+
+import { Header } from "../../container/HomePage/header/header";
 import { ActiveSectionProvider } from "../../lib/contex";
 
 export default function RootLayout({

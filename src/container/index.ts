@@ -5,3 +5,4 @@ export * from "./ExperiencePage/ExperiencePage";
 export * from "./ProjectsPage/ProjectsPage";
 export * from "./BlogPage/BlogPage";
 export * from "./SkillsPage/SingleSkillPage";
+export * from "./HomePage/HomePage";
