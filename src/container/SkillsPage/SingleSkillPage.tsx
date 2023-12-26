@@ -6,11 +6,18 @@ import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { SkillsDTO } from "@types";
 import { SkillSchema } from "@validations";
-import { Button, ErrorMessage, Input } from "@components/ui";
-import toast from "react-hot-toast";
+import toast, { LoaderIcon } from "react-hot-toast";
 import { callApi } from "@actions";
 import { FaArrowRight } from "react-icons/fa";
 import { uploadImageToFirabase } from "@helper";
+import {
+  Button,
+  ErrorMessage,
+  Input,
+  HeadingSection,
+  Breadcrumb,
+} from "@components/ui";
+
 export const SingleSkillPage = ({
   singleSkill,
 }: {
@@ -19,7 +26,6 @@ export const SingleSkillPage = ({
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<SkillsDTO>({
     resolver: joiResolver(SkillSchema),
@@ -28,9 +34,6 @@ export const SingleSkillPage = ({
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState<string>("");
-  const [selectedItem, setSelectedItem] = useState<SkillsDTO>();
 
   const onSubmit = async (data: SkillsDTO) => {
     setLoading(true);
@@ -42,22 +45,19 @@ export const SingleSkillPage = ({
 
     const payload = {
       ...data,
-      _id: selectedId,
       items: itemsArray,
-      image: imageUrl?.toString() || selectedItem?.image,
+      image: imageUrl?.toString() || singleSkill?.image,
     };
 
     try {
-      let res;
-
-      res = await callApi({
-        method: "post",
+      const res = await callApi({
+        method: "patch",
         path: `/skills/${singleSkill._id}`,
-        payload,
+        payload: payload,
       });
       if (res.kind === "ok") {
         toast.success("Yetenek Güncellendi");
-        setSelectedId("");
+        setSelectedImage(null);
       } else {
         console.log(res);
         toast.error("Yetenek güncellenemedi" + res.error.message);
@@ -65,10 +65,10 @@ export const SingleSkillPage = ({
     } catch (error: any) {
       toast.error("Yetenek  Güncellenemedi" + error.message);
     } finally {
-      setOpen(false);
       setLoading(false);
     }
   };
+
   const handleImageChange = async (
     e: React.ChangeEvent<HTMLInputElement>
   ): Promise<void> => {
@@ -95,13 +95,17 @@ export const SingleSkillPage = ({
       setLoading(false);
     }
   };
+
   return (
-    <div>
+    <div className="">
+      <Breadcrumb page="skills" sub={singleSkill.title} />
+      <HeadingSection title={singleSkill.title} />
+
       <form
         className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <strong>{selectedItem?.title}</strong>
+        <strong>{singleSkill?.title}</strong>
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full  justify-between">
             <Image
@@ -109,7 +113,7 @@ export const SingleSkillPage = ({
               height={100}
               className="rounded"
               alt=""
-              src={selectedItem?.image || ""}
+              src={singleSkill?.image || ""}
             ></Image>
             <span className="flex items-center">
               <FaArrowRight />
@@ -123,35 +127,28 @@ export const SingleSkillPage = ({
             ></Image>
           </div>
 
-          <div className="w-full">
+          <div className="flex">
             <Input
+              id="pickFile"
+              label="Fotoğrafı Değiştir"
               onChange={handleImageChange}
               type="file"
+              className="hidden"
               placeholder="Fotoğraf seç"
             />
-            <Button
-              disabled={loading}
-              isLoading={loading}
-              type="submit"
-              variant="outline"
-            ></Button>
           </div>
         </div>
 
         <div className="w-full flex flex-col gap-5 justify-between">
           <div>
             <label htmlFor="title">Id</label>
-            <Input
-              disabled
-              {...register("_id")}
-              value={selectedId || selectedItem?._id}
-            />
+            <Input {...register("_id")} value={singleSkill?._id} />
             <ErrorMessage message={errors._id?.message} />
           </div>
 
           <div>
             <label htmlFor="title">Title</label>
-            <Input {...register("title")} defaultValue={selectedItem?.title} />
+            <Input {...register("title")} defaultValue={singleSkill?.title} />
             <ErrorMessage message={errors.title?.message} />
           </div>
 
@@ -159,7 +156,7 @@ export const SingleSkillPage = ({
             <label htmlFor="items">Items</label>
             <Input
               {...register("items")}
-              defaultValue={selectedItem?.items.join(", ") || ""}
+              defaultValue={singleSkill?.items.join(", ") || ""}
             />
             <ErrorMessage message={errors.items?.message} />
           </div>
@@ -168,7 +165,7 @@ export const SingleSkillPage = ({
             <label htmlFor="bgColor">Background Color</label>
             <Input
               {...register("bgColor")}
-              defaultValue={selectedItem?.bgColor}
+              defaultValue={singleSkill?.bgColor}
             />
             <ErrorMessage message={errors.bgColor?.message} />
           </div>
@@ -177,21 +174,19 @@ export const SingleSkillPage = ({
             <label htmlFor="itemColor">Item Color</label>
             <Input
               {...register("itemColor")}
-              defaultValue={selectedItem?.itemColor}
+              defaultValue={singleSkill?.itemColor}
             />
             <ErrorMessage message={errors.itemColor?.message} />
           </div>
           <div>
             <label htmlFor="title">Url</label>
-            <Input
-              {...register("image")}
-              disabled
-              defaultValue={selectedItem?.image}
-            />
+            <Input {...register("image")} defaultValue={singleSkill?.image} />
             <ErrorMessage message={errors.image?.message} />
           </div>
 
-          <Button isLoading={loading} type="submit" variant="outline"></Button>
+          <Button isLoading={loading} type="submit" variant="outline">
+            Kaydet
+          </Button>
         </div>
       </form>
     </div>

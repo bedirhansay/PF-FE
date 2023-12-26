@@ -26,9 +26,12 @@ export const Breadcrumb = ({ page, sub }: BreadcrumbProps) => {
           >
             <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
           </svg>
-          <div className="ml-4 capitalize text-sm font-medium text-gray-500 hover:text-gray-700">
+          <a
+            href={"/admin/" + page}
+            className="ml-4 capitalize text-sm font-medium text-gray-500 hover:text-gray-700"
+          >
             {page}
-          </div>
+          </a>
         </li>
         {sub && (
           <li className="flex items-center">

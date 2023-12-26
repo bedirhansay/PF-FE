@@ -3,10 +3,8 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@utils";
-import loader from "../../../public/icon/loader.svg";
 import loader1 from "../../../public/icon/loader1.svg";
 import Image from "next/image";
-import { LoaderIcon } from "react-hot-toast";
 import Link from "next/link";
 
 const buttonVariants = cva(

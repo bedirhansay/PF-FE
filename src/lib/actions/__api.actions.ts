@@ -39,7 +39,7 @@ export const callApi = async ({
         revalidatePath("/admin/" + path);
         break;
       case "delete":
-        response = await apiWorker.instance.delete(path, { data: payload });
+        response = await apiWorker.instance.delete(path);
         revalidatePath("/admin/" + path);
         break;
       default:

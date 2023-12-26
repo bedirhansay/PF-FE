@@ -6,8 +6,7 @@ import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import Image from "next/image";
 import { Button } from "../../Button";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface CardProps {
   skills: SkillsDTO[];
@@ -41,13 +40,16 @@ export const SkillCard: FC<CardProps> = ({
               >
                 {skill.title}
               </h2>
+
               <Image
                 className="mx-auto py-8"
                 alt={skill.title}
                 src={skill.image || ""}
                 width={200}
+                sizes="(max-width: 768px) 100vw, 33vw"
                 height={200}
               ></Image>
+
               <ul className="flex gap-4 px-4 items-center justify-center mx-auto text-center flex-wrap">
                 {skill.items.map((item, itemIndex) => (
                   <li

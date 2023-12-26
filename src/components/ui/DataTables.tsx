@@ -2,12 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Truncate } from "../../lib/utils/truncate";
 import { Button } from "./Button";
 import { FaCaretDown, FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { useRouter } from "next/navigation";
 
 interface DataTablesProps {
   data: any[];
@@ -82,6 +81,7 @@ export const DataTables: React.FC<DataTablesProps> = ({ data }) => {
 
     return headers;
   };
+
   const headers = generateHeadersFromObject(data);
 
   //! Render Row Data
@@ -89,14 +89,13 @@ export const DataTables: React.FC<DataTablesProps> = ({ data }) => {
     return header.map((header, index) => {
       const field = header.field;
 
-      if (field === "category") {
-        console.log(typeof field);
+      if (typeof rowData[field] === "object") {
         return (
           <td
             className="text-xs text-center hover:bg-green-400"
             key={`td${index}` + rowData[field]}
           >
-            {rowData[field]?.name}
+            {rowData[field][0] ? rowData[field][0] : rowData[field]?.name}
           </td>
         );
       }
@@ -104,7 +103,7 @@ export const DataTables: React.FC<DataTablesProps> = ({ data }) => {
       if (field === "image") {
         return (
           <td
-            className="hover:bg-green-400 flex justify-center"
+            className="hover:bg-green-400 flex items-center justify-center"
             key={`renderRowData ${index}` + header}
           >
             {/* <Image
@@ -133,7 +132,7 @@ export const DataTables: React.FC<DataTablesProps> = ({ data }) => {
           className="text-xs text-center  hover:bg-green-400"
           key={`td${index}` + rowData[field]}
         >
-          {Truncate(rowData[field], 20)}
+          {Truncate(rowData[field], 18)}
         </td>
       );
     });
@@ -148,7 +147,7 @@ export const DataTables: React.FC<DataTablesProps> = ({ data }) => {
             <div className="overflow-x-auto p-2">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead>
-                  <tr>
+                  <tr className="overflow-hidden">
                     <th className="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Index
                     </th>
@@ -156,9 +155,9 @@ export const DataTables: React.FC<DataTablesProps> = ({ data }) => {
                       <th
                         key={`DataTables ${i}` + header}
                         onClick={() => handleHeaderClick(header.field)}
-                        className="py-3 text-center  pr-4 pl-4 text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+                        className="py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
                       >
-                        <div className="flex gap-2">
+                        <div className="flex items-center justify-center w-20 overflow-hidden  mx-4">
                           <span>{header.label}</span>
                           <FaCaretDown style={{ width: "15px" }} />
                         </div>

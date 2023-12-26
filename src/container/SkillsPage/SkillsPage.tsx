@@ -16,9 +16,10 @@ import {
 import { SkillSchema } from "@validations";
 import { SkillsDTO } from "@types";
 import Image from "next/image";
-import { FaFileCirclePlus } from "react-icons/fa6";
 import { uploadImageToFirabase } from "../../lib/helper/UploadImageToFirabase";
 import { callApi } from "@actions";
+import { StringToArray } from "@utils";
+import { DeleteBox } from "../../components/DeleteBox/DeleteBox";
 
 export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   const {
@@ -42,22 +43,12 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   const onSubmit = async (data: SkillsDTO) => {
     setLoading(true);
 
-    const itemsArray = data.items
-      ?.toString()
-      .split(",")
-      .map((item) => item.trim());
-
-    const payload = {
-      ...data,
-      _id: selectedId,
-      items: itemsArray,
-      image: imageUrl?.toString() || selectedItem?.image,
-    };
+    const itemsArray = StringToArray(data.items);
 
     const payloads = {
       ...data,
       items: itemsArray,
-      image: imageUrl?.toString() || "",
+      image: imageUrl?.toString(),
     };
 
     try {
@@ -70,15 +61,12 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
       if (res.kind === "ok") {
         toast.success("Yetenek Eklendi");
         reset();
+        setImageUrl("");
       } else {
         toast.error("Yetenek Eklenemedi" + res.error.message);
       }
     } catch (error: any) {
-      toast.error(
-        `Yetenek ${operation === "edit" ? "Güncellenemedi" : "Eklenemedi"} ${
-          error.message
-        }`
-      );
+      toast.error(`Yetenek  Güncellenemedi ${error.message}`);
     } finally {
       setOpen(false);
       setLoading(false);
@@ -102,7 +90,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url);
+      setImageUrl(img?.url || "");
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -117,9 +105,10 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
     try {
       const res = await callApi({
         method: "delete",
-        path: `${skills}/${selectedId}`,
+        path: `skills/${selectedId}`,
       });
-      if ((res.kind = "ok")) {
+
+      if (res.kind === "ok") {
         setOpen(false);
         toast.success("Yetenek silindi");
       }
@@ -164,44 +153,41 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
 
       <Modal onClose={setOpen} isOpen={open}>
         {operation === "del" ? (
-          <div className="flex flex-col items-center">
-            <strong className="my-40 ">
-              {selectedItem?.title} silinmek üzere onaylıyor musunuz?
-            </strong>
-            <strong></strong>
-            <Button onClick={() => onDelete()} variant="outline">
-              {loading ? <LoaderIcon /> : "Onayla"}
-            </Button>
-          </div>
+          <DeleteBox
+            loading={deleting}
+            onClick={onDelete}
+            title={selectedItem?.title}
+          />
         ) : (
           <form
             className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <strong>{selectedItem?.title}</strong>
-            <div className="flex flex-col justify-center items-center">
-              <div className="flex w-full  justify-between">
-                <Image
-                  key={selectedId}
-                  width={200}
-                  height={100}
-                  className="rounded border"
-                  alt=""
-                  src={selectedImage ? URL.createObjectURL(selectedImage) : ""}
-                ></Image>
-              </div>
+            <div className="flex-between">
+              <Image
+                width={200}
+                height={100}
+                className="rounded border"
+                alt=""
+                src={selectedImage ? URL.createObjectURL(selectedImage) : ""}
+              ></Image>
 
-              <div className="w-full">
-                <Input
-                  disabled={loading}
-                  onChange={handleImageChange}
-                  type="file"
-                  placeholder="Fotoğraf seç"
-                />
-                <Button disabled={loading} variant="save">
-                  {loading ? <LoaderIcon /> : "Fotoğrı Değiştir"}
-                </Button>
-              </div>
+              <Input
+                className="hidden"
+                id="pickFile"
+                label="Fotoğraf Yükle"
+                onChange={handleImageChange}
+                type="file"
+              />
+            </div>
+            <div key={imageUrl}>
+              <label htmlFor="itemColor">Image Url</label>
+              <Input
+                {...register("image")}
+                value={imageUrl as string}
+                placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+              />
+              <ErrorMessage message={errors.image?.message} />
             </div>
 
             <div className="w-full flex flex-col gap-5 justify-between">
