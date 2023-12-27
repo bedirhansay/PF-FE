@@ -8,6 +8,7 @@ import { Projeler } from "./projeler/projeler";
 import { Skills } from "./skills/skills";
 import { Deneyim } from "./deneyim/deneyim";
 import { Contact } from "./contact/contact";
+import { Footer } from "./footer/footer";
 
 export const HomePage = () => {
   return (
@@ -25,6 +26,8 @@ export const HomePage = () => {
       <Deneyim />
       <Divider line />
       <Contact />
+      <Divider line />
+      <Footer />
     </main>
   );
 };

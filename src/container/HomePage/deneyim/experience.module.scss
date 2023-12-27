@@ -3,7 +3,7 @@
 }
 
 .boxWrapper {
-  @apply flex bg-gray-200 rounded-md shadow-xl gap-5  mb-10 items-center;
+  @apply flex bg-gray-100 rounded-md shadow-xl gap-5  mb-10 items-center;
   span {
     @apply text-xl border border-black p-2 rounded-full shadow-xl;
   }
