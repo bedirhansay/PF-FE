@@ -1,9 +1,9 @@
+import { SingleBlogPage } from "../../../../container/BlogPage/SingleBlogPage";
 import { callApi } from "../../../../lib/actions/__api.actions";
 
 export default async function page({ params }: { params: { id: string } }) {
   const { id } = params;
   const { data } = await callApi({ method: "get", path: `/blog/${id}` });
-  console.log(data);
 
-  return <div>{id}</div>;
+  return <SingleBlogPage blog={data} />;
 }

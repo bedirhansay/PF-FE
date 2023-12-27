@@ -6,3 +6,7 @@ export * from "./ProjectsPage/ProjectsPage";
 export * from "./BlogPage/BlogPage";
 export * from "./SkillsPage/SingleSkillPage";
 export * from "./HomePage/HomePage";
+export * from "./ExperiencePage/SingleExperiencePage";
+export * from "./ProjectsPage/SingleProjectsPage";
+export * from "./CategoriesPage/CategoriesPage";
+export * from "./CategoriesPage/SingleCategoriesPage";

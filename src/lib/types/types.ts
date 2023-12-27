@@ -33,7 +33,7 @@ export type ProjectDTO = {
   _id: string;
   company: string;
   projectName: string;
-  url?: string;
+  image: string;
   time: number;
   area: string;
   tags?: string[];
@@ -58,7 +58,7 @@ export type ExperienceDTO = {
   location: string;
   position: string;
   description: string;
-  url: string;
+  image: string;
   date: string;
   skills: string[];
   createdAt?: string;

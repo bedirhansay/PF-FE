@@ -99,6 +99,13 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
       setLoading(false);
     }
   };
+  const formFields = [
+    { name: "title", label: "Title", type: "text" },
+    { name: "items", label: "Items", type: "text" },
+    { name: "image", label: "Image", type: "text" },
+    { name: "bgColor", label: "Background Color", type: "text" },
+    { name: "itemColor", label: "Item Color", type: "text" },
+  ];
 
   const onDelete = async () => {
     setDeleting(true);
@@ -136,7 +143,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
 
   return (
     <section className="basis !w-full flex-col mb-20  p-2">
-      <Breadcrumb page="Blog" />
+      <Breadcrumb page="Skill" />
 
       <HeadingSection
         title="Deneyimler"
@@ -191,29 +198,17 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
             </div>
 
             <div className="w-full flex flex-col gap-5 justify-between">
-              <div>
-                <label htmlFor="title">Title</label>
-                <Input {...register("title")} />
-                <ErrorMessage message={errors.title?.message} />
-              </div>
-
-              <div>
-                <label htmlFor="items">Items</label>
-                <Input {...register("items")} />
-                <ErrorMessage message={errors.items?.message} />
-              </div>
-
-              <div>
-                <label htmlFor="bgColor">Background Color</label>
-                <Input {...register("bgColor")} />
-                <ErrorMessage message={errors.bgColor?.message} />
-              </div>
-
-              <div>
-                <label htmlFor="itemColor">Item Color</label>
-                <Input {...register("itemColor")} />
-                <ErrorMessage message={errors.itemColor?.message} />
-              </div>
+              {formFields.map((field) => (
+                <div key={field.name}>
+                  <label htmlFor={field.name}>{field.label}</label>
+                  <Input {...register(field.name as any)} type={field.type} />
+                  <ErrorMessage
+                    message={
+                      (errors as Record<string, any>)[field.name]?.message
+                    }
+                  />
+                </div>
+              ))}
 
               <Button type="submit" variant="outline">
                 {loading ? <LoaderIcon /> : "Kaydet"}

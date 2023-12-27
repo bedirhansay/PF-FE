@@ -1,77 +1,73 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import { useForm } from "react-hook-form";
-import { joiResolver } from "@hookform/resolvers/joi";
-import { SkillsDTO } from "@types";
-import { SkillSchema } from "@validations";
-import toast, { LoaderIcon } from "react-hot-toast";
-import { callApi } from "@actions";
-import { FaArrowRight } from "react-icons/fa";
-import { uploadImageToFirabase } from "@helper";
 import {
+  Breadcrumb,
   Button,
   ErrorMessage,
-  Input,
   HeadingSection,
-  Breadcrumb,
+  Input,
 } from "@components/ui";
+import React, { useState } from "react";
+import { CategoryDTO, ProjectDTO } from "@types";
+import { callApi } from "@actions";
+import toast from "react-hot-toast";
+import { uploadImageToFirabase } from "@helper";
+import { StringToArray } from "@utils";
+import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
+import Image from "next/image";
+import { CategorySchema } from "@validations";
 
-export const SingleSkillPage = ({
-  singleSkill,
+export const SingleCategoriesPage = ({
+  category,
 }: {
-  singleSkill: SkillsDTO;
+  category: CategoryDTO;
 }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<SkillsDTO>({
-    resolver: joiResolver(SkillSchema),
+  } = useForm<CategoryDTO>({
+    resolver: joiResolver(CategorySchema),
   });
 
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
+
   const formFields = [
     { name: "_id", label: "ID", type: "text" },
-    { name: "title", label: "Title", type: "text" },
-    { name: "items", label: "Items", type: "text" },
-    { name: "image", label: "Image", type: "text" },
-    { name: "bgColor", label: "Background Color", type: "text" },
-    { name: "itemColor", label: "Item Color", type: "text" },
+    { name: "name", label: "Name", type: "text" },
   ];
 
-  const onSubmit = async (data: SkillsDTO) => {
+  const onSubmit = async (data: CategoryDTO) => {
     setLoading(true);
+    console.log(data);
 
-    const itemsArray = data.items
-      ?.toString()
-      .split(",")
-      .map((item) => item.trim());
-
-    const payload = {
+    const payloads = {
       ...data,
-      items: itemsArray,
-      image: imageUrl?.toString() || singleSkill?.image,
+      image: imageUrl?.toString(),
     };
 
     try {
       const res = await callApi({
         method: "patch",
-        path: `/skills/${singleSkill._id}`,
-        payload: payload,
+        path: `/categories/${category._id}`,
+        payload: payloads,
       });
+      console.log(res);
+
       if (res.kind === "ok") {
-        toast.success("Yetenek Güncellendi");
-        setSelectedImage(null);
+        toast.success("Kategori Güncellendi");
+
+        reset();
+        setImageUrl("");
       } else {
-        console.log(res);
-        toast.error("Yetenek güncellenemedi" + res.error.message);
+        toast.error("Kategori Güncellendi" + res.error.message);
       }
     } catch (error: any) {
-      toast.error("Yetenek  Güncellenemedi" + error.message);
+      toast.error(`Kategori  Güncellenemedi: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -89,12 +85,12 @@ export const SingleSkillPage = ({
       }
       const payload = {
         image: selectedFile,
-        path: "skills",
+        path: "categories",
         name: selectedFile.name,
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url);
+      setImageUrl(img?.url || "");
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -105,28 +101,26 @@ export const SingleSkillPage = ({
   };
 
   return (
-    <div className="">
-      <Breadcrumb page="skills" sub={singleSkill.title} />
-      <HeadingSection title={singleSkill.title} />
+    <div>
+      <Breadcrumb page="categories" sub={category.name} />
+      <HeadingSection title="Projeler" showButton />
 
       <form
         className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <strong>{singleSkill?.title}</strong>
-        <div className=" h-[250px]  relative grid grid-cols-2 gap-10 ">
-          <div className="relative">
-            <Image
-              className="rounded border w-96"
-              alt=""
-              fill
-              src={
-                selectedImage
-                  ? URL.createObjectURL(selectedImage)
-                  : (singleSkill.image as string)
-              }
-            ></Image>
-          </div>
+        <div className="flex-between">
+          <Image
+            width={200}
+            height={100}
+            className="rounded border"
+            alt=""
+            src={
+              selectedImage
+                ? URL.createObjectURL(selectedImage)
+                : category.image
+            }
+          ></Image>
 
           <Input
             className="hidden"
@@ -136,20 +130,23 @@ export const SingleSkillPage = ({
             type="file"
           />
         </div>
+        <div key={imageUrl}>
+          <label htmlFor="itemColor">Image Url</label>
+          <Input
+            {...register("image")}
+            value={(imageUrl as string) || category.image}
+            placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+          />
+          <ErrorMessage message={errors.image?.message} />
+        </div>
 
         <div className="w-full flex flex-col gap-5 justify-between">
-          <div>
-            <label htmlFor="title">Id</label>
-            <Input {...register("_id")} value={singleSkill?._id} />
-            <ErrorMessage message={errors._id?.message} />
-          </div>
-
           {formFields.map((field) => (
             <div key={field.name}>
               <label htmlFor={field.name}>{field.label}</label>
               <Input
                 //@ts-ignore
-                defaultValue={singleSkill[field.name]}
+                defaultValue={category[field.name]}
                 {...register(field.name as any)}
                 type={field.type}
               />

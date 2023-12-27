@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Bedirhan Say" }],
 };
+export const dynamic = "force-dynamic";
 export default async function page() {
   const { data } = await callApi({ method: "get", path: "projects" });
   console.log(data);

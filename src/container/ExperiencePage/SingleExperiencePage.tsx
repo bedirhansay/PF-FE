@@ -1,77 +1,79 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import { useForm } from "react-hook-form";
-import { joiResolver } from "@hookform/resolvers/joi";
-import { SkillsDTO } from "@types";
-import { SkillSchema } from "@validations";
-import toast, { LoaderIcon } from "react-hot-toast";
-import { callApi } from "@actions";
-import { FaArrowRight } from "react-icons/fa";
-import { uploadImageToFirabase } from "@helper";
+import { ExperienceDTO } from "@types";
 import {
+  Breadcrumb,
   Button,
   ErrorMessage,
-  Input,
   HeadingSection,
-  Breadcrumb,
+  Input,
 } from "@components/ui";
+import React, { useEffect, useState } from "react";
+import { callApi } from "@actions";
+import toast from "react-hot-toast";
+import { uploadImageToFirabase } from "@helper";
+import { StringToArray } from "@utils";
+import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
+import Image from "next/image";
+import { ExperienceSchema } from "@validations";
 
-export const SingleSkillPage = ({
-  singleSkill,
+export const SingleExperiencePage = ({
+  experience,
 }: {
-  singleSkill: SkillsDTO;
+  experience: ExperienceDTO;
 }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<SkillsDTO>({
-    resolver: joiResolver(SkillSchema),
+  } = useForm<ExperienceDTO>({
+    resolver: joiResolver(ExperienceSchema),
   });
 
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
+
   const formFields = [
-    { name: "_id", label: "ID", type: "text" },
+    { name: "_id", label: "Id", type: "text" },
     { name: "title", label: "Title", type: "text" },
-    { name: "items", label: "Items", type: "text" },
-    { name: "image", label: "Image", type: "text" },
-    { name: "bgColor", label: "Background Color", type: "text" },
-    { name: "itemColor", label: "Item Color", type: "text" },
+    { name: "location", label: "Location", type: "text" },
+    { name: "position", label: "Position", type: "text" },
+    { name: "description", label: "Description", type: "text" },
+    { name: "date", label: "Date", type: "text" },
+    { name: "skills", label: "Skills", type: "text" },
   ];
 
-  const onSubmit = async (data: SkillsDTO) => {
+  const onSubmit = async (data: ExperienceDTO) => {
     setLoading(true);
+    console.log(data);
 
-    const itemsArray = data.items
-      ?.toString()
-      .split(",")
-      .map((item) => item.trim());
-
-    const payload = {
+    const payloads = {
       ...data,
-      items: itemsArray,
-      image: imageUrl?.toString() || singleSkill?.image,
+      skills: StringToArray(data.skills),
+      image: imageUrl?.toString(),
     };
+    console.log(payloads);
 
     try {
       const res = await callApi({
         method: "patch",
-        path: `/skills/${singleSkill._id}`,
-        payload: payload,
+        path: `/experience/${experience._id}`,
+        payload: payloads,
       });
+
       if (res.kind === "ok") {
-        toast.success("Yetenek Güncellendi");
-        setSelectedImage(null);
+        toast.success("Deneyim Güncellendi");
+
+        reset();
+        setImageUrl("");
       } else {
-        console.log(res);
-        toast.error("Yetenek güncellenemedi" + res.error.message);
+        toast.error("Deneyim Güncellenemedi" + res.error.message);
       }
     } catch (error: any) {
-      toast.error("Yetenek  Güncellenemedi" + error.message);
+      toast.error(`Deneyim  Güncellenemedi: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -94,7 +96,7 @@ export const SingleSkillPage = ({
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url);
+      setImageUrl(img?.url || "");
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -105,25 +107,24 @@ export const SingleSkillPage = ({
   };
 
   return (
-    <div className="">
-      <Breadcrumb page="skills" sub={singleSkill.title} />
-      <HeadingSection title={singleSkill.title} />
+    <div>
+      <Breadcrumb page="experience" sub={experience.title} />
+      <HeadingSection title="Deneyimler" />
 
       <form
         className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <strong>{singleSkill?.title}</strong>
         <div className=" h-[250px]  relative grid grid-cols-2 gap-10 ">
           <div className="relative">
             <Image
-              className="rounded border w-96"
+              className="rounded border"
               alt=""
               fill
               src={
                 selectedImage
                   ? URL.createObjectURL(selectedImage)
-                  : (singleSkill.image as string)
+                  : (experience.image as string)
               }
             ></Image>
           </div>
@@ -136,20 +137,23 @@ export const SingleSkillPage = ({
             type="file"
           />
         </div>
+        <div key={imageUrl}>
+          <label htmlFor="itemColor">Image Url</label>
+          <Input
+            {...register("image")}
+            value={(imageUrl as string) || experience.image}
+            placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+          />
+          <ErrorMessage message={errors.image?.message} />
+        </div>
 
         <div className="w-full flex flex-col gap-5 justify-between">
-          <div>
-            <label htmlFor="title">Id</label>
-            <Input {...register("_id")} value={singleSkill?._id} />
-            <ErrorMessage message={errors._id?.message} />
-          </div>
-
           {formFields.map((field) => (
             <div key={field.name}>
               <label htmlFor={field.name}>{field.label}</label>
               <Input
                 //@ts-ignore
-                defaultValue={singleSkill[field.name]}
+                defaultValue={experience[field.name]}
                 {...register(field.name as any)}
                 type={field.type}
               />

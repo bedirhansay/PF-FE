@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Truncate } from "../../lib/utils/truncate";
@@ -10,9 +10,15 @@ import { MdDelete } from "react-icons/md";
 
 interface DataTablesProps {
   data: any[];
+  setId: SetStateAction<Dispatch<string>>;
+  setOperation: Dispatch<SetStateAction<string>>;
 }
 
-export const DataTables: React.FC<DataTablesProps> = ({ data }) => {
+export const DataTables: React.FC<DataTablesProps> = ({
+  data,
+  setId,
+  setOperation,
+}) => {
   const router = useRouter();
 
   const [sorting, setSorting] = useState<{
@@ -189,9 +195,10 @@ export const DataTables: React.FC<DataTablesProps> = ({ data }) => {
                             variant="save"
                           ></Button>
                           <Button
-                            onClick={() =>
-                              router.push(`${pathname}/${row._id}`)
-                            }
+                            onClick={() => {
+                              setId(row._id);
+                              setOperation("del");
+                            }}
                             leftIcon={() => <MdDelete fontSize={20} />}
                             className="text-xs -mr-4"
                             variant="delete"

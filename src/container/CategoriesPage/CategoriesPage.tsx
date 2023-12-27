@@ -1,6 +1,5 @@
 "use client";
 
-import { ExperienceDTO } from "@types";
 import {
   Breadcrumb,
   Button,
@@ -11,6 +10,7 @@ import {
   Modal,
 } from "@components/ui";
 import React, { useEffect, useState } from "react";
+import { CategoryDTO } from "@types";
 import { callApi } from "@actions";
 import toast from "react-hot-toast";
 import { uploadImageToFirabase } from "@helper";
@@ -18,20 +18,21 @@ import { StringToArray } from "@utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
-import { ExperienceSchema } from "@validations";
+import { CategorySchema } from "@validations";
 import { DeleteBox } from "@components";
-export const ExperiencePage = ({
-  experience,
+
+export const CategoriesPage = ({
+  categories,
 }: {
-  experience: ExperienceDTO[];
+  categories: CategoryDTO[];
 }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ExperienceDTO>({
-    resolver: joiResolver(ExperienceSchema),
+  } = useForm<CategoryDTO>({
+    resolver: joiResolver(CategorySchema),
   });
 
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -40,25 +41,17 @@ export const ExperiencePage = ({
   const [open, setOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string>("");
   const [operation, setOperation] = useState<string>("");
-  const [selectedItem, setSelectedItem] = useState<ExperienceDTO>();
+  const [selectedItem, setSelectedItem] = useState<CategoryDTO>();
   const [deleting, setDeleting] = useState(false);
 
-  const formFields = [
-    { name: "title", label: "Title", type: "text" },
-    { name: "location", label: "Location", type: "text" },
-    { name: "position", label: "Position", type: "text" },
-    { name: "description", label: "Description", type: "text" },
-    { name: "date", label: "Date", type: "text" },
-    { name: "skills", label: "Skills", type: "text" },
-  ];
+  const formFields = [{ name: "name", label: "Name", type: "text" }];
 
-  const onSubmit = async (data: ExperienceDTO) => {
+  const onSubmit = async (data: CategoryDTO) => {
     setLoading(true);
     console.log(data);
 
     const payloads = {
       ...data,
-      skills: StringToArray(data.skills),
       image: imageUrl?.toString(),
     };
     console.log(payloads);
@@ -66,23 +59,23 @@ export const ExperiencePage = ({
     try {
       const res = await callApi({
         method: "post",
-        path: "experience",
+        path: "categories",
         payload: payloads,
       });
       console.log(res);
 
       if (res.kind === "ok") {
-        toast.success("Deneyim Eklendi");
+        toast.success("Proje Eklendi");
 
-        // reset();
+        reset();
         setImageUrl("");
       } else {
-        toast.error("Deneyim Eklenemedi" + res.error.message);
+        toast.error("Proje Eklenemedi" + res.error.message);
       }
     } catch (error: any) {
-      toast.error(`Deneyim  Güncellenemedi: ${error.message}`);
+      toast.error(`Proje  Güncellenemedi: ${error.message}`);
     } finally {
-      // setOpen(false);
+      setOpen(false);
       setLoading(false);
     }
   };
@@ -119,16 +112,16 @@ export const ExperiencePage = ({
     try {
       const res = await callApi({
         method: "delete",
-        path: `experience/${selectedId}`,
+        path: `categories/${selectedId}`,
       });
 
       if (res.kind === "ok") {
         setOpen(false);
-        toast.success("Deneyim silindi");
+        toast.success("Kategori silindi");
       }
       console.log(res);
     } catch (error) {
-      toast.error("Deneyim Silinemedi");
+      toast.error("Kategori Silinemedi");
       setOpen(false);
       console.log(error);
     } finally {
@@ -137,7 +130,7 @@ export const ExperiencePage = ({
   };
 
   useEffect(() => {
-    const selectedSkill = experience.find((item) => item._id === selectedId);
+    const selectedSkill = categories.find((item) => item._id === selectedId);
     if (selectedId) {
       setOpen(true);
       setSelectedItem(selectedSkill);
@@ -150,23 +143,23 @@ export const ExperiencePage = ({
   };
   return (
     <div>
-      <Breadcrumb page="Deneyim" />
+      <Breadcrumb page="Projeler" />
       <HeadingSection
-        title="Deneyimler"
+        title="Projeler"
         showButton
         onButtonClick={buttonHandler}
       />
       <DataTables
         setOperation={setOperation}
         setId={setSelectedId}
-        data={experience}
+        data={categories}
       />
       <Modal onClose={setOpen} isOpen={open}>
         {operation === "del" ? (
           <DeleteBox
             loading={deleting}
             onClick={onDelete}
-            title={selectedItem?.title}
+            title={selectedItem?.name}
           />
         ) : (
           <form

@@ -12,6 +12,11 @@ export const adminLinks = [
     icon: React.createElement(AiFillHome),
   },
   {
+    title: "Kategoriler",
+    href: "/admin/categories",
+    icon: React.createElement(FaNetworkWired),
+  },
+  {
     title: "Blog",
     href: "/admin/blog",
     icon: React.createElement(IoDocumentText),

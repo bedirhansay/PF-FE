@@ -1,3 +1,4 @@
+import { SingleExperiencePage } from "../../../../container/ExperiencePage/SingleExperiencePage";
 import { callApi } from "../../../../lib/actions/__api.actions";
 
 export default async function page({ params }: { params: { id: string } }) {
@@ -5,5 +6,5 @@ export default async function page({ params }: { params: { id: string } }) {
   const { data } = await callApi({ method: "get", path: `/experience/${id}` });
   console.log(data);
 
-  return <div>{id}</div>;
+  return <SingleExperiencePage experience={data} />;
 }
