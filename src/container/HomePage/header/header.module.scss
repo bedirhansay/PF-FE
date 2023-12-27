@@ -16,7 +16,7 @@
   @apply absolute inset-0 w-full rounded-md -z-10 bg-gray-300;
 }
 .button {
-  @apply fixed sm:hidden left-10 rounded-full p-2  bg-darkBlue text-white top-10 text-4xl;
+  @apply fixed sm:hidden left-5 rounded-full p-2  bg-darkBlue text-white top-10 text-2xl;
 }
 
 .nav-wrapper {
@@ -38,7 +38,7 @@
 }
 .active {
   &[data-active="true"] {
-    @apply bg-white text-darkBlue px-8 py-2 rounded-md;
+    @apply text-darkBlue bg-white px-4 rounded font-bold;
   }
 }
 

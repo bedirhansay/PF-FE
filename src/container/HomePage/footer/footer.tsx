@@ -9,7 +9,7 @@ export const Footer = () => {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSection();
   return (
-    <footer className="bg-white shadow dark:bg-gray-900 max-w-7xl mx-auto">
+    <footer className="bg-white rounded shadow dark:bg-gray-900 max-w-7xl p-10 mx-auto">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a
