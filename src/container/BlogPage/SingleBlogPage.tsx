@@ -16,6 +16,8 @@ import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { BlogSchema } from "@validations";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("../../components/Editor"), { ssr: false });
 
 export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
   const {
@@ -30,42 +32,43 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
+  const [model, setModel] = useState(blog.description);
 
+  console.log(blog);
   const formFields = [
     { name: "_id", label: "ID", type: "text" },
     { name: "title", label: "Title", type: "text" },
-    { name: "description", label: "Description", type: "text" },
-    { name: "viewCount", label: "View Count", type: "number" },
     { name: "category", label: "Category", type: "text" },
   ];
 
-  console.log(blog);
+  console.log(errors);
 
   const onSubmit = async (data: BlogDTO) => {
     setLoading(true);
 
     const payloads = {
       ...data,
-      image: imageUrl?.toString(),
+      description: model,
+      image: imageUrl?.toString() || blog.image,
     };
 
     try {
       const res = await callApi({
         method: "patch",
-        path: `/blogs/${blog._id}`,
+        path: `/blog/${blog._id}`,
         payload: payloads,
       });
 
       if (res.kind === "ok") {
-        toast.success("Deneyim Güncellendi");
+        toast.success("Blog Güncellendi");
 
         reset();
         setImageUrl("");
       } else {
-        toast.error("Deneyim Güncellenemedi" + res.error.message);
+        toast.error("Blog Güncellenemedi" + res.error.message);
       }
     } catch (error: any) {
-      toast.error(`Deneyim  Güncellenemedi: ${error.message}`);
+      toast.error(`Blog  Güncellenemedi: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -129,6 +132,7 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
             onChange={handleImageChange}
           />
         </div>
+        <strong>{blog.slug}</strong>
 
         <div key={imageUrl}>
           <label htmlFor="itemColor">Image Url</label>
@@ -155,6 +159,7 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
               />
             </div>
           ))}
+          <Editor model={model} setModel={setModel} />
 
           <Button isLoading={loading} type="submit" variant="outline">
             Kaydet

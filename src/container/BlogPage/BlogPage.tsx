@@ -55,7 +55,6 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
       category: catId,
       image: imageUrl?.toString(),
     };
-    console.log(payloads);
 
     try {
       const res = await callApi({
@@ -69,6 +68,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
 
         reset();
         setImageUrl("");
+        setModel("");
       } else {
         toast.error("Blog Yazısı Eklenemedi" + res.error.message);
       }

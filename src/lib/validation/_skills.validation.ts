@@ -47,6 +47,5 @@ export const BlogSchema = Joi.object({
   slug: Joi.string().optional(),
   description: Joi.string().optional(),
   image: Joi.string().optional(),
-  viewCount: Joi.number().optional(),
   category: Joi.string(),
 });
