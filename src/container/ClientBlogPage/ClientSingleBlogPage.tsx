@@ -1,4 +1,3 @@
-import { blog } from "@constant";
 import React from "react";
 
 import { RiArrowGoBackFill } from "react-icons/ri";
@@ -36,6 +35,8 @@ export const ClientSingleBlogPage = ({
 
             <Image
               alt={"blog"}
+              width={800}
+              height={300}
               src={selectedBlog?.image || ""}
               className="aspect-video mx-auto my-4 rounded"
             />
@@ -49,17 +50,6 @@ export const ClientSingleBlogPage = ({
           </div>
 
           <div>
-            <div className="bg-white rounded shadow-lg mb-2  text-center">
-              <h3 className="border-b-2 py-1 bg-blue rounded-md text-white">
-                Categoriler
-              </h3>
-              {blog.map((i) => (
-                <div className="flex-between px-4 py-1  " key={i + "input"}>
-                  <label htmlFor="">{i.category}</label>
-                  <input type="checkbox" />
-                </div>
-              ))}
-            </div>
             <div className="bg-white px-4 py-10 text-sm">
               <h2 className="text-lg text-center font-bold mb-4">
                 Diğer Bloglar
@@ -78,6 +68,7 @@ export const ClientSingleBlogPage = ({
                         className="rounded"
                         alt="im"
                         width={90}
+                        height={90}
                         src={otherBlog.image}
                       ></Image>
                       <div className="flex flex-col px-2 justify-between">

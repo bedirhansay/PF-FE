@@ -71,6 +71,6 @@ export type BlogDTO = {
   description?: string;
   image?: string;
   viewCount?: number;
-  category?: CategoryDTO;
+  category: CategoryDTO;
   createdAt?: string;
 };

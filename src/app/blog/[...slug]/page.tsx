@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { blog } from "../../../lib/constant/blogs";
 import { ClientSingleBlogPage } from "@container";
+import { callApi } from "../../../lib/actions/__api.actions";
 
 type Props = {
   params: { slug: string };
@@ -18,11 +19,15 @@ export async function generateMetadata(
     description: selectedBlog?.description || "",
   };
 }
-
-export default function page({ params }: Props) {
+export const dynamic = "force-dynamic";
+export default async function page({ params }: Props) {
   const { slug } = params;
-  const selectedBlog = blog.find((item) => item.slug == slug);
-  const otherBlogs = blog.filter((item) => item.slug != slug);
+  const { data } = await callApi({ method: "get", path: "blog" });
+
+  const selectedBlog = data.find((item: any) => item.slug == slug);
+  console.log(data);
+  console.log(selectedBlog);
+  const otherBlogs = data.filter((item: any) => item.slug != slug);
 
   return (
     <ClientSingleBlogPage selectedBlog={selectedBlog} otherBlogs={otherBlogs} />

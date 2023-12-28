@@ -2,30 +2,30 @@
 
 import React, { useState } from "react";
 import { Input } from "../../components/ui/Input";
-import { blog } from "../../lib/constant/blogs";
 import Image from "next/image";
 import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 import Link from "next/link";
 import style from "./blog.module.scss";
 import { IoSearchOutline } from "react-icons/io5";
 import { useSearchParams } from "next/navigation";
+import { BlogDTO } from "../../lib/types/types";
 
-export const ClientBlogPage = () => {
+export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
 
   // Blog filtreleme fonksiyonu
-  const filteredBlogs = blog.filter((item) => {
+  const filteredBlogs = blogs.filter((item) => {
     return (
       item.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (selectedCategory === "" || item.category === selectedCategory)
+      (selectedCategory === "" || item.category.name === selectedCategory)
     );
   });
 
   const searchParams = useSearchParams();
   const search = searchParams.get("page");
   const pages = [1, 2, 3, 4, 5];
-  const categories = [...new Set(blog.map((item) => item.category))];
+  const categories = [...new Set(blogs.map((item) => item.category.name))];
 
   return (
     <div className="overflow-x-hidden">
@@ -85,18 +85,24 @@ export const ClientBlogPage = () => {
           </div>
           {/* //! Blogs */}
           <div className="ul-container ">
-            {filteredBlogs.map((item) => (
+            {blogs.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 className=" p-4 hover:scale-105 border transition ease-in-out duration-200 flex flex-col items-center gap-4 bg-white border-gray-300 shadow-md rounded-md"
               >
                 <h3 className="text-lg font-semibold text-center mb-2">
                   {item.title}
                 </h3>
-                <Image alt="" className="rounded w-44" src={item.image}></Image>
+                <Image
+                  alt=""
+                  width={200}
+                  height={100}
+                  className="rounded w-44"
+                  src={item.image || ""}
+                ></Image>
 
                 <span className="text-sm text-gray-500">
-                  Kategori: {item.category}
+                  Kategori: {item?.category.name || ""}
                 </span>
                 <Link
                   className="bg-[#3498db] text-white px-2 py-1 rounded"
