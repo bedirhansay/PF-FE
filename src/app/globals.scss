@@ -4,7 +4,7 @@
 
 @layer components {
   .layout {
-    @apply bg-gray-100 overflow-x-hidden px-0 text-gray-950  mx-auto p-10 relative pt-28 sm:pt-36;
+    @apply overflow-x-hidden px-0 text-gray-950  mx-auto p-10 relative pt-28 sm:pt-36;
   }
 
   .header-left-color {
@@ -24,13 +24,22 @@
     @apply flex justify-between items-center;
   }
 
-  .center-absolute {
-    @apply left-1/2 top-1/3 transform -translate-x-1/2 -translate-y-1/2;
+  .flex-center {
+    @apply flex items-center justify-center gap-2;
+  }
+
+  .absolute-center {
+    @apply absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .clamp-size {
+    @apply max-w-7xl mx-auto px-1;
   }
 }
 
 @layer base {
 }
+
 .swiper-button-next {
   background: url("../../public/icon/arrow_right.png") no-repeat center /
     contain !important;

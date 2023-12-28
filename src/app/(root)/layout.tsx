@@ -1,6 +1,6 @@
-
 import { Header } from "../../container/HomePage/header/header";
 import { ActiveSectionProvider } from "../../lib/contex";
+import "../globals.scss";
 
 export default function RootLayout({
   children,

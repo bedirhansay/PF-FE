@@ -30,11 +30,11 @@ export default function BlogPage({ params }: Props) {
   const otherBlogs = blog.filter((item) => item.slug != params.slug);
 
   return (
-    <div className="max-w-7xl mt-10 mx-auto my-10 px-2">
+    <div className="clamp-size mt-10 my-10">
       <div className="flex flex-col gap-10 px-4">
-        <h1 className="bg-grays text-white flex flex-col text-center font-bold rounded shadow-md text-base sm:text-3xl py-10">
+        <h1 className="bg-gray-900 text-white flex flex-col text-center font-bold rounded shadow-md text-base sm:text-3xl py-10">
           {selectedBlog?.title}
-          <span className="text-xs mt-2 flex items-center justify-center gap-2">
+          <span className="flex-center text-xs mt-2 ">
             <BsClock />2 min read
           </span>
         </h1>
@@ -68,10 +68,7 @@ export default function BlogPage({ params }: Props) {
                 Categoriler
               </h3>
               {blog.map((i) => (
-                <div
-                  className="flex px-4 py-1 justify-between gap-2"
-                  key={i + "input"}
-                >
+                <div className="flex-between px-4 py-1  " key={i + "input"}>
                   <label htmlFor="">{i.category}</label>
                   <input type="checkbox" />
                 </div>

@@ -11,7 +11,7 @@ import { introAnimations } from "./animations";
 import clsx from "clsx";
 import style from "./intro.module.scss";
 
-import NextImage from "../../../components/NextImage/NextImage";
+import NextImage from "../../../components/NextImage";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Anasayfa");
@@ -24,7 +24,7 @@ export const Intro = () => {
             alt="profile"
             width="200"
             height="200"
-            sizes="(max-width: 768px) 100vw, (max-width:1200px) 50vw, 33vw"
+            sizes="150px"
             className="h-40 w-40 rounded-full"
             src={ProfilePic}
             priority={true}

@@ -19,7 +19,7 @@ import Image from "next/image";
 import { uploadImageToFirabase } from "../../lib/helper/UploadImageToFirabase";
 import { callApi } from "@actions";
 import { StringToArray } from "@utils";
-import { DeleteBox } from "../../components/DeleteBox/DeleteBox";
+import { DeleteBox } from "../../components/DeleteBox";
 
 export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   const {

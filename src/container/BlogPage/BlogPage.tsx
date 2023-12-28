@@ -20,7 +20,7 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { BlogSchema } from "@validations";
 import { DeleteBox } from "@components";
-import { UploadInput } from "../../components/uploadInput/uploadInput";
+import { UploadInput } from "../../components/uploadInput";
 import { DropDown } from "../../components/ui/DropDown";
 export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const {
