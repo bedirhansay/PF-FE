@@ -11,6 +11,8 @@ import { introAnimations } from "./animations";
 import clsx from "clsx";
 import style from "./intro.module.scss";
 
+import NextImage from "../../../components/NextImage/NextImage";
+
 export const Intro = () => {
   const { ref } = useSectionInView("Anasayfa");
 
@@ -18,13 +20,15 @@ export const Intro = () => {
     <section ref={ref} id="home" className={style["section-wrapper"]}>
       <div className={style["image-wrapper"]}>
         <motion.div key={"motion-div"} {...introAnimations.imageAnim}>
-          <Image
+          <NextImage
+            alt="profile"
+            width="200"
+            height="200"
+            sizes="(max-width: 768px) 100vw, (max-width:1200px) 50vw, 33vw"
+            className="h-40 w-40 rounded-full"
             src={ProfilePic}
-            alt="Bedirhan Portrait"
-            width="292"
-            height="292"
-            quality="95"
             priority={true}
+            loading="eager"
           />
         </motion.div>
 

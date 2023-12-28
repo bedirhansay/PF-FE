@@ -35,7 +35,7 @@ export const Footer = () => {
                   setTimeOfLastClick(Date.now());
                 }}
               >
-                <Link href={link.hash}>
+                <Link prefetch={false} href={link.hash}>
                   {link.name}
 
                   {link.name === activeSection && (

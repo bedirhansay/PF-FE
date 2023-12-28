@@ -13,6 +13,7 @@ import { GetBadgeIcon } from "@utils";
 import style from "./blog.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
+import CustomImage from "../../../components/NextImage/NextImage";
 
 export const BlogPage = () => {
   const data = blog.slice(0, 9);
@@ -33,13 +34,14 @@ export const BlogPage = () => {
       >
         {data.map((item, i) => (
           <SwiperSlide key={"swiper" + i} className={style["swiperSlide"]}>
-            <Image
-              style={{
-                aspectRatio: "1/1",
-              }}
+            <CustomImage
+              width={200}
+              height={200}
+              priority={false}
               className={style["sliderImage"]}
               src={item.image}
               alt={item.title}
+              sizes="(max-width: 768px) 100vw, (max-width:1200px) 50vw, 33vw"
             />
             <div className={style["text-wrapper"]}>
               <div className={style["first-text"]}>
@@ -66,7 +68,7 @@ export const BlogPage = () => {
                     width={40}
                     alt="profile"
                     src={ProfilePic}
-                    className="rounded-md "
+                    className="rounded-md"
                   ></Image>
                   <div className="flex flex-col">
                     <span className="text-xs font-semibold">Bedirhan Say</span>
