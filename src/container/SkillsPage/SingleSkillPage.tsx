@@ -67,7 +67,6 @@ export const SingleSkillPage = ({
         toast.success("Yetenek Güncellendi");
         setSelectedImage(null);
       } else {
-        console.log(res);
         toast.error("Yetenek güncellenemedi" + res.error.message);
       }
     } catch (error: any) {

@@ -14,14 +14,14 @@ import React, { useEffect, useState } from "react";
 import { callApi } from "@actions";
 import toast from "react-hot-toast";
 import { uploadImageToFirabase } from "@helper";
-import { StringToArray } from "@utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { BlogSchema } from "@validations";
 import { DeleteBox } from "@components";
-import { UploadInput } from "../../components/uploadInput";
-import { DropDown } from "../../components/ui/DropDown";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("../../components/Editor"), { ssr: false });
+
 export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const {
     register,
@@ -40,24 +40,19 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const [operation, setOperation] = useState<string>("");
   const [selectedItem, setSelectedItem] = useState<BlogDTO>();
   const [deleting, setDeleting] = useState(false);
-  const [catId, setCatId] = useState({
-    id: "",
-    name: "",
-  });
+  const [catId, setCatId] = useState<string>();
   const [categories, setCategories] = useState<CategoryDTO[]>();
+  const [model, setModel] = useState<any>();
 
-  const formFields = [
-    { name: "title", label: "Title", type: "text" },
-    { name: "description", label: "Description", type: "textarea" },
-  ];
+  const formFields = [{ name: "title", label: "Title", type: "text" }];
 
   const onSubmit = async (data: BlogDTO) => {
     setLoading(true);
-    console.log(data);
 
     const payloads = {
       ...data,
-      category: catId.id,
+      description: model,
+      category: catId,
       image: imageUrl?.toString(),
     };
     console.log(payloads);
@@ -68,7 +63,6 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
         path: "blog",
         payload: payloads,
       });
-      console.log(res);
 
       if (res.kind === "ok") {
         toast.success("Blog Yazısı Eklendi");
@@ -85,8 +79,6 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
       setLoading(false);
     }
   };
-
-  console.log(errors);
 
   const handleImageChange = async (
     e: React.ChangeEvent<HTMLInputElement>
@@ -127,21 +119,23 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
         setOpen(false);
         toast.success("Blog Yazısı silindi");
       }
-      console.log(res);
     } catch (error) {
       toast.error("Blog Yazısı Silinemedi");
       setOpen(false);
-      console.log(error);
     } finally {
       setDeleting(false);
     }
   };
+
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await callApi({ method: "get", path: "categories" });
       setCategories(data);
+      setCatId(data[0]._id);
     };
     fetchData();
+
+    return () => {};
   }, []);
 
   useEffect(() => {
@@ -150,14 +144,13 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
       setOpen(true);
       setSelectedItem(selectedSkill);
     }
+    return () => {};
   }, [selectedId, operation]);
 
   const buttonHandler = () => {
     setOperation("create");
     setOpen(true);
   };
-
-  console.log(blogs);
 
   return (
     <div>
@@ -184,15 +177,32 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
             className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div className="">
+            {selectedImage ? (
+              <>
+                <div className="w-full h-64 relative">
+                  <Image
+                    className="rounded border"
+                    alt=""
+                    fill
+                    src={selectedImage && URL.createObjectURL(selectedImage)}
+                  ></Image>
+                </div>
+                <Input
+                  className="hidden"
+                  id="pickFile"
+                  label="Fotoğraf Yükle"
+                  onChange={handleImageChange}
+                />
+              </>
+            ) : (
               <Input
                 className="hidden"
                 id="pickFile"
-                label="Fotoğraf Yükle"
                 onChange={handleImageChange}
                 type="file"
               />
-            </div>
+            )}
+
             <div key={imageUrl}>
               <label htmlFor="itemColor">Image Url</label>
               <Input
@@ -203,13 +213,21 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
               <ErrorMessage message={errors.image?.message} />
             </div>
 
-            <div className="flex gap-4">
-              <DropDown
-                title="Kategoriler"
-                onClick={setCatId}
-                data={categories}
-              />
-              <Input className="w-full" value={catId.name}></Input>
+            {/* //! Select Box */}
+            <div className="flex flex-col gap-4">
+              <label htmlFor="kategori">Ketegori Seç</label>
+
+              <select
+                onChange={(e) => setCatId(e.target.value)}
+                name="kategori"
+                className="bg-white border px-2 py-2 rounded"
+              >
+                {categories?.map((item) => (
+                  <option key={item._id} value={item._id}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="w-full flex flex-col gap-5 justify-between">
@@ -224,6 +242,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
                   />
                 </div>
               ))}
+              <Editor model={model} setModel={setModel} />
 
               <Button isLoading={loading} type="submit" variant="outline">
                 Kaydet

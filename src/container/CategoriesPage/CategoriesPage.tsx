@@ -48,13 +48,11 @@ export const CategoriesPage = ({
 
   const onSubmit = async (data: CategoryDTO) => {
     setLoading(true);
-    console.log(data);
 
     const payloads = {
       ...data,
       image: imageUrl?.toString(),
     };
-    console.log(payloads);
 
     try {
       const res = await callApi({
@@ -62,7 +60,6 @@ export const CategoriesPage = ({
         path: "categories",
         payload: payloads,
       });
-      console.log(res);
 
       if (res.kind === "ok") {
         toast.success("Proje Eklendi");
@@ -119,11 +116,9 @@ export const CategoriesPage = ({
         setOpen(false);
         toast.success("Kategori silindi");
       }
-      console.log(res);
     } catch (error) {
       toast.error("Kategori Silinemedi");
       setOpen(false);
-      console.log(error);
     } finally {
       setDeleting(false);
     }

@@ -122,7 +122,6 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
     } catch (error) {
       toast.error("Yetenek Silinemedi");
       setOpen(false);
-      console.log(error);
     } finally {
       setDeleting(false);
     }

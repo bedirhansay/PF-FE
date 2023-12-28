@@ -28,8 +28,6 @@ export const Contact = () => {
             action={async (formData) => {
               const { data, error } = await sendEmail(formData);
 
-              console.log("data", error);
-
               if (error) {
                 toast.error(error);
                 return;

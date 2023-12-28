@@ -12,7 +12,6 @@ import React, { useEffect, useState } from "react";
 import { callApi } from "@actions";
 import toast from "react-hot-toast";
 import { uploadImageToFirabase } from "@helper";
-import { StringToArray } from "@utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
@@ -35,21 +34,20 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
   const formFields = [
     { name: "_id", label: "ID", type: "text" },
     { name: "title", label: "Title", type: "text" },
-    { name: "slug", label: "Slug", type: "text" },
     { name: "description", label: "Description", type: "text" },
     { name: "viewCount", label: "View Count", type: "number" },
     { name: "category", label: "Category", type: "text" },
   ];
 
+  console.log(blog);
+
   const onSubmit = async (data: BlogDTO) => {
     setLoading(true);
-    console.log(data);
 
     const payloads = {
       ...data,
       image: imageUrl?.toString(),
     };
-    console.log(payloads);
 
     try {
       const res = await callApi({
@@ -109,12 +107,13 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
         className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className=" h-[250px]  relative grid grid-cols-2 gap-10 ">
+        <div className="w-full  relative ">
           <div className="relative">
             <Image
-              className="rounded border"
+              className="rounded border w-full h-64 "
               alt=""
-              fill
+              width={200}
+              height={200}
               src={
                 selectedImage
                   ? URL.createObjectURL(selectedImage)
@@ -128,7 +127,6 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
             id="pickFile"
             label="Fotoğraf Yükle"
             onChange={handleImageChange}
-            type="file"
           />
         </div>
 

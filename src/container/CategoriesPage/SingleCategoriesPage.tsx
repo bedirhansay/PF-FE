@@ -43,7 +43,6 @@ export const SingleCategoriesPage = ({
 
   const onSubmit = async (data: CategoryDTO) => {
     setLoading(true);
-    console.log(data);
 
     const payloads = {
       ...data,
@@ -56,7 +55,6 @@ export const SingleCategoriesPage = ({
         path: `/categories/${category._id}`,
         payload: payloads,
       });
-      console.log(res);
 
       if (res.kind === "ok") {
         toast.success("Kategori Güncellendi");

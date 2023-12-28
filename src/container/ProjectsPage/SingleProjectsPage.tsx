@@ -50,7 +50,6 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
 
   const onSubmit = async (data: ProjectDTO) => {
     setLoading(true);
-    console.log(data);
 
     const payloads = {
       ...data,
@@ -60,7 +59,6 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
       tasks: StringToArray(data.tasks),
       image: imageUrl?.toString(),
     };
-    console.log(payloads);
 
     try {
       const res = await callApi({
@@ -68,7 +66,6 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
         path: `/projects/${projects._id}`,
         payload: payloads,
       });
-      console.log(res);
 
       if (res.kind === "ok") {
         toast.success("Proje Güncellendi");

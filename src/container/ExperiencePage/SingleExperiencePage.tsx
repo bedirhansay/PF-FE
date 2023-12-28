@@ -48,15 +48,12 @@ export const SingleExperiencePage = ({
 
   const onSubmit = async (data: ExperienceDTO) => {
     setLoading(true);
-    console.log(data);
 
     const payloads = {
       ...data,
       skills: StringToArray(data.skills),
       image: imageUrl?.toString(),
     };
-    console.log(payloads);
-
     try {
       const res = await callApi({
         method: "patch",
@@ -66,7 +63,6 @@ export const SingleExperiencePage = ({
 
       if (res.kind === "ok") {
         toast.success("Deneyim Güncellendi");
-
         reset();
         setImageUrl("");
       } else {

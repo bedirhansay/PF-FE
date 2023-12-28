@@ -55,7 +55,6 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
 
   const onSubmit = async (data: ProjectDTO) => {
     setLoading(true);
-    console.log(data);
 
     const payloads = {
       ...data,
@@ -65,7 +64,6 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
       tasks: StringToArray(data.tasks),
       image: imageUrl?.toString(),
     };
-    console.log(payloads);
 
     try {
       const res = await callApi({
@@ -73,11 +71,9 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
         path: "projects",
         payload: payloads,
       });
-      console.log(res);
 
       if (res.kind === "ok") {
         toast.success("Proje Eklendi");
-
         reset();
         setImageUrl("");
       } else {
@@ -133,7 +129,6 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
     } catch (error) {
       toast.error("Proje Silinemedi");
       setOpen(false);
-      console.log(error);
     } finally {
       setDeleting(false);
     }

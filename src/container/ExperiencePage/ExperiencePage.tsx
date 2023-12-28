@@ -54,14 +54,12 @@ export const ExperiencePage = ({
 
   const onSubmit = async (data: ExperienceDTO) => {
     setLoading(true);
-    console.log(data);
 
     const payloads = {
       ...data,
       skills: StringToArray(data.skills),
       image: imageUrl?.toString(),
     };
-    console.log(payloads);
 
     try {
       const res = await callApi({
@@ -69,12 +67,10 @@ export const ExperiencePage = ({
         path: "experience",
         payload: payloads,
       });
-      console.log(res);
 
       if (res.kind === "ok") {
         toast.success("Deneyim Eklendi");
-
-        // reset();
+        reset();
         setImageUrl("");
       } else {
         toast.error("Deneyim Eklenemedi" + res.error.message);
@@ -82,7 +78,7 @@ export const ExperiencePage = ({
     } catch (error: any) {
       toast.error(`Deneyim  Güncellenemedi: ${error.message}`);
     } finally {
-      // setOpen(false);
+      setOpen(false);
       setLoading(false);
     }
   };
@@ -126,11 +122,9 @@ export const ExperiencePage = ({
         setOpen(false);
         toast.success("Deneyim silindi");
       }
-      console.log(res);
     } catch (error) {
       toast.error("Deneyim Silinemedi");
       setOpen(false);
-      console.log(error);
     } finally {
       setDeleting(false);
     }
