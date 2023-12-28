@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { callApi } from "../../../lib/actions/__api.actions";
-import { ProjectsPage } from "../../../container/ProjectsPage/ProjectsPage";
+import { ProjectsPage } from "../../../container/Admin/ProjectsPage/ProjectsPage";
 export const metadata: Metadata = {
   title: "Projects",
   description:

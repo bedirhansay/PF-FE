@@ -1,3 +1,9 @@
+.section {
+  @apply backdrop-blur-3xl max-w-7xl mx-auto pt-1 bg-gray-900 w-screen h-44 text-center flex items-center justify-center text-white flex-col gap-4;
+  // background: url("../../../public/footer-bg.png") no-repeat center center/cover;
+  backdrop-filter: blur(3xl);
+}
+
 .outer-html {
   @apply px-4 py-4;
   ul {

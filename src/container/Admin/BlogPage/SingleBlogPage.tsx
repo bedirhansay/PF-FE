@@ -1,82 +1,76 @@
 "use client";
 
+import { BlogDTO } from "@types";
 import {
   Breadcrumb,
   Button,
-  DataTables,
   ErrorMessage,
   HeadingSection,
   Input,
-  Modal,
 } from "@components/ui";
 import React, { useEffect, useState } from "react";
-import { ProjectDTO } from "@types";
 import { callApi } from "@actions";
 import toast from "react-hot-toast";
 import { uploadImageToFirabase } from "@helper";
-import { StringToArray } from "@utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
-import { ProjectSchema } from "../../lib/validation/_skills.validation";
-import { DeleteBox } from "@components";
+import { BlogSchema } from "@validations";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("../../../components/Editor"), {
+  ssr: false,
+});
 
-export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
+export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ProjectDTO>({
-    resolver: joiResolver(ProjectSchema),
+  } = useForm<BlogDTO>({
+    resolver: joiResolver(BlogSchema),
   });
 
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
+  const [model, setModel] = useState(blog.description);
 
+  console.log(blog);
   const formFields = [
-    { name: "company", label: "Company", type: "text" },
-    { name: "projectName", label: "Project Name", type: "text" },
-    { name: "time", label: "Time", type: "text" },
-    { name: "area", label: "Area", type: "text" },
-    { name: "tags", label: "Tags", type: "text" },
-    { name: "description", label: "Description", type: "text" },
-    { name: "goals", label: "Goals", type: "textarea" },
-    { name: "scope", label: "Scope", type: "text" },
-    { name: "requirements", label: "Requirements", type: "textarea" },
-    { name: "tasks", label: "Tasks", type: "text" },
+    { name: "_id", label: "ID", type: "text" },
+    { name: "title", label: "Title", type: "text" },
+    { name: "category", label: "Category", type: "text" },
   ];
 
-  const onSubmit = async (data: ProjectDTO) => {
+  console.log(errors);
+
+  const onSubmit = async (data: BlogDTO) => {
     setLoading(true);
 
     const payloads = {
       ...data,
-      tags: StringToArray(data.tags),
-      goals: StringToArray(data.goals),
-      requirements: StringToArray(data?.requirements),
-      tasks: StringToArray(data.tasks),
-      image: imageUrl?.toString(),
+      description: model,
+      image: imageUrl?.toString() || blog.image,
     };
 
     try {
       const res = await callApi({
         method: "patch",
-        path: `/projects/${projects._id}`,
+        path: `/blog/${blog._id}`,
         payload: payloads,
       });
 
       if (res.kind === "ok") {
-        toast.success("Proje Güncellendi");
+        toast.success("Blog Güncellendi");
 
         reset();
         setImageUrl("");
       } else {
-        toast.error("Proje Güncellendi" + res.error.message);
+        toast.error("Blog Güncellenemedi" + res.error.message);
       }
     } catch (error: any) {
-      toast.error(`Proje  Güncellenemedi: ${error.message}`);
+      toast.error(`Blog  Güncellenemedi: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -111,39 +105,42 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
 
   return (
     <div>
-      <Breadcrumb page="Projeler" sub={projects.projectName} />
-      <HeadingSection title="Projeler" showButton />
+      <Breadcrumb page="blog" sub={blog.title} />
+      <HeadingSection title="Deneyimler" />
 
       <form
         className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex-between">
-          <Image
-            width={200}
-            height={100}
-            className="rounded border"
-            alt=""
-            src={
-              selectedImage
-                ? URL.createObjectURL(selectedImage)
-                : projects.image
-            }
-          ></Image>
+        <div className="w-full  relative ">
+          <div className="relative">
+            <Image
+              className="rounded border w-full h-64 "
+              alt=""
+              width={200}
+              height={200}
+              src={
+                selectedImage
+                  ? URL.createObjectURL(selectedImage)
+                  : (blog.image as string)
+              }
+            ></Image>
+          </div>
 
           <Input
             className="hidden"
             id="pickFile"
             label="Fotoğraf Yükle"
             onChange={handleImageChange}
-            type="file"
           />
         </div>
+        <strong>{blog.slug}</strong>
+
         <div key={imageUrl}>
           <label htmlFor="itemColor">Image Url</label>
           <Input
             {...register("image")}
-            value={(imageUrl as string) || projects.image}
+            value={(imageUrl as string) || blog.image}
             placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
           />
           <ErrorMessage message={errors.image?.message} />
@@ -155,7 +152,7 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
               <label htmlFor={field.name}>{field.label}</label>
               <Input
                 //@ts-ignore
-                defaultValue={projects[field.name]}
+                defaultValue={blog[field.name]}
                 {...register(field.name as any)}
                 type={field.type}
               />
@@ -164,6 +161,7 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
               />
             </div>
           ))}
+          <Editor model={model} setModel={setModel} />
 
           <Button isLoading={loading} type="submit" variant="outline">
             Kaydet

@@ -51,7 +51,6 @@ export const callApi = async ({
     if (response.status >= 200 && response.status < 300) {
       return { kind: "ok", data: response.data };
     } else {
-      console.log(response.data);
       return { kind: "error", error: response.data, status: response.status };
     }
   } catch (error) {

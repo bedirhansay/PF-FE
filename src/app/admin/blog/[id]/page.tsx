@@ -1,4 +1,4 @@
-import { SingleBlogPage } from "../../../../container/BlogPage/SingleBlogPage";
+import { SingleBlogPage } from "../../../../container/Admin/BlogPage/SingleBlogPage";
 import { callApi } from "../../../../lib/actions/__api.actions";
 
 export default async function page({ params }: { params: { id: string } }) {

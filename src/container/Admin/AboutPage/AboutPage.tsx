@@ -2,12 +2,14 @@
 
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { AboutDTO } from "../../lib/types/types";
+import { AboutDTO } from "../../../lib/types/types";
 import { Button } from "@components/ui";
 import { updateAbout } from "@actions";
 import toast, { LoaderIcon } from "react-hot-toast";
 
-const Editor = dynamic(() => import("../../components/Editor"), { ssr: false });
+const Editor = dynamic(() => import("../../../components/Editor"), {
+  ssr: false,
+});
 
 export const AboutPage = ({ about }: { about: AboutDTO[] }) => {
   const [loading, setLoading] = useState(false);

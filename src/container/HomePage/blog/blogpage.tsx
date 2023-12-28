@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { Heading } from "@components/ui";
+import { Button, Heading } from "@components/ui";
 import { blog } from "@constant";
 import { BsEye, BsArrowRightShort } from "react-icons/bs";
 import { useSize, useSectionInView } from "@hooks";
@@ -23,7 +23,6 @@ export const BlogPage = () => {
   return (
     <div ref={ref} id="blog" className={style["parent"]}>
       <Heading title="Blog Yazıları" link="blog" />
-
       <Swiper
         navigation={true}
         modules={[Navigation]}
@@ -86,6 +85,19 @@ export const BlogPage = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div className="flex justify-center">
+        <Button className="mt-8" variant="outline">
+          <Link
+            href={{
+              pathname: "blog",
+              query: { page: 1 },
+            }}
+          >
+            {" "}
+            Tüm Blog Yazları
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 };

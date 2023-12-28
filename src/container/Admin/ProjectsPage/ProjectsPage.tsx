@@ -1,34 +1,34 @@
 "use client";
 
+import {
+  Breadcrumb,
+  Button,
+  DataTables,
+  ErrorMessage,
+  HeadingSection,
+  Input,
+  Modal,
+} from "@components/ui";
 import React, { useEffect, useState } from "react";
-import { LoaderIcon, toast } from "react-hot-toast";
+import { ProjectDTO } from "@types";
+import { callApi } from "@actions";
+import toast from "react-hot-toast";
+import { uploadImageToFirabase } from "@helper";
+import { StringToArray } from "@utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import {
-  Button,
-  ErrorMessage,
-  Input,
-  SkillCard,
-  Modal,
-  Breadcrumb,
-  HeadingSection,
-} from "@components/ui";
-import { SkillSchema } from "@validations";
-import { SkillsDTO } from "@types";
 import Image from "next/image";
-import { uploadImageToFirabase } from "../../lib/helper/UploadImageToFirabase";
-import { callApi } from "@actions";
-import { StringToArray } from "@utils";
-import { DeleteBox } from "../../components/DeleteBox";
+import { ProjectSchema } from "../../../lib/validation/_skills.validation";
+import { DeleteBox } from "@components";
 
-export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
+export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<SkillsDTO>({
-    resolver: joiResolver(SkillSchema),
+  } = useForm<ProjectDTO>({
+    resolver: joiResolver(ProjectSchema),
   });
 
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -36,37 +36,51 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string>("");
-  const [operation, setOperation] = useState("");
-  const [selectedItem, setSelectedItem] = useState<SkillsDTO>();
+  const [operation, setOperation] = useState<string>("");
+  const [selectedItem, setSelectedItem] = useState<ProjectDTO>();
   const [deleting, setDeleting] = useState(false);
 
-  const onSubmit = async (data: SkillsDTO) => {
-    setLoading(true);
+  const formFields = [
+    { name: "company", label: "Company", type: "text" },
+    { name: "projectName", label: "Project Name", type: "text" },
+    { name: "time", label: "Time", type: "text" },
+    { name: "area", label: "Area", type: "text" },
+    { name: "tags", label: "Tags", type: "text" },
+    { name: "description", label: "Description", type: "text" },
+    { name: "goals", label: "Goals", type: "textarea" },
+    { name: "scope", label: "Scope", type: "text" },
+    { name: "requirements", label: "Requirements", type: "textarea" },
+    { name: "tasks", label: "Tasks", type: "text" },
+  ];
 
-    const itemsArray = StringToArray(data.items);
+  const onSubmit = async (data: ProjectDTO) => {
+    setLoading(true);
 
     const payloads = {
       ...data,
-      items: itemsArray,
+      tags: StringToArray(data?.tags),
+      goals: StringToArray(data.goals),
+      requirements: StringToArray(data?.requirements),
+      tasks: StringToArray(data.tasks),
       image: imageUrl?.toString(),
     };
 
     try {
       const res = await callApi({
         method: "post",
-        path: "skills",
+        path: "projects",
         payload: payloads,
       });
 
       if (res.kind === "ok") {
-        toast.success("Yetenek Eklendi");
+        toast.success("Proje Eklendi");
         reset();
         setImageUrl("");
       } else {
-        toast.error("Yetenek Eklenemedi" + res.error.message);
+        toast.error("Proje Eklenemedi" + res.error.message);
       }
     } catch (error: any) {
-      toast.error(`Yetenek  Güncellenemedi ${error.message}`);
+      toast.error(`Proje  Güncellenemedi: ${error.message}`);
     } finally {
       setOpen(false);
       setLoading(false);
@@ -99,28 +113,21 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
       setLoading(false);
     }
   };
-  const formFields = [
-    { name: "title", label: "Title", type: "text" },
-    { name: "items", label: "Items", type: "text" },
-    { name: "image", label: "Image", type: "text" },
-    { name: "bgColor", label: "Background Color", type: "text" },
-    { name: "itemColor", label: "Item Color", type: "text" },
-  ];
 
   const onDelete = async () => {
     setDeleting(true);
     try {
       const res = await callApi({
         method: "delete",
-        path: `skills/${selectedId}`,
+        path: `projects/${selectedId}`,
       });
 
       if (res.kind === "ok") {
         setOpen(false);
-        toast.success("Yetenek silindi");
+        toast.success("Proje silindi");
       }
     } catch (error) {
-      toast.error("Yetenek Silinemedi");
+      toast.error("Proje Silinemedi");
       setOpen(false);
     } finally {
       setDeleting(false);
@@ -128,7 +135,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   };
 
   useEffect(() => {
-    const selectedSkill = skills.find((item) => item._id === selectedId);
+    const selectedSkill = projects.find((item) => item._id === selectedId);
     if (selectedId) {
       setOpen(true);
       setSelectedItem(selectedSkill);
@@ -139,30 +146,25 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
     setOperation("create");
     setOpen(true);
   };
-
   return (
-    <section className="basis !w-full flex-col mb-20  p-2">
-      <Breadcrumb page="Skill" />
-
+    <div>
+      <Breadcrumb page="Projeler" />
       <HeadingSection
-        title="Deneyimler"
+        title="Projeler"
         showButton
         onButtonClick={buttonHandler}
       />
-
-      <SkillCard
-        setOpen={setOpen}
-        skills={skills}
-        setSelectedId={setSelectedId}
+      <DataTables
         setOperation={setOperation}
+        setId={setSelectedId}
+        data={projects}
       />
-
       <Modal onClose={setOpen} isOpen={open}>
         {operation === "del" ? (
           <DeleteBox
             loading={deleting}
             onClick={onDelete}
-            title={selectedItem?.title}
+            title={selectedItem?.company}
           />
         ) : (
           <form
@@ -209,13 +211,13 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
                 </div>
               ))}
 
-              <Button type="submit" variant="outline">
-                {loading ? <LoaderIcon /> : "Kaydet"}
+              <Button isLoading={loading} type="submit" variant="outline">
+                Kaydet
               </Button>
             </div>
           </form>
         )}
       </Modal>
-    </section>
+    </div>
   );
 };
