@@ -15,12 +15,12 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   // Blog filtreleme fonksiyonu
-  const filteredBlogs = blogs.filter((item) => {
-    return (
-      item.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (selectedCategory === "" || item.category.name === selectedCategory)
-    );
-  });
+  // const filteredBlogs = blogs.filter((item) => {
+  //   return (
+  //     item.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+  //     (selectedCategory === "" || item.category.name === selectedCategory)
+  //   );
+  // });
 
   const searchParams = useSearchParams();
   const search = searchParams.get("page");
