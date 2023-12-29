@@ -3,7 +3,6 @@
 import { useSectionInView } from "@hooks";
 import { Heading } from "@components/ui";
 import { motion } from "framer-motion";
-import { experiencesData } from "@constant";
 import { experinceAnimations } from "./animations";
 import style from "./experience.module.scss";
 import { useEffect, useState } from "react";
@@ -12,12 +11,12 @@ import { callApi } from "../../../lib/actions/__api.actions";
 
 export const Deneyim = () => {
   const { ref, view } = useSectionInView("Deneyim", 0.9);
-  const [experience, setExperience] = useState<ExperienceDTO>();
+  const [experience, setExperience] = useState<ExperienceDTO[]>();
 
   useEffect(() => {
     const fetchExperience = async () => {
       const { data } = await callApi({ method: "get", path: "experience" });
-      console.log(data);
+      setExperience(data);
     };
     fetchExperience();
   }, []);
@@ -26,7 +25,7 @@ export const Deneyim = () => {
     <section id="experience" ref={ref} className={style.sectionWrapper}>
       <Heading title="Deneyim" link="experience" />
 
-      {experiencesData.map((item, index) => (
+      {experience?.map((item, index) => (
         <motion.div
           {...experinceAnimations(index)}
           className={style.boxWrapper}
@@ -42,13 +41,10 @@ export const Deneyim = () => {
                 {item.date} / {item.position}{" "}
               </p>
             </div>
-            <ul className={style.resp}>
-              {item.responsibilities.map((skill, innerIndex) => (
-                <li className="list-disc" key={item.title + innerIndex}>
-                  {skill}
-                </li>
-              ))}
-            </ul>
+            <div
+              dangerouslySetInnerHTML={{ __html: item.description }}
+              className={style.resp}
+            ></div>
 
             <div className={style.tech}>
               {item.skills.map((skill, innerIndex) => (

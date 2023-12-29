@@ -106,7 +106,7 @@ export const ExperiencePage = ({
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url || "");
+      setImageUrl(() => img?.url || "");
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -199,7 +199,7 @@ export const ExperiencePage = ({
                 type="file"
               />
             )}
-            <div key={imageUrl}>
+            <div>
               <label htmlFor="itemColor">Image Url</label>
               <Input
                 {...register("image")}

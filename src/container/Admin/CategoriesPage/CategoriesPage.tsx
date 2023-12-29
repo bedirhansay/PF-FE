@@ -51,7 +51,7 @@ export const CategoriesPage = ({
 
     const payloads = {
       ...data,
-      image: imageUrl?.toString(),
+      // image: imageUrl?.toString(),
     };
 
     try {
@@ -94,7 +94,8 @@ export const CategoriesPage = ({
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url || "");
+      setImageUrl(() => img?.url || "");
+      console.log(imageUrl);
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -138,7 +139,7 @@ export const CategoriesPage = ({
   };
   return (
     <div>
-      <Breadcrumb page="Projeler" />
+      <Breadcrumb page="categories" />
       <HeadingSection
         title="Projeler"
         showButton
@@ -186,7 +187,7 @@ export const CategoriesPage = ({
                 type="file"
               />
             )}
-            <div key={imageUrl}>
+            <div>
               <label htmlFor="itemColor">Image Url</label>
               <Input
                 {...register("image")}

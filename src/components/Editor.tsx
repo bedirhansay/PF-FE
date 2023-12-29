@@ -13,21 +13,23 @@ interface IProp {
 
 const Editor: React.FC<IProp> = ({ model, setModel }) => {
   return (
-    <FroalaEditor
-      model={model}
-      onModelChange={(e: any) => setModel(e)}
-      config={{
-        saveInterval: 2000,
-        placeholderText: "Edit Your Content Here!",
-        charCounterCount: true,
-        events: {
-          "save.before": function (html: string) {
-            localStorage.setItem("savedText", html);
+    <>
+      <FroalaEditor
+        model={model}
+        onModelChange={(e: any) => setModel(e)}
+        config={{
+          saveInterval: 2000,
+          placeholderText: "Edit Your Content Here!",
+          charCounterCount: true,
+          events: {
+            "save.before": function (html: string) {
+              localStorage.setItem("savedText", html);
+            },
           },
-        },
-        tag: "textarea",
-      }}
-    />
+          tag: "textarea",
+        }}
+      />
+    </>
   );
 };
 

@@ -99,7 +99,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url || "");
+      setImageUrl(() => img?.url || "");
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -205,7 +205,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
               />
             )}
 
-            <div key={imageUrl}>
+            <div>
               <label htmlFor="itemColor">Image Url</label>
               <Input
                 {...register("image")}

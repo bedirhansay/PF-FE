@@ -36,14 +36,11 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
   const [loading, setLoading] = useState(false);
   const [model, setModel] = useState(blog.description);
 
-  console.log(blog);
   const formFields = [
     { name: "_id", label: "ID", type: "text" },
     { name: "title", label: "Title", type: "text" },
     { name: "category", label: "Category", type: "text" },
   ];
-
-  console.log(errors);
 
   const onSubmit = async (data: BlogDTO) => {
     setLoading(true);
@@ -93,7 +90,7 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url || "");
+      setImageUrl(() => img?.url || "");
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -136,7 +133,7 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
         </div>
         <strong>{blog.slug}</strong>
 
-        <div key={imageUrl}>
+        <div>
           <label htmlFor="itemColor">Image Url</label>
           <Input
             {...register("image")}

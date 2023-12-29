@@ -41,7 +41,7 @@ export type ProjectDTO = {
   goals?: string[];
   scope?: string;
   requirements?: string[];
-  tasks?: string[];
+  tasks: string;
   createdAt?: string;
 };
 

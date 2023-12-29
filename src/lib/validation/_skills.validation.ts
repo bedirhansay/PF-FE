@@ -21,7 +21,7 @@ export const ProjectSchema = Joi.object({
   goals: Joi.string().required(),
   scope: Joi.string().required(),
   requirements: Joi.string().required(),
-  tasks: Joi.string().optional(),
+  tasks: Joi.string(),
 });
 
 export const CategorySchema = Joi.object({

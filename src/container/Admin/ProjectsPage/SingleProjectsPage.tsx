@@ -3,11 +3,9 @@
 import {
   Breadcrumb,
   Button,
-  DataTables,
   ErrorMessage,
   HeadingSection,
   Input,
-  Modal,
 } from "@components/ui";
 import React, { useEffect, useState } from "react";
 import { ProjectDTO } from "@types";
@@ -19,9 +17,13 @@ import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { ProjectSchema } from "../../../lib/validation/_skills.validation";
-import { DeleteBox } from "@components";
+import dynamic from "next/dynamic";
 
-export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
+const Editor = dynamic(() => import("../../../components/Editor"), {
+  ssr: false,
+});
+
+export const SingleProjectsPage = ({ project }: { project: ProjectDTO }) => {
   const {
     register,
     handleSubmit,
@@ -34,6 +36,7 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
+  const [model, setModel] = useState(project.tasks);
 
   const formFields = [
     { name: "company", label: "Company", type: "text" },
@@ -45,7 +48,6 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
     { name: "goals", label: "Goals", type: "textarea" },
     { name: "scope", label: "Scope", type: "text" },
     { name: "requirements", label: "Requirements", type: "textarea" },
-    { name: "tasks", label: "Tasks", type: "textarea" },
   ];
 
   const onSubmit = async (data: ProjectDTO) => {
@@ -56,14 +58,14 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
       tags: StringToArray(data.tags),
       goals: StringToArray(data.goals),
       requirements: StringToArray(data?.requirements),
-      tasks: StringToArray(data.tasks),
+      tasks: model,
       image: imageUrl?.toString(),
     };
 
     try {
       const res = await callApi({
         method: "patch",
-        path: `/projects/${projects._id}`,
+        path: `/projects/${project._id}`,
         payload: payloads,
       });
 
@@ -99,7 +101,8 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url || "");
+      setImageUrl(() => img?.url || "");
+
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -111,7 +114,7 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
 
   return (
     <div>
-      <Breadcrumb page="projects" sub={projects.projectName} />
+      <Breadcrumb page="projects" sub={project.projectName} />
       <HeadingSection title="Projeler" showButton />
 
       <form
@@ -128,7 +131,7 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
               src={
                 selectedImage
                   ? URL.createObjectURL(selectedImage)
-                  : (projects.image as string)
+                  : (project.image as string)
               }
             ></Image>
           </div>
@@ -140,11 +143,12 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
             onChange={handleImageChange}
           />
         </div>
-        <div key={imageUrl}>
+
+        <div>
           <label htmlFor="itemColor">Image Url</label>
           <Input
             {...register("image")}
-            value={(imageUrl as string) || projects.image}
+            value={(imageUrl as string) || project.image}
             placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
           />
           <ErrorMessage message={errors.image?.message} />
@@ -156,7 +160,7 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
               <label htmlFor={field.name}>{field.label}</label>
               <Input
                 //@ts-ignore
-                defaultValue={projects[field.name]}
+                defaultValue={project[field.name]}
                 {...register(field.name as any)}
                 type={field.type}
               />
@@ -165,7 +169,8 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
               />
             </div>
           ))}
-
+          Tasks
+          <Editor model={model} setModel={setModel} />
           <Button isLoading={loading} type="submit" variant="outline">
             Kaydet
           </Button>

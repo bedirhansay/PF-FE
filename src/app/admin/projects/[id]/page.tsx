@@ -5,5 +5,5 @@ export default async function page({ params }: { params: { id: string } }) {
   const { id } = params;
   const { data } = await callApi({ method: "get", path: `/projects/${id}` });
 
-  return <SingleProjectsPage projects={data} />;
+  return <SingleProjectsPage project={data} />;
 }

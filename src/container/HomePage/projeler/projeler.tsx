@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { projectDatas } from "@constant";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,6 +9,8 @@ import style from "./projeler.module.scss";
 import { ProjectsAnim } from "./animations";
 
 import "swiper/css";
+import { ProjectDTO } from "../../../lib/types/types";
+import { callApi } from "@actions";
 export const Projeler = () => {
   const [activeProject, setActiveProject] = useState(0);
 
@@ -17,6 +19,16 @@ export const Projeler = () => {
   const handleClick = (index: number) => {
     setActiveProject(index);
   };
+  const [projects, setprojects] = useState<ProjectDTO[]>();
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const { data } = await callApi({ method: "get", path: "projects" });
+      setprojects(data);
+    };
+    console.log
+    fetchProjects();
+  }, []);
 
   return (
     <div ref={ref} id="projects" className={style["projects-container"]}>

@@ -20,7 +20,10 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { ProjectSchema } from "../../../lib/validation/_skills.validation";
 import { DeleteBox } from "@components";
-
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("../../../components/Editor"), {
+  ssr: false,
+});
 export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
   const {
     register,
@@ -39,18 +42,22 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
   const [operation, setOperation] = useState<string>("");
   const [selectedItem, setSelectedItem] = useState<ProjectDTO>();
   const [deleting, setDeleting] = useState(false);
+  const [model, setModel] = useState();
 
   const formFields = [
     { name: "company", label: "Company", type: "text" },
     { name: "projectName", label: "Project Name", type: "text" },
     { name: "time", label: "Time", type: "text" },
     { name: "area", label: "Area", type: "text" },
-    { name: "tags", label: "Tags", type: "text" },
+    { name: "tags", label: "Tags - (Seperate with , )", type: "text" },
     { name: "description", label: "Description", type: "text" },
     { name: "goals", label: "Goals", type: "textarea" },
     { name: "scope", label: "Scope", type: "text" },
-    { name: "requirements", label: "Requirements", type: "textarea" },
-    { name: "tasks", label: "Tasks", type: "text" },
+    {
+      name: "requirements",
+      label: "Requirements - (Seperate with , )",
+      type: "textarea",
+    },
   ];
 
   const onSubmit = async (data: ProjectDTO) => {
@@ -61,7 +68,7 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
       tags: StringToArray(data?.tags),
       goals: StringToArray(data.goals),
       requirements: StringToArray(data?.requirements),
-      tasks: StringToArray(data.tasks),
+      tasks: model,
       image: imageUrl?.toString(),
     };
 
@@ -104,7 +111,7 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url || "");
+      setImageUrl(() => img?.url || "");
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -196,7 +203,7 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
                 type="file"
               />
             )}
-            <div key={imageUrl}>
+            <div>
               <label htmlFor="itemColor">Image Url</label>
               <Input
                 {...register("image")}
@@ -218,7 +225,8 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
                   />
                 </div>
               ))}
-
+              Tasks
+              <Editor model={model} setModel={setModel} />
               <Button isLoading={loading} type="submit" variant="outline">
                 Kaydet
               </Button>

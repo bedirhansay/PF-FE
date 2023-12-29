@@ -18,6 +18,7 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { ExperienceSchema } from "@validations";
 import dynamic from "next/dynamic";
+
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
 });
@@ -47,7 +48,7 @@ export const SingleExperiencePage = ({
     { name: "location", label: "Location", type: "text" },
     { name: "position", label: "Position", type: "text" },
     { name: "date", label: "Date", type: "text" },
-    { name: "skills", label: "Skills", type: "text" },
+    { name: "skills", label: "Skills", type: "textarea" },
   ];
 
   const onSubmit = async (data: ExperienceDTO) => {
@@ -80,7 +81,6 @@ export const SingleExperiencePage = ({
       setLoading(false);
     }
   };
-  console.log(errors);
 
   const handleImageChange = async (
     e: React.ChangeEvent<HTMLInputElement>
@@ -99,7 +99,7 @@ export const SingleExperiencePage = ({
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url || "");
+      setImageUrl(() => img?.url || "");
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -140,7 +140,7 @@ export const SingleExperiencePage = ({
             onChange={handleImageChange}
           />
         </div>
-        <div key={imageUrl}>
+        <div>
           <label htmlFor="itemColor">Image Url</label>
           <Input
             {...register("image")}
@@ -165,8 +165,8 @@ export const SingleExperiencePage = ({
               />
             </div>
           ))}
+          Description
           <Editor model={model} setModel={setModel} />
-
           <Button isLoading={loading} type="submit" variant="outline">
             Kaydet
           </Button>

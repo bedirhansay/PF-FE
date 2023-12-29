@@ -54,7 +54,6 @@ export const callApi = async ({
       return { kind: "error", error: response.data, status: response.status };
     }
   } catch (error) {
-    console.log(error);
     const axiosError = error as AxiosError;
     return {
       kind: "error",

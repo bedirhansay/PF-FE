@@ -25,7 +25,7 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const searchParams = useSearchParams();
   const search = searchParams.get("page");
   const pages = [1, 2, 3, 4, 5];
-  const categories = [...new Set(blogs.map((item) => item.category.name))];
+  // const categories = [...new Set(blogs.map((item) => item.category.name))];
 
   return (
     <div className="overflow-x-hidden">
@@ -85,7 +85,7 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
           </div>
           {/* //! Blogs */}
           <div className={style["ul-container"]}>
-            {blogs.map((item) => (
+            {blogs?.map((item) => (
               <div
                 key={item._id}
                 className=" p-4 hover:scale-105 border transition ease-in-out duration-200 flex flex-col items-center justify-between gap-4 bg-white border-gray-300 shadow-md rounded-md"

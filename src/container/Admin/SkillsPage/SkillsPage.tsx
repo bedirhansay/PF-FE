@@ -90,7 +90,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
       };
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
-      setImageUrl(img?.url || "");
+      setImageUrl(() => img?.url || "");
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
@@ -194,7 +194,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
                 type="file"
               />
             )}
-            <div key={imageUrl}>
+            <div>
               <label htmlFor="itemColor">Image Url</label>
               <Input
                 {...register("image")}

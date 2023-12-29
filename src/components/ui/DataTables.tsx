@@ -101,7 +101,9 @@ export const DataTables: React.FC<DataTablesProps> = ({
             className="text-xs text-center hover:bg-green-400"
             key={`td${index}` + rowData[field]}
           >
-            {rowData[field][0] ? rowData[field][0] : rowData[field]?.name}
+            {rowData[field][0]
+              ? Truncate(rowData[field][0], 50)
+              : Truncate(rowData[field]?.name, 50)}
           </td>
         );
       }
