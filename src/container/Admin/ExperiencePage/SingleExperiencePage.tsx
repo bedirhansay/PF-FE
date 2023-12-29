@@ -111,12 +111,13 @@ export const SingleExperiencePage = ({
         className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className=" h-[250px]  relative grid grid-cols-2 gap-10 ">
+        <div className="w-full  relative ">
           <div className="relative">
             <Image
-              className="rounded border"
+              className="rounded border w-full h-64 "
               alt=""
-              fill
+              width={200}
+              height={200}
               src={
                 selectedImage
                   ? URL.createObjectURL(selectedImage)
@@ -130,7 +131,6 @@ export const SingleExperiencePage = ({
             id="pickFile"
             label="Fotoğraf Yükle"
             onChange={handleImageChange}
-            type="file"
           />
         </div>
         <div key={imageUrl}>

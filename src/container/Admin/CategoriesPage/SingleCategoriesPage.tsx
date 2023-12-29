@@ -107,27 +107,29 @@ export const SingleCategoriesPage = ({
         className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex-between">
-          <Image
-            width={200}
-            height={100}
-            className="rounded border"
-            alt=""
-            src={
-              selectedImage
-                ? URL.createObjectURL(selectedImage)
-                : category.image
-            }
-          ></Image>
+        <div className="w-full  relative ">
+          <div className="relative">
+            <Image
+              className="rounded border w-full h-64 "
+              alt=""
+              width={200}
+              height={200}
+              src={
+                selectedImage
+                  ? URL.createObjectURL(selectedImage)
+                  : (category.image as string)
+              }
+            ></Image>
+          </div>
 
           <Input
             className="hidden"
             id="pickFile"
             label="Fotoğraf Yükle"
             onChange={handleImageChange}
-            type="file"
           />
         </div>
+
         <div key={imageUrl}>
           <label htmlFor="itemColor">Image Url</label>
           <Input

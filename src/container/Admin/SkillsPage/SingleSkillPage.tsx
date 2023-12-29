@@ -113,12 +113,13 @@ export const SingleSkillPage = ({
         onSubmit={handleSubmit(onSubmit)}
       >
         <strong>{singleSkill?.title}</strong>
-        <div className=" h-[250px]  relative grid grid-cols-2 gap-10 ">
+        <div className="w-full  relative ">
           <div className="relative">
             <Image
-              className="rounded border w-96"
+              className="rounded border w-full h-64 "
               alt=""
-              fill
+              width={200}
+              height={200}
               src={
                 selectedImage
                   ? URL.createObjectURL(selectedImage)
@@ -132,7 +133,6 @@ export const SingleSkillPage = ({
             id="pickFile"
             label="Fotoğraf Yükle"
             onChange={handleImageChange}
-            type="file"
           />
         </div>
 

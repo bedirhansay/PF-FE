@@ -167,23 +167,31 @@ export const ExperiencePage = ({
             className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div className="flex-between">
-              <Image
-                width={200}
-                height={100}
-                className="rounded border"
-                alt=""
-                src={selectedImage ? URL.createObjectURL(selectedImage) : ""}
-              ></Image>
-
+            {selectedImage ? (
+              <>
+                <div className="w-full h-64 relative">
+                  <Image
+                    className="rounded border"
+                    alt=""
+                    fill
+                    src={selectedImage && URL.createObjectURL(selectedImage)}
+                  ></Image>
+                </div>
+                <Input
+                  className="hidden"
+                  id="pickFile"
+                  label="Fotoğraf Yükle"
+                  onChange={handleImageChange}
+                />
+              </>
+            ) : (
               <Input
                 className="hidden"
                 id="pickFile"
-                label="Fotoğraf Yükle"
                 onChange={handleImageChange}
                 type="file"
               />
-            </div>
+            )}
             <div key={imageUrl}>
               <label htmlFor="itemColor">Image Url</label>
               <Input
