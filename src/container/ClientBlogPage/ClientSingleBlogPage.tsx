@@ -6,7 +6,6 @@ import Image from "next/image";
 import { BsClock } from "react-icons/bs";
 import { Share } from "@components";
 import style from "./blog.module.scss";
-import NextImage from "../../components/NextImage";
 
 export const ClientSingleBlogPage = ({
   selectedBlog,
@@ -62,7 +61,7 @@ export const ClientSingleBlogPage = ({
                       className="flex gap-2"
                       href={`/blog/${otherBlog.slug}`}
                     >
-                      <NextImage
+                      <Image
                         style={{
                           aspectRatio: "11/9",
                         }}
@@ -71,7 +70,7 @@ export const ClientSingleBlogPage = ({
                         width={90}
                         height={90}
                         src={otherBlog.image}
-                      ></NextImage>
+                      ></Image>
                       <div className="flex flex-col px-2 justify-between">
                         <span className="font-medium text-left">
                           {otherBlog?.title}

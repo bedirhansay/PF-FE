@@ -13,7 +13,6 @@ import { GetBadgeIcon } from "@utils";
 import style from "./blog.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
-import NextImage from "../../../components/NextImage";
 
 export const BlogPage = () => {
   const data = blog.slice(0, 9);
@@ -33,7 +32,7 @@ export const BlogPage = () => {
       >
         {data.map((item, i) => (
           <SwiperSlide key={"swiper" + i} className={style["swiperSlide"]}>
-            <NextImage
+            <Image
               width={200}
               height={200}
               priority={false}

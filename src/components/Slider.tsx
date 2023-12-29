@@ -10,7 +10,6 @@ import style from "./slider.module.scss";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import NextImage from "./NextImage";
 
 export const Slider = ({ category }: { category: any }) => {
   return (
@@ -27,7 +26,7 @@ export const Slider = ({ category }: { category: any }) => {
             key={"swiper" + i}
             className="shadow-lg w-60 p-2 flex flex-col bg-gray-100 border border-gray-300 items-center rounded-md"
           >
-            <NextImage
+            <Image
               height={128}
               width={140}
               src={item?.image}

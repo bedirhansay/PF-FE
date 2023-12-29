@@ -11,8 +11,6 @@ import { introAnimations } from "./animations";
 import clsx from "clsx";
 import style from "./intro.module.scss";
 
-import NextImage from "../../../components/NextImage";
-
 export const Intro = () => {
   const { ref } = useSectionInView("Anasayfa");
 
@@ -20,7 +18,7 @@ export const Intro = () => {
     <section ref={ref} id="home" className={style["section-wrapper"]}>
       <div className={style["image-wrapper"]}>
         <motion.div key={"motion-div"} {...introAnimations.imageAnim}>
-          <NextImage
+          <Image
             alt="profile"
             width="200"
             height="200"
