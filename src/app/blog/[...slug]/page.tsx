@@ -19,7 +19,15 @@ export async function generateMetadata(
     description: selectedBlog?.description || "",
   };
 }
-export const dynamic = "force-dynamic";
+// export async function generateStaticParams() {
+//   const allBlogs = await callApi({ method: "get", path: "blog" });
+//   console.log(allBlogs);
+
+//   return allBlogs.data?.map((post) => ({
+//     id: post._id.toString(),
+//   }));
+// }
+
 export default async function page({ params }: Props) {
   const { slug } = params;
   const { data } = await callApi({ method: "get", path: "blog" });

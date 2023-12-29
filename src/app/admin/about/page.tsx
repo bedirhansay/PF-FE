@@ -2,7 +2,8 @@ import React from "react";
 import { Metadata } from "next";
 import { Breadcrumb } from "@components/ui";
 import { AboutPage } from "@container";
-import { getAbout } from "../../../lib/actions/__about.action";
+import { callApi } from "../../../lib/actions/__api.actions";
+
 export const metadata: Metadata = {
   title: "About",
   description:
@@ -22,7 +23,10 @@ export const metadata: Metadata = {
 };
 export const dynamic = "force-dynamic";
 export default async function page() {
-  const { data } = await getAbout();
+  const { data } = await callApi({
+    method: "get",
+    path: "about",
+  });
 
   return (
     <div className="">
