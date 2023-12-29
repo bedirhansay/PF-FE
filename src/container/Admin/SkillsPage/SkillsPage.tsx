@@ -19,6 +19,7 @@ import Image from "next/image";
 import { uploadImageToFirabase } from "../../../lib/helper/UploadImageToFirabase";
 import { callApi } from "@actions";
 import { StringToArray } from "@utils";
+import style from "../admin.module.scss";
 import { DeleteBox } from "../../../components/DeleteBox";
 
 export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
@@ -166,14 +167,13 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
           />
         ) : (
           <form
-            className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
+            className={style["form-wrapper"]}
             onSubmit={handleSubmit(onSubmit)}
           >
             {selectedImage ? (
-              <>
-                <div className="w-full h-64 relative">
+              <React.Fragment>
+                <div className={style["image-section"]}>
                   <Image
-                    className="rounded border"
                     alt=""
                     fill
                     src={selectedImage && URL.createObjectURL(selectedImage)}
@@ -185,7 +185,7 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
                   label="Fotoğraf Yükle"
                   onChange={handleImageChange}
                 />
-              </>
+              </React.Fragment>
             ) : (
               <Input
                 className="hidden"
@@ -199,12 +199,12 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
               <Input
                 {...register("image")}
                 value={imageUrl as string}
-                placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+                placeholder="Fotoğraf Yükle"
               />
               <ErrorMessage message={errors.image?.message} />
             </div>
 
-            <div className="w-full flex flex-col gap-5 justify-between">
+            <div className={style["form-fields"]}>
               {formFields.map((field) => (
                 <div key={field.name}>
                   <label htmlFor={field.name}>{field.label}</label>

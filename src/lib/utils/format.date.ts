@@ -1,17 +1,20 @@
-export const FormatDate = (date: Date | string | undefined) => {
+export const FormatDate = (date: string | Date | undefined) => {
+  if (!date) {
+    return ""; // Eğer date undefined ise boş bir string döndür
+  }
+
   const formattedDate = new Date(date);
 
   const options = {
     year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-    timeZone: "UTC",
+    month: "long",
+    day: "numeric",
   };
 
   //@ts-ignore
-  const formattedString = formattedDate.toLocaleString(undefined, options);
-  return formattedString.replace(/\d+:\d+:\d+/, "");
+  const turkishDate = new Intl.DateTimeFormat("tr-TR", options).format(
+    formattedDate
+  );
+
+  return turkishDate;
 };

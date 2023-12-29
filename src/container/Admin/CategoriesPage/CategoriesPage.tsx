@@ -14,12 +14,12 @@ import { CategoryDTO } from "@types";
 import { callApi } from "@actions";
 import toast from "react-hot-toast";
 import { uploadImageToFirabase } from "@helper";
-import { StringToArray } from "@utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { CategorySchema } from "@validations";
 import { DeleteBox } from "@components";
+import style from "../admin.module.scss";
 
 export const CategoriesPage = ({
   categories,
@@ -137,19 +137,23 @@ export const CategoriesPage = ({
     setOperation("create");
     setOpen(true);
   };
+
   return (
     <div>
       <Breadcrumb page="categories" />
+
       <HeadingSection
         title="Projeler"
         showButton
         onButtonClick={buttonHandler}
       />
+
       <DataTables
         setOperation={setOperation}
         setId={setSelectedId}
         data={categories}
       />
+
       <Modal onClose={setOpen} isOpen={open}>
         {operation === "del" ? (
           <DeleteBox
@@ -159,14 +163,13 @@ export const CategoriesPage = ({
           />
         ) : (
           <form
-            className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
+            className={style["form-wrapper"]}
             onSubmit={handleSubmit(onSubmit)}
           >
             {selectedImage ? (
-              <>
-                <div className="w-full h-64 relative">
+              <React.Fragment>
+                <div className={style["image-section"]}>
                   <Image
-                    className="rounded border"
                     alt=""
                     fill
                     src={selectedImage && URL.createObjectURL(selectedImage)}
@@ -178,7 +181,7 @@ export const CategoriesPage = ({
                   label="Fotoğraf Yükle"
                   onChange={handleImageChange}
                 />
-              </>
+              </React.Fragment>
             ) : (
               <Input
                 className="hidden"
@@ -192,12 +195,14 @@ export const CategoriesPage = ({
               <Input
                 {...register("image")}
                 value={imageUrl as string}
-                placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+                placeholder="Fotoğraf Yükle"
               />
               <ErrorMessage message={errors.image?.message} />
             </div>
 
-            <div className="w-full flex flex-col gap-5 justify-between">
+            {/*//! FORM FIELDS  */}
+
+            <div className={style["form-fields"]}>
               {formFields.map((field) => (
                 <div key={field.name}>
                   <label htmlFor={field.name}>{field.label}</label>
@@ -209,7 +214,9 @@ export const CategoriesPage = ({
                   />
                 </div>
               ))}
+            </div>
 
+            <div className={style["button-section"]}>
               <Button isLoading={loading} type="submit" variant="outline">
                 Kaydet
               </Button>

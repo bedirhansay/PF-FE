@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { Breadcrumb } from "@components/ui";
-import { AboutPage } from "../../../container/Admin/AboutPage/AboutPage";
+import { AboutPage } from "@container";
 import { getAbout } from "../../../lib/actions/__about.action";
 export const metadata: Metadata = {
   title: "About",

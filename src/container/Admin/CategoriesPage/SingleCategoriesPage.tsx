@@ -8,14 +8,14 @@ import {
   Input,
 } from "@components/ui";
 import React, { useState } from "react";
-import { CategoryDTO, ProjectDTO } from "@types";
+import { CategoryDTO } from "@types";
 import { callApi } from "@actions";
 import toast from "react-hot-toast";
 import { uploadImageToFirabase } from "@helper";
-import { StringToArray } from "@utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
+import style from "../admin.module.scss";
 import { CategorySchema } from "@validations";
 
 export const SingleCategoriesPage = ({
@@ -104,14 +104,10 @@ export const SingleCategoriesPage = ({
       <Breadcrumb page="categories" sub={category.name} />
       <HeadingSection title="Projeler" showButton />
 
-      <form
-        className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="w-full  relative ">
-          <div className="relative">
+      <form className={style["form-wrapper"]} onSubmit={handleSubmit(onSubmit)}>
+        <div className={style["image-section"]}>
+          <div>
             <Image
-              className="rounded border w-full h-64 "
               alt=""
               width={200}
               height={200}
@@ -136,12 +132,12 @@ export const SingleCategoriesPage = ({
           <Input
             {...register("image")}
             value={(imageUrl as string) || category.image}
-            placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+            placeholder="Fotoğraf Yükle"
           />
           <ErrorMessage message={errors.image?.message} />
         </div>
 
-        <div className="w-full flex flex-col gap-5 justify-between">
+        <div className={style["form-fields"]}>
           {formFields.map((field) => (
             <div key={field.name}>
               <label htmlFor={field.name}>{field.label}</label>

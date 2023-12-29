@@ -1,6 +1,5 @@
 import React from "react";
 import { Metadata } from "next";
-import { Breadcrumb } from "@components/ui";
 import { ExperiencePage } from "@container";
 import { callApi } from "../../../lib/actions/__api.actions";
 

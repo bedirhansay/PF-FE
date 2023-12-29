@@ -21,6 +21,7 @@ import Image from "next/image";
 import { ExperienceSchema } from "@validations";
 import { DeleteBox } from "@components";
 import dynamic from "next/dynamic";
+import style from "../admin.module.scss";
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
 });
@@ -171,14 +172,13 @@ export const ExperiencePage = ({
           />
         ) : (
           <form
-            className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
+            className={style["form-wrapper"]}
             onSubmit={handleSubmit(onSubmit)}
           >
             {selectedImage ? (
-              <>
-                <div className="w-full h-64 relative">
+              <React.Fragment>
+                <div className={style["image-section"]}>
                   <Image
-                    className="rounded border"
                     alt=""
                     fill
                     src={selectedImage && URL.createObjectURL(selectedImage)}
@@ -190,7 +190,7 @@ export const ExperiencePage = ({
                   label="Fotoğraf Yükle"
                   onChange={handleImageChange}
                 />
-              </>
+              </React.Fragment>
             ) : (
               <Input
                 className="hidden"
@@ -204,12 +204,12 @@ export const ExperiencePage = ({
               <Input
                 {...register("image")}
                 value={imageUrl as string}
-                placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+                placeholder="Fotoğraf Yükle"
               />
               <ErrorMessage message={errors.image?.message} />
             </div>
 
-            <div className="w-full flex flex-col gap-5 justify-between">
+            <div className={style["form-fields"]}>
               {formFields.map((field) => (
                 <div key={field.name}>
                   <label htmlFor={field.name}>{field.label}</label>

@@ -1,0 +1,23 @@
+.form-wrapper {
+  @apply flex bg-white px-4 py-10 rounded-md flex-col gap-4;
+}
+
+.image-section {
+  @apply w-full h-64 relative;
+
+  img {
+    @apply rounded border;
+  }
+}
+
+.image-url-input {
+  @apply w-full;
+}
+
+.form-fields {
+  @apply w-full flex flex-col gap-5 justify-between;
+}
+
+.button-section {
+  @apply w-full;
+}

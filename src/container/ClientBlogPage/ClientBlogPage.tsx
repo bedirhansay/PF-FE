@@ -30,14 +30,14 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   return (
     <div className="overflow-x-hidden">
       <div className={style["section"]}>
-        <h1 className="text-3xl">Bloglar</h1>
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-white"></span>
+        <h1>Bloglar</h1>
+        <div className={style["link-container"]}>
+          <div className={style["link-item"]}>
+            <span className={style["link-icon"]}></span>
             <Link href="/">Home</Link>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-white"></span>
+          <div className={style["link-item"]}>
+            <span className={style["link-icon"]}></span>
             <Link href="/blog">Blog</Link>
           </div>
         </div>
@@ -45,7 +45,7 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
 
       {/* //! Search */}
 
-      <div className="max-w-7xl mt-8  gap-12  bg-white mx-auto py-4 px-4 ">
+      <div className={style["max-width-container"]}>
         {/* //! Filtre alan */}
         {/* <div className="bg-gray-700 h-fit flex flex-col rounded p-2">
           <label
@@ -68,48 +68,27 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
         </div> */}
 
         {/* //! Filter ve Blog alan */}
-        <div className="flex flex-col gap-8">
-          <div className="grid grid-cols-[1fr,80px] w-full border-2 border-gray-900 rounded-2xl flex-between">
+        <div className={style["blog-wrapper"]}>
+          <div className={style.gridContainer}>
             <Input
-              className="flex w-full basis-2 border-none"
               value={searchTerm}
               placeholder="Blog yazısı ara"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <label
-              className="px-8 hover:bg-opacity-75 py-4 rounded-r-xl bg-gray-900 text-white"
-              htmlFor=""
-            >
+            <label htmlFor="">
               <IoSearchOutline fontSize={24} />
             </label>
           </div>
+
           {/* //! Blogs */}
           <div className={style["ul-container"]}>
             {blogs?.map((item) => (
-              <div
-                key={item._id}
-                className=" p-4 hover:scale-105 border transition ease-in-out duration-200 flex flex-col items-center justify-between gap-4 bg-white border-gray-300 shadow-md rounded-md"
-              >
-                <h3 className="text-lg font-semibold text-center mb-2">
-                  {item.title}
-                </h3>
-                <Image
-                  alt=""
-                  width={200}
-                  height={100}
-                  className="rounded w-44"
-                  src={item.image || ""}
-                ></Image>
+              <div key={item._id} className={style["blog-container"]}>
+                <h3>{item.title}</h3>
+                <Image alt="" width={200} height={100} src={item.image || ""} />
 
-                <span className="text-sm text-gray-500">
-                  Kategori: {item?.category.name || ""}
-                </span>
-                <Link
-                  className="bg-[#3498db] text-white px-2 py-1 rounded"
-                  href={"/blog/" + item.slug}
-                >
-                  Okumaya Devam Et
-                </Link>
+                <span>Kategori: {item?.category.name || ""}</span>
+                <Link href={"/blog/" + item.slug}>Okumaya Devam Et</Link>
               </div>
             ))}
           </div>
@@ -118,7 +97,7 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
 
       {/* //! Pagination */}
 
-      <div className="flex justify-center mb-10 pb-10 max-w-7xl bg-white items-center mx-auto gap-4 self-end px-4">
+      <div className={style["pagination-container"]}>
         <Link href="/">
           <CiCircleChevLeft fontSize={32} />
         </Link>

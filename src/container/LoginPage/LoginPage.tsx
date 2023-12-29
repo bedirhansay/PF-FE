@@ -8,6 +8,7 @@ import { LoginSchema } from "@validations";
 import { Input, Button, Heading } from "@components/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import styles from "./login.module.scss";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -38,24 +39,18 @@ export const Login = () => {
   };
 
   return (
-    <div className="absolute  border rounded shadow-lg  left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex  w-80 sm:w-96  flex-col justify-center px-6 py-12 lg:px-8 mx-auto">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+    <div className={styles.modalWrapper}>
+      <div className={styles.headingSection}>
         <Heading link="" title="Login" />
       </div>
 
-      <div className="flex flex-col gap-4 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="space-y-8 flex flex-col gap-4"
-        >
+      <div className={styles.formSection}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
+            <label htmlFor="email" className={styles.usernameLabel}>
               Username
             </label>
-            <div className="mt-2">
+            <div className={styles.inputSection}>
               <Input {...register("email")} />
               <small className="bg-red-500 text-white">
                 {errors.email?.message}
@@ -64,23 +59,17 @@ export const Login = () => {
           </div>
 
           <div>
-            <div className="flex items-center justify-between">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+            <div className={styles.passwordSection}>
+              <label htmlFor="password" className={styles.usernameLabel}>
                 Password
               </label>
               <div className="text-sm">
-                <a
-                  href="#"
-                  className="font-semibold text-indigo-600 hover:text-indigo-500"
-                >
+                <a href="#" className={styles.forgotPasswordLink}>
                   Forgot password?
                 </a>
               </div>
             </div>
-            <div className="mt-2">
+            <div className={styles.inputSection}>
               <Input
                 {...register("password")}
                 id="password"
@@ -95,7 +84,7 @@ export const Login = () => {
               status={loading}
               variant="outline"
               type="submit"
-              className="flex w-full justify-center hover:bg-slate-300 text-white"
+              className={styles.loginButton}
             >
               login
             </Button>

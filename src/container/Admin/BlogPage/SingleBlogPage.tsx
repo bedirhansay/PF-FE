@@ -8,7 +8,7 @@ import {
   HeadingSection,
   Input,
 } from "@components/ui";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { callApi } from "@actions";
 import toast from "react-hot-toast";
 import { uploadImageToFirabase } from "@helper";
@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { BlogSchema } from "@validations";
+import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -103,16 +104,13 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
   return (
     <div>
       <Breadcrumb page="blog" sub={blog.title} />
-      <HeadingSection title="Deneyimler" />
+      
+      <HeadingSection title="Blog Yazıları" />
 
-      <form
-        className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="w-full  relative ">
-          <div className="relative">
+      <form className={style["form-wrapper"]} onSubmit={handleSubmit(onSubmit)}>
+        <div className={style["image-section"]}>
+          <div className={style["image-container"]}>
             <Image
-              className="rounded border w-full h-64 "
               alt=""
               width={200}
               height={200}
@@ -123,9 +121,8 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
               }
             ></Image>
           </div>
-
           <Input
-            className="hidden"
+            className={style["hidden"]}
             id="pickFile"
             label="Fotoğraf Yükle"
             onChange={handleImageChange}
@@ -133,17 +130,17 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
         </div>
         <strong>{blog.slug}</strong>
 
-        <div>
+        <div className={style["image-url-input"]}>
           <label htmlFor="itemColor">Image Url</label>
           <Input
             {...register("image")}
             value={(imageUrl as string) || blog.image}
-            placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+            placeholder="Fotoğraf Yükle"
           />
           <ErrorMessage message={errors.image?.message} />
         </div>
 
-        <div className="w-full flex flex-col gap-5 justify-between">
+        <div className={style["form-fields"]}>
           {formFields.map((field) => (
             <div key={field.name}>
               <label htmlFor={field.name}>{field.label}</label>
@@ -158,8 +155,14 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
               />
             </div>
           ))}
-          <Editor model={model} setModel={setModel} />
+        </div>
 
+        <div className={style["editor-section"]}>
+          <span>Description</span>
+          <Editor model={model} setModel={setModel} />
+        </div>
+
+        <div className={style["button-section"]}>
           <Button isLoading={loading} type="submit" variant="outline">
             Kaydet
           </Button>

@@ -1,0 +1,35 @@
+.modal-wrapper {
+  @apply absolute border rounded shadow-lg left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex w-80 sm:w-96 flex-col justify-center px-6 py-12 lg:px-8 mx-auto;
+}
+
+.heading-section {
+  @apply sm:mx-auto sm:w-full sm:max-w-sm;
+}
+
+.form-section {
+  @apply flex flex-col gap-4 sm:mx-auto sm:w-full sm:max-w-sm;
+}
+
+.form {
+  @apply space-y-8 flex flex-col gap-4;
+}
+
+.username-label {
+  @apply block text-sm font-medium leading-6 text-gray-900;
+}
+
+.input-section {
+  @apply mt-2;
+}
+
+.password-section {
+  @apply mt-2;
+}
+
+.forgot-password-link {
+  @apply font-semibold text-indigo-600 hover:text-indigo-500;
+}
+
+.login-button {
+  @apply flex w-full justify-center hover:bg-slate-300 text-white;
+}

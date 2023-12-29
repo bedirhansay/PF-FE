@@ -7,7 +7,7 @@ import {
   HeadingSection,
   Input,
 } from "@components/ui";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ProjectDTO } from "@types";
 import { callApi } from "@actions";
 import toast from "react-hot-toast";
@@ -16,7 +16,8 @@ import { StringToArray } from "@utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
-import { ProjectSchema } from "../../../lib/validation/_skills.validation";
+import { ProjectSchema } from "@validations";
+import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
@@ -71,7 +72,6 @@ export const SingleProjectsPage = ({ project }: { project: ProjectDTO }) => {
 
       if (res.kind === "ok") {
         toast.success("Proje Güncellendi");
-
         reset();
         setImageUrl("");
       } else {
@@ -115,33 +115,35 @@ export const SingleProjectsPage = ({ project }: { project: ProjectDTO }) => {
   return (
     <div>
       <Breadcrumb page="projects" sub={project.projectName} />
+
       <HeadingSection title="Projeler" showButton />
 
-      <form
-        className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="w-full  relative ">
-          <div className="relative">
-            <Image
-              className="rounded border w-full h-64 "
-              alt=""
-              width={200}
-              height={200}
-              src={
-                selectedImage
-                  ? URL.createObjectURL(selectedImage)
-                  : (project.image as string)
-              }
-            ></Image>
-          </div>
-
-          <Input
-            className="hidden"
-            id="pickFile"
-            label="Fotoğraf Yükle"
-            onChange={handleImageChange}
-          />
+      <form className={style["form-wrapper"]} onSubmit={handleSubmit(onSubmit)}>
+        <div className={style["image-section"]}>
+          {selectedImage ? (
+            <React.Fragment>
+              <div>
+                <Image
+                  alt=""
+                  fill
+                  src={selectedImage && URL.createObjectURL(selectedImage)}
+                ></Image>
+              </div>
+              <Input
+                className="hidden"
+                id="pickFile"
+                label="Fotoğraf Yükle"
+                onChange={handleImageChange}
+              />
+            </React.Fragment>
+          ) : (
+            <Input
+              className="hidden"
+              id="pickFile"
+              onChange={handleImageChange}
+              type="file"
+            />
+          )}
         </div>
 
         <div>
@@ -154,7 +156,7 @@ export const SingleProjectsPage = ({ project }: { project: ProjectDTO }) => {
           <ErrorMessage message={errors.image?.message} />
         </div>
 
-        <div className="w-full flex flex-col gap-5 justify-between">
+        <div className={style["form-fields"]}>
           {formFields.map((field) => (
             <div key={field.name}>
               <label htmlFor={field.name}>{field.label}</label>
@@ -169,8 +171,12 @@ export const SingleProjectsPage = ({ project }: { project: ProjectDTO }) => {
               />
             </div>
           ))}
-          Tasks
-          <Editor model={model} setModel={setModel} />
+
+          <div className={style["editor-section"]}>
+            <span>Tasks</span>
+            <Editor model={model} setModel={setModel} />
+          </div>
+
           <Button isLoading={loading} type="submit" variant="outline">
             Kaydet
           </Button>

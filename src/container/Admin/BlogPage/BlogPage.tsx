@@ -19,6 +19,7 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { BlogSchema } from "@validations";
 import { DeleteBox } from "@components";
+import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -157,16 +158,19 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   return (
     <div>
       <Breadcrumb page="Blog Yazısı" />
+
       <HeadingSection
         title="Blog Yazısı"
         showButton
         onButtonClick={buttonHandler}
       />
+
       <DataTables
         setOperation={setOperation}
         setId={setSelectedId}
         data={blogs}
       />
+
       <Modal onClose={setOpen} isOpen={open}>
         {operation === "del" ? (
           <DeleteBox
@@ -176,12 +180,12 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
           />
         ) : (
           <form
-            className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
+            className={style["form-wrapper"]}
             onSubmit={handleSubmit(onSubmit)}
           >
             {selectedImage ? (
-              <>
-                <div className="w-full h-64 relative">
+              <React.Fragment>
+                <div className={style["image-section"]}>
                   <Image
                     className="rounded border"
                     alt=""
@@ -195,7 +199,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
                   label="Fotoğraf Yükle"
                   onChange={handleImageChange}
                 />
-              </>
+              </React.Fragment>
             ) : (
               <Input
                 className="hidden"
@@ -210,7 +214,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
               <Input
                 {...register("image")}
                 value={imageUrl as string}
-                placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+                placeholder="Fotoğraf Yükle"
               />
               <ErrorMessage message={errors.image?.message} />
             </div>
@@ -222,7 +226,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
               <select
                 onChange={(e) => setCatId(e.target.value)}
                 name="kategori"
-                className="bg-white border px-2 py-2 rounded"
+                className={style["select-box"]}
               >
                 {categories?.map((item) => (
                   <option key={item._id} value={item._id}>
@@ -232,7 +236,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
               </select>
             </div>
 
-            <div className="w-full flex flex-col gap-5 justify-between">
+            <div className={style["form-fields"]}>
               {formFields.map((field) => (
                 <div key={field.name}>
                   <label htmlFor={field.name}>{field.label}</label>
@@ -244,7 +248,11 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
                   />
                 </div>
               ))}
-              <Editor model={model} setModel={setModel} />
+
+              <div className={style["editor-section"]}>
+                <span>Description</span>
+                <Editor model={model} setModel={setModel} />
+              </div>
 
               <Button isLoading={loading} type="submit" variant="outline">
                 Kaydet

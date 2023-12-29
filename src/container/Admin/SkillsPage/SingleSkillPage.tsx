@@ -1,15 +1,4 @@
 "use client";
-
-import { useState } from "react";
-import Image from "next/image";
-import { useForm } from "react-hook-form";
-import { joiResolver } from "@hookform/resolvers/joi";
-import { SkillsDTO } from "@types";
-import { SkillSchema } from "@validations";
-import toast, { LoaderIcon } from "react-hot-toast";
-import { callApi } from "@actions";
-import { FaArrowRight } from "react-icons/fa";
-import { uploadImageToFirabase } from "@helper";
 import {
   Button,
   ErrorMessage,
@@ -17,6 +6,18 @@ import {
   HeadingSection,
   Breadcrumb,
 } from "@components/ui";
+import { useState } from "react";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
+import { SkillsDTO } from "@types";
+import { SkillSchema } from "@validations";
+import toast from "react-hot-toast";
+import { callApi } from "@actions";
+import style from "../admin.module.scss";
+import { uploadImageToFirabase } from "@helper";
+import { StringToArray } from "@utils";
+import React from "react";
 
 export const SingleSkillPage = ({
   singleSkill,
@@ -34,6 +35,7 @@ export const SingleSkillPage = ({
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
+
   const formFields = [
     { name: "_id", label: "ID", type: "text" },
     { name: "title", label: "Title", type: "text" },
@@ -46,14 +48,9 @@ export const SingleSkillPage = ({
   const onSubmit = async (data: SkillsDTO) => {
     setLoading(true);
 
-    const itemsArray = data.items
-      ?.toString()
-      .split(",")
-      .map((item) => item.trim());
-
     const payload = {
       ...data,
-      items: itemsArray,
+      items: StringToArray(data.items),
       image: imageUrl?.toString() || singleSkill?.image,
     };
 
@@ -108,35 +105,36 @@ export const SingleSkillPage = ({
       <Breadcrumb page="skills" sub={singleSkill.title} />
       <HeadingSection title={singleSkill.title} />
 
-      <form
-        className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className={style["form-wrapper"]} onSubmit={handleSubmit(onSubmit)}>
         <strong>{singleSkill?.title}</strong>
-        <div className="w-full  relative ">
-          <div className="relative">
-            <Image
-              className="rounded border w-full h-64 "
-              alt=""
-              width={200}
-              height={200}
-              src={
-                selectedImage
-                  ? URL.createObjectURL(selectedImage)
-                  : (singleSkill.image as string)
-              }
-            ></Image>
-          </div>
-
-          <Input
-            className="hidden"
-            id="pickFile"
-            label="Fotoğraf Yükle"
-            onChange={handleImageChange}
-          />
+        <div className={style["image-section"]}>
+          {selectedImage ? (
+            <React.Fragment>
+              <div>
+                <Image
+                  alt=""
+                  fill
+                  src={selectedImage && URL.createObjectURL(selectedImage)}
+                ></Image>
+              </div>
+              <Input
+                className="hidden"
+                id="pickFile"
+                label="Fotoğraf Yükle"
+                onChange={handleImageChange}
+              />
+            </React.Fragment>
+          ) : (
+            <Input
+              className="hidden"
+              id="pickFile"
+              onChange={handleImageChange}
+              type="file"
+            />
+          )}
         </div>
 
-        <div className="w-full flex flex-col gap-5 justify-between">
+        <div className={style["form-fields"]}>
           <div>
             <label htmlFor="title">Id</label>
             <Input {...register("_id")} value={singleSkill?._id} />
