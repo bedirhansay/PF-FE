@@ -1,4 +1,4 @@
-export const FormatDate = (date: Date | string) => {
+export const FormatDate = (date: Date | string | undefined) => {
   const formattedDate = new Date(date);
 
   const options = {

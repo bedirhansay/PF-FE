@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { useSectionInView } from "@hooks";
 import { Heading } from "../../../components/ui";
 import style from "./skills.module.scss";
-import { SkillsDatas } from "@constant";
 import Image from "next/image";
 import { fadeInAnimationVariants, skillsAnim } from "./animations";
 import { SkillsDTO } from "../../../lib/types/types";

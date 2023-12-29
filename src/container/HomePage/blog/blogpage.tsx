@@ -13,11 +13,24 @@ import { GetBadgeIcon } from "@utils";
 import style from "./blog.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
+import { useEffect, useState } from "react";
+import { BlogDTO } from "../../../lib/types/types";
+import { callApi } from "@actions";
+import { FormatDate } from "../../../lib/utils/format.date";
 
 export const BlogPage = () => {
-  const data = blog.slice(0, 9);
+  const datas = blog.slice(0, 9);
   const { ref } = useSectionInView("Blog");
   const [width] = useSize();
+  const [blogs, setBlogs] = useState<BlogDTO[]>();
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const { data } = await callApi({ method: "get", path: "blog" });
+      setBlogs(data);
+    };
+    fetchBlogs();
+  }, []);
 
   return (
     <div ref={ref} id="blog" className={style["parent"]}>
@@ -26,18 +39,18 @@ export const BlogPage = () => {
         navigation={true}
         modules={[Navigation]}
         className="mySwiper"
-        slidesPerView={width < 850 ? 1 : 2}
+        slidesPerView="auto"
         spaceBetween={30}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
-        {data.map((item, i) => (
+        {blogs?.map((item, i) => (
           <SwiperSlide key={"swiper" + i} className={style["swiperSlide"]}>
             <Image
               width={200}
               height={200}
               priority={false}
               className={style["sliderImage"]}
-              src={item.image}
+              src={item.image || ""}
               alt={item.title}
               sizes="(min-width: 640px) 176px, 200px"
             />
@@ -47,10 +60,13 @@ export const BlogPage = () => {
                   <Image
                     alt=""
                     width={50}
-                    src={GetBadgeIcon(item.category) || ""}
+                    height={50}
+                    src={item?.category?.image}
                     className="px-2 rounded py-1 mr-2 "
                   ></Image>
-                  <span className="text-gray-500">{item.date}</span>
+                  <span className="text-gray-500">
+                    {FormatDate(item?.createdAt)}
+                  </span>
                 </span>
                 <span className={style["viewCount"]}>
                   <BsEye /> {item.viewCount}
