@@ -88,7 +88,7 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
       }
       const payload = {
         image: selectedFile,
-        path: "skills",
+        path: "blogs",
         name: selectedFile.name,
       };
       const img = await uploadImageToFirabase(payload);

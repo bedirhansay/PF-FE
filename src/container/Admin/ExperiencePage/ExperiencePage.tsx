@@ -95,7 +95,7 @@ export const ExperiencePage = ({
       }
       const payload = {
         image: selectedFile,
-        path: "skills",
+        path: "experiences",
         name: selectedFile.name,
       };
       const img = await uploadImageToFirabase(payload);

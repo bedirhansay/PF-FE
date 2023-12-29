@@ -99,7 +99,7 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
       }
       const payload = {
         image: selectedFile,
-        path: "skills",
+        path: "projects",
         name: selectedFile.name,
       };
       const img = await uploadImageToFirabase(payload);

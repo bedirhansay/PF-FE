@@ -45,7 +45,7 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
     { name: "goals", label: "Goals", type: "textarea" },
     { name: "scope", label: "Scope", type: "text" },
     { name: "requirements", label: "Requirements", type: "textarea" },
-    { name: "tasks", label: "Tasks", type: "text" },
+    { name: "tasks", label: "Tasks", type: "textarea" },
   ];
 
   const onSubmit = async (data: ProjectDTO) => {
@@ -94,7 +94,7 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
       }
       const payload = {
         image: selectedFile,
-        path: "skills",
+        path: "projects",
         name: selectedFile.name,
       };
       const img = await uploadImageToFirabase(payload);
@@ -111,7 +111,7 @@ export const SingleProjectsPage = ({ projects }: { projects: ProjectDTO }) => {
 
   return (
     <div>
-      <Breadcrumb page="Projeler" sub={projects.projectName} />
+      <Breadcrumb page="projects" sub={projects.projectName} />
       <HeadingSection title="Projeler" showButton />
 
       <form

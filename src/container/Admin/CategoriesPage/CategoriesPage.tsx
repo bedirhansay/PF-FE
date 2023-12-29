@@ -89,7 +89,7 @@ export const CategoriesPage = ({
       }
       const payload = {
         image: selectedFile,
-        path: "skills",
+        path: "categories",
         name: selectedFile.name,
       };
       const img = await uploadImageToFirabase(payload);
