@@ -17,6 +17,10 @@ import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { ExperienceSchema } from "@validations";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("../../../components/Editor"), {
+  ssr: false,
+});
 
 export const SingleExperiencePage = ({
   experience,
@@ -35,13 +39,13 @@ export const SingleExperiencePage = ({
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
+  const [model, setModel] = useState(experience.description);
 
   const formFields = [
     { name: "_id", label: "Id", type: "text" },
     { name: "title", label: "Title", type: "text" },
     { name: "location", label: "Location", type: "text" },
     { name: "position", label: "Position", type: "text" },
-    { name: "description", label: "Description", type: "text" },
     { name: "date", label: "Date", type: "text" },
     { name: "skills", label: "Skills", type: "text" },
   ];
@@ -51,9 +55,11 @@ export const SingleExperiencePage = ({
 
     const payloads = {
       ...data,
+      description: model,
       skills: StringToArray(data.skills),
       image: imageUrl?.toString(),
     };
+
     try {
       const res = await callApi({
         method: "patch",
@@ -74,6 +80,7 @@ export const SingleExperiencePage = ({
       setLoading(false);
     }
   };
+  console.log(errors);
 
   const handleImageChange = async (
     e: React.ChangeEvent<HTMLInputElement>
@@ -158,6 +165,7 @@ export const SingleExperiencePage = ({
               />
             </div>
           ))}
+          <Editor model={model} setModel={setModel} />
 
           <Button isLoading={loading} type="submit" variant="outline">
             Kaydet

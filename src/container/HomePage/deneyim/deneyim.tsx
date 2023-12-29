@@ -6,9 +6,21 @@ import { motion } from "framer-motion";
 import { experiencesData } from "@constant";
 import { experinceAnimations } from "./animations";
 import style from "./experience.module.scss";
+import { useEffect, useState } from "react";
+import { ExperienceDTO } from "../../../lib/types/types";
+import { callApi } from "../../../lib/actions/__api.actions";
 
 export const Deneyim = () => {
   const { ref, view } = useSectionInView("Deneyim", 0.9);
+  const [experience, setExperience] = useState<ExperienceDTO>();
+
+  useEffect(() => {
+    const fetchExperience = async () => {
+      const { data } = await callApi({ method: "get", path: "experience" });
+      console.log(data);
+    };
+    fetchExperience();
+  }, []);
 
   return (
     <section id="experience" ref={ref} className={style.sectionWrapper}>

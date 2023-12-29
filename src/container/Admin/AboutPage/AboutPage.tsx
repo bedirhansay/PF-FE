@@ -48,7 +48,7 @@ export const AboutPage = ({ about }: { about: AboutDTO[] }) => {
       </Button>
 
       <strong className="text-right self-center mt-10">Ön izleme</strong>
-
+      <Editor model={model} setModel={setModel} />
       <div
         className="bg-white rounded py-4 px-4 mt-4 mb-20"
         //@ts-ignore

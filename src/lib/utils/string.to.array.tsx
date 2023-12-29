@@ -1,7 +1,7 @@
-export const StringToArray = (data: string[] | undefined) => {
+export const StringToArray = (data: string[] | string | undefined) => {
   const itemList = data
     ?.toString()
-    .split("-")
+    .split(",")
     .map((item) => item.trim());
   return itemList;
 };

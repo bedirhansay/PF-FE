@@ -5,10 +5,10 @@ import { Input } from "../../components/ui/Input";
 import Image from "next/image";
 import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 import Link from "next/link";
-import style from "./blog.module.scss";
 import { IoSearchOutline } from "react-icons/io5";
 import { useSearchParams } from "next/navigation";
 import { BlogDTO } from "../../lib/types/types";
+import style from "./blog.module.scss";
 
 export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -84,11 +84,11 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
             </label>
           </div>
           {/* //! Blogs */}
-          <div className="ul-container ">
+          <div className={style["ul-container"]}>
             {blogs.map((item) => (
               <div
                 key={item._id}
-                className=" p-4 hover:scale-105 border transition ease-in-out duration-200 flex flex-col items-center gap-4 bg-white border-gray-300 shadow-md rounded-md"
+                className=" p-4 hover:scale-105 border transition ease-in-out duration-200 flex flex-col items-center justify-between gap-4 bg-white border-gray-300 shadow-md rounded-md"
               >
                 <h3 className="text-lg font-semibold text-center mb-2">
                   {item.title}

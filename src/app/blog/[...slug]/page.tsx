@@ -25,8 +25,6 @@ export default async function page({ params }: Props) {
   const { data } = await callApi({ method: "get", path: "blog" });
 
   const selectedBlog = data.find((item: any) => item.slug == slug);
-  console.log(data);
-  console.log(selectedBlog);
   const otherBlogs = data.filter((item: any) => item.slug != slug);
 
   return (

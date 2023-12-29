@@ -112,7 +112,7 @@ export const DataTables: React.FC<DataTablesProps> = ({
             className="hover:bg-green-400 flex items-center justify-center"
             key={`renderRowData ${index}` + header}
           >
-            {/* <Image
+            <Image
               src={rowData[field]}
               alt={`Product ${rowData.name}`}
               width={50}
@@ -123,8 +123,7 @@ export const DataTables: React.FC<DataTablesProps> = ({
                 borderRadius: "10px",
                 alignSelf: "center",
               }}
-            /> */}
-            image
+            />
           </td>
         );
       }

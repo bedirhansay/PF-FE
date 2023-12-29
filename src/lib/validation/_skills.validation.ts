@@ -35,7 +35,6 @@ export const ExperienceSchema = Joi.object({
   title: Joi.string().required(),
   location: Joi.string().required(),
   position: Joi.string().required(),
-  description: Joi.string().required(),
   image: Joi.string(),
   date: Joi.string().required(),
   skills: Joi.string().optional(),

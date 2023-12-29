@@ -20,6 +20,11 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { ExperienceSchema } from "@validations";
 import { DeleteBox } from "@components";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("../../../components/Editor"), {
+  ssr: false,
+});
+
 export const ExperiencePage = ({
   experience,
 }: {
@@ -42,12 +47,12 @@ export const ExperiencePage = ({
   const [operation, setOperation] = useState<string>("");
   const [selectedItem, setSelectedItem] = useState<ExperienceDTO>();
   const [deleting, setDeleting] = useState(false);
+  const [model, setModel] = useState();
 
   const formFields = [
     { name: "title", label: "Title", type: "text" },
     { name: "location", label: "Location", type: "text" },
     { name: "position", label: "Position", type: "text" },
-    { name: "description", label: "Description", type: "text" },
     { name: "date", label: "Date", type: "text" },
     { name: "skills", label: "Skills", type: "text" },
   ];
@@ -57,6 +62,7 @@ export const ExperiencePage = ({
 
     const payloads = {
       ...data,
+      description: StringToArray(data.description),
       skills: StringToArray(data.skills),
       image: imageUrl?.toString(),
     };
@@ -142,6 +148,7 @@ export const ExperiencePage = ({
     setOperation("create");
     setOpen(true);
   };
+
   return (
     <div>
       <Breadcrumb page="Deneyim" />
@@ -214,6 +221,7 @@ export const ExperiencePage = ({
                   />
                 </div>
               ))}
+              <Editor model={model} setModel={setModel} />
 
               <Button isLoading={loading} type="submit" variant="outline">
                 Kaydet
