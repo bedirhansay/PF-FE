@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { ExperienceSchema } from "@validations";
+import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
@@ -114,24 +115,17 @@ export const SingleExperiencePage = ({
       <Breadcrumb page="experience" sub={experience.title} />
       <HeadingSection title="Deneyimler" />
 
-      <form
-        className="flex bg-white px-4 py-10 rounded-md  flex-col gap-4"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="w-full  relative ">
-          <div className="relative">
-            <Image
-              className="rounded border w-full h-64 "
-              alt=""
-              width={200}
-              height={200}
-              src={
-                selectedImage
-                  ? URL.createObjectURL(selectedImage)
-                  : (experience.image as string)
-              }
-            ></Image>
-          </div>
+      <form className={style["form-wrapper"]} onSubmit={handleSubmit(onSubmit)}>
+        <div className={style["image-section"]}>
+          <Image
+            alt=""
+            width={300}
+            height={300}
+            src={
+              (selectedImage && URL.createObjectURL(selectedImage)) ||
+              experience.image
+            }
+          ></Image>
 
           <Input
             className="hidden"
@@ -140,36 +134,45 @@ export const SingleExperiencePage = ({
             onChange={handleImageChange}
           />
         </div>
-        <div>
-          <label htmlFor="itemColor">Image Url</label>
-          <Input
-            {...register("image")}
-            value={(imageUrl as string) || experience.image}
-            placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
-          />
-          <ErrorMessage message={errors.image?.message} />
-        </div>
+        <div className={style["main-area"]}>
+          <h2 className="text-3xl text-center">{experience.title}</h2>
+          <hr className={style["hr"]} />
 
-        <div className="w-full flex flex-col gap-5 justify-between">
-          {formFields.map((field) => (
-            <div key={field.name}>
-              <label htmlFor={field.name}>{field.label}</label>
-              <Input
-                //@ts-ignore
-                defaultValue={experience[field.name]}
-                {...register(field.name as any)}
-                type={field.type}
-              />
-              <ErrorMessage
-                message={(errors as Record<string, any>)[field.name]?.message}
-              />
+          <div className={style["image-url"]}>
+            <label htmlFor="itemColor">Image Url</label>
+            <Input
+              {...register("image")}
+              value={(imageUrl as string) || experience.image}
+              placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+            />
+            <ErrorMessage message={errors.image?.message} />
+          </div>
+
+          <div className={style["form-fields"]}>
+            {formFields.map((field) => (
+              <div key={field.name}>
+                <label htmlFor={field.name}>{field.label}</label>
+                <Input
+                  //@ts-ignore
+                  defaultValue={experience[field.name]}
+                  {...register(field.name as any)}
+                  type={field.type}
+                />
+                <ErrorMessage
+                  message={(errors as Record<string, any>)[field.name]?.message}
+                />
+              </div>
+            ))}
+
+            <div className={style["editor-section"]}>
+              <span>Tasks</span>
+              <Editor model={model} setModel={setModel} />
             </div>
-          ))}
-          Description
-          <Editor model={model} setModel={setModel} />
-          <Button isLoading={loading} type="submit" variant="outline">
-            Kaydet
-          </Button>
+
+            <Button isLoading={loading} type="submit" variant="outline">
+              Kaydet
+            </Button>
+          </div>
         </div>
       </form>
     </div>

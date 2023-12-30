@@ -106,59 +106,58 @@ export const SingleSkillPage = ({
       <HeadingSection title={singleSkill.title} />
 
       <form className={style["form-wrapper"]} onSubmit={handleSubmit(onSubmit)}>
-        <strong>{singleSkill?.title}</strong>
         <div className={style["image-section"]}>
-          {selectedImage ? (
-            <React.Fragment>
-              <div>
-                <Image
-                  alt=""
-                  fill
-                  src={selectedImage && URL.createObjectURL(selectedImage)}
-                ></Image>
-              </div>
-              <Input
-                className="hidden"
-                id="pickFile"
-                label="Fotoğraf Yükle"
-                onChange={handleImageChange}
-              />
-            </React.Fragment>
-          ) : (
-            <Input
-              className="hidden"
-              id="pickFile"
-              onChange={handleImageChange}
-              type="file"
-            />
-          )}
-        </div>
+          <Image
+            alt=""
+            width={300}
+            height={300}
+            src={
+              (selectedImage && URL.createObjectURL(selectedImage)) ||
+              (singleSkill.image as string)
+            }
+          ></Image>
 
-        <div className={style["form-fields"]}>
-          <div>
-            <label htmlFor="title">Id</label>
-            <Input {...register("_id")} value={singleSkill?._id} />
-            <ErrorMessage message={errors._id?.message} />
+          <Input
+            className="hidden"
+            id="pickFile"
+            label="Fotoğraf Yükle"
+            onChange={handleImageChange}
+          />
+        </div>
+        <div className={style["main-area"]}>
+          <h2 className="text-3xl text-center">{singleSkill.title}</h2>
+          <hr className={style["hr"]} />
+
+          <div className={style["image-url"]}>
+            <label htmlFor="itemColor">Image Url</label>
+            <Input
+              {...register("image")}
+              value={(imageUrl as string) || singleSkill.image}
+              placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+            />
+            <ErrorMessage message={errors.image?.message} />
           </div>
 
-          {formFields.map((field) => (
-            <div key={field.name}>
-              <label htmlFor={field.name}>{field.label}</label>
-              <Input
-                //@ts-ignore
-                defaultValue={singleSkill[field.name]}
-                {...register(field.name as any)}
-                type={field.type}
-              />
-              <ErrorMessage
-                message={(errors as Record<string, any>)[field.name]?.message}
-              />
-            </div>
-          ))}
+          <div className={style["form-fields"]}>
+            {formFields.map((field) => (
+              <div key={field.name}>
+                <label htmlFor={field.name}>{field.label}</label>
+                <Input
+                  //@ts-ignore
+                  defaultValue={singleSkill[field.name]}
+                  {...register(field.name as any)}
+                  type={field.type}
+                />
+                <ErrorMessage
+                  message={(errors as Record<string, any>)[field.name]?.message}
+                />
+              </div>
+            ))}
 
-          <Button isLoading={loading} type="submit" variant="outline">
-            Kaydet
-          </Button>
+            <Button isLoading={loading} type="submit" variant="outline">
+              Kaydet
+            </Button>
+          </div>
         </div>
       </form>
     </div>

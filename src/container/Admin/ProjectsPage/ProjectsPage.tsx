@@ -85,13 +85,12 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
         reset();
         setImageUrl("");
       } else {
-        console.log(res);
         toast.error("Proje Eklenemedi" + res.error.message);
       }
     } catch (error: any) {
       toast.error(`Proje  Güncellenemedi: ${error.message}`);
     } finally {
-      // setOpen(false);
+      setOpen(false);
       setLoading(false);
     }
   };
@@ -180,12 +179,12 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
           />
         ) : (
           <form
-            className={style["form-wrapper"]}
+            className={style["page-form-wrapper"]}
             onSubmit={handleSubmit(onSubmit)}
           >
             {selectedImage ? (
-              <React.Fragment>
-                <div className={style["image-section"]}>
+              <>
+                <div className={style["page-image-section"]}>
                   <Image
                     alt=""
                     fill
@@ -198,7 +197,7 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
                   label="Fotoğraf Yükle"
                   onChange={handleImageChange}
                 />
-              </React.Fragment>
+              </>
             ) : (
               <Input
                 className="hidden"

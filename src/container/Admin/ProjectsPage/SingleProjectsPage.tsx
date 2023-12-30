@@ -120,66 +120,61 @@ export const SingleProjectsPage = ({ project }: { project: ProjectDTO }) => {
 
       <form className={style["form-wrapper"]} onSubmit={handleSubmit(onSubmit)}>
         <div className={style["image-section"]}>
-          {selectedImage ? (
-            <React.Fragment>
-              <div>
-                <Image
-                  alt=""
-                  fill
-                  src={selectedImage && URL.createObjectURL(selectedImage)}
-                ></Image>
-              </div>
-              <Input
-                className="hidden"
-                id="pickFile"
-                label="Fotoğraf Yükle"
-                onChange={handleImageChange}
-              />
-            </React.Fragment>
-          ) : (
-            <Input
-              className="hidden"
-              id="pickFile"
-              onChange={handleImageChange}
-              type="file"
-            />
-          )}
-        </div>
+          <Image
+            alt=""
+            fill
+            src={
+              (selectedImage && URL.createObjectURL(selectedImage)) ||
+              project.image
+            }
+          ></Image>
 
-        <div>
-          <label htmlFor="itemColor">Image Url</label>
           <Input
-            {...register("image")}
-            value={(imageUrl as string) || project.image}
-            placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+            className="hidden"
+            id="pickFile"
+            label="Fotoğraf Yükle"
+            onChange={handleImageChange}
           />
-          <ErrorMessage message={errors.image?.message} />
         </div>
+        <div className={style["main-area"]}>
+          <h2 className="text-3xl text-center">{project.projectName}</h2>
+          <hr className={style["hr"]} />
 
-        <div className={style["form-fields"]}>
-          {formFields.map((field) => (
-            <div key={field.name}>
-              <label htmlFor={field.name}>{field.label}</label>
-              <Input
-                //@ts-ignore
-                defaultValue={project[field.name]}
-                {...register(field.name as any)}
-                type={field.type}
-              />
-              <ErrorMessage
-                message={(errors as Record<string, any>)[field.name]?.message}
-              />
-            </div>
-          ))}
-
-          <div className={style["editor-section"]}>
-            <span>Tasks</span>
-            <Editor model={model} setModel={setModel} />
+          <div className={style["image-url"]}>
+            <label htmlFor="itemColor">Image Url</label>
+            <Input
+              {...register("image")}
+              value={(imageUrl as string) || project.image}
+              placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+            />
+            <ErrorMessage message={errors.image?.message} />
           </div>
 
-          <Button isLoading={loading} type="submit" variant="outline">
-            Kaydet
-          </Button>
+          <div className={style["form-fields"]}>
+            {formFields.map((field) => (
+              <div key={field.name}>
+                <label htmlFor={field.name}>{field.label}</label>
+                <Input
+                  //@ts-ignore
+                  defaultValue={project[field.name]}
+                  {...register(field.name as any)}
+                  type={field.type}
+                />
+                <ErrorMessage
+                  message={(errors as Record<string, any>)[field.name]?.message}
+                />
+              </div>
+            ))}
+
+            <div className={style["editor-section"]}>
+              <span>Tasks</span>
+              <Editor model={model} setModel={setModel} />
+            </div>
+
+            <Button isLoading={loading} type="submit" variant="outline">
+              Kaydet
+            </Button>
+          </div>
         </div>
       </form>
     </div>

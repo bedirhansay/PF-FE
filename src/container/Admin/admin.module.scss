@@ -1,17 +1,13 @@
 .form-wrapper {
-  @apply flex bg-white px-4 py-10 rounded-md flex-col gap-4;
+  @apply flex flex-col lg:grid md:grid-cols-[400px,1fr] bg-white px-4 py-10 rounded-md  gap-8;
 }
 
 .image-section {
-  @apply w-full h-64 relative;
+  @apply flex flex-col h-96 w-auto relative overflow-hidden;
 
   img {
-    @apply rounded border;
+    @apply flex self-center object-fill   rounded;
   }
-}
-
-.image-url-input {
-  @apply w-full;
 }
 
 .form-fields {
@@ -20,4 +16,27 @@
 
 .button-section {
   @apply w-full;
+}
+
+.main-area {
+  @apply bg-gray-100 p-4;
+}
+.hr {
+  @apply my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8;
+}
+
+.image-url {
+  @apply mb-4;
+}
+
+.page-form-wrapper {
+  @apply flex flex-col  bg-white px-4 py-10 rounded-md  gap-8;
+}
+
+.page-image-section {
+  @apply flex flex-col self-center w-full sm:w-1/2 lg:w-1/2 aspect-video justify-center  relative overflow-hidden;
+
+  img {
+    @apply flex  self-center object-fill rounded;
+  }
 }

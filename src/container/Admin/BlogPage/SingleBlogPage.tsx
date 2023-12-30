@@ -104,68 +104,68 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
   return (
     <div>
       <Breadcrumb page="blog" sub={blog.title} />
-      
+
       <HeadingSection title="Blog Yazıları" />
 
       <form className={style["form-wrapper"]} onSubmit={handleSubmit(onSubmit)}>
         <div className={style["image-section"]}>
-          <div className={style["image-container"]}>
-            <Image
-              alt=""
-              width={200}
-              height={200}
-              src={
-                selectedImage
-                  ? URL.createObjectURL(selectedImage)
-                  : (blog.image as string)
-              }
-            ></Image>
-          </div>
+          <Image
+            alt=""
+            width={300}
+            height={300}
+            //@ts-ignore
+            src={
+              (selectedImage && URL.createObjectURL(selectedImage)) ||
+              blog.image
+            }
+          ></Image>
+
           <Input
-            className={style["hidden"]}
+            className="hidden"
             id="pickFile"
             label="Fotoğraf Yükle"
             onChange={handleImageChange}
           />
         </div>
-        <strong>{blog.slug}</strong>
+        <div className={style["main-area"]}>
+          <h2 className="text-3xl text-center">{blog.title}</h2>
+          <hr className={style["hr"]} />
 
-        <div className={style["image-url-input"]}>
-          <label htmlFor="itemColor">Image Url</label>
-          <Input
-            {...register("image")}
-            value={(imageUrl as string) || blog.image}
-            placeholder="Fotoğraf Yükle"
-          />
-          <ErrorMessage message={errors.image?.message} />
-        </div>
+          <div className={style["image-url"]}>
+            <label htmlFor="itemColor">Image Url</label>
+            <Input
+              {...register("image")}
+              value={(imageUrl as string) || blog.image}
+              placeholder="Fotoğraf Yükleyin ya da Unsplash Link"
+            />
+            <ErrorMessage message={errors.image?.message} />
+          </div>
 
-        <div className={style["form-fields"]}>
-          {formFields.map((field) => (
-            <div key={field.name}>
-              <label htmlFor={field.name}>{field.label}</label>
-              <Input
-                //@ts-ignore
-                defaultValue={blog[field.name]}
-                {...register(field.name as any)}
-                type={field.type}
-              />
-              <ErrorMessage
-                message={(errors as Record<string, any>)[field.name]?.message}
-              />
+          <div className={style["form-fields"]}>
+            {formFields.map((field) => (
+              <div key={field.name}>
+                <label htmlFor={field.name}>{field.label}</label>
+                <Input
+                  //@ts-ignore
+                  defaultValue={blog[field.name]}
+                  {...register(field.name as any)}
+                  type={field.type}
+                />
+                <ErrorMessage
+                  message={(errors as Record<string, any>)[field.name]?.message}
+                />
+              </div>
+            ))}
+
+            <div className={style["editor-section"]}>
+              <span>Description</span>
+              <Editor model={model} setModel={setModel} />
             </div>
-          ))}
-        </div>
 
-        <div className={style["editor-section"]}>
-          <span>Description</span>
-          <Editor model={model} setModel={setModel} />
-        </div>
-
-        <div className={style["button-section"]}>
-          <Button isLoading={loading} type="submit" variant="outline">
-            Kaydet
-          </Button>
+            <Button isLoading={loading} type="submit" variant="outline">
+              Kaydet
+            </Button>
+          </div>
         </div>
       </form>
     </div>

@@ -202,14 +202,13 @@ export const BlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
           />
         ) : (
           <form
-            className={style["form-wrapper"]}
+            className={style["page-form-wrapper"]}
             onSubmit={handleSubmit(onSubmit)}
           >
             {selectedImage ? (
-              <React.Fragment>
-                <div className={style["image-section"]}>
+              <>
+                <div className={style["page-image-section"]}>
                   <Image
-                    className="rounded border"
                     alt=""
                     fill
                     src={selectedImage && URL.createObjectURL(selectedImage)}
@@ -221,7 +220,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
                   label="Fotoğraf Yükle"
                   onChange={handleImageChange}
                 />
-              </React.Fragment>
+              </>
             ) : (
               <Input
                 className="hidden"

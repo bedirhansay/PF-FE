@@ -167,12 +167,12 @@ export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
           />
         ) : (
           <form
-            className={style["form-wrapper"]}
+            className={style["page-form-wrapper"]}
             onSubmit={handleSubmit(onSubmit)}
           >
             {selectedImage ? (
               <React.Fragment>
-                <div className={style["image-section"]}>
+                <div className={style["page-image-section"]}>
                   <Image
                     alt=""
                     fill
