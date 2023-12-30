@@ -4,9 +4,10 @@ import { ExperiencePage } from "@container";
 import { callApi } from "../../../lib/actions/__api.actions";
 
 export const metadata: Metadata = {
-  title: "Experince",
+  title: "Experience",
   description:
-    "Ben Bedirhan Say. Kendi portföyümde sunduğum hizmetler ve yazdığım blog yazıları ile ilgili daha fazla bilgi alın.",
+    "Bedirhan Say, İstanbul/Türkiye merkezli bir serbest çalışan full-stack web geliştirici ve veri bilimcisi. Şu anda uzaktan çalışan deneyimli bir frontend web geliştiricisi olarak faaliyet gösteriyorum. React, Next.js, TypeScript, Tailwind CSS gibi modern teknolojilere hakimim ve bu teknolojilerle birçok başarılı projeyi hayata geçirdim. Özellikle kullanıcı dostu ve etkileşimli kullanıcı arayüzleri tasarlamak, monolitik mimariler oluşturmak ve web performansını artırmak konularında uzmanım. Aynı zamanda bir data scientist olarak da deneyimim bulunmaktadır; Python, makine öğrenmesi ve veri analizi konularında bilgi sahibiyim. Bu süre zarfında elde ettiğim bilgi birikimini sürekli olarak güncelleyerek, projelerime değer katmaya devam ediyorum. Bedirhan Say'ın web geliştirme ve veri bilimi konusundaki yeteneklerini keşfedin!",
+
   keywords: [
     "Bedirhan Say",
     "Freelance",

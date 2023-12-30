@@ -28,7 +28,7 @@ export const ClientSingleBlogPage = ({
         <div className={styles.gridContainer}>
           <div className={styles.leftContainer}>
             <div className={styles.headerContainer}>
-              <Link href="/" className={styles.goBackLink}>
+              <Link href="/blog" className={styles.goBackLink}>
                 <RiArrowGoBackFill className={styles.arrowIcon} />
               </Link>
               <h2 className={styles.pageTitle}>{selectedBlog?.title}</h2>
