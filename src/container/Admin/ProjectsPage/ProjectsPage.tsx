@@ -85,12 +85,13 @@ export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {
         reset();
         setImageUrl("");
       } else {
+        console.log(res);
         toast.error("Proje Eklenemedi" + res.error.message);
       }
     } catch (error: any) {
       toast.error(`Proje  Güncellenemedi: ${error.message}`);
     } finally {
-      setOpen(false);
+      // setOpen(false);
       setLoading(false);
     }
   };

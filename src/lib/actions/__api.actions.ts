@@ -57,7 +57,10 @@ export const callApi = async ({
     const axiosError = error as AxiosError;
     return {
       kind: "error",
-      error: axiosError.message,
+      error: {
+        //@ts-ignore
+        message: error.response.data,
+      },
       status: axiosError.response?.status || 400,
     };
   }

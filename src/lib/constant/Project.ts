@@ -10,6 +10,7 @@ import kidonki from "../../../public/projects/kidonki.png";
 import panel from "../../../public/projects/panel.png";
 
 export const projectDatas = [
+  //! Citio
   {
     projectName: "Citio",
     time: "1 Year",
@@ -49,6 +50,8 @@ export const projectDatas = [
       "Beta sürüm çıkışı ve testler",
     ],
   },
+
+  //! Medio
   {
     projectName: "Medio App",
     time: "2 Years",
@@ -85,6 +88,8 @@ export const projectDatas = [
       "Beta sürüm çıkışı ve testler",
     ],
   },
+
+  //! Broccoli Eklenecek
   {
     projectName: "Broccoli",
     time: "1 Year",
@@ -127,6 +132,8 @@ export const projectDatas = [
       "Beta sürüm çıkışı ve kullanıcı testleri",
     ],
   },
+
+  //! Lostbutik
 
   {
     projectName: "Los Butik",
