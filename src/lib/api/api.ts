@@ -18,7 +18,7 @@ export class Api {
     api.interceptors.request.use(
       async (config) => {
         const token = await ReadToken();
-        console.log(token);
+
         if (token) {
           config.headers["Authorization"] = `Bearer: ${token}`;
         }

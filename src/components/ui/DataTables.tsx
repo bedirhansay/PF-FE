@@ -146,7 +146,7 @@ export const DataTables: React.FC<DataTablesProps> = ({
   };
 
   return (
-    <section className="h-screen">
+    <section className="">
       <div className="h-full ">
         <div className="mt-2">
           {/* <SubHeader sortedContent={data} headers={headers} /> */}

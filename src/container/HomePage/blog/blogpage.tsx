@@ -27,7 +27,7 @@ export const BlogPage = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       const { data } = await callApi({ method: "get", path: "blog" });
-      setBlogs(data);
+      setBlogs(data.blogs);
     };
     fetchBlogs();
   }, []);

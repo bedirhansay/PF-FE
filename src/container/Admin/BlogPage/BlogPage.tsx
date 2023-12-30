@@ -1,6 +1,6 @@
 "use client";
 
-import { BlogDTO, CategoryDTO } from "@types";
+import { BlogDTO, BlogPageDTO, CategoryDTO } from "@types";
 import {
   Breadcrumb,
   Button,
@@ -21,11 +21,13 @@ import { BlogSchema } from "@validations";
 import { DeleteBox } from "@components";
 import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
+import { useSearchParams } from "next/navigation";
+import { Pagination } from "../../../components/Pagination";
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
 });
 
-export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
+export const BlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
   const {
     register,
     handleSubmit,
@@ -46,6 +48,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const [catId, setCatId] = useState<string>();
   const [categories, setCategories] = useState<CategoryDTO[]>();
   const [model, setModel] = useState<any>();
+  const [blogsItems, setBlogsItems] = useState<BlogPageDTO>(blogs);
 
   const formFields = [{ name: "title", label: "Title", type: "text" }];
 
@@ -142,7 +145,9 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   }, []);
 
   useEffect(() => {
-    const selectedSkill = blogs.find((item) => item._id === selectedId);
+    const selectedSkill = blogsItems.blogs.find(
+      (item) => item._id === selectedId
+    );
     if (selectedId) {
       setOpen(true);
       setSelectedItem(selectedSkill);
@@ -155,10 +160,24 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
     setOpen(true);
   };
 
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page");
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const { data } = await callApi({
+        method: "get",
+        path: `blog?page=${page}`,
+      });
+
+      setBlogsItems(data);
+    };
+    fetchBlogs();
+  }, [page]);
+
   return (
     <div>
-      <Breadcrumb page="Blog Yazısı" />
-
+      <Breadcrumb page="blog" />
       <HeadingSection
         title="Blog Yazısı"
         showButton
@@ -168,9 +187,12 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
       <DataTables
         setOperation={setOperation}
         setId={setSelectedId}
-        data={blogs}
+        data={blogsItems.blogs}
       />
-
+      <Pagination
+        currentPage={blogsItems.currentPage}
+        totalPage={blogsItems.totalPages}
+      />
       <Modal onClose={setOpen} isOpen={open}>
         {operation === "del" ? (
           <DeleteBox

@@ -14,6 +14,22 @@ export type SkillsDTO = {
   itemColor: string;
 };
 
+export type BlogDTO = {
+  _id: string;
+  title: string;
+  slug?: string;
+  description?: string;
+  image?: string;
+  viewCount?: number;
+  category: CategoryDTO;
+  createdAt?: string;
+};
+export type BlogPageDTO = {
+  totalPages: number;
+  currentPage: number;
+  blogs: BlogDTO[];
+};
+
 export type LoginDTO = {
   email?: string;
   password: string;
@@ -61,16 +77,5 @@ export type ExperienceDTO = {
   image: string;
   date: string;
   skills: string[];
-  createdAt?: string;
-};
-
-export type BlogDTO = {
-  _id: string;
-  title: string;
-  slug?: string;
-  description?: string;
-  image?: string;
-  viewCount?: number;
-  category: CategoryDTO;
   createdAt?: string;
 };

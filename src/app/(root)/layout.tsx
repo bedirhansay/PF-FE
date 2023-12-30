@@ -1,3 +1,4 @@
+import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import { Header } from "../../container/HomePage/header/header";
 import { ActiveSectionProvider } from "../../lib/contex";
 import "../globals.scss";

@@ -57,15 +57,19 @@
     @apply flex flex-col gap-8;
   }
 
+  .select-box {
+    @apply px-8 py-2 bg-gray-900 text-white rounded-md;
+  }
+
   .gridContainer {
-    @apply grid grid-cols-[1fr,80px] w-full border-2 border-gray-900 rounded-2xl justify-between;
+    @apply grid grid-cols-[1fr,80px] w-full border-2 border-gray-900 rounded-2xl justify-between items-center;
 
     input {
-      @apply flex-1 border-none mt-2 p-2 rounded-md;
+      @apply flex-1 border-none ml-4  rounded-md;
     }
 
     label {
-      @apply px-8 hover:bg-opacity-75 py-4 rounded-r-xl bg-gray-900 text-white;
+      @apply flex px-2 hover:bg-opacity-75 h-full my-auto items-center justify-center rounded-r-xl bg-gray-900 text-white;
     }
   }
 
@@ -94,14 +98,6 @@
         @apply bg-[#3498db] text-white px-2 py-1 rounded;
       }
     }
-  }
-}
-
-.pagination-container {
-  @apply flex justify-center mb-10 pb-10 max-w-7xl bg-white items-center mx-auto gap-4 self-end px-4;
-
-  .paginationLink {
-    @apply px-4 py-2 rounded-md;
   }
 }
 

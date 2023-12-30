@@ -1,31 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "../../components/ui/Input";
 import Image from "next/image";
 import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 import Link from "next/link";
 import { IoSearchOutline } from "react-icons/io5";
 import { useSearchParams } from "next/navigation";
-import { BlogDTO } from "../../lib/types/types";
+import { BlogPageDTO } from "../../lib/types/types";
 import style from "./blog.module.scss";
+import { callApi } from "@actions";
+import { Pagination } from "../../components/Pagination";
 
-export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
+export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-
-  // Blog filtreleme fonksiyonu
-  // const filteredBlogs = blogs.filter((item) => {
-  //   return (
-  //     item.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-  //     (selectedCategory === "" || item.category.name === selectedCategory)
-  //   );
-  // });
+  const [blogsItems, setBlogsItems] = useState<BlogPageDTO>(blogs);
 
   const searchParams = useSearchParams();
-  const search = searchParams.get("page");
+  const page = searchParams.get("page");
+
+  const filteredBlogs = blogsItems.blogs.filter((item) => {
+    return (
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (selectedCategory === "" || item.category.name === selectedCategory)
+    );
+  });
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const { data } = await callApi({
+        method: "get",
+        path: `blog?page=${page}`,
+      });
+
+      setBlogsItems(data);
+    };
+    fetchBlogs();
+  }, [page]);
+
   const pages = [1, 2, 3, 4, 5];
-  // const categories = [...new Set(blogs.map((item) => item.category.name))];
+  const categories = [
+    ...new Set(blogsItems.blogs.map((item) => item.category.name)),
+  ];
 
   return (
     <div className="overflow-x-hidden">
@@ -46,81 +63,80 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
       {/* //! Search */}
 
       <div className={style["max-width-container"]}>
-        {/* //! Filtre alan */}
-        {/* <div className="bg-gray-700 h-fit flex flex-col rounded p-2">
-          <label
-            htmlFor=""
-            className="block text-base text-center font-medium bg-white py-2 rounded"
-          >
-            Kategori
-          </label>
-          <select
-            className="mt-1 p-2 border border-gray-300 rounded-md"
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="">Tümü</option>
-            {categories.map((category, index) => (
-              <option key={index + "opt"} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div> */}
-
         {/* //! Filter ve Blog alan */}
         <div className={style["blog-wrapper"]}>
-          <div className={style.gridContainer}>
-            <Input
-              value={searchTerm}
-              placeholder="Blog yazısı ara"
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <label htmlFor="">
-              <IoSearchOutline fontSize={24} />
-            </label>
+          <div className="flex gap-8 ">
+            {/* //! Filtre alan */}
+
+            <select
+              className={style["select-box"]}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              <option value="">Kategori Seç</option>
+              {categories.map((category, index) => (
+                <option key={index + "opt"} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+
+            <div className={style.gridContainer}>
+              <Input
+                value={searchTerm}
+                placeholder="Blog yazısı ara"
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <label htmlFor="">
+                <IoSearchOutline fontSize={24} />
+              </label>
+            </div>
           </div>
 
           {/* //! Blogs */}
           <div className={style["ul-container"]}>
-            {blogs?.map((item) => (
-              <div key={item._id} className={style["blog-container"]}>
-                <h3>{item.title}</h3>
-                <Image alt="" width={200} height={100} src={item.image || ""} />
-
-                <span>Kategori: {item?.category.name || ""}</span>
-                <Link href={"/blog/" + item.slug}>Okumaya Devam Et</Link>
-              </div>
-            ))}
+            {searchTerm || selectedCategory ? (
+              filteredBlogs.length > 0 ? (
+                filteredBlogs.map((item) => (
+                  <div key={item._id} className={style["blog-container"]}>
+                    <h3>{item.title}</h3>
+                    <Image
+                      alt=""
+                      width={200}
+                      height={100}
+                      src={item.image || ""}
+                    />
+                    <span>Kategori: {item?.category.name || ""}</span>
+                    <Link href={"/blog/" + item.slug}>Okumaya Devam Et</Link>
+                  </div>
+                ))
+              ) : (
+                <p>Aradığınız kriterlere uygun blog bulunamadı.</p>
+              )
+            ) : (
+              blogsItems.blogs?.map((item) => (
+                <div key={item._id} className={style["blog-container"]}>
+                  <h3>{item.title}</h3>
+                  <Image
+                    alt=""
+                    width={200}
+                    height={100}
+                    src={item.image || ""}
+                  />
+                  <span>Kategori: {item?.category.name || ""}</span>
+                  <Link href={"/blog/" + item.slug}>Okumaya Devam Et</Link>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
 
       {/* //! Pagination */}
 
-      <div className={style["pagination-container"]}>
-        <Link href="/">
-          <CiCircleChevLeft fontSize={32} />
-        </Link>
-        {pages.map((item, i) => (
-          <Link
-            className={
-              item == Number(search)
-                ? "bg-gray-900 text-white rounded-md px-4 py-2"
-                : "text-black"
-            }
-            href={{
-              pathname: "blog",
-              query: { page: item },
-            }}
-            key={i + "page"}
-          >
-            {item}
-          </Link>
-        ))}
-        <Link href="/">
-          <CiCircleChevRight fontSize={32} />
-        </Link>
-      </div>
+      <Pagination
+        currentPage={blogsItems.currentPage}
+        totalPage={blogsItems.totalPages}
+      />
     </div>
   );
 };
