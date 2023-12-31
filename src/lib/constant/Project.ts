@@ -174,6 +174,7 @@ export const projectDatas = [
     ],
   },
 
+  //! Saka soft
   {
     projectName: "Saka Soft",
     time: "1 Year",
@@ -213,6 +214,8 @@ export const projectDatas = [
       "Müşteri destek ve geri bildirim sistemi oluşturma",
     ],
   },
+
+  //! Roma Eklenecek
   {
     projectName: "Roma Solution",
     time: "1 Year",
@@ -257,6 +260,7 @@ export const projectDatas = [
     ],
   },
 
+  //! Avis Agri
   {
     projectName: "Avis Agri",
     time: "1 Year",
@@ -301,22 +305,24 @@ export const projectDatas = [
       "Beta sürüm çıkışı ve testler",
     ],
   },
+
+  //! Ora
   {
     projectName: "Ora",
     time: "1 Year",
     logo: "",
-    image: ora,
-    area: "Online Zirai Drone Satışı",
-    tags: ["web", "e-commerce", "agriculture", "drone", "online"],
+    image: "ora",
+    area: "Online Ürün ve Hizmet Satışı",
+    tags: ["web", "e-commerce", "online"],
     description:
-      "Avis Agri, müşterilere online zirai drone satışı ve rezervasyon hizmetleri sunan bir web uygulamasıdır.",
+      "Ora, müşterilere online ürün ve hizmet satışı ile ilgili bir web uygulamasıdır.",
     goals: [
-      "Müşterilere kolay zirai drone satın alma imkanı sağlamak",
-      "Zirai drone teknolojisinin kullanımını artırmak",
-      "Müşterilere özel uçuş ve rezervasyon seçenekleri sunmak",
+      "Müşterilere kolay ürün ve hizmet satın alma imkanı sağlamak",
+      "Teknoloji ürünlerinin ve hizmetlerinin kullanımını artırmak",
+      "Müşterilere özel alışveriş ve rezervasyon seçenekleri sunmak",
     ],
     scope:
-      "Kullanıcı hesapları, ürün rezervasyon işlemleri, ödeme sistemi, zirai drone yönetimi",
+      "Kullanıcı hesapları, ürün/hizmet rezervasyon işlemleri, ödeme sistemi, ürün/hizmet yönetimi",
     requirements: [
       "Next.js",
       "SCSS",
@@ -332,60 +338,66 @@ export const projectDatas = [
     ],
     tasks: [
       "Temel altyapı oluşturma",
-      "Kullanıcı hesapları ve zirai drone rezervasyon ekranı geliştirme",
+      "Kullanıcı hesapları ve ürün/hizmet rezervasyon ekranı geliştirme",
       "Ödeme sistemi entegrasyonu",
-      "Zirai drone yönetimi ve satış ekranı geliştirme",
+      "Ürün/hizmet yönetimi ve satış ekranı geliştirme",
       "Beta sürüm çıkışı ve testler",
     ],
   },
+
+  //! CMS PANEL
   {
     projectName: "CMS Panel",
     time: "1 Year",
-    logo: "",
-    image: panel,
-    area: "Online Zirai Drone Satışı",
-    tags: ["web", "e-commerce", "agriculture", "drone", "online"],
+    logo: "CMS Panel Logo",
+    image: "CMS Panel Görseli",
+    area: "Çoklu Platform İçerik Yönetimi",
+    tags: ["web", "mobile", "content-management", "admin-panel"],
     description:
-      "Avis Agri, müşterilere online zirai drone satışı ve rezervasyon hizmetleri sunan bir web uygulamasıdır.",
+      "CMS Panel, içerik yönetimini kolaylaştıran çoklu platform desteği sunan bir yönetim panelidir.",
     goals: [
-      "Müşterilere kolay zirai drone satın alma imkanı sağlamak",
-      "Zirai drone teknolojisinin kullanımını artırmak",
-      "Müşterilere özel uçuş ve rezervasyon seçenekleri sunmak",
+      "Farklı platformlardaki içerikleri tek bir panelde yönetmek",
+      "Kullanıcı dostu arayüz ile içerik düzenleme ve ekleme",
+      "Modüler yapı ile genişletilebilirlik",
+      "Güvenli ve yetkilendirilmiş kullanıcı yönetimi",
     ],
-    scope:
-      "Kullanıcı hesapları, ürün rezervasyon işlemleri, ödeme sistemi, zirai drone yönetimi",
+    scope: "İçerik yönetimi, kullanıcı yönetimi, modül yönetimi",
     requirements: [
       "React.js",
       "Node.js",
       "MongoDB",
       "Express.js",
-      "Payment Gateway API",
-      "Drone Management System",
+      "JWT Authentication",
+      "Rich Text Editor",
+      "Multi-platform Support",
     ],
     tasks: [
       "Temel altyapı oluşturma",
-      "Kullanıcı hesapları ve zirai drone rezervasyon ekranı geliştirme",
-      "Ödeme sistemi entegrasyonu",
-      "Zirai drone yönetimi ve satış ekranı geliştirme",
+      "Çoklu platformlardaki içerik yönetim ekranları geliştirme",
+      "Kullanıcı yönetimi ve yetkilendirme sistemi oluşturma",
+      "Modüler yapıyı destekleyen bir sistem kurma",
+      "Güvenlik önlemlerini uygulama",
       "Beta sürüm çıkışı ve testler",
     ],
   },
+
+  //! Kidonki
   {
     projectName: "Kidonki",
     time: "1 Year",
     logo: "",
-    image: kidonki,
-    area: "Online Zirai Drone Satışı",
-    tags: ["web", "e-commerce", "agriculture", "drone", "online"],
+    image: "kidonki",
+    area: "Online Ev Kiralama",
+    tags: ["web", "real-estate", "online", "rental"],
     description:
-      "Avis Agri, müşterilere online zirai drone satışı ve rezervasyon hizmetleri sunan bir web uygulamasıdır.",
+      "Kidonki, kullanıcılara online ev kiralama hizmeti sunan bir web uygulamasıdır.",
     goals: [
-      "Müşterilere kolay zirai drone satın alma imkanı sağlamak",
-      "Zirai drone teknolojisinin kullanımını artırmak",
-      "Müşterilere özel uçuş ve rezervasyon seçenekleri sunmak",
+      "Müşterilere kolay ev kiralama imkanı sağlamak",
+      "Ev kiralama teknolojisinin kullanımını artırmak",
+      "Müşterilere özel konaklama seçenekleri sunmak",
     ],
     scope:
-      "Kullanıcı hesapları, ürün rezervasyon işlemleri, ödeme sistemi, zirai drone yönetimi",
+      "Kullanıcı hesapları, ev rezervasyon işlemleri, ödeme sistemi, ev yönetimi",
     requirements: [
       "Next.js",
       "SCSS",
@@ -400,17 +412,13 @@ export const projectDatas = [
       "Framer Motion",
       "Restfull Api",
       "Context Provider",
-      "Commitlint",
-      "Lint Stage",
-      "Prettier",
       "Payment Gateway API",
-      "Drone Management System",
     ],
     tasks: [
       "Temel altyapı oluşturma",
-      "Kullanıcı hesapları ve zirai drone rezervasyon ekranı geliştirme",
+      "Kullanıcı hesapları ve ev rezervasyon ekranı geliştirme",
       "Ödeme sistemi entegrasyonu",
-      "Zirai drone yönetimi ve satış ekranı geliştirme",
+      "Ev yönetimi ve kiralama ekranı geliştirme",
       "Beta sürüm çıkışı ve testler",
       "Resmi lansman",
     ],
