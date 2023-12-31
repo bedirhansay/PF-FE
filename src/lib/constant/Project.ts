@@ -311,7 +311,7 @@ export const projectDatas = [
     projectName: "Ora",
     time: "1 Year",
     logo: "",
-    image: "ora",
+    image: ora,
     area: "Online Ürün ve Hizmet Satışı",
     tags: ["web", "e-commerce", "online"],
     description:
@@ -350,7 +350,7 @@ export const projectDatas = [
     projectName: "CMS Panel",
     time: "1 Year",
     logo: "CMS Panel Logo",
-    image: "CMS Panel Görseli",
+    image: panel,
     area: "Çoklu Platform İçerik Yönetimi",
     tags: ["web", "mobile", "content-management", "admin-panel"],
     description:
@@ -386,7 +386,7 @@ export const projectDatas = [
     projectName: "Kidonki",
     time: "1 Year",
     logo: "",
-    image: "kidonki",
+    image: kidonki,
     area: "Online Ev Kiralama",
     tags: ["web", "real-estate", "online", "rental"],
     description:

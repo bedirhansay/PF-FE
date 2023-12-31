@@ -12,7 +12,7 @@ import { AboutDTO } from "../../../lib/types/types";
 import clsx from "clsx";
 
 export const AboutSection = () => {
-  const [count, setCount] = useState(940); // Adjust the initial character count as needed
+  const [count, setCount] = useState(965); // Adjust the initial character count as needed
   const [open, setOpen] = useState(false);
   const controls = useAnimation();
   const { ref } = useSectionInView("Hakkımda");
@@ -27,9 +27,11 @@ export const AboutSection = () => {
   }, []);
 
   const handleToggle = () => {
+    if (count == Infinity) {
+      window.location.href = "/#blog";
+    }
     setOpen(!open);
-    //
-    setCount((prev) => (open ? 900 : Infinity));
+    setCount((prev) => (open ? 940 : Infinity));
   };
 
   return (

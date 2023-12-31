@@ -24,7 +24,7 @@
   @apply font-bold  mt-4 mb-4 bottom-6 text-sm sm:text-xl;
 }
 .swiperSlide {
-  @apply shadow-lg w-fit sm:w-[600px] p-4 flex flex-col sm:flex-row items-center bg-gray-900 text-white rounded-md;
+  @apply shadow-lg w-full sm:w-[600px] p-4 flex flex-col sm:flex-row items-center bg-gray-900 text-white rounded-md;
 }
 
 .sliderImage {
