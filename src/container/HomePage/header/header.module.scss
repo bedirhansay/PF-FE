@@ -20,12 +20,12 @@
 }
 
 .nav-wrapper {
-  @apply flex fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 rounded w-fit  text-black;
+  @apply flex fixed  top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 rounded w-fit  text-black;
 
   @apply sm:top-[1.7rem] sm:h-[initial] sm:py-0;
 
   ul {
-    @apply w-[28rem] flex-wrap flex justify-center items-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5;
+    @apply w-[28rem] flex-wrap flex justify-center items-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-3;
 
     li {
       @apply h-3/4 flex justify-center items-center relative;

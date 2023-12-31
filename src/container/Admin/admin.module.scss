@@ -3,10 +3,10 @@
 }
 
 .image-section {
-  @apply flex flex-col h-96 w-auto relative overflow-hidden;
+  @apply flex flex-col h-auto w-auto relative overflow-hidden;
 
   img {
-    @apply flex self-center object-fill   rounded;
+    @apply h-1/2 self-center object-scale-down rounded;
   }
 }
 
@@ -37,6 +37,6 @@
   @apply flex flex-col self-center w-full sm:w-1/2 lg:w-1/2 aspect-video justify-center  relative overflow-hidden;
 
   img {
-    @apply flex  self-center object-fill rounded;
+    @apply flex h-1/2 self-center object-fill rounded;
   }
 }

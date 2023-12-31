@@ -8,6 +8,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { NavLinks } from "@constant";
 import style from "./header.module.scss";
 import { HeaderAnimations } from "./animation";
+import { FaUser } from "react-icons/fa";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +35,7 @@ export const Header = () => {
                   setTimeOfLastClick(Date.now());
                 }}
               >
-                <a href={link.hash}>
+                <Link prefetch={false} href={link.hash}>
                   {link.name}
                   {link.name === activeSection && (
                     <motion.span
@@ -43,9 +44,12 @@ export const Header = () => {
                       transition={HeaderAnimations.maskAnim}
                     ></motion.span>
                   )}
-                </a>
+                </Link>
               </motion.li>
             ))}
+            <Link href="/admin/blog">
+              <FaUser/>
+            </Link>
           </ul>
         </nav>
       </div>

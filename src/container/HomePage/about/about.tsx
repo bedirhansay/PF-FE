@@ -28,8 +28,8 @@ export const AboutSection = () => {
 
   const handleToggle = () => {
     setOpen(!open);
-    // You can adjust the character count based on your preference
-    setCount((prev) => (open ? 900 : Infinity)); // Set to Infinity to show the full text
+    //
+    setCount((prev) => (open ? 900 : Infinity));
   };
 
   return (

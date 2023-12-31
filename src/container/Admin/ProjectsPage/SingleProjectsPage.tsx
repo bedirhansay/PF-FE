@@ -120,14 +120,16 @@ export const SingleProjectsPage = ({ project }: { project: ProjectDTO }) => {
 
       <form className={style["form-wrapper"]} onSubmit={handleSubmit(onSubmit)}>
         <div className={style["image-section"]}>
-          <Image
-            alt=""
-            fill
-            src={
-              (selectedImage && URL.createObjectURL(selectedImage)) ||
-              project.image
-            }
-          ></Image>
+          <div className="h-80 relative">
+            <Image
+              alt=""
+              fill
+              src={
+                (selectedImage && URL.createObjectURL(selectedImage)) ||
+                project.image
+              }
+            />
+          </div>
 
           <Input
             className="hidden"
