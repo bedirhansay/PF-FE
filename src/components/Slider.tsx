@@ -24,7 +24,7 @@ export const Slider = ({ category }: { category: any }) => {
         {category.map((item: any, i: number) => (
           <SwiperSlide
             key={"swiper" + i}
-            className="shadow-lg w-60 p-2 flex flex-col bg-gray-100 border border-gray-300 items-center rounded-md"
+            className="shadow-lg !w-60 p-2 flex flex-col bg-gray-100 border border-gray-300 items-center rounded-md"
           >
             <Image
               height={128}

@@ -13,7 +13,7 @@
 }
 
 .viewCount {
-  @apply rounded  flex items-center gap-2 font-bold text-black text-xs;
+  @apply rounded  flex items-center gap-2 font-bold text-white text-xs;
 }
 
 .date {
@@ -24,11 +24,11 @@
   @apply font-bold  mt-4 mb-4 bottom-6 text-sm sm:text-xl;
 }
 .swiperSlide {
-  @apply shadow-lg w-fit p-4 flex flex-col sm:flex-row items-center bg-white rounded-md;
+  @apply shadow-lg w-fit sm:w-[600px] p-4 flex flex-col sm:flex-row items-center bg-gray-900 text-white rounded-md;
 }
 
 .sliderImage {
-  @apply h-44  sm:h-44 sm:w-44 rounded-md;
+  @apply h-44  sm:h-56 sm:w-56 rounded-md;
 }
 
 .text-wrapper {

@@ -16,7 +16,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, children, onClose }) => {
 
   return (
     <div className="fixed inset-0 overflow-scroll backdrop-blur-sm z-30 border rounded shadow-lg   ">
-      <div className="absolute  right-20 left-20 top-20  bg-white rounded-lg ">
+      <div className="absolute top-2 left-2 right-2  sm:right-20 sm:left-20 sm:top-20  bg-white rounded-lg ">
         <Button
           variant="close"
           className="bg-darkBlue text-white text-3xl  border-3  p-2 cursor-pointer"
