@@ -8,8 +8,9 @@ import { about } from "@constant";
 import { pAnim } from "./animations";
 import style from "./about.module.scss";
 import { callApi } from "@actions";
-import { AboutDTO } from "../../../lib/types/types";
+import { AboutDTO } from "@types";
 import clsx from "clsx";
+import { AboutSkeletons } from "@components";
 
 export const AboutSection = () => {
   const [count, setCount] = useState(965); // Adjust the initial character count as needed
@@ -33,19 +34,26 @@ export const AboutSection = () => {
     setOpen(!open);
     setCount((prev) => (open ? 940 : Infinity));
   };
+  let a = "";
 
   return (
     <motion.section className={style["about-wrapper"]} ref={ref} id="about">
       <Heading link="about" title="Hakkımda" />
 
       <motion.div className="mb-3">
-        {about?.map((item, index) => (
-          <motion.span
-            dangerouslySetInnerHTML={{ __html: item?.content.slice(0, count) }}
-            key={index + "item"}
-            {...pAnim({ delay: 0.1 * index, controls })}
-          />
-        ))}
+        {about ? (
+          about?.map((item, index) => (
+            <motion.span
+              dangerouslySetInnerHTML={{
+                __html: item?.content.slice(0, count),
+              }}
+              key={index + "item"}
+              {...pAnim({ delay: 0.1 * index, controls })}
+            />
+          ))
+        ) : (
+          <AboutSkeletons />
+        )}
       </motion.div>
       <div className={clsx(style["box-wrapper"])}>
         <button onClick={handleToggle} className={style["button"]}>

@@ -4,7 +4,7 @@
 
 @layer components {
   .layout {
-    @apply overflow-x-hidden px-0 text-gray-950  mx-auto p-10 relative pt-28 sm:pt-36;
+    @apply overflow-x-hidden px-0 text-gray-950  mx-auto relative pt-28 sm:pt-36;
   }
 
   .header-left-color {
@@ -78,5 +78,5 @@
   display: grid !important;
   gap: 20px;
   justify-content: space-between;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
 }

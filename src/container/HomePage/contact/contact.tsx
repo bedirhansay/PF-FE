@@ -37,7 +37,7 @@ export const Contact = () => {
             }}
           >
             <div className=" flex flex-col gap-4 max-w-3xl">
-              <strong className="!text-left shadow-md px-4 rounded">
+              <strong className="!text-left px-4 rounded">
                 {" "}
                 İletişime geçmek istiyorsanız
                 <a

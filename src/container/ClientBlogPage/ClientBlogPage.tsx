@@ -51,7 +51,7 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
         <div className={style["link-container"]}>
           <div className={style["link-item"]}>
             <span className={style["link-icon"]}></span>
-            <Link href="/">Home</Link>
+            <Link href="/">Anasayfa</Link>
           </div>
           <div className={style["link-item"]}>
             <span className={style["link-icon"]}></span>
@@ -65,7 +65,7 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
       <div className={style["max-width-container"]}>
         {/* //! Filter ve Blog alan */}
         <div className={style["blog-wrapper"]}>
-          <div className="flex gap-8 ">
+          <div className=" flex flex-col-reverse gap-4 sm:flex sm:flex-row sm:gap-8  ">
             {/* //! Filtre alan */}
 
             <select
