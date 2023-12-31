@@ -124,7 +124,6 @@ export const BlogPage = () => {
               query: { page: 1 },
             }}
           >
-            {" "}
             Tüm Blog Yazları
           </Link>
         </Button>

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useSectionInView } from "@hooks";
 import { Heading } from "@components/ui";
-import { about } from "@constant";
 import { pAnim } from "./animations";
 import style from "./about.module.scss";
 import { callApi } from "@actions";
@@ -13,7 +12,7 @@ import clsx from "clsx";
 import { AboutSkeletons } from "@components";
 
 export const AboutSection = () => {
-  const [count, setCount] = useState(965); // Adjust the initial character count as needed
+  const [count, setCount] = useState(965); 
   const [open, setOpen] = useState(false);
   const controls = useAnimation();
   const { ref } = useSectionInView("Hakkımda");

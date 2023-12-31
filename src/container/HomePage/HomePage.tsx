@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 
 import { Divider } from "@components/ui";
 import { Intro } from "./intro/intro";
@@ -11,6 +11,9 @@ import { Contact } from "./contact/contact";
 import { Footer } from "./footer/footer";
 
 export const HomePage = () => {
+
+  
+
   return (
     <main>
       <Intro />
