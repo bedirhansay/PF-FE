@@ -1,7 +1,6 @@
-import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import { Header } from "../../container/HomePage/header/header";
 import { ActiveSectionProvider } from "../../lib/contex";
-import "../globals.scss";
+import "./globals.scss";
 
 export default function RootLayout({
   children,
@@ -12,7 +11,6 @@ export default function RootLayout({
     <main className="layout">
       <div className="header-left-color"></div>
       <div className="header-right-color"></div>
-
       <ActiveSectionProvider>
         <Header />
         {children}

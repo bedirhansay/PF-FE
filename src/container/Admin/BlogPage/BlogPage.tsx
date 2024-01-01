@@ -23,7 +23,7 @@ import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import { Pagination } from "../../../components/Pagination";
-const Editor = dynamic(() => import("../../../components/Editor"), {
+const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });
 

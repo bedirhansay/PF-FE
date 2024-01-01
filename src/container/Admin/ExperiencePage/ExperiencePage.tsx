@@ -22,7 +22,7 @@ import { ExperienceSchema } from "@validations";
 import { DeleteBox } from "@components";
 import dynamic from "next/dynamic";
 import style from "../admin.module.scss";
-const Editor = dynamic(() => import("../../../components/Editor"), {
+const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });
 

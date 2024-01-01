@@ -1,5 +1,3 @@
-"use client";
-
 import { Divider } from "@components/ui";
 import { Intro } from "./intro/intro";
 import { BlogPage } from "./blog/blogpage";
@@ -11,11 +9,8 @@ import { Contact } from "./contact/contact";
 import { Footer } from "./footer/footer";
 
 export const HomePage = () => {
-
-  
-
   return (
-    <main>
+    <section>
       <Intro />
       <Divider />
       <BlogPage />
@@ -31,6 +26,6 @@ export const HomePage = () => {
       <Contact />
       <Divider line />
       <Footer />
-    </main>
+    </section>
   );
 };

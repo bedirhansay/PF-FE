@@ -7,7 +7,7 @@ import { Button } from "@components/ui";
 import { callApi } from "@actions";
 import toast from "react-hot-toast";
 
-const Editor = dynamic(() => import("../../../components/Editor"), {
+const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });
 

@@ -20,7 +20,7 @@ import { ProjectSchema } from "@validations";
 import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
 
-const Editor = dynamic(() => import("../../../components/Editor"), {
+const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });
 

@@ -22,7 +22,7 @@ import { ProjectSchema } from "../../../lib/validation/_skills.validation";
 import { DeleteBox } from "@components";
 import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
-const Editor = dynamic(() => import("../../../components/Editor"), {
+const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });
 export const ProjectsPage = ({ projects }: { projects: ProjectDTO[] }) => {

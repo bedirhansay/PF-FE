@@ -1,8 +1,7 @@
 import { Urbanist } from "next/font/google";
-import "./globals.scss";
 import { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
-
+import "./(root)/globals.scss";
 const inter = Urbanist({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],

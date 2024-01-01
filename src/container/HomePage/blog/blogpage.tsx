@@ -28,7 +28,7 @@ export const BlogPage = () => {
       setBlogs(data.blogs);
     };
     fetchBlogs();
-  }, []);
+  }, [blogs]);
 
   return (
     <div ref={ref} id="blog" className={style["parent"]}>
@@ -48,7 +48,7 @@ export const BlogPage = () => {
               <Image
                 width={200}
                 height={200}
-                priority={false}
+                loading="lazy"
                 className={style["sliderImage"]}
                 src={item.image || ""}
                 alt={item.title}
