@@ -9,6 +9,7 @@ import styles from "./blog.module.scss";
 import { FormatDate } from "../../lib/utils/format.date";
 import { callApi } from "../../lib/actions/__api.actions";
 import { BlogDTO } from "../../lib/types/types";
+import { revalidatePath } from "next/cache";
 
 export const ClientSingleBlogPage = ({
   selectedBlog,
@@ -26,6 +27,7 @@ export const ClientSingleBlogPage = ({
       path: `/blog/${selectedBlog._id}`,
       payload: payload,
     });
+    revalidatePath("/#blog");
   })();
 
   return (
