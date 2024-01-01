@@ -26,7 +26,7 @@ export const Projeler = () => {
       const { data } = await callApi({ method: "get", path: "projects" });
       setprojects(data);
     };
-    console.log
+    console.log;
     fetchProjects();
   }, []);
 
@@ -67,6 +67,7 @@ export const Projeler = () => {
                 }}
               >
                 <Image
+                  loading="lazy"
                   alt={projectDatas[activeProject].description}
                   src={projectDatas[activeProject].image}
                 ></Image>

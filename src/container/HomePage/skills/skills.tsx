@@ -30,11 +30,8 @@ export const Skills = () => {
       <Heading title="Yeteneklerim" link="skills"></Heading>
 
       <ul className={style["ul-container"]}>
-        {!skills
-          ? skill.map((item, index) => (
-              <SkillCardSkeleton key={"skleton" + index + "skill"} />
-            ))
-          : skills?.map((skill, index) => (
+        {skills
+          ? skills?.map((skill, index) => (
               <motion.li
                 key={index + "skills"}
                 variants={fadeInAnimationVariants(index)}
@@ -69,6 +66,9 @@ export const Skills = () => {
                   </ul>
                 </div>
               </motion.li>
+            ))
+          : skill.map((item, index) => (
+              <SkillCardSkeleton key={"skleton" + index + "skill"} />
             ))}
       </ul>
     </section>
