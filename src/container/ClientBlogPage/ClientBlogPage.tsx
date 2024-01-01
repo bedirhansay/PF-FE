@@ -86,7 +86,7 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
                 placeholder="Blog yazısı ara"
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <label htmlFor="">
+              <label htmlFor="" className="h-10">
                 <IoSearchOutline fontSize={24} />
               </label>
             </div>
