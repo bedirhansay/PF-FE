@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { Input } from "../../components/ui/Input";
 import Image from "next/image";
-import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 import Link from "next/link";
 import { IoSearchOutline } from "react-icons/io5";
 import { useSearchParams } from "next/navigation";

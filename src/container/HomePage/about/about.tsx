@@ -12,7 +12,7 @@ import clsx from "clsx";
 import { AboutSkeletons } from "@components";
 
 export const AboutSection = () => {
-  const [count, setCount] = useState(965); 
+  const [count, setCount] = useState(965);
   const [open, setOpen] = useState(false);
   const controls = useAnimation();
   const { ref } = useSectionInView("Hakkımda");
@@ -28,12 +28,11 @@ export const AboutSection = () => {
 
   const handleToggle = () => {
     if (count == Infinity) {
-      window.location.href = "/#blog";
+      window.location.href = "/#about";
     }
     setOpen(!open);
     setCount((prev) => (open ? 940 : Infinity));
   };
-  let a = "";
 
   return (
     <motion.section className={style["about-wrapper"]} ref={ref} id="about">

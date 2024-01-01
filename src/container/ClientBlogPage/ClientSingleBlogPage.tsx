@@ -7,14 +7,27 @@ import { BsClock } from "react-icons/bs";
 import { Share } from "@components";
 import styles from "./blog.module.scss";
 import { FormatDate } from "../../lib/utils/format.date";
+import { callApi } from "../../lib/actions/__api.actions";
+import { BlogDTO } from "../../lib/types/types";
 
 export const ClientSingleBlogPage = ({
   selectedBlog,
   otherBlogs,
 }: {
-  selectedBlog: any;
+  selectedBlog: BlogDTO;
   otherBlogs: any[];
 }) => {
+  (async function updateViewCount() {
+    const payload = {
+      viewCount: (selectedBlog?.viewCount as number) + 1,
+    };
+    await callApi({
+      method: "patch",
+      path: `/blog/${selectedBlog._id}`,
+      payload: payload,
+    });
+  })();
+
   return (
     <div className={styles.clampSizeContainer}>
       <div className={styles.innerContainer}>
