@@ -3,7 +3,7 @@ import React from "react";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Link from "next/link";
 import Image from "next/image";
-import { BsClock } from "react-icons/bs";
+import { BsClock, BsEye } from "react-icons/bs";
 import { Share } from "@components";
 import styles from "./blog.module.scss";
 import { FormatDate } from "../../lib/utils/format.date";
@@ -27,7 +27,7 @@ export const ClientSingleBlogPage = ({
       path: `/blog/${selectedBlog._id}`,
       payload: payload,
     });
-    console.log(res);
+
     revalidatePath("/#blog");
   })();
 
@@ -37,7 +37,8 @@ export const ClientSingleBlogPage = ({
         <h1 className={styles.blogHeader}>
           {selectedBlog?.title}
           <span className={styles.clockIcon}>
-            <BsClock />2 min read
+            <BsClock />2 min read <BsEye />
+            {selectedBlog.viewCount}
           </span>
         </h1>
 
@@ -51,6 +52,7 @@ export const ClientSingleBlogPage = ({
             </div>
 
             <Image
+              loading="lazy"
               alt={"blog"}
               width={800}
               height={300}
