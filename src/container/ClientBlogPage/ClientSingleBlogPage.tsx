@@ -22,11 +22,12 @@ export const ClientSingleBlogPage = ({
     const payload = {
       viewCount: (selectedBlog?.viewCount as number) + 1,
     };
-    await callApi({
-      method: "patch",
+    const res = await callApi({
+      method: "put",
       path: `/blog/${selectedBlog._id}`,
       payload: payload,
     });
+    console.log(res);
     revalidatePath("/#blog");
   })();
 

@@ -32,17 +32,26 @@ export const callApi = async ({
         break;
       case "post":
         response = await apiWorker.instance.post(path, payload);
-
         revalidatePath("/admin/" + path);
+        revalidatePath("/");
         break;
+
       case "patch":
         response = await apiWorker.instance.patch(path, payload);
         revalidatePath("/admin/" + path);
+        revalidatePath("/");
         break;
+
+      case "put":
+        response = await apiWorker.instance.patch(path, payload);
+        revalidatePath("/admin/" + path);
+        revalidatePath("/");
+        break;
+
       case "delete":
         response = await apiWorker.instance.delete(path);
-
         revalidatePath("/admin/" + path);
+        revalidatePath("/");
         break;
       default:
         throw new Error("Invalid method");
