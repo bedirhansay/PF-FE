@@ -28,7 +28,8 @@ export const ClientSingleBlogPage = ({
       payload: payload,
     });
 
-    revalidatePath("/#blog");
+    revalidatePath(`/blog/${selectedBlog._id}`);
+    revalidatePath("/");
   })();
 
   return (
