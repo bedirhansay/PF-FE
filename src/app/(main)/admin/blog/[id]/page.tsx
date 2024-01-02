@@ -1,7 +1,8 @@
 "use server";
 import type { Metadata, ResolvingMetadata } from "next";
-import { SingleBlogPage } from "@container";
+
 import { callApi } from "../../../../../lib/actions/__api.actions";
+import { SingleBlogPage } from "@/container/Admin/BlogPage/SingleBlogPage";
 
 type Props = {
   params: { id: string };

@@ -1,10 +1,11 @@
 "use client";
-import { NavLinks } from "@constant";
-import { useActiveSection } from "@hooks";
+
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 import style from "./footer.module.scss";
+import { NavLinks } from "@/lib/constant";
+import { useActiveSection } from "@/lib/hooks";
 
 export const Footer = () => {
   const { activeSection, setActiveSection, setTimeOfLastClick } =

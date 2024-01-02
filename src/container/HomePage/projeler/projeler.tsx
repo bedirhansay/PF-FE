@@ -2,15 +2,16 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { projectDatas } from "@constant";
+
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useSectionInView } from "@hooks";
 import style from "./projeler.module.scss";
 import { ProjectsAnim } from "./animations";
-
 import "swiper/css";
-import { ProjectDTO } from "../../../lib/types/types";
-import { callApi } from "@actions";
+
+import { ProjectDTO } from "@/lib/types";
+import { useSectionInView } from "@/lib/hooks";
+import { projectDatas } from "@/lib/constant";
+import { callApi } from "@/lib/actions";
 export const Projeler = () => {
   const [activeProject, setActiveProject] = useState(0);
 
@@ -26,9 +27,8 @@ export const Projeler = () => {
       const { data } = await callApi({ method: "get", path: "projects" });
       setprojects(data);
     };
-    console.log;
     fetchProjects();
-  }, []);
+  }, [projects]);
 
   return (
     <div ref={ref} id="projects" className={style["projects-container"]}>

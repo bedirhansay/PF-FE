@@ -1,4 +1,5 @@
-import { SingleSkillPage } from "@container";
+
+import { SingleSkillPage } from "@/container/Admin/SkillsPage/SingleSkillPage";
 import { callApi } from "../../../../../lib/actions/__api.actions";
 
 export default async function page({ params }: { params: { id: string } }) {

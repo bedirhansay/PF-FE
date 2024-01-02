@@ -2,14 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import clsx from "clsx";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { BsArrowRight, BsLinkedin, BsDownload, BsGithub } from "react-icons/bs";
-import { useSectionInView } from "@hooks";
-import { ProfilePic } from "@public";
 import { introAnimations } from "./animations";
-import clsx from "clsx";
 import style from "./intro.module.scss";
+import { motion } from "@/lib/motion/motion";
+import { useSectionInView } from "@/lib/hooks";
+import profilePic from "../../../../public/profile-picc.png";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Anasayfa");
@@ -24,7 +24,7 @@ export const Intro = () => {
             height="200"
             sizes="150px"
             className="h-40 w-40 rounded-full"
-            src={ProfilePic}
+            src={profilePic}
             priority={true}
             loading="eager"
           />

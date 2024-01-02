@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@utils";
+import { cn } from "@/lib/utils";
 import loader1 from "../../../public/icon/loader1.svg";
 import Image from "next/image";
 import Link from "next/link";

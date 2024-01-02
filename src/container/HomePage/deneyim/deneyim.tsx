@@ -1,7 +1,7 @@
 "use client";
 
-import { useSectionInView } from "@hooks";
-import { Heading } from "@components/ui";
+import { useSectionInView } from "@/lib/hooks";
+import { Heading } from "@/components/ui";
 import { motion } from "framer-motion";
 import { experinceAnimations } from "./animations";
 import style from "./experience.module.scss";
@@ -19,7 +19,7 @@ export const Deneyim = () => {
       setExperience(data);
     };
     fetchExperience();
-  }, []);
+  }, [experience]);
 
   return (
     <section id="experience" ref={ref} className={style.sectionWrapper}>

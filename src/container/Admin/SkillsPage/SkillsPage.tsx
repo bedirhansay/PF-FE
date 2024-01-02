@@ -12,13 +12,13 @@ import {
   Modal,
   Breadcrumb,
   HeadingSection,
-} from "@components/ui";
-import { SkillSchema } from "@validations";
-import { SkillsDTO } from "@types";
+} from "@/components/ui";
+import { SkillSchema } from "@/lib/validation";
+import { SkillsDTO } from "@/lib/types";
 import Image from "next/image";
 import { uploadImageToFirabase } from "../../../lib/helper/UploadImageToFirabase";
-import { callApi } from "@actions";
-import { StringToArray } from "@utils";
+import { callApi } from "@/lib/actions";
+import { StringToArray } from "@/lib/utils";
 import style from "../admin.module.scss";
 import { DeleteBox } from "../../../components/DeleteBox";
 

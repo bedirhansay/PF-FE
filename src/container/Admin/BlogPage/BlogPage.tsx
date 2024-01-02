@@ -1,6 +1,6 @@
 "use client";
 
-import { BlogDTO, BlogPageDTO, CategoryDTO } from "@types";
+import { BlogDTO, BlogPageDTO, CategoryDTO } from "@/lib/types";
 import {
   Breadcrumb,
   Button,
@@ -9,16 +9,16 @@ import {
   HeadingSection,
   Input,
   Modal,
-} from "@components/ui";
+} from "@/components/ui";
 import React, { useEffect, useState } from "react";
-import { callApi } from "@actions";
+import { callApi } from "@/lib/actions";
 import toast from "react-hot-toast";
-import { uploadImageToFirabase } from "@helper";
+import { uploadImageToFirabase } from "@/lib/helper";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
-import { BlogSchema } from "@validations";
-import { DeleteBox } from "@components";
+import { BlogSchema } from "@/lib/validation";
+import { DeleteBox } from "@/components/DeleteBox";
 import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";

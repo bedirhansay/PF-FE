@@ -1,4 +1,4 @@
-import { verifiedToken } from "@utils";
+import { verifiedToken } from "@/lib/utils";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import ReadToken from "./lib/actions/readToken.actions";

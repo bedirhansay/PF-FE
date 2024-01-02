@@ -1,15 +1,14 @@
 import React from "react";
-
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Link from "next/link";
 import Image from "next/image";
-import { BsClock, BsEye } from "react-icons/bs";
-import { Share } from "@components";
-import styles from "./blog.module.scss";
-import { FormatDate } from "../../lib/utils/format.date";
-import { callApi } from "../../lib/actions/__api.actions";
-import { BlogDTO } from "../../lib/types/types";
 import { revalidatePath } from "next/cache";
+import { BsClock, BsEye } from "react-icons/bs";
+import styles from "./blog.module.scss";
+import { BlogDTO } from "@/lib/types";
+import { Share } from "@/components/Share";
+import { FormatDate } from "@/lib/utils";
+import { callApi } from "@/lib/actions/__api.actions";
 
 export const ClientSingleBlogPage = ({
   selectedBlog,

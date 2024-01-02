@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { useSectionInView } from "@hooks";
-import { Heading } from "@components/ui";
 import { pAnim } from "./animations";
 import style from "./about.module.scss";
-import { callApi } from "@actions";
-import { AboutDTO } from "@types";
 import clsx from "clsx";
-import { AboutSkeletons } from "@components";
+import { useSectionInView } from "@/lib/hooks";
+import { callApi } from "@/lib/actions";
+import { Heading } from "@/components/ui";
+import { AboutDTO } from "@/lib/types";
+import { AboutSkeletons } from "@/components/skeletons";
 
 export const AboutSection = () => {
   const [count, setCount] = useState(850);

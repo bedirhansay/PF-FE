@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
-import { CategoriesPage, ExperiencePage } from "@container";
 import { callApi } from "../../../../lib/actions/__api.actions";
+import { CategoriesPage } from "@/container/Admin/CategoriesPage/CategoriesPage";
 
 export const metadata: Metadata = {
   title: "Skills",

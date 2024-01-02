@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
-import { useSectionInView } from "@hooks";
-import { Button, Heading, Input } from "@components/ui";
-import { sendEmail } from "@actions";
 import { useFormStatus } from "react-dom";
 import style from "./contact.module.scss";
 import { ContactAnimations } from "./animations";
+import { useSectionInView } from "@/lib/hooks";
+import { sendEmail } from "@/lib/actions";
+import { Button, Heading, Input } from "@/components/ui";
 
 export const Contact = () => {
   const { ref } = useSectionInView("İletişim");

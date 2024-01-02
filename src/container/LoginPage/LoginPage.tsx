@@ -2,13 +2,13 @@
 
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
-import { login } from "@actions";
-import { LoginDTO } from "@types";
-import { LoginSchema } from "@validations";
-import { Input, Button, Heading } from "@components/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import styles from "./login.module.scss";
+import { LoginDTO } from "@/lib/types";
+import { LoginSchema } from "@/lib/validation";
+import { login } from "@/lib/actions";
+import { Button, Heading, Input } from "@/components/ui";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);

@@ -1,4 +1,5 @@
-import { SingleExperiencePage } from "@container";
+
+import { SingleExperiencePage } from "@/container/Admin/ExperiencePage/SingleExperiencePage";
 import { callApi } from "../../../../../lib/actions/__api.actions";
 
 export default async function page({ params }: { params: { id: string } }) {

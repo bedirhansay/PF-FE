@@ -1,5 +1,7 @@
 "use client";
-
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { StringToArray } from "@/lib/utils";
 import {
   Breadcrumb,
   Button,
@@ -8,20 +10,17 @@ import {
   HeadingSection,
   Input,
   Modal,
-} from "@components/ui";
+} from "@/components/ui";
 import React, { useEffect, useState } from "react";
-import { ProjectDTO } from "@types";
-import { callApi } from "@actions";
+import { ProjectDTO } from "@/lib/types";
 import toast from "react-hot-toast";
-import { uploadImageToFirabase } from "@helper";
-import { StringToArray } from "@utils";
-import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import Image from "next/image";
 import { ProjectSchema } from "../../../lib/validation/_skills.validation";
-import { DeleteBox } from "@components";
+import { DeleteBox } from "@/components/DeleteBox";
 import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
+import { callApi } from "@/lib/actions";
+import { uploadImageToFirabase } from "@/lib/helper";
 const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });

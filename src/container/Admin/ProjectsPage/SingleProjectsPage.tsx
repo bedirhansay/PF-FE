@@ -6,17 +6,17 @@ import {
   ErrorMessage,
   HeadingSection,
   Input,
-} from "@components/ui";
+} from "@/components/ui";
 import React, { useState } from "react";
-import { ProjectDTO } from "@types";
-import { callApi } from "@actions";
+import { ProjectDTO } from "@/lib/types";
+import { callApi } from "@/lib/actions";
 import toast from "react-hot-toast";
-import { uploadImageToFirabase } from "@helper";
-import { StringToArray } from "@utils";
+import { uploadImageToFirabase } from "@/lib/helper";
+import { StringToArray } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
-import { ProjectSchema } from "@validations";
+import { ProjectSchema } from "@/lib/validation";
 import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
 

@@ -1,25 +1,24 @@
 "use client";
-
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { Button, Heading } from "@components/ui";
 import { BsEye, BsArrowRightShort } from "react-icons/bs";
-import { useSize, useSectionInView } from "@hooks";
-import { ProfilePic } from "@public";
-import { useEffect, useState } from "react";
-import { BlogDTO } from "@types";
-import { callApi } from "@actions";
-import { FormatDate } from "@utils";
-import { BlogCardSkeleton } from "@components";
+import { BlogCardSkeleton } from "@/components/skeletons";
+import style from "./blog.module.scss";
+import { useSectionInView } from "@/lib/hooks";
+import { callApi } from "@/lib/actions";
+import { BlogDTO } from "@/lib/types";
+import { FormatDate } from "@/lib/utils";
+import { ProfilePic } from "../../../../public";
+import { Button, Heading } from "@/components/ui";
+
 import "swiper/css";
 import "swiper/css/navigation";
-import style from "./blog.module.scss";
 
 export const BlogPage = () => {
   const { ref } = useSectionInView("Blog");
-  const [width] = useSize();
   const [blogs, setBlogs] = useState<BlogDTO[]>();
 
   useEffect(() => {

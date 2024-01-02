@@ -1,6 +1,5 @@
 "use client";
 
-import { ExperienceDTO } from "@types";
 import {
   Breadcrumb,
   Button,
@@ -9,19 +8,20 @@ import {
   HeadingSection,
   Input,
   Modal,
-} from "@components/ui";
+} from "@/components/ui";
 import React, { useEffect, useState } from "react";
-import { callApi } from "@actions";
+import { callApi } from "@/lib/actions";
 import toast from "react-hot-toast";
-import { uploadImageToFirabase } from "@helper";
-import { StringToArray } from "@utils";
+import { uploadImageToFirabase } from "@/lib/helper";
+import { StringToArray } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
-import { ExperienceSchema } from "@validations";
-import { DeleteBox } from "@components";
 import dynamic from "next/dynamic";
 import style from "../admin.module.scss";
+import { ExperienceDTO } from "@/lib/types";
+import { DeleteBox } from "@/components/DeleteBox";
+import { ExperienceSchema } from "@/lib/validation";
 const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });

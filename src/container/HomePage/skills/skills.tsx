@@ -2,14 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useSectionInView } from "@hooks";
-import { Heading } from "@components/ui";
 import style from "./skills.module.scss";
 import Image from "next/image";
 import { fadeInAnimationVariants, skillsAnim } from "./animations";
-import { SkillsDTO } from "@types";
-import { callApi } from "@actions";
-import { SkillCardSkeleton } from "@components";
+import { useSectionInView } from "@/lib/hooks";
+import { SkillsDTO } from "@/lib/types";
+import { Heading } from "@/components/ui";
+import { callApi } from "@/lib/actions";
+import { SkillCardSkeleton } from "@/components/skeletons";
 
 export const Skills = () => {
   const { ref } = useSectionInView("Yetenekler");

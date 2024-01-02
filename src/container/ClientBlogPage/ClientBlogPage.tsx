@@ -6,10 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoSearchOutline } from "react-icons/io5";
 import { useSearchParams } from "next/navigation";
-import { BlogPageDTO } from "../../lib/types/types";
 import style from "./blog.module.scss";
-import { callApi } from "@actions";
-import { Pagination } from "../../components/Pagination";
+import { callApi } from "@/lib/actions";
+import { Pagination } from "@/components/Pagination";
+import { BlogPageDTO } from "@/lib/types";
 
 export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
   const [searchTerm, setSearchTerm] = useState("");

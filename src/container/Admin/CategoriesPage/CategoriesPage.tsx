@@ -8,17 +8,17 @@ import {
   HeadingSection,
   Input,
   Modal,
-} from "@components/ui";
+} from "@/components/ui";
 import React, { useEffect, useState } from "react";
-import { CategoryDTO } from "@types";
-import { callApi } from "@actions";
+import { CategoryDTO } from "@/lib/types";
+import { callApi } from "@/lib/actions";
 import toast from "react-hot-toast";
-import { uploadImageToFirabase } from "@helper";
+import { uploadImageToFirabase } from "@/lib/helper";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
-import { CategorySchema } from "@validations";
-import { DeleteBox } from "@components";
+import { CategorySchema } from "@/lib/validation";
+import { DeleteBox } from "@/components/DeleteBox";
 import style from "../admin.module.scss";
 
 export const CategoriesPage = ({

@@ -1,8 +1,7 @@
 import React from "react";
-import { ClientBlogPage } from "@container";
 import { callApi } from "../../../lib/actions/__api.actions";
-
 import { Metadata } from "next";
+import { ClientBlogPage } from "@/container/ClientBlogPage/ClientBlogPage";
 
 export const metadata: Metadata = {
   title: "Bedirhan Say - Blog",

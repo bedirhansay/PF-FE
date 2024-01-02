@@ -1,8 +1,8 @@
 import React from "react";
 import type { Metadata, ResolvingMetadata } from "next";
-import { ClientSingleBlogPage } from "@container";
 import { callApi } from "../../../../lib/actions/__api.actions";
 import { notFound } from "next/navigation";
+import { ClientSingleBlogPage } from "@/container/ClientBlogPage/ClientSingleBlogPage";
 
 type Props = {
   params: { slug: string };
