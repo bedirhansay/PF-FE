@@ -12,7 +12,7 @@ import clsx from "clsx";
 import { AboutSkeletons } from "@components";
 
 export const AboutSection = () => {
-  const [count, setCount] = useState(935);
+  const [count, setCount] = useState(850);
   const [open, setOpen] = useState(false);
   const controls = useAnimation();
   const { ref } = useSectionInView("Hakkımda");
@@ -31,7 +31,7 @@ export const AboutSection = () => {
       window.location.href = "/#about";
     }
     setOpen(!open);
-    setCount((prev) => (open ? 940 : Infinity));
+    setCount((prev) => (open ? 850 : Infinity));
   };
 
   return (

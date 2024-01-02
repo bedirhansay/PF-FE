@@ -92,6 +92,7 @@ export const BlogPage = () => {
                     </div>
                   </div>
                   <Link
+                    prefetch
                     className="text-xs  px-2 py-2 rounded underline flex items-center gap-2"
                     href={`/blog/${item.slug}`}
                   >
