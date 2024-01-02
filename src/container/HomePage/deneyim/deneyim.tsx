@@ -5,21 +5,11 @@ import { Heading } from "@/components/ui";
 import { motion } from "framer-motion";
 import { experinceAnimations } from "./animations";
 import style from "./experience.module.scss";
-import { useEffect, useState } from "react";
+
 import { ExperienceDTO } from "../../../lib/types/types";
-import { callApi } from "../../../lib/actions/__api.actions";
 
-const Deneyim = () => {
+const Deneyim = ({ experience }: { experience: ExperienceDTO[] }) => {
   const { ref, view } = useSectionInView("Deneyim", 0.9);
-  const [experience, setExperience] = useState<ExperienceDTO[]>();
-
-  useEffect(() => {
-    const fetchExperience = async () => {
-      const { data } = await callApi({ method: "get", path: "experience" });
-      setExperience(data);
-    };
-    fetchExperience();
-  }, []);
 
   return (
     <section id="experience" ref={ref} className={style.sectionWrapper}>

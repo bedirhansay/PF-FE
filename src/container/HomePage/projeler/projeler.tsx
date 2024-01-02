@@ -10,9 +10,8 @@ import "swiper/css";
 import { ProjectDTO } from "@/lib/types";
 import { useSectionInView } from "@/lib/hooks";
 import { projectDatas } from "@/lib/constant";
-import { callApi } from "@/lib/actions";
 
-export default function Projeler() {
+export default function Projeler({ projects }: { projects: ProjectDTO[] }) {
   const [activeProject, setActiveProject] = useState(0);
 
   const { ref } = useSectionInView("Projeler");
@@ -20,15 +19,6 @@ export default function Projeler() {
   const handleClick = (index: number) => {
     setActiveProject(index);
   };
-  const [projects, setprojects] = useState<ProjectDTO[]>();
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const { data } = await callApi({ method: "get", path: "projects" });
-      setprojects(data);
-    };
-    fetchProjects();
-  }, []);
 
   return (
     <div ref={ref} id="projects" className={style["projects-container"]}>

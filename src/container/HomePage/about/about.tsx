@@ -11,20 +11,11 @@ import { Heading } from "@/components/ui";
 import { AboutDTO } from "@/lib/types";
 import { AboutSkeletons } from "../../../components/AboutSkeleton";
 
-export default function AboutSection() {
+export default function AboutSection({ about }: { about: AboutDTO[] }) {
   const [count, setCount] = useState(850);
   const [open, setOpen] = useState(false);
   const controls = useAnimation();
   const { ref } = useSectionInView("Hakkımda");
-  const [about, setAbout] = useState<AboutDTO[]>();
-
-  useEffect(() => {
-    const fetchabout = async () => {
-      const { data } = await callApi({ method: "get", path: "about" });
-      setAbout(data);
-    };
-    fetchabout();
-  }, []);
 
   const handleToggle = () => {
     if (count == Infinity) {

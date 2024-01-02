@@ -8,23 +8,10 @@ import { fadeInAnimationVariants, skillsAnim } from "./animations";
 import { useSectionInView } from "@/lib/hooks";
 import { SkillsDTO } from "@/lib/types";
 import { Heading } from "@/components/ui";
-import { callApi } from "@/lib/actions";
 import { SkillCardSkeleton } from "../../../components/SkillCardSekeleton";
 
-export default function Skills() {
+export default function Skills({ skills }: { skills: SkillsDTO[] }) {
   const { ref } = useSectionInView("Yetenekler");
-  const [skills, setskills] = useState<SkillsDTO[] | undefined>();
-
-  const skill = [1, 2, 3, 4, 5, 6];
-
-  useEffect(() => {
-    async function getSkills() {
-      const { data } = await callApi({ method: "get", path: "skills" });
-      setskills(data);
-      console.log(data);
-    }
-    getSkills();
-  }, []);
 
   return (
     <section id="skills" ref={ref} className={style["section-wrapper"]}>
@@ -68,9 +55,11 @@ export default function Skills() {
                 </div>
               </motion.li>
             ))
-          : skill.map((item, index) => (
-              <SkillCardSkeleton key={"skleton" + index + "skill"} />
-            ))}
+          : Array(2)
+              .fill(0)
+              .map((item, index) => (
+                <SkillCardSkeleton key={"skleton" + index + "skill"} />
+              ))}
       </ul>
     </section>
   );

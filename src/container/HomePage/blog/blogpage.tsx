@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,7 +6,6 @@ import { Navigation } from "swiper/modules";
 import { BsEye, BsArrowRightShort } from "react-icons/bs";
 import style from "./blog.module.scss";
 import { useSectionInView } from "@/lib/hooks";
-import { callApi } from "@/lib/actions";
 import { BlogDTO } from "@/lib/types";
 import { FormatDate } from "@/lib/utils";
 import { ProfilePic } from "../../../../public";
@@ -17,17 +15,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { BlogCardSkeleton } from "../../../components/BlogCardSkeleton";
 
-export const BlogPage = () => {
+export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const { ref } = useSectionInView("Blog");
-  const [blogs, setBlogs] = useState<BlogDTO[]>();
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      const { data } = await callApi({ method: "get", path: "blog" });
-      setBlogs(data.blogs);
-    };
-    fetchBlogs();
-  }, []);
 
   return (
     <div ref={ref} id="blog" className={style["parent"]}>

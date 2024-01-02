@@ -1,29 +1,38 @@
-import dynamic from "next/dynamic";
 import { BlogPage } from "./blog/blogpage";
 import { Intro } from "./intro/intro";
+import { callApi } from "@/lib/actions/__api.actions";
+import Divider from "@/components/ui/divider/divider";
+import AboutSection from "./about/about";
+import Projeler from "./projeler/projeler";
+import Skills from "./skills/skills";
+import Deneyim from "./deneyim/deneyim";
+import Contact from "./contact/contact";
+import Footer from "./footer/footer";
 
-const AboutSection = dynamic(() => import("./about/about"));
-const Projeler = dynamic(() => import("./projeler/projeler"));
-const Skills = dynamic(() => import("./skills/skills"));
-const Deneyim = dynamic(() => import("./deneyim/deneyim"));
-const Contact = dynamic(() => import("./contact/contact"));
-const Footer = dynamic(() => import("./footer/footer"));
-const Divider = dynamic(() => import("@/components/ui/divider/divider"));
+export const HomePage = async () => {
+  const [blog, about, projects, skills, experience] = await Promise.all([
+    callApi({ method: "get", path: "blog" }),
+    callApi({ method: "get", path: "about" }),
+    callApi({ method: "get", path: "projects" }),
+    callApi({ method: "get", path: "skills" }),
+    callApi({ method: "get", path: "experience" }),
+  ]);
 
-export const HomePage = () => {
+  
+
   return (
     <section>
       <Intro />
       <Divider />
-      <BlogPage />
+      <BlogPage blogs={blog.data.blogs} />
       <Divider line />
-      <AboutSection />
+      <AboutSection about={about.data} />
       <Divider line />
-      <Projeler />
+      <Projeler projects={projects.data} />
       <Divider line />
-      <Skills />
+      <Skills skills={skills.data} />
       <Divider line />
-      <Deneyim />
+      <Deneyim experience={experience.data} />
       <Divider line />
       <Contact />
       <Divider line />

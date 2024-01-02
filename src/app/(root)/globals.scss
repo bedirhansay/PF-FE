@@ -4,7 +4,7 @@
 
 @layer components {
   .layout {
-    @apply overflow-x-hidden px-0 text-gray-950  mx-auto relative pt-28 sm:pt-36;
+    @apply overflow-x-hidden h-screen px-0 text-gray-950  mx-auto relative pt-28 sm:pt-36;
   }
 
   .header-left-color {

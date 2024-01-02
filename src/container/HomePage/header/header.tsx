@@ -47,9 +47,9 @@ export const Header = () => {
                 </Link>
               </motion.li>
             ))}
-            <Link href="/admin/blog">
+            <motion.a {...HeaderAnimations.liAnimation} href="/admin/blog">
               <FaUser />
-            </Link>
+            </motion.a>
           </ul>
         </nav>
       </div>
