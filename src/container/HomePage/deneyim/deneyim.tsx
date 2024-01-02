@@ -19,7 +19,7 @@ const Deneyim = () => {
       setExperience(data);
     };
     fetchExperience();
-  }, [experience]);
+  }, []);
 
   return (
     <section id="experience" ref={ref} className={style.sectionWrapper}>

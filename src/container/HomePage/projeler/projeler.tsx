@@ -28,7 +28,7 @@ export default function Projeler() {
       setprojects(data);
     };
     fetchProjects();
-  }, [projects]);
+  }, []);
 
   return (
     <div ref={ref} id="projects" className={style["projects-container"]}>

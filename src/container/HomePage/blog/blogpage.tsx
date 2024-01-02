@@ -27,7 +27,7 @@ export const BlogPage = () => {
       setBlogs(data.blogs);
     };
     fetchBlogs();
-  }, [blogs]);
+  }, []);
 
   return (
     <div ref={ref} id="blog" className={style["parent"]}>
