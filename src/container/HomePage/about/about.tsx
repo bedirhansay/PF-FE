@@ -9,7 +9,7 @@ import { useSectionInView } from "@/lib/hooks";
 import { callApi } from "@/lib/actions";
 import { Heading } from "@/components/ui";
 import { AboutDTO } from "@/lib/types";
-import { AboutSkeletons } from "@/components/skeletons";
+import { AboutSkeletons } from "@/components/skeletons/AboutSkeleton";
 
 export const AboutSection = () => {
   const [count, setCount] = useState(850);

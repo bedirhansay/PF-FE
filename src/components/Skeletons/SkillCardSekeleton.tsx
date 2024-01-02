@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import React from "react";
 import placeholder from "../../../public/image-placeholder.png";
 export const SkillCardSkeleton = () => {
   return (

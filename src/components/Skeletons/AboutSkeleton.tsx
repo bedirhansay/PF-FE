@@ -1,7 +1,3 @@
-"use client";
-
-import React from "react";
-
 export const AboutSkeletons = () => {
   return (
     <div className="flex flex-col gap-4">

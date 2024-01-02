@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { BsEye, BsArrowRightShort } from "react-icons/bs";
-import { BlogCardSkeleton } from "@/components/skeletons";
+import { BlogCardSkeleton } from "@/components/skeletons/BlogCardSkeleton";
 import style from "./blog.module.scss";
 import { useSectionInView } from "@/lib/hooks";
 import { callApi } from "@/lib/actions";
