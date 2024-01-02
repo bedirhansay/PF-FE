@@ -12,7 +12,7 @@ import clsx from "clsx";
 import { AboutSkeletons } from "@components";
 
 export const AboutSection = () => {
-  const [count, setCount] = useState(965);
+  const [count, setCount] = useState(935);
   const [open, setOpen] = useState(false);
   const controls = useAnimation();
   const { ref } = useSectionInView("Hakkımda");

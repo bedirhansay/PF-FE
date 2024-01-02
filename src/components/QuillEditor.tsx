@@ -20,15 +20,16 @@ import "froala-editor/js/plugins/save.min";
 import "froala-editor/js/plugins/url.min";
 import "froala-editor/js/plugins/table.min";
 import dynamic from "next/dynamic";
+const DynamicFroalaEditor = dynamic(() => import("react-froala-wysiwyg"), {
+  ssr: false,
+});
+
 interface IProp {
   model: string | undefined;
   setModel: SetStateAction<Dispatch<string | any>>;
 }
 
 const QuillEditor: React.FC<IProp> = ({ model, setModel }) => {
-  const DynamicFroalaEditor = dynamic(() => import("react-froala-wysiwyg"), {
-    ssr: false,
-  });
   return (
     <DynamicFroalaEditor
       model={model}
@@ -38,8 +39,8 @@ const QuillEditor: React.FC<IProp> = ({ model, setModel }) => {
         placeholderText: "Edit Your Content Here!",
         charCounterCount: true,
         events: {
-          "save.before": function (html: string) {
-            localStorage.setItem("savedText", html);
+          blur: function (e: string) {
+            // setModel(preModel);
           },
         },
         tag: "textarea",
