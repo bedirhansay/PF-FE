@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { BsEye, BsArrowRightShort } from "react-icons/bs";
-import { BlogCardSkeleton } from "@/components/skeletons/BlogCardSkeleton";
 import style from "./blog.module.scss";
 import { useSectionInView } from "@/lib/hooks";
 import { callApi } from "@/lib/actions";
@@ -16,6 +15,7 @@ import { Button, Heading } from "@/components/ui";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { BlogCardSkeleton } from "../../../components/skeletons/BlogCardSkeleton";
 
 export const BlogPage = () => {
   const { ref } = useSectionInView("Blog");

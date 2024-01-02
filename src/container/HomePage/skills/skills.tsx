@@ -9,7 +9,7 @@ import { useSectionInView } from "@/lib/hooks";
 import { SkillsDTO } from "@/lib/types";
 import { Heading } from "@/components/ui";
 import { callApi } from "@/lib/actions";
-import { SkillCardSkeleton } from "@/components/skeletons/SkillCardSekeleton";
+import { SkillCardSkeleton } from "../../../components/skeletons/SkillCardSekeleton";
 
 export const Skills = () => {
   const { ref } = useSectionInView("Yetenekler");
