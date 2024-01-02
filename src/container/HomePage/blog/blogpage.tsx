@@ -15,7 +15,7 @@ import { Button, Heading } from "@/components/ui";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { BlogCardSkeleton } from "../../../components/skeletons/BlogCardSkeleton";
+import { BlogCardSkeleton } from "../../../components/BlogCardSkeleton";
 
 export const BlogPage = () => {
   const { ref } = useSectionInView("Blog");

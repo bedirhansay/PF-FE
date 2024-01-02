@@ -1,5 +1,5 @@
 import Image from "next/image";
-import placeholder from "../../../public/image-placeholder.png";
+import placeholder from "../../public/image-placeholder.png";
 export const SkillCardSkeleton = () => {
   return (
     <div className="h-full flex py-4 flex-col justify-between mx-auto pt-8 rounded shadow-xl">
