@@ -1,12 +1,14 @@
-import { Intro } from "./intro/intro";
+import dynamic from "next/dynamic";
 import { BlogPage } from "./blog/blogpage";
-import { AboutSection } from "./about/about";
-import { Projeler } from "./projeler/projeler";
-import { Skills } from "./skills/skills";
-import { Deneyim } from "./deneyim/deneyim";
-import { Contact } from "./contact/contact";
-import { Footer } from "./footer/footer";
-import { Divider } from "@/components/ui";
+import { Intro } from "./intro/intro";
+
+const AboutSection = dynamic(() => import("./about/about"));
+const Projeler = dynamic(() => import("./projeler/projeler"));
+const Skills = dynamic(() => import("./skills/skills"));
+const Deneyim = dynamic(() => import("./deneyim/deneyim"));
+const Contact = dynamic(() => import("./contact/contact"));
+const Footer = dynamic(() => import("./footer/footer"));
+const Divider = dynamic(() => import("@/components/ui/divider/divider"));
 
 export const HomePage = () => {
   return (

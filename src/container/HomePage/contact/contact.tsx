@@ -9,7 +9,7 @@ import { useSectionInView } from "@/lib/hooks";
 import { sendEmail } from "@/lib/actions";
 import { Button, Heading, Input } from "@/components/ui";
 
-export const Contact = () => {
+const Contact = () => {
   const { ref } = useSectionInView("İletişim");
   const { pending } = useFormStatus();
 
@@ -84,3 +84,5 @@ export const Contact = () => {
     </motion.section>
   );
 };
+
+export default Contact;

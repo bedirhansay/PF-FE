@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import style from "./projeler.module.scss";
 import { ProjectsAnim } from "./animations";
@@ -12,7 +11,8 @@ import { ProjectDTO } from "@/lib/types";
 import { useSectionInView } from "@/lib/hooks";
 import { projectDatas } from "@/lib/constant";
 import { callApi } from "@/lib/actions";
-export const Projeler = () => {
+
+export default function Projeler() {
   const [activeProject, setActiveProject] = useState(0);
 
   const { ref } = useSectionInView("Projeler");
@@ -97,4 +97,4 @@ export const Projeler = () => {
       </motion.div>
     </div>
   );
-};
+}

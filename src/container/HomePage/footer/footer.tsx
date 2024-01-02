@@ -6,8 +6,7 @@ import React from "react";
 import style from "./footer.module.scss";
 import { NavLinks } from "@/lib/constant";
 import { useActiveSection } from "@/lib/hooks";
-
-export const Footer = () => {
+const Footer = () => {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSection();
   return (
@@ -51,3 +50,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

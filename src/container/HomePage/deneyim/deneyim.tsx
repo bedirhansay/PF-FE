@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { ExperienceDTO } from "../../../lib/types/types";
 import { callApi } from "../../../lib/actions/__api.actions";
 
-export const Deneyim = () => {
+const Deneyim = () => {
   const { ref, view } = useSectionInView("Deneyim", 0.9);
   const [experience, setExperience] = useState<ExperienceDTO[]>();
 
@@ -57,3 +57,5 @@ export const Deneyim = () => {
     </section>
   );
 };
+
+export default Deneyim;

@@ -11,7 +11,7 @@ import { Heading } from "@/components/ui";
 import { AboutDTO } from "@/lib/types";
 import { AboutSkeletons } from "../../../components/skeletons/AboutSkeleton";
 
-export const AboutSection = () => {
+export default function AboutSection() {
   const [count, setCount] = useState(850);
   const [open, setOpen] = useState(false);
   const controls = useAnimation();
@@ -60,4 +60,4 @@ export const AboutSection = () => {
       </div>
     </motion.section>
   );
-};
+}

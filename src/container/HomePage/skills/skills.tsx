@@ -11,19 +11,18 @@ import { Heading } from "@/components/ui";
 import { callApi } from "@/lib/actions";
 import { SkillCardSkeleton } from "../../../components/skeletons/SkillCardSekeleton";
 
-export const Skills = () => {
+export default function Skills() {
+  console.log("girdi");
   const { ref } = useSectionInView("Yetenekler");
   const [skills, setskills] = useState<SkillsDTO[] | undefined>();
 
   const skill = [1, 2, 3, 4, 5, 6];
 
-  useEffect(() => {
-    const fetchskills = async () => {
-      const { data } = await callApi({ method: "get", path: "skills" });
-      setskills(data);
-    };
-    fetchskills();
-  }, []);
+  (async function getSkills() {
+    const { data } = await callApi({ method: "get", path: "skills" });
+    setskills(data);
+    console.log(data);
+  })();
 
   return (
     <section id="skills" ref={ref} className={style["section-wrapper"]}>
@@ -73,4 +72,4 @@ export const Skills = () => {
       </ul>
     </section>
   );
-};
+}
