@@ -70,7 +70,7 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
               className={style["select-box"]}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              <option value="">Kategori Seç</option>
+              <option value="">Tümü</option>
               {categories.map((category, index) => (
                 <option key={index + "opt"} value={category}>
                   {category}

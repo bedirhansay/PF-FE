@@ -55,7 +55,7 @@ export default function Skills({ skills }: { skills: SkillsDTO[] }) {
                 </div>
               </motion.li>
             ))
-          : Array(2)
+          : Array(3)
               .fill(0)
               .map((item, index) => (
                 <SkillCardSkeleton key={"skleton" + index + "skill"} />

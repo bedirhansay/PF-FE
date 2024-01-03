@@ -9,6 +9,9 @@ import { BlogDTO } from "@/lib/types";
 import { Share } from "@/components/Share";
 import { FormatDate } from "@/lib/utils";
 import { callApi } from "@/lib/actions/__api.actions";
+import { ReadMin } from "@/lib/utils/read.minute";
+import { setCookie } from "cookies-next";
+import { headers } from "next/headers";
 
 export const ClientSingleBlogPage = ({
   selectedBlog,
@@ -31,13 +34,15 @@ export const ClientSingleBlogPage = ({
     revalidatePath("/");
   })();
 
+  console.log();
   return (
     <div className={styles.clampSizeContainer}>
       <div className={styles.innerContainer}>
         <h1 className={styles.blogHeader}>
           {selectedBlog?.title}
           <span className={styles.clockIcon}>
-            <BsClock />2 min read <BsEye />
+            <BsClock />
+            {ReadMin(selectedBlog.description)} Dakikalık Okuma <BsEye />
             {selectedBlog.viewCount}
           </span>
         </h1>
@@ -90,7 +95,9 @@ export const ClientSingleBlogPage = ({
                           {otherBlog?.title}
                         </span>
                         <div className={styles.blogMeta}>
-                          <span className={styles.readTime}>5 min read</span>
+                          <span className={styles.readTime}>
+                            {ReadMin(otherBlog.description)} dakika okuma
+                          </span>
                           <span className={styles.dotSeparator}></span>
                           <span className={styles.lightBlueText}>
                             {FormatDate(otherBlog.createdAt)}

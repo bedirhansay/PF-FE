@@ -18,7 +18,7 @@ export default async function Home() {
         blog: blog.data.blogs,
         about: about.data,
         projects: projects.data,
-        skills: skills.data.skills,
+        skills: skills.data,
         experience: experience.data,
       }}
     />
