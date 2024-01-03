@@ -95,15 +95,29 @@ export const DataTables: React.FC<DataTablesProps> = ({
     return header.map((header, index) => {
       const field = header.field;
 
-      if (typeof rowData[field] === "object") {
+      if (
+        typeof rowData[field] === "object" &&
+        !Array.isArray(rowData[field])
+      ) {
+        const nestedName = rowData[field]?.name;
+
         return (
           <td
             className="text-xs text-center hover:bg-green-400"
             key={`td${index}` + rowData[field]}
           >
-            {rowData[field][0]
-              ? Truncate(rowData[field][0], 50)
-              : Truncate(rowData[field]?.name, 50)}
+            {nestedName ? Truncate(nestedName, 50) : ""}
+          </td>
+        );
+      } else if (Array.isArray(rowData[field])) {
+        const firstItem = rowData[field][0];
+
+        return (
+          <td
+            className="text-xs text-center hover:bg-green-400"
+            key={`td${index}` + rowData[field]}
+          >
+            {firstItem ? Truncate(firstItem, 50) : ""}
           </td>
         );
       }

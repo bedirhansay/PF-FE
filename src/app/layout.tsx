@@ -8,6 +8,7 @@ const inter = Urbanist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bedirhansaycom.vercel.app"),
   title: "Bedirhan Say - Freelance Hizmetler ve Portfolyo",
   description:
     "Ben Bedirhan Say. Kendi portföyümde sunduğum hizmetler ve yazdığım blog yazıları ile ilgili daha fazla bilgi alın.",
@@ -47,6 +48,9 @@ export const metadata: Metadata = {
     "Digital Transformation",
     "Tech Enthusiast",
   ],
+  verification: {
+    google: "google-site-verification=",
+  },
   authors: [{ name: "Bedirhan Say" }],
 };
 

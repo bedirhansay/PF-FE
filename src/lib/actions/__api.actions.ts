@@ -68,7 +68,7 @@ export const callApi = async ({
       kind: "error",
       error: {
         //@ts-ignore
-        message: error.response.data,
+        message: error?.response?.data || error.message,
       },
       status: axiosError.response?.status || 400,
     };

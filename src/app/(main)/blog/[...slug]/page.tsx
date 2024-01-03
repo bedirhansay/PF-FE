@@ -1,4 +1,3 @@
-import React from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { callApi } from "../../../../lib/actions/__api.actions";
 import { notFound } from "next/navigation";
@@ -18,6 +17,16 @@ export async function generateMetadata(
   return {
     title: selectedBlog?.title || "",
     description: selectedBlog?.description || "",
+    alternates: {
+      canonical: `/blog/${selectedBlog.slug}`,
+    },
+    twitter: {
+      card: "summary",
+      title: selectedBlog.title,
+      description: selectedBlog.descpriton,
+      siteId: "",
+      creator: "@bedirhansay",
+    },
   };
 }
 

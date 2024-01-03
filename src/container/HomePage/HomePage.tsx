@@ -8,31 +8,39 @@ import Skills from "./skills/skills";
 import Deneyim from "./deneyim/deneyim";
 import Contact from "./contact/contact";
 import Footer from "./footer/footer";
+import {
+  AboutDTO,
+  BlogDTO,
+  ExperienceDTO,
+  ProjectDTO,
+  SkillsDTO,
+} from "@/lib/types";
+import { FC } from "react";
 
-export const HomePage = async () => {
-  const [blog, about, projects, skills, experience] = await Promise.all([
-    callApi({ method: "get", path: "blog" }),
-    callApi({ method: "get", path: "about" }),
-    callApi({ method: "get", path: "projects" }),
-    callApi({ method: "get", path: "skills" }),
-    callApi({ method: "get", path: "experience" }),
-  ]);
+export type HomePageProps = {
+  data: {
+    blog: BlogDTO[];
+    about: AboutDTO[];
+    projects: ProjectDTO[];
+    skills: SkillsDTO[];
+    experience: ExperienceDTO[];
+  };
+};
 
-  
-
+export const HomePage: FC<HomePageProps> = async ({ data }) => {
   return (
     <section>
       <Intro />
       <Divider />
-      <BlogPage blogs={blog.data.blogs} />
+      <BlogPage blogs={data.blog} />
       <Divider line />
-      <AboutSection about={about.data} />
+      <AboutSection about={data.about} />
       <Divider line />
-      <Projeler projects={projects.data} />
+      <Projeler projects={data.projects} />
       <Divider line />
-      <Skills skills={skills.data} />
+      <Skills skills={data.skills} />
       <Divider line />
-      <Deneyim experience={experience.data} />
+      <Deneyim experience={data.experience} />
       <Divider line />
       <Contact />
       <Divider line />
