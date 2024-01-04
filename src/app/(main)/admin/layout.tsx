@@ -2,7 +2,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Login",
+  title: "Dashboard",
   description: "Dashboard - Panel",
   keywords: [
     "Bedirhan Say",
@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     "E-Ticaret",
   ],
   authors: [{ name: "Bedirhan Say" }],
+
+  robots: {
+    follow: false,
+  },
 };
 
 export default function AdminLayout({

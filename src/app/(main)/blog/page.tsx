@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     "E-Ticaret",
   ],
   authors: [{ name: "Bedirhan Say" }],
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 export const dynamic = "force-dynamic";

@@ -48,10 +48,46 @@ export const metadata: Metadata = {
     "Digital Transformation",
     "Tech Enthusiast",
   ],
+
   verification: {
     google: "google-site-verification=",
   },
+
+  applicationName: "Bedirhan Say - Portfolyo",
   authors: [{ name: "Bedirhan Say" }],
+  alternates: {
+    canonical: "https://bedirhansaycom.vercel.app",
+  },
+
+  openGraph: {
+    type: "website",
+    url: "https://bedirhansaycom.vercel.app",
+    title: "Bedirhan Say - Freelance Hizmetler ve Portfolyo",
+    description:
+      "Ben Bedirhan Say. Kendi portföyümde sunduğum hizmetler ve yazdığım blog yazıları ile ilgili daha fazla bilgi alın.",
+    siteName: "Bedirhan Say",
+    images: [
+      {
+        url: "../../public/favicon-300.png",
+        alt: "Bedirhan Say - Freelance Hizmetler ve Portfolyo",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    site: "@bedirhansay",
+    creator: "@bedirhansay",
+    title: "Bedirhan Say - Freelance Hizmetler ve Portfolyo",
+    description:
+      "Ben Bedirhan Say. Kendi portföyümde sunduğum hizmetler ve yazdığım blog yazıları ile ilgili daha fazla bilgi alın.",
+    images: [
+      {
+        url: "../../public/favicon-300.png",
+        alt: "Bedirhan Say - Freelance Hizmetler ve Portfolyo",
+      },
+    ],
+  },
 };
 
 export default function MainLayout({

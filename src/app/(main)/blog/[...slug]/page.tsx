@@ -20,13 +20,6 @@ export async function generateMetadata(
     alternates: {
       canonical: `/blog/${selectedBlog.slug}`,
     },
-    twitter: {
-      card: "summary",
-      title: selectedBlog.title,
-      description: selectedBlog.descpriton,
-      siteId: "",
-      creator: "@bedirhansay",
-    },
   };
 }
 
