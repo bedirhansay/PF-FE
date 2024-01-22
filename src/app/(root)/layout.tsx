@@ -1,3 +1,4 @@
+import { ClientOnly } from "@/components/ClientOnly";
 import { Header } from "../../container/HomePage/header/header";
 import { ActiveSectionProvider } from "../../lib/contex";
 import "./globals.scss";
@@ -12,8 +13,10 @@ export default function RootLayout({
       <div className="header-left-color"></div>
       <div className="header-right-color"></div>
       <ActiveSectionProvider>
-        <Header />
-        {children}
+        <ClientOnly>
+          <Header />
+          {children}
+        </ClientOnly>
       </ActiveSectionProvider>
     </main>
   );

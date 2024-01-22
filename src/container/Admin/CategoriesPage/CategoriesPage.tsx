@@ -95,7 +95,7 @@ export const CategoriesPage = ({
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
       setImageUrl(() => img?.url || "");
-      console.log(imageUrl);
+    
       setLoading(false);
     } catch (error: any) {
       setLoading(false);

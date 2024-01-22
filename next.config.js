@@ -1,3 +1,4 @@
+const ContentSecurityPolicy = require("./csp");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
@@ -15,6 +16,21 @@ const nextConfig = {
       },
     ],
   },
+  // async headers() {
+  //   const headers = [];
+
+  //   headers.push({
+  //     source: "/(.*)",
+  //     headers: [
+  //       {
+  //         key: "Content-Security-Policy",
+  //         value: ContentSecurityPolicy,
+  //       },
+  //     ],
+  //   });
+
+  //   return headers;
+  // },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

@@ -34,7 +34,7 @@ export const ClientSingleBlogPage = ({
     revalidatePath("/");
   })();
 
-  console.log();
+
   return (
     <div className={styles.clampSizeContainer}>
       <div className={styles.innerContainer}>

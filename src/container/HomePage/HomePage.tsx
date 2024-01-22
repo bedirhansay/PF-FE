@@ -16,6 +16,7 @@ import {
   SkillsDTO,
 } from "@/lib/types";
 import { FC } from "react";
+import { ClientOnly } from "@/components/ClientOnly";
 
 export type HomePageProps = {
   data: {
@@ -30,21 +31,23 @@ export type HomePageProps = {
 export const HomePage: FC<HomePageProps> = async ({ data }) => {
   return (
     <section>
-      <Intro />
-      <Divider />
-      <BlogPage blogs={data.blog} />
-      <Divider line />
-      <AboutSection about={data.about} />
-      <Divider line />
-      <Projeler projects={data.projects} />
-      <Divider line />
-      <Skills skills={data.skills} />
-      <Divider line />
-      <Deneyim experience={data.experience} />
-      <Divider line />
-      <Contact />
-      <Divider line />
-      <Footer />
+      <ClientOnly>
+        <Intro />
+        <Divider />
+        <BlogPage blogs={data.blog} />
+        <Divider line />
+        <AboutSection about={data.about} />
+        <Divider line />
+        <Projeler projects={data.projects} />
+        <Divider line />
+        <Skills skills={data.skills} />
+        <Divider line />
+        <Deneyim experience={data.experience} />
+        <Divider line />
+        <Contact />
+        <Divider line />
+        <Footer />
+      </ClientOnly>
     </section>
   );
 };

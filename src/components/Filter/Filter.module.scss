@@ -1,0 +1,44 @@
+.filter-wrapper {
+  @apply flex flex-col gap-4 p-2 h-fit max-h-[480px] rounded shadow-lg overflow-hidden bg-neutral-400/10 bg-blue100;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 100px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 100px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #219690;
+    border-radius: 100px;
+  }
+}
+
+.filterHeader {
+  @apply flex justify-between items-center bg-blue300 rounded text-white py-2 px-2;
+}
+
+.filterArea {
+  @apply hidden opacity-100 duration-300  md:flex md:flex-col md:gap-4;
+
+  &[data-open="true"] {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    opacity: 100;
+  }
+
+  &[data-showmodal="false"] {
+    @apply translate-y-[-120px] opacity-0 md:opacity-100 md:translate-y-0;
+  }
+  &[data-showmodal="true"] {
+    @apply translate-y-0 opacity-100;
+  }
+}
+
+.categoryFilter {
+  @apply flex flex-col w-full  rounded-md  h-fit max-h-[120px] overflow-y-auto;
+}

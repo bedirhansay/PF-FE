@@ -25,8 +25,7 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = "force-dynamic";
-export default async function page() {
+export default async function page({ searchParams }: { searchParams: any }) {
   const { data } = await callApi({ method: "get", path: "blog" });
-
   return <ClientBlogPage blogs={data} />;
 }

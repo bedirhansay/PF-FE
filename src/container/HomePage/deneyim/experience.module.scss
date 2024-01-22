@@ -1,16 +1,16 @@
 .sectionWrapper {
-  @apply scroll-mt-28 max-w-7xl mx-auto  flex flex-col   px-4;
+  @apply scroll-mt-28 max-w-7xl mx-auto;
 }
 
 .boxWrapper {
-  @apply flex bg-gray-100 rounded-md shadow-xl gap-5  mb-10 items-center;
+  @apply flex  bg-gray-100/10 rounded-md shadow-xl gap-5 p-8  mb-10 items-center;
   span {
-    @apply text-xl border border-black p-2 rounded-full shadow-xl;
+    @apply text-xl border p-2 rounded-full shadow-xl;
   }
 }
 
 .textWrapper {
-  @apply border border-gray-400  flex flex-col text-center gap-y-8 px-4 py-4 w-full rounded-md;
+  @apply flex flex-col text-center gap-y-8 px-4 py-4 w-full rounded-md;
 
   h3 {
     @apply font-semibold capitalize bg-darkBlue text-white w-fit mx-auto text-center px-7 rounded;

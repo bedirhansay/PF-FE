@@ -53,11 +53,11 @@ export const metadata: Metadata = {
     google: "google-site-verification=",
   },
 
-  applicationName: "Bedirhan Say - Portfolyo",
-  authors: [{ name: "Bedirhan Say" }],
-  alternates: {
-    canonical: "https://bedirhansaycom.vercel.app",
-  },
+  // applicationName: "Bedirhan Say - Portfolyo",
+  // authors: [{ name: "Bedirhan Say" }],
+  // alternates: {
+  //   canonical: "https://bedirhansaycom.vercel.app",
+  // },
 
   // openGraph: {
   //   type: "website",
@@ -99,7 +99,6 @@ export default function MainLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} bg-[#F3F4F6] `}>
         {children}
-        <Toaster position="top-right" />
       </body>
     </html>
   );

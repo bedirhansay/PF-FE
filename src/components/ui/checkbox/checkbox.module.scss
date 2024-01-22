@@ -1,0 +1,37 @@
+.checkboxWrapper {
+  @apply flex relative flex-col mb-1  justify-center;
+
+  input {
+    appearance: none;
+    position: relative;
+  }
+
+  input[type="checkbox"]:after {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    border-radius: 5px;
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+  }
+
+  input[type="checkbox"]:checked:after {
+    background-color: #78a2a9;
+    content: "\2713";
+    display: inline-block;
+    transition: all ease-in-out;
+    border-radius: 5px;
+    visibility: visible;
+    text-align: center;
+    font-size: 20px;
+    line-height: 25px;
+    color: white;
+  }
+  label {
+    @apply ml-8;
+  }
+}

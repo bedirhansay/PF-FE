@@ -27,6 +27,9 @@ module.exports = {
         blue: "#0065a7",
         grays: "#3e4756",
         lightYellow: "#eee8a9",
+
+        blue100: "#AED9E0",
+        blue300: "#78a2a9",
       },
       keyframes: {
         bounceUpDown: {

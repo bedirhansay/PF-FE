@@ -1,11 +1,9 @@
 .section {
-  @apply backdrop-blur-3xl pt-1;
-  background-image: url("../../../../public/footer-bg.webp");
-  backdrop-filter: blur(1008px);
+  @apply bg-neutral-300/10 py-8;
 }
 
 .section-wrapper {
-  @apply mx-auto p-10 max-w-3xl h-full text-center shadow-xl rounded-lg;
+  @apply mx-auto p-10 max-w-3xl h-full text-center  rounded-lg;
   // @apply  w-[min(100%,38rem)]
 }
 

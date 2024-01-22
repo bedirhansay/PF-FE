@@ -15,35 +15,37 @@ const Deneyim = ({ experience }: { experience: ExperienceDTO[] }) => {
     <section id="experience" ref={ref} className={style.sectionWrapper}>
       <Heading title="Deneyim" link="experience" />
 
-      {experience?.map((item, index) => (
-        <motion.div
-          {...experinceAnimations(index)}
-          className={style.boxWrapper}
-          key={item.title + "vertical"}
-        >
-          <motion.div className={style.textWrapper}>
-            <h3>{item.title} </h3>
-            <div className={style.blogDetail}>
-              <div className={style.sub}>
-                <p className={style.pText}>{item.location}</p>
+      <div className={style.sectionSub}>
+        {experience?.map((item, index) => (
+          <motion.div
+            {...experinceAnimations(index)}
+            className={style.boxWrapper}
+            key={item.title + "vertical"}
+          >
+            <motion.div className={style.textWrapper}>
+              <h3>{item.title} </h3>
+              <div className={style.blogDetail}>
+                <div className={style.sub}>
+                  <p className={style.pText}>{item.location}</p>
+                </div>
+                <p className={style.pText}>
+                  {item.date} / {item.position}{" "}
+                </p>
               </div>
-              <p className={style.pText}>
-                {item.date} / {item.position}{" "}
-              </p>
-            </div>
-            <div
-              dangerouslySetInnerHTML={{ __html: item.description }}
-              className={style.resp}
-            ></div>
+              <div
+                dangerouslySetInnerHTML={{ __html: item.description }}
+                className={style.resp}
+              ></div>
 
-            <div className={style.tech}>
-              {item.skills.map((skill, innerIndex) => (
-                <span key={item.title + innerIndex}>{skill}</span>
-              ))}
-            </div>
+              <div className={style.tech}>
+                {item.skills.map((skill, innerIndex) => (
+                  <span key={item.title + innerIndex}>{skill}</span>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      ))}
+        ))}
+      </div>
     </section>
   );
 };
