@@ -6,8 +6,10 @@ import qs from "query-string";
 import { QueryHandler } from "@/lib/utils/query.handler";
 import { GrClose } from "react-icons/gr";
 import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui";
+import { Button, Input } from "@/components/ui";
 import style from "./blog.module.scss";
+import { BsSearch } from "react-icons/bs";
+import Link from "next/link";
 
 interface FilterProps {
   categories: string[];
@@ -39,6 +41,7 @@ export const BlogHeader: FC<FilterProps> = ({ categories }) => {
   const [value, setValue] = useState<string | null>("");
   const [open, setOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [inputOpen, setInputOpen] = useState(false);
 
   const [sortList, setSortList] = useState<string | null>();
 
@@ -68,6 +71,9 @@ export const BlogHeader: FC<FilterProps> = ({ categories }) => {
         ...currentQuery,
         sortBy: e,
       };
+      if (!e) {
+        delete updatedQuery.sortBy;
+      }
 
       if (searchParams?.get("sortBy") === e) {
         delete updatedQuery.sortBy;
@@ -118,35 +124,58 @@ export const BlogHeader: FC<FilterProps> = ({ categories }) => {
 
   return (
     <div className={style["filter-wrapper"]}>
-      <div
-        data-open={open}
-        data-showmodal={showModal}
-        className={cn(style["filterArea"])}
-      >
-        <div className={style["search"]}>
-          <h2>Makale Ara</h2>
-          <Input
-            value={value as string}
-            placeholder={value ? value : "Blog Ara"}
-            onChange={(e) => onSearch(e.target.value)}
-          />
-        </div>
-
-        <div className={style["sortby"]}>
-          <h2>Sırala</h2>
-
-          <ul>
-            {filterBy.map((category, index) => (
-              <li
-                data-active={sortList === category.label}
-                onClick={() => onSortHandler(category.label)}
-                key={`${category.label + index}`}
+      <div className="flex justify-between items-center">
+        <Link href="/" className="text-xl">
+          Anasayfa
+        </Link>
+        <div className="flex gap-3 items-center">
+          <Button
+            onClick={() => setInputOpen(!inputOpen)}
+            className="flex items-center gap-3 bg-white text-black px-4 rounded"
+          >
+            <BsSearch />
+          </Button>
+          <span>
+            <div className={style["sortby"]}>
+              <select
+                onChange={(e) => onSortHandler(e.target.value)}
+                id="countries"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                {category.title}
-              </li>
-            ))}
-          </ul>
+                <option selected value="">
+                  Sırala
+                </option>
+                {filterBy.map((category, index) => (
+                  <option
+                    selected={sortList === category.label}
+                    value={category.label}
+                    data-active={sortList === category.label}
+                    key={`${category.label + index}`}
+                  >
+                    {category.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </span>
         </div>
+      </div>
+
+      <div className="w-full">
+        {inputOpen && (
+          <div className="absolute  max-w-4xl mx-auto w-full shadow-md z-50  mt-4  bg-white py-8 left-0 right-0 p-8 text-black ">
+            <h2>Ne Arıyorsunuz?</h2>
+
+            <div className="">
+              <Input
+                className="flex-1 w-full"
+                value={value as string}
+                placeholder={value ? value : "Blog Ara"}
+                onChange={(e) => onSearch(e.target.value)}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
