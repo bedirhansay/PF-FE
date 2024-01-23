@@ -43,12 +43,12 @@
 //! Blog Card
 
 .wrapper {
-  @apply grid grid-cols-2 gap-3 py-8  border-b w-full h-full relative;
+  @apply grid grid-cols-1 grid-rows-2 md:grid-cols-2 md:grid-rows-1 gap-3 py-8  border-b w-full h-full relative;
 
   .img-wrapper {
     @apply relative rounded-md transition-all ease-in-out duration-300;
     img {
-      @apply w-52 object-fill rounded-md;
+      @apply object-fill rounded-md;
     }
 
     &:hover::after {
