@@ -1,4 +1,3 @@
-// import { ActiveSectionContext, ContextProps } from "@/lib";
 import { ContextProps } from "@/lib/types";
 import { useContext } from "react";
 import { ActiveSectionContext } from "../contex";

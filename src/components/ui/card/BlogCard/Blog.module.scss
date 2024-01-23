@@ -1,19 +1,82 @@
-.blog-container {
-  @apply p-4 hover:scale-105 border transition ease-in-out duration-200 flex flex-col items-center justify-between gap-4 bg-white border-gray-300 shadow-md rounded-md;
+//! MAin Blog Card
 
-  h3 {
-    @apply text-lg font-semibold text-center mb-2;
+.blog-container {
+  @apply p-4 flex flex-col items-center justify-between gap-4 relative rounded bg-white border-gray-300 h-full shadow-md aspect-video overflow-hidden;
+
+  &::after {
+    @apply absolute inset-0 bg-black opacity-55 content-[''];
+  }
+
+  &:hover::after {
+    @apply opacity-75 bg-black duration-300 ease-in-out;
   }
 
   img {
-    @apply rounded w-44;
+    @apply w-full h-auto rounded-md object-scale-down;
   }
 
-  span {
-    @apply text-sm text-gray-500;
+  .text-info {
+    @apply absolute z-50 bottom-10 left-2 flex flex-col gap-2 md:gap-4 lg:gap-8;
+
+    .date {
+      @apply text-white;
+    }
+
+    h3 {
+      @apply text-white text-base   md:text-3xl lg:mr-32 font-semibold;
+    }
+  }
+  .sub-info {
+    @apply text-white flex gap-4;
+
+    span {
+      @apply text-sm rounded-sm text-white px-4 py-2 bg-gray-400;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    a {
+      @apply text-sm rounded-sm text-white px-4 py-2 bg-gray-400;
+    }
+  }
+}
+
+//! Blog Card
+
+.wrapper {
+  @apply grid grid-cols-2 gap-3 py-8  border-b w-full h-full relative;
+
+  .img-wrapper {
+    @apply relative rounded-md transition-all ease-in-out duration-300;
+    img {
+      @apply w-52 object-fill rounded-md;
+    }
+
+    &:hover::after {
+      @apply content-['']  absolute inset-0 opacity-20 bg-black duration-300 ease-in-out;
+    }
   }
 
-  a {
-    @apply bg-[#78a2a9] text-white px-2 py-1 rounded;
+  .text-wrapper {
+    @apply flex flex-col gap-2 lg:gap-6  justify-between;
+
+    .date {
+      @apply flex gap-3 items-center;
+    }
+    h2 {
+      @apply text-base md:text-xl lg:text-2xl;
+    }
+    p {
+      @apply text-sm text-justify;
+    }
+  }
+
+  .sub-info {
+    @apply flex items-center gap-4;
+    span {
+      @apply text-sm rounded-sm text-white px-4 py-2 bg-gray-900;
+    }
+    a {
+      @apply text-sm rounded-sm text-white px-4 py-2 bg-gray-400;
+    }
   }
 }

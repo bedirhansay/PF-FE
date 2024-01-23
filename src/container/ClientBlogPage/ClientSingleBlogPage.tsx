@@ -10,8 +10,6 @@ import { Share } from "@/components/Share";
 import { FormatDate } from "@/lib/utils";
 import { callApi } from "@/lib/actions/__api.actions";
 import { ReadMin } from "@/lib/utils/read.minute";
-import { setCookie } from "cookies-next";
-import { headers } from "next/headers";
 
 export const ClientSingleBlogPage = ({
   selectedBlog,
@@ -33,7 +31,6 @@ export const ClientSingleBlogPage = ({
     revalidatePath(`/blog/${selectedBlog._id}`);
     revalidatePath("/");
   })();
-
 
   return (
     <div className={styles.clampSizeContainer}>
