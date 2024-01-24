@@ -7,16 +7,23 @@ import { experinceAnimations } from "./animations";
 import style from "./experience.module.scss";
 
 import { ExperienceDTO } from "../../../lib/types/types";
+import { useFetch } from "@/lib/hooks/useFetch";
 
-const Deneyim = ({ experience }: { experience: ExperienceDTO[] }) => {
+const Deneyim = () => {
   const { ref, view } = useSectionInView("Deneyim", 0.9);
+
+  const { data, loading }: { data: ExperienceDTO[] | null; loading: boolean } =
+    useFetch({
+      method: "get",
+      path: "experience",
+    });
 
   return (
     <section id="experience" ref={ref} className={style.sectionWrapper}>
       <Heading title="Deneyim" link="experience" />
 
       <div className={style.sectionSub}>
-        {experience?.map((item, index) => (
+        {data?.map((item, index) => (
           <motion.div
             {...experinceAnimations(index)}
             className={style.boxWrapper}

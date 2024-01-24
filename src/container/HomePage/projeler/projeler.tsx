@@ -10,6 +10,7 @@ import "swiper/css";
 import { ProjectDTO } from "@/lib/types";
 import { useSectionInView } from "@/lib/hooks";
 import { projectDatas } from "@/lib/constant";
+import { useFetch } from "@/lib/hooks/useFetch";
 
 export default function Projeler({ projects }: { projects: ProjectDTO[] }) {
   const [activeProject, setActiveProject] = useState(0);

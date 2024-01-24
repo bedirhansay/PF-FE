@@ -18,7 +18,7 @@ export const ActiveSectionProvider = ({
   const contextValues = useMemo(() => {
     return {
       activeSection,
-      setActiveSection, // setActiveSection'ı burada aynı bırakabilirsiniz
+      setActiveSection,
       timeOfLastClick,
       setTimeOfLastClick,
     };

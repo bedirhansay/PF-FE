@@ -1,17 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { pAnim } from "./animations";
 import style from "./about.module.scss";
 import clsx from "clsx";
 import { useSectionInView } from "@/lib/hooks";
-import { callApi } from "@/lib/actions";
 import { Heading } from "@/components/ui";
 import { AboutDTO } from "@/lib/types";
-import { AboutSkeletons } from "../../../components/AboutSkeleton";
+import { AboutSkeletons } from "../../../components/Skeletons/AboutSkeleton";
+import { useFetch } from "@/lib/hooks/useFetch";
 
-export default function AboutSection({ about }: { about: AboutDTO[] }) {
+export default function AboutSection() {
   const [count, setCount] = useState(850);
   const [open, setOpen] = useState(false);
   const controls = useAnimation();
@@ -25,13 +25,19 @@ export default function AboutSection({ about }: { about: AboutDTO[] }) {
     setCount((prev) => (open ? 850 : Infinity));
   };
 
+  const { data, loading }: { data: AboutDTO[] | null; loading: boolean } =
+    useFetch({
+      method: "get",
+      path: "about",
+    });
+
   return (
     <motion.section className={style["about-wrapper"]} ref={ref} id="about">
       <Heading link="about" title="Hakkımda" />
 
       <motion.div className="mb-3">
-        {about ? (
-          about?.map((item, index) => (
+        {!loading ? (
+          data?.map((item, index) => (
             <motion.span
               dangerouslySetInnerHTML={{
                 __html: item?.content.slice(0, count),

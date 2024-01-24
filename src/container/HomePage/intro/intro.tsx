@@ -10,9 +10,11 @@ import style from "./intro.module.scss";
 import { motion } from "@/lib/motion/motion";
 import { useSectionInView } from "@/lib/hooks";
 import profilePic from "../../../../public/profile-picc.png";
+import { useTheme } from "next-themes";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Anasayfa");
+  const { setTheme, theme } = useTheme();
 
   return (
     <section ref={ref} id="home" className={style["section-wrapper"]}>

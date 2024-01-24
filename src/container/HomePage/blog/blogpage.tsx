@@ -7,13 +7,14 @@ import { BsEye, BsArrowRightShort } from "react-icons/bs";
 import style from "./blog.module.scss";
 import { useSectionInView } from "@/lib/hooks";
 import { BlogDTO } from "@/lib/types";
-import { FormatDate } from "@/lib/utils";
+
 import { ProfilePic } from "../../../../public";
 import { Button, Heading } from "@/components/ui";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { BlogCardSkeleton } from "../../../components/BlogCardSkeleton";
+import { BlogCardSkeleton } from "../../../components/Skeletons/BlogCardSkeleton";
+import { FormatDate } from "@/lib/utils/format.date";
 
 export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const { ref } = useSectionInView("Blog");
