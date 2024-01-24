@@ -1,5 +1,5 @@
 .footer-wrapper {
-  @apply bg-white rounded shadow dark:bg-gray-900 max-w-7xl p-10 mx-auto;
+  @apply bg-gray-100 rounded shadow dark:bg-red-300  max-w-7xl p-10 mx-auto;
 
   .sub {
     @apply w-full max-w-screen-xl mx-auto p-4 md:py-8;
@@ -26,7 +26,7 @@
 }
 
 .copyright {
-  @apply block text-sm text-gray-500 sm:text-center dark:text-gray-400;
+  @apply block text-sm text-gray-500 sm:text-center dark:text-red-400;
 
   a {
     @apply hover:underline;

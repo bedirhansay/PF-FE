@@ -3,7 +3,7 @@
 }
 
 .boxWrapper {
-  @apply flex  bg-gray-100/10 rounded-md shadow-xl gap-5 p-8  mb-10 items-center;
+  @apply flex  bg-background rounded-md shadow-xl gap-5 p-8  mb-10 items-center;
   span {
     @apply text-xl border p-2 rounded-full shadow-xl;
   }
@@ -13,7 +13,7 @@
   @apply flex flex-col text-center gap-y-8 px-4 py-4 w-full rounded-md;
 
   h3 {
-    @apply font-semibold capitalize bg-darkBlue text-white w-fit mx-auto text-center px-7 rounded;
+    @apply font-semibold capitalize bg-primary text-white w-fit mx-auto text-center px-7 rounded;
   }
   p {
     @apply font-normal;
@@ -42,6 +42,6 @@
     @apply bg-gray-300 text-xs sm:text-sm text-gray-500  px-2 py-0 rounded;
   }
   .p-text-2 {
-    @apply border-b-2 border-darkBlue;
+    @apply border-b-2 border-primary bg-primary;
   }
 }

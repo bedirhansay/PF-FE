@@ -21,7 +21,7 @@ interface SidebarLinkProps {
 const SidebarLink: React.FC<SidebarLinkProps> = ({ href, title, icon }) => (
   <Link
     href={href}
-    className="flex-between gap-2 mx-4 border-2 py-1 px-2 rounded-md bg-white  hover:bg-darkBlue hover:text-white transition duration-0 ease-out"
+    className="flex-between gap-2 mx-4 border-2 py-1 px-2 rounded-md bg-white  hover:bg-primary hover:text-white transition duration-0 ease-out"
   >
     <span>{title}</span>
     <span>{icon}</span>
@@ -43,7 +43,7 @@ const MobileSidebarLink: React.FC<MobileSidebarLinkProps> = ({
     variants={HeaderAnimations.fadeInAnimationVariants}
     onClick={onClick}
     href={href}
-    className="flex-between gap-2 mx-4 border-2 py-1 px-2 rounded-md bg-white hover:bg-darkBlue hover:text-white transition duration-0 ease-out"
+    className="flex-between gap-2 mx-4 border-2 py-1 px-2 rounded-md bg-white hover:bg-primary hover:text-white transition duration-0 ease-out"
   >
     <span>{title}</span>
     <span>{icon}</span>

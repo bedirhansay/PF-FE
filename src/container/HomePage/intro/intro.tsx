@@ -14,7 +14,6 @@ import { useTheme } from "next-themes";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Anasayfa");
-  const { setTheme, theme } = useTheme();
 
   return (
     <section ref={ref} id="home" className={style["section-wrapper"]}>

@@ -37,7 +37,7 @@
     }
   }
   .download {
-    @apply bg-white justify-center text-center border-2 max-w-[16rem] border-darkBlue flex-1 text-gray-900 px-7 py-3 flex items-center gap-2 rounded-lg outline-none transition-all ease-in-out duration-300 font-semibold shadow-xl;
+    @apply bg-white justify-center text-center border-2 max-w-[16rem] bg-primary flex-1 text-gray-900 px-7 py-3 flex items-center gap-2 rounded-lg outline-none transition-all ease-in-out duration-300 font-semibold shadow-xl;
 
     .icon {
       @apply opacity-70 hover:text-white transition-all ease-in-out duration-200;

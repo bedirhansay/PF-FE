@@ -25,7 +25,7 @@ export const SkillCard: FC<CardProps> = ({
   const router = useRouter();
   return (
     <div className="text-black px-4  mx-auto scroll-mt-28 text-center">
-      <ul className="ul-container ">
+      <ul className="gridMinMax ">
         {skills.map((skill, index) => (
           <li key={index + "skills" + skill._id}>
             <div

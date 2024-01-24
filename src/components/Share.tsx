@@ -66,13 +66,13 @@ export const Share = ({ blog }: { blog: any }) => {
       </strong>
       <div className="flex gap-10 justify-center">
         <span
-          className="border p-4 bg-lightBlue rounded cursor-pointer"
+          className="border p-4 bg-secondary-foreground rounded cursor-pointer"
           onClick={handleLinkedInShare}
         >
           <BsLinkedin color="white" />
         </span>
         <span
-          className="border p-4 bg-lightBlue rounded cursor-pointer"
+          className="border p-4 bg-secondary rounded cursor-pointer"
           onClick={() =>
             shareOnSocialMedia(
               "twitter",

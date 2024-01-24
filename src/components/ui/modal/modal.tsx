@@ -19,7 +19,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, children, onClose }) => {
       <div className="absolute top-2 left-2 right-2  sm:right-20 sm:left-20 sm:top-20  bg-white rounded-lg ">
         <Button
           variant="close"
-          className="bg-darkBlue text-white text-3xl  border-3  p-2 cursor-pointer"
+          className="bg-primary text-white text-3xl  border-3  p-2 cursor-pointer"
           onClick={() => onClose(!open)}
         >
           &times;

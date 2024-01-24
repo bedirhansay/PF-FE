@@ -1,6 +1,10 @@
 import { Urbanist } from "next/font/google";
 import { Metadata } from "next";
-import "./globals.scss";
+
+import "./global.scss";
+
+import { GlobalProviders } from "@/lib/Providers/Providers";
+
 const inter = Urbanist({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -96,7 +100,9 @@ export default function MainLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-[#F3F4F6] `}>{children}</body>
+      <body className={`${inter.className} bg-layout`}>
+        <GlobalProviders>{children}</GlobalProviders>
+      </body>
     </html>
   );
 }

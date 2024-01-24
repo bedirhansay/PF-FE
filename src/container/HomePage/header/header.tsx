@@ -10,11 +10,18 @@ import { HeaderAnimations } from "./animation";
 import { FaUser } from "react-icons/fa";
 import { useActiveSection } from "@/lib/hooks";
 import { NavLinks } from "@/lib/constant";
+import { IoMdMoon } from "react-icons/io";
+import { MdWbSunny } from "react-icons/md";
+
+import { useTheme } from "next-themes";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSection();
+
+  const { theme, setTheme } = useTheme();
 
   return (
     <header className={style["header-wrapper"]}>
@@ -51,6 +58,12 @@ export const Header = () => {
             <motion.a {...HeaderAnimations.liAnimation} href="/admin/blog">
               <FaUser />
             </motion.a>
+            <button
+              className="border rounded-full p-1 hover:bg-background"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              {theme === "dark" ? <MdWbSunny /> : <IoMdMoon />}
+            </button>
           </ul>
         </nav>
       </div>

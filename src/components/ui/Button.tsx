@@ -17,7 +17,7 @@ const buttonVariants = cva(
         delete:
           "bg-red-600 text-white hover:bg-red-700 py-3 px-4 rounded-lg  border-b-4 border-red-800 hover:border-red-900 transition duration-300",
         outline:
-          "border bg-darkBlue text-white border-2 hover:shadow-xl hover:bg-darkBlue/90 border-darkBlue transition ease-in-out duration-300 hover:text-accent-foreground",
+          "border bg-primary text-white border-2 hover:shadow-xl hover:bg-primary/90 border- bg-primary transition ease-in-out duration-300 hover:text-accent-foreground",
         secondary:
           "bg-[#6D92A1] text-[#374955] font-semibold border-b-4 hover:border-b-4 border-[#374955]  hover:bg-opacity-75",
         ghost: "hover:bg-accent hover:text-accent-foreground border ",

@@ -35,7 +35,7 @@ export default function AboutSection() {
     <motion.section className={style["about-wrapper"]} ref={ref} id="about">
       <Heading link="about" title="Hakkımda" />
 
-      <motion.div className="mb-3">
+      <motion.div className="mb-3 dark:bg-gray-300 p-2">
         {!loading ? (
           data?.map((item, index) => (
             <motion.span

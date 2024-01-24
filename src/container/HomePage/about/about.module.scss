@@ -3,8 +3,8 @@
 }
 
 .box-wrapper {
-  @apply absolute bottom-0 left-1/2 -translate-x-1/2;
+  @apply absolute  bottom-0 left-1/2 -translate-x-1/2;
   .button {
-    @apply bg-darkBlue  mx-auto flex text-white px-2  md:px-16  rounded;
+    @apply bg-primary  mx-auto flex text-white px-2  md:px-16  rounded;
   }
 }

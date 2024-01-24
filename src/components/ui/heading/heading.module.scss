@@ -1,7 +1,7 @@
 .heading-wrapper {
-  @apply flex flex-col items-center gap-4 text-center mb-4;
+  @apply flex flex-col items-center justify-center gap-4 text-center mb-4 w-full;
 
   strong {
-    @apply text-2xl text-center;
+    @apply bg-gray-100 px-4 py-2 dark:text-red-600 text-2xl text-center;
   }
 }
