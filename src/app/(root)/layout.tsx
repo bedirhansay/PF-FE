@@ -1,7 +1,6 @@
 import { ClientOnly } from "@/components/ClientOnly";
 import { Header } from "../../container/HomePage/header/header";
 import { ActiveSectionProvider } from "../../lib/contex";
-import "./globals.scss";
 import { ThemeProvider } from "@/lib/Providers/ThemeProvider";
 
 export default function RootLayout({

@@ -1,9 +1,6 @@
 import { Urbanist } from "next/font/google";
 import { Metadata } from "next";
-import { Toaster } from "react-hot-toast";
-import "./(root)/globals.scss";
-import NextTopLoader from "nextjs-toploader";
-import { ActiveSectionProvider } from "@/lib/contex";
+import "./globals.scss";
 const inter = Urbanist({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -99,10 +96,7 @@ export default function MainLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-[#F3F4F6] `}>
-        {/* <NextTopLoader crawlSpeed={30} speed={50} showSpinner={false} /> */}
-        {children}
-      </body>
+      <body className={`${inter.className} bg-[#F3F4F6] `}>{children}</body>
     </html>
   );
 }
