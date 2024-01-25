@@ -1,1 +1,1 @@
-export * from "./sectionContex";
+export * from "./ActiveSectionContext";

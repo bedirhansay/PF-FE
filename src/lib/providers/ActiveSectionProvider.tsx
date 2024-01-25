@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ActiveSectionContext } from "../context/sectionContex";
+import { ActiveSectionContext } from "../context/ActiveSectionContext";
 
 export const ActiveSectionProvider = ({
   children,
