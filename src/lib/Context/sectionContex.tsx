@@ -1,6 +1,6 @@
 "use client";
 
-import { ContextProps } from "@/lib/types";
+import { ContextProps } from "@/lib/Types";
 import React, { createContext, useMemo, useState } from "react";
 
 export const ActiveSectionContext = createContext<ContextProps | undefined>(
@@ -13,7 +13,7 @@ export const ActiveSectionProvider = ({
   children: React.ReactNode;
 }) => {
   const [timeOfLastClick, setTimeOfLastClick] = useState(0);
-  const [activeSection, setActiveSection] = useState("Home");
+  const [activeSection, setActiveSection] = useState("Anasayfa");
 
   const contextValues = useMemo(() => {
     return {

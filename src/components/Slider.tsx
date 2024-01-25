@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaEdit } from "react-icons/fa";
-import { Truncate } from "@/lib/utils";
+import { Truncate } from "@/lib/Utils";
 import { MdDelete } from "react-icons/md";
 import style from "./slider.module.scss";
 

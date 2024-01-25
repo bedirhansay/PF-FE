@@ -1,4 +1,5 @@
 import { Header } from "../../container/HomePage/header/header";
+import "../global.scss";
 
 export default function RootLayout({
   children,

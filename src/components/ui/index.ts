@@ -8,4 +8,4 @@ export * from "./ErrorMessage";
 export * from "./modal/modal";
 export * from "./card/SkillsCard/Card";
 export * from "./HeadingSection/heading.section";
-export * from "./DataTables";
+export * from "../DataTables";

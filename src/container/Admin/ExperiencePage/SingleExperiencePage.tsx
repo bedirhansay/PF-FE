@@ -1,6 +1,6 @@
 "use client";
 
-import { ExperienceDTO } from "@/lib/types";
+import { ExperienceDTO } from "@/lib/Types";
 import {
   Breadcrumb,
   Button,
@@ -9,10 +9,10 @@ import {
   Input,
 } from "@/components/ui";
 import React, { useEffect, useState } from "react";
-import { callApi } from "@/lib/actions";
+import { callApi } from "@/lib/Actions";
 import toast from "react-hot-toast";
-import { uploadImageToFirabase } from "@/lib/helper";
-import { StringToArray } from "@/lib/utils";
+import { uploadImageToFirabase } from "@/lib/Helper";
+import { StringToArray } from "@/lib/Utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";

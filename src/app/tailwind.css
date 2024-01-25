@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+}
+
+@layer components {
+  .layout {
+    @apply overflow-x-hidden h-screen px-0 text-gray-950  mx-auto relative pt-28 sm:pt-36;
+  }
+
+  .header-left-color {
+    @apply bg-heroPrimary absolute top-[-1rem] -z-10 right-[0rem] h-[100vh] w-[50%]  blur-[8rem] rounded-md;
+  }
+  .header-right-color {
+    @apply bg-heroSecondary absolute top-[-1rem] -z-10 left-[-1rem] h-[100vh] w-[50%]  blur-[8rem]  rounded-3xl;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+}
+
+@layer utilities {
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-col-between {
+    @apply flex flex-col justify-center;
+  }
+
+  .flexColCenter {
+    @apply flex flex-col justify-center items-center;
+  }
+
+  .flex-row-center {
+    @apply flex items-center justify-center gap-2;
+  }
+
+  .absolute-center {
+    @apply absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .clamp-size {
+    @apply max-w-7xl mx-auto px-2 scroll-mt-28;
+  }
+
+  .gridMinMax {
+    @apply grid justify-between grid-cols-[repeat(auto-fill,minmax(350px,1fr))];
+  }
+
+  .css-invert {
+    @apply invert-[50%] brightness-200;
+  }
+
+  .title {
+    @apply text-base md:text-xl lg:text-lg;
+  }
+
+  .subTitle {
+    @apply;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #09090a;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #5c5c7b;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #7878a3;
+  }
+
+  .fillAvailable {
+    width: -webkit-fill-available;
+  }
+
+  .test {
+    @apply bg-red-600 text-blue-500 p-4;
+  }
+}

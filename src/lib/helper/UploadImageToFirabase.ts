@@ -1,5 +1,5 @@
-import { imageDb } from "@/lib/helper";
-import { ImageCompressor } from "@/lib/utils";
+import { imageDb } from "@/lib/Helper";
+import { ImageCompressor } from "@/lib/Utils";
 import {
   getDownloadURL,
   ref,

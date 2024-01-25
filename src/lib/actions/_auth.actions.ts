@@ -1,7 +1,7 @@
 "use server";
 
-import { LoginDTO, RegisterDTO } from "@/lib/types";
-import { apiWorker } from "../api/api";
+import { LoginDTO, RegisterDTO } from "@/lib/Types";
+import { apiWorker } from "../Api/api";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 

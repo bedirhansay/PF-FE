@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import toast from "react-hot-toast";
-import { callApi } from "@/lib/actions";
+import { callApi } from "@/lib/Actions";
 import { Button } from "@/components/ui/Button";
-import { AboutDTO } from "@/lib/types";
+import { AboutDTO } from "@/lib/Types";
 
 const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,

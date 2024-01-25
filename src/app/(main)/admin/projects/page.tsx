@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { callApi } from "../../../../lib/actions/__api.actions";
+import { callApi } from "../../../../lib/Actions/__api.actions";
 import { ProjectsPage } from "@/container/Admin/ProjectsPage/ProjectsPage";
 
 export const metadata: Metadata = {

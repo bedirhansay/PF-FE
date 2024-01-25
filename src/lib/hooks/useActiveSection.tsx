@@ -1,6 +1,6 @@
-import { ContextProps } from "@/lib/types";
+import { ContextProps } from "@/lib/Types";
 import { useContext } from "react";
-import { ActiveSectionContext } from "../contex";
+import { ActiveSectionContext } from "../Context";
 
 export const useActiveSection = () => {
   const context = useContext(ActiveSectionContext);

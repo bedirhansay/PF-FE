@@ -4,11 +4,11 @@ import { Checkbox } from "../ui/checkbox/checkbox";
 import { IoFilterSharp } from "react-icons/io5";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
-import { QueryHandler } from "@/lib/utils/query.handler";
-import { useDebounce } from "@/lib/hooks/useDebounce";
+import { QueryHandler } from "@/lib/Utils/query.handler";
+import { useDebounce } from "@/lib/Hooks/useDebounce";
 import style from "./Filter.module.scss";
 import { GrClose } from "react-icons/gr";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/Utils";
 
 interface FilterProps {
   categories: string[];

@@ -1,13 +1,13 @@
 "use client";
 
-import { useSectionInView } from "@/lib/hooks";
+import { useSectionInView } from "@/lib/Hooks";
 import { Heading } from "@/components/ui";
 import { motion } from "framer-motion";
 import { experinceAnimations } from "./animations";
 import style from "./experience.module.scss";
 
-import { ExperienceDTO } from "../../../lib/types/types";
-import { useFetch } from "@/lib/hooks/useFetch";
+import { ExperienceDTO } from "../../../lib/Types/types";
+import { useFetch } from "@/lib/Hooks/useFetch";
 
 const Deneyim = () => {
   const { ref, view } = useSectionInView("Deneyim", 0.9);

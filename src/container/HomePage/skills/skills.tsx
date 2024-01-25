@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import style from "./skills.module.scss";
 import Image from "next/image";
 import { fadeInAnimationVariants, skillsAnim } from "./animations";
-import { useSectionInView } from "@/lib/hooks";
-import { SkillsDTO } from "@/lib/types";
+import { useSectionInView } from "@/lib/Hooks";
+import { SkillsDTO } from "@/lib/Types";
 import { Heading } from "@/components/ui";
 import { SkillCardSkeleton } from "../../../components/Skeletons/SkillCardSekeleton";
-import { useFetch } from "@/lib/hooks/useFetch";
+import { useFetch } from "@/lib/Hooks/useFetch";
 
 export default function Skills() {
   const { ref } = useSectionInView("Yetenekler");

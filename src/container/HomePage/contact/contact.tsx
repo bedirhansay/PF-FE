@@ -5,8 +5,8 @@ import toast from "react-hot-toast";
 import { useFormStatus } from "react-dom";
 import style from "./contact.module.scss";
 import { ContactAnimations } from "./animations";
-import { useSectionInView } from "@/lib/hooks";
-import { sendEmail } from "@/lib/actions";
+import { useSectionInView } from "@/lib/Hooks";
+import { sendEmail } from "@/lib/Actions";
 import { Button, Heading, Input } from "@/components/ui";
 
 const Contact = () => {
@@ -37,7 +37,7 @@ const Contact = () => {
             }}
           >
             <div className=" flex flex-col gap-4 max-w-3xl">
-              <strong className="!text-left px-4 rounded">
+              <strong className="!text-left rounded">
                 {" "}
                 İletişime geçmek istiyorsanız
                 <a

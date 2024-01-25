@@ -7,10 +7,11 @@ import style from "./projeler.module.scss";
 import { ProjectsAnim } from "./animations";
 import "swiper/css";
 
-import { ProjectDTO } from "@/lib/types";
-import { useSectionInView } from "@/lib/hooks";
-import { projectDatas } from "@/lib/constant";
-import { useFetch } from "@/lib/hooks/useFetch";
+import { ProjectDTO } from "@/lib/Types";
+import { useSectionInView } from "@/lib/Hooks";
+import { projectDatas } from "@/lib/Constant";
+import { useFetch } from "@/lib/Hooks/useFetch";
+import { Heading } from "@/components/ui";
 
 export default function Projeler({ projects }: { projects: ProjectDTO[] }) {
   const [activeProject, setActiveProject] = useState(0);
@@ -23,7 +24,7 @@ export default function Projeler({ projects }: { projects: ProjectDTO[] }) {
 
   return (
     <div ref={ref} id="projects" className={style["projects-container"]}>
-      <h2>Projeler</h2>
+      <Heading title="Projeler" />
 
       <div className="">
         <Swiper

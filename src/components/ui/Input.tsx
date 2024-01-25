@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/Utils";
 import * as React from "react";
 import { IoMdCloudUpload } from "react-icons/io";
 

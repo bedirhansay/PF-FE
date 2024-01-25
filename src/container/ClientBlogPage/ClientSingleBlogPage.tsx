@@ -5,11 +5,11 @@ import Image from "next/image";
 import { revalidatePath } from "next/cache";
 import { BsClock, BsEye } from "react-icons/bs";
 import styles from "./blog.module.scss";
-import { BlogDTO } from "@/lib/types";
+import { BlogDTO } from "@/lib/Types";
 import { Share } from "@/components/Share";
-import { FormatDate } from "@/lib/utils";
-import { callApi } from "@/lib/actions/__api.actions";
-import { ReadMin } from "@/lib/utils/read.minute";
+import { FormatDate } from "@/lib/Utils";
+import { callApi } from "@/lib/Actions/__api.actions";
+import { ReadMin } from "@/lib/Utils/read.minute";
 
 export const ClientSingleBlogPage = ({
   selectedBlog,

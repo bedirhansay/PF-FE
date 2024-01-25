@@ -3,7 +3,7 @@
 }
 
 .heading-section {
-  @apply flex flex-col gap-4 p-4 w-full bg-gray-600 text-white;
+  @apply flex flex-col gap-4 p-4 w-full bg-background shadow-2xl text-white;
 
   h2 {
     @apply bg-opacity-40 text-3xl text-center px-8 py-2 rounded;
@@ -121,7 +121,7 @@
     @apply flex flex-col gap-10;
 
     .blogHeader {
-      @apply bg-gray-900 text-white flex flex-col text-center font-bold  px-2 shadow-md text-base sm:text-3xl py-10;
+      @apply bg-gray-900  text-white flex flex-col text-center font-bold  px-2 shadow-md text-base sm:text-3xl py-10;
 
       .blogTitle {
         @apply mt-2;

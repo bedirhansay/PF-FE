@@ -3,9 +3,9 @@ import React, { FC, useCallback, useEffect, useState } from "react";
 import { IoFilterSharp } from "react-icons/io5";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
-import { QueryHandler } from "@/lib/utils/query.handler";
+import { QueryHandler } from "@/lib/Utils/query.handler";
 import { GrClose } from "react-icons/gr";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/Utils";
 import { Button, Input } from "@/components/ui";
 import style from "./blog.module.scss";
 import { BsSearch } from "react-icons/bs";
@@ -131,16 +131,17 @@ export const BlogHeader: FC<FilterProps> = ({ categories }) => {
         <div className="flex gap-3 items-center">
           <Button
             onClick={() => setInputOpen(!inputOpen)}
-            className="flex items-center gap-3 bg-white text-black px-4 rounded"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white flex gap-2 "
           >
             <BsSearch />
+            Search
           </Button>
           <span>
             <div className={style["sortby"]}>
               <select
                 onChange={(e) => onSortHandler(e.target.value)}
                 id="countries"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full  p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
               >
                 <option selected value="">
                   Sırala
@@ -163,7 +164,7 @@ export const BlogHeader: FC<FilterProps> = ({ categories }) => {
 
       <div className="w-full">
         {inputOpen && (
-          <div className="absolute  max-w-4xl mx-auto w-full shadow-md z-50  mt-4  bg-white py-8 left-0 right-0 p-8 text-black ">
+          <div className="absolute  max-w-4xl mx-auto  shadow-md z-50  mt-4   py-8 left-0 right-0 p-8 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full  p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white ">
             <h2>Ne Arıyorsunuz?</h2>
 
             <div className="">

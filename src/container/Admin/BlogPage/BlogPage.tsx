@@ -1,6 +1,6 @@
 "use client";
 
-import { BlogDTO, BlogPageDTO, CategoryDTO } from "@/lib/types";
+import { BlogDTO, BlogPageDTO, CategoryDTO } from "@/lib/Types";
 import {
   Breadcrumb,
   Button,
@@ -11,9 +11,9 @@ import {
   Modal,
 } from "@/components/ui";
 import React, { useEffect, useState } from "react";
-import { callApi } from "@/lib/actions";
+import { callApi } from "@/lib/Actions";
 import toast from "react-hot-toast";
-import { uploadImageToFirabase } from "@/lib/helper";
+import { uploadImageToFirabase } from "@/lib/Helper";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";

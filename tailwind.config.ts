@@ -2,13 +2,12 @@ import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
-  important: true,
   jit: true,
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./src/app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
@@ -24,13 +23,13 @@ const config = {
 
       colors: {
         lightBlue: "#0065A7",
-
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        background: "hsl(var(--background))",
+        border: "var(--border)",
+        input: "var(--input)",
         news: "var(--primary)",
-        ring: "hsl(var(--ring))",
-        foreground: "hsl(var(--foreground))",
+        ring: "var(--ring)",
+        mask: "var(--mask)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
         primary: {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",

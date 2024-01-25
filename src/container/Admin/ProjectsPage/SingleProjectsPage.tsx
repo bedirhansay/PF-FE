@@ -8,11 +8,11 @@ import {
   Input,
 } from "@/components/ui";
 import React, { useState } from "react";
-import { ProjectDTO } from "@/lib/types";
-import { callApi } from "@/lib/actions";
+import { ProjectDTO } from "@/lib/Types";
+import { callApi } from "@/lib/Actions";
 import toast from "react-hot-toast";
-import { uploadImageToFirabase } from "@/lib/helper";
-import { StringToArray } from "@/lib/utils";
+import { uploadImageToFirabase } from "@/lib/Helper";
+import { StringToArray } from "@/lib/Utils";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";

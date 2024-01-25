@@ -1,5 +1,6 @@
 import { Sidebar } from "@/components/Sidebar";
 import { Metadata } from "next";
+// import "../../global.css";
 
 export const metadata: Metadata = {
   title: "Dashboard",

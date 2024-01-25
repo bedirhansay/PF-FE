@@ -10,13 +10,13 @@ import { useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { SkillsDTO } from "@/lib/types";
+import { SkillsDTO } from "@/lib/Types";
 import { SkillSchema } from "@/lib/validation";
 import toast from "react-hot-toast";
-import { callApi } from "@/lib/actions";
+import { callApi } from "@/lib/Actions";
 import style from "../admin.module.scss";
-import { uploadImageToFirabase } from "@/lib/helper";
-import { StringToArray } from "@/lib/utils";
+import { uploadImageToFirabase } from "@/lib/Helper";
+import { StringToArray } from "@/lib/Utils";
 
 export const SingleSkillPage = ({
   singleSkill,

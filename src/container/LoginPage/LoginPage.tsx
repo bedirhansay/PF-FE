@@ -5,9 +5,9 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import styles from "./login.module.scss";
-import { LoginDTO } from "@/lib/types";
+import { LoginDTO } from "@/lib/Types";
 import { LoginSchema } from "@/lib/validation";
-import { login } from "@/lib/actions";
+import { login } from "@/lib/Actions";
 import { Button, Heading, Input } from "@/components/ui";
 
 export const Login = () => {

@@ -10,10 +10,10 @@ import {
   Modal,
 } from "@/components/ui";
 import React, { useEffect, useState } from "react";
-import { CategoryDTO } from "@/lib/types";
-import { callApi } from "@/lib/actions";
+import { CategoryDTO } from "@/lib/Types";
+import { callApi } from "@/lib/Actions";
 import toast from "react-hot-toast";
-import { uploadImageToFirabase } from "@/lib/helper";
+import { uploadImageToFirabase } from "@/lib/Helper";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
@@ -95,7 +95,7 @@ export const CategoriesPage = ({
       const img = await uploadImageToFirabase(payload);
       setSelectedImage(selectedFile);
       setImageUrl(() => img?.url || "");
-    
+
       setLoading(false);
     } catch (error: any) {
       setLoading(false);

@@ -1,9 +1,8 @@
 import { Urbanist } from "next/font/google";
 import { Metadata } from "next";
-
-import "./global.scss";
-
 import { GlobalProviders } from "@/lib/Providers/Providers";
+import "./global.scss";
+import "./tailwind.css";
 
 const inter = Urbanist({
   subsets: ["latin"],

@@ -13,7 +13,7 @@ export const Pagination = ({
   const isLastPage = currentPage === totalPage;
 
   return (
-    <div className="flex justify-center  pt-10 mt-20 pb-10 max-w-7xl bg-white items-center mx-auto gap-4 self-end px-4 fillAvailable">
+    <div className="flex justify-center  pt-10 mt-20 pb-10 max-w-7xl bg-background text-accent-foreground items-center mx-auto gap-4 self-end px-4 fillAvailable">
       {isFirstPage ? (
         <CiCircleChevLeft
           fontSize={32}

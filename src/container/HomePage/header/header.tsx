@@ -1,22 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { IoClose } from "react-icons/io5";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { useState } from "react";
+import { useTheme } from "next-themes";
+import { SunSVG, MoonSVG } from "@SVG";
+import { MobileLink, NavLinks } from "@Constant";
+import { Button } from "@UIComponents";
+import { motion } from "framer-motion";
+import { FaUser } from "react-icons/fa";
 import style from "./header.module.scss";
 import { HeaderAnimations } from "./animation";
-import { FaUser } from "react-icons/fa";
-import { useActiveSection } from "@/lib/hooks";
-import { NavLinks } from "@/lib/constant";
-import { IoMdMoon } from "react-icons/io";
-import { MdWbSunny } from "react-icons/md";
-
-import { useTheme } from "next-themes";
+import { useActiveSection } from "@/lib/Hooks";
 
 export const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSection();
@@ -55,59 +52,58 @@ export const Header = () => {
                 </Link>
               </motion.li>
             ))}
-            <motion.a {...HeaderAnimations.liAnimation} href="/admin/blog">
+            <motion.a
+              className={style["admin"]}
+              {...HeaderAnimations.liAnimation}
+              href="/admin/blog"
+            >
               <FaUser />
             </motion.a>
-            <button
-              className="border rounded-full p-1 hover:bg-background"
+            <Button
+              className={style["theme"]}
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
-              {theme === "dark" ? <MdWbSunny /> : <IoMdMoon />}
-            </button>
+              {theme === "dark" ? <MoonSVG  /> : <SunSVG />}
+            </Button>
           </ul>
         </nav>
       </div>
 
-      <motion.button
+      <motion.nav
         variants={HeaderAnimations.variant}
+        data-active={isOpen}
+        className={style["mobile-header"]}
         animate={isOpen ? "open" : "closed"}
-        className={style["button"]}
-        onClick={() => setIsOpen((isOpen) => !isOpen)}
       >
-        {isOpen ? <IoClose /> : <RxHamburgerMenu />}
-      </motion.button>
-
-      {isOpen && (
-        <motion.nav
-          variants={HeaderAnimations.variant}
-          data-active={isOpen}
-          className={style["mobile-header"]}
-          animate={isOpen ? "open" : "closed"}
-        >
-          {NavLinks.map((link, i) => (
-            <motion.li
-              {...HeaderAnimations.liAnimation}
-              key={i + "mobile"}
-              variants={HeaderAnimations.fadeInAnimationVariants}
-              custom={i}
-              onClick={() => {
-                setIsOpen(false);
-                setActiveSection(link.name);
-                setTimeOfLastClick(Date.now());
-              }}
+        {MobileLink.map((link, i) => (
+          <motion.li
+            {...HeaderAnimations.liAnimation}
+            key={i + "mobile"}
+            variants={HeaderAnimations.fadeInAnimationVariants}
+            custom={i}
+            onClick={() => {
+              setActiveSection(link.name);
+              setTimeOfLastClick(Date.now());
+            }}
+          >
+            <Link
+              prefetch={false}
+              className={style["active"]}
+              href={link.hash}
+              data-anasayfa={link.name === "Anasayfa"}
+              data-active={link.name === activeSection}
             >
-              <Link
-                prefetch={false}
-                className={style["active"]}
-                href={link.hash}
-                data-active={link.name === activeSection}
-              >
-                {link.name}
-              </Link>
-            </motion.li>
-          ))}
-        </motion.nav>
-      )}
+              <div className={style["text-wrapper"]}>
+                <i>
+                  <link.icon />
+                </i>
+
+                <span>{link.name}</span>
+              </div>
+            </Link>
+          </motion.li>
+        ))}
+      </motion.nav>
     </header>
   );
 };

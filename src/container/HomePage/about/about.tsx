@@ -5,11 +5,11 @@ import { motion, useAnimation } from "framer-motion";
 import { pAnim } from "./animations";
 import style from "./about.module.scss";
 import clsx from "clsx";
-import { useSectionInView } from "@/lib/hooks";
+import { useSectionInView } from "@/lib/Hooks";
 import { Heading } from "@/components/ui";
-import { AboutDTO } from "@/lib/types";
+import { AboutDTO } from "@/lib/Types";
 import { AboutSkeletons } from "../../../components/Skeletons/AboutSkeleton";
-import { useFetch } from "@/lib/hooks/useFetch";
+import { useFetch } from "@/lib/Hooks/useFetch";
 
 export default function AboutSection() {
   const [count, setCount] = useState(850);
@@ -35,7 +35,7 @@ export default function AboutSection() {
     <motion.section className={style["about-wrapper"]} ref={ref} id="about">
       <Heading link="about" title="Hakkımda" />
 
-      <motion.div className="mb-3 dark:bg-gray-300 p-2">
+      <motion.div className="mb-3 bg-background text-accent-foreground p-2">
         {!loading ? (
           data?.map((item, index) => (
             <motion.span

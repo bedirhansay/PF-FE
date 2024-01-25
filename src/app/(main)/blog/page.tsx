@@ -1,5 +1,5 @@
 import React from "react";
-import { callApi } from "../../../lib/actions/__api.actions";
+import { callApi } from "../../../lib/Actions/__api.actions";
 import { Metadata } from "next";
 import { ClientBlogPage } from "@/container/ClientBlogPage/ClientBlogPage";
 

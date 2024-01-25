@@ -23,21 +23,21 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
-      // "@container": ["./src/container/index.ts"],
-      // "@components": ["./src/components/index.ts"],
-      // "@components/ui": ["./src/components/ui/index.ts"],
-      // "@utils": ["./src/lib/utils/index.ts"],
-      // "@hooks": ["./src/lib/hooks/index.ts"],
-      // "@models": ["./src/lib/models/index.ts"],
-      // "@types": ["./src/lib/types/index.ts"],
-      // "@context": ["./src/lib/context/index.ts"],
-      // "@actions": ["./src/lib/actions/index.ts"],
-      // "@public": ["./public/index.ts"],
-      // "@constant": ["./src/lib/constant/index.ts"],
-      // "@validations": ["./src/lib/validation/index.ts"],
-      // "@api": ["./src/lib/api/index.ts"],
-      // "@helper": ["./src/lib/helper/index.ts"]
+      "@/*": ["./src/*"],
+      "@container": ["./src/container/index.ts"],
+      "@components": ["./src/components/index.ts"],
+      "@UIComponents": ["./src/components/ui/index.ts"],
+      "@Utils": ["./src/lib/Utils/index.ts"],
+      "@Hooks": ["./src/lib/Hooks/index.ts"],
+      "@Types": ["./src/lib/Types/index.ts"],
+      "@Context": ["./src/lib/context/index.ts"],
+      "@Actions": ["./src/lib/Actions/index.ts"],
+      "@Public": ["./public/index.ts"],
+      "@Constant": ["./src/lib/Constant/index.ts"],
+      "@validations": ["./src/lib/validation/index.ts"],
+      "@Api": ["./src/lib/Api/index.ts"],
+      "@Helper": ["./src/lib/Helper/index.ts"],
+      "@SVG": ["./src/lib/SVG/index.ts"]
     }
   },
   "include": [
@@ -53,8 +53,7 @@
     "components/**/*.tsx",
     "lib/utils/**/*.ts",
     "lib/**/*.ts",
-    "hooks/**/*.ts",
-    "src/lib/utils/ConnectDb.ts"
+    "hooks/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -3,7 +3,7 @@
 }
 
 .boxWrapper {
-  @apply flex  bg-background rounded-md shadow-xl gap-5 p-8  mb-10 items-center;
+  @apply flex  rounded-md shadow-xl bg-background text-accent-foreground gap-5 p-8  mb-10 items-center;
   span {
     @apply text-xl border p-2 rounded-full shadow-xl;
   }

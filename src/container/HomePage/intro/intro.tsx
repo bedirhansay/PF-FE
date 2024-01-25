@@ -8,9 +8,8 @@ import { BsArrowRight, BsLinkedin, BsDownload, BsGithub } from "react-icons/bs";
 import { introAnimations } from "./animations";
 import style from "./intro.module.scss";
 import { motion } from "@/lib/motion/motion";
-import { useSectionInView } from "@/lib/hooks";
+import { useSectionInView } from "@/lib/Hooks";
 import profilePic from "../../../../public/profile-picc.png";
-import { useTheme } from "next-themes";
 
 export const Intro = () => {
   const { ref } = useSectionInView("Anasayfa");
