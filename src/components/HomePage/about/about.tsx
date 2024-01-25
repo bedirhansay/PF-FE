@@ -6,7 +6,7 @@ import { pAnim } from "./animations";
 import style from "./about.module.scss";
 import clsx from "clsx";
 import { useSectionInView } from "@/lib/hooks";
-import { Heading } from "@/components/ui";
+import { Title } from "@/components/ui";
 import { AboutDTO } from "@/lib/types";
 import { AboutSkeletons } from "../../Skeletons/AboutSkeleton";
 import { useFetch } from "@/lib/hooks/useFetch";
@@ -33,7 +33,7 @@ export const AboutSection = () => {
 
   return (
     <motion.section className={style["about-wrapper"]} ref={ref} id="about">
-      <Heading link="about" title="Hakkımda" />
+      <Title link="about" title="Hakkımda" />
 
       <motion.div className="mb-3  border rounded shadow text-accent-foreground p-4 pt-8">
         {!loading ? (

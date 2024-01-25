@@ -10,7 +10,7 @@ import "swiper/css";
 import { ProjectDTO } from "@/lib/types";
 import { useSectionInView } from "@/lib/hooks";
 import { projectDatas } from "@/lib/constant";
-import { Heading } from "@/components/ui";
+import { Title } from "@/components/ui";
 
 export const Projeler = ({ projects }: { projects: ProjectDTO[] }) => {
   const [activeProject, setActiveProject] = useState(0);
@@ -23,7 +23,7 @@ export const Projeler = ({ projects }: { projects: ProjectDTO[] }) => {
 
   return (
     <div ref={ref} id="projects" className={style["projects-container"]}>
-      <Heading title="Projeler" />
+      <Title title="Projeler" />
 
       <div className="">
         <Swiper

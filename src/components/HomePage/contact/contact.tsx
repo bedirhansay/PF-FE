@@ -7,7 +7,7 @@ import style from "./contact.module.scss";
 import { ContactAnimations } from "./animations";
 import { useSectionInView } from "@/lib/hooks";
 import { sendEmail } from "@/lib/actions";
-import { Button, Heading, Input } from "@/components/ui";
+import { Button, Title, Input } from "@/components/ui";
 
 export const Contact = () => {
   const { ref } = useSectionInView("İletişim");
@@ -20,7 +20,7 @@ export const Contact = () => {
       className={style["section"]}
       {...ContactAnimations.wrapper}
     >
-      <Heading title="İletişim" link="contact" />
+      <Title title="İletişim" link="contact" />
       <div className={style["section-wrapper"]}>
         <div className={style["banner"]}>
           <form

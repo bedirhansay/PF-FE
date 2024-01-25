@@ -1,6 +1,5 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { Input } from "../ui/Input";
-import { Checkbox } from "../ui/Checkbox/checkbox";
 import { IoFilterSharp } from "react-icons/io5";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
@@ -9,6 +8,7 @@ import { useDebounce } from "@/lib/hooks/useDebounce";
 import style from "./Filter.module.scss";
 import { GrClose } from "react-icons/gr";
 import { cn } from "@/lib/utils";
+import { CheckboxInput } from "../ui";
 
 interface FilterProps {
   categories: string[];
@@ -195,7 +195,7 @@ export const Filter: FC<FilterProps> = ({ categories }) => {
           <span>Sırala</span>
           <hr className="mb-2" />
           {filterBy.map((category, index) => (
-            <Checkbox
+            <CheckboxInput
               key={category.label + index}
               label={category.title}
               isSelected={category.label === sortList}
@@ -210,7 +210,7 @@ export const Filter: FC<FilterProps> = ({ categories }) => {
           <hr className="mb-2" />
           <div className={style["categoryFilter"]}>
             {categories.map((category, index) => (
-              <Checkbox
+              <CheckboxInput
                 key={category + index}
                 label={category}
                 isSelected={selectedCategory.includes(QueryHandler(category))}

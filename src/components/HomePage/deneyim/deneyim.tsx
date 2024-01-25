@@ -1,7 +1,7 @@
 "use client";
 
 import { useSectionInView } from "@/lib/hooks";
-import { Heading } from "@/components/ui";
+import { Title } from "@/components/ui";
 import { motion } from "framer-motion";
 import { experinceAnimations } from "./animations";
 import style from "./experience.module.scss";
@@ -20,7 +20,7 @@ export const Deneyim = () => {
 
   return (
     <section id="experience" ref={ref} className={style.sectionWrapper}>
-      <Heading title="Deneyim" link="experience" />
+      <Title title="Deneyim" link="experience" />
 
       <div className={style.sectionSub}>
         {data?.map((item, index) => (

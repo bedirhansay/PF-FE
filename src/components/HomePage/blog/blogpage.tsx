@@ -8,7 +8,7 @@ import style from "./blog.module.scss";
 import { useSectionInView } from "@/lib/hooks";
 import { BlogDTO } from "@/lib/types";
 import { ProfilePic } from "../../../../public";
-import { Button, Heading } from "@/components/ui";
+import { Button, Title } from "@/components/ui";
 import { FormatDate } from "@/lib/utils/format.date";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -18,7 +18,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
 
   return (
     <div ref={ref} id="blog" className={style["parent"]}>
-      <Heading title="Blog Yazıları" link="blog" />
+      <Title title="Blog Yazıları" link="blog" />
 
       <Swiper
         navigation={true}

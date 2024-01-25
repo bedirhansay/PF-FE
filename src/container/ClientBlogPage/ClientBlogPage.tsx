@@ -8,7 +8,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Pagination } from "@/components/Pagination/Pagination";
 import { BlogPageDTO } from "@/lib/types";
 import { useFetch } from "@/lib/hooks";
-import { MainBlogCard, BlogCard, Checkbox } from "@/components/ui";
+import { MainBlogCard, BlogCard, CheckboxInput } from "@/components/ui";
 import { FormatDate, ReadMin, QueryHandler } from "@/lib/utils";
 import { BlogHeader } from "./BlogHeader";
 import logo from "../../../public/favicon-300.png";
@@ -195,7 +195,7 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
                 <h2>Kategorileri Filtrele</h2>
                 <div className={style["filter-category"]}>
                   {categories.map((category, index) => (
-                    <Checkbox
+                    <CheckboxInput
                       key={category + index}
                       label={category}
                       isSelected={selectedCategory.includes(

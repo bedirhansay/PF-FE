@@ -6,7 +6,7 @@ import Image from "next/image";
 import { fadeInAnimationVariants, skillsAnim } from "./animations";
 import { useSectionInView } from "@/lib/hooks";
 import { SkillsDTO } from "@/lib/types";
-import { Heading } from "@/components/ui";
+import { Title } from "@/components/ui";
 import { SkillCardSkeleton } from "../../Skeletons/SkillCardSekeleton";
 import { useFetch } from "@/lib/hooks/useFetch";
 
@@ -21,7 +21,7 @@ export const Skills = () => {
 
   return (
     <section id="skills" ref={ref} className={style["section-wrapper"]}>
-      <Heading title="Yeteneklerim" link="skills"></Heading>
+      <Title title="Yeteneklerim" link="skills"></Title>
 
       <ul className={style["ul-container"]}>
         {!loading

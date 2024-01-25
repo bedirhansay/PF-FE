@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React from "react";
 
 import classes from "./checkbox.module.scss";
 
@@ -9,7 +9,7 @@ interface CheckboxProps {
   onClickHandler: (value: string) => void;
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({
+export const CheckboxInput: React.FC<CheckboxProps> = ({
   label,
   value,
   isSelected,

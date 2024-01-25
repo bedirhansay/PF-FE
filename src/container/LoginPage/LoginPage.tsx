@@ -8,7 +8,7 @@ import styles from "./login.module.scss";
 import { LoginDTO } from "@/lib/types";
 import { LoginSchema } from "@/lib/validation";
 import { login } from "@/lib/actions";
-import { Button, Heading, Input } from "@/components/ui";
+import { Button, Title, Input } from "@/components/ui";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -41,7 +41,7 @@ export const Login = () => {
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.headingSection}>
-        <Heading link="" title="Login" />
+        <Title link="" title="Login" />
       </div>
 
       <div className={styles.formSection}>

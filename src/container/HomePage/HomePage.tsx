@@ -10,8 +10,8 @@ import {
 } from "@/components/HomePage";
 import { BlogDTO, ProjectDTO } from "@/lib/types";
 import { FC } from "react";
-import Divider from "@/components/ui/Divider/divider";
 import { ClientOnly } from "@/lib/hooks";
+import { Seperator } from "@/components/ui";
 
 export type HomePageProps = {
   data: {
@@ -49,19 +49,19 @@ export const HomePage: FC<HomePageProps> = async ({ data }) => {
           </p>
         </div> */}
         <Intro />
-        <Divider />
+        <Seperator />
         <BlogPage blogs={data.blog} />
-        <Divider line />
+        <Seperator line />
         <AboutSection />
-        <Divider line />
+        <Seperator line />
         <Projeler projects={data.projects} />
-        <Divider line />
+        <Seperator line />
         <Skills />
-        <Divider line />
+        <Seperator line />
         <Deneyim />
-        <Divider line />
+        <Seperator line />
         <Contact />
-        <Divider line />
+        <Seperator line />
         <Footer />
       </ClientOnly>
     </section>

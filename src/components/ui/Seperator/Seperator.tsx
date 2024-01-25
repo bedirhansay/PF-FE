@@ -6,7 +6,7 @@ import style from "./divider.module.scss";
 import { motion } from "@/lib/motion/motion";
 import { dividerAnimations } from "./animations";
 
-const Divider = ({ line }: { line?: boolean }) => {
+export const Seperator = ({ line }: { line?: boolean }) => {
   return (
     <motion.div className={style["divider-roll"]} {...dividerAnimations}>
       {line ? (
@@ -21,5 +21,3 @@ const Divider = ({ line }: { line?: boolean }) => {
     </motion.div>
   );
 };
-
-export default Divider;
