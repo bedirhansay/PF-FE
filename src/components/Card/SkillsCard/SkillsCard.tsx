@@ -5,7 +5,7 @@ import { SkillsDTO } from "@/lib/types";
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import Image from "next/image";
-import { Button } from "../../Button";
+import { Button } from "../../ui/Button";
 import { usePathname, useRouter } from "next/navigation";
 
 interface CardProps {

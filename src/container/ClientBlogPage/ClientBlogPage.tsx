@@ -8,11 +8,12 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Pagination } from "@/components/Pagination/Pagination";
 import { BlogPageDTO } from "@/lib/types";
 import { useFetch } from "@/lib/hooks";
-import { MainBlogCard, BlogCard, CheckboxInput } from "@/components/ui";
+import { CheckboxInput } from "@/components/ui";
 import { FormatDate, ReadMin, QueryHandler } from "@/lib/utils";
 import { BlogHeader } from "./BlogHeader";
 import logo from "../../../public/favicon-300.png";
 import style from "./blog.module.scss";
+import { BlogCard, MainBlogCard } from "@/components/Card";
 
 export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
   const [blogsItems, setBlogsItems] = useState<BlogPageDTO>(blogs);

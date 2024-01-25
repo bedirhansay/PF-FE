@@ -9,11 +9,7 @@ interface ModalProps {
   onClose: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ModalComp: React.FC<ModalProps> = ({
-  isOpen,
-  children,
-  onClose,
-}) => {
+export const Modal: React.FC<ModalProps> = ({ isOpen, children, onClose }) => {
   if (!isOpen) {
     return null;
   }

@@ -6,9 +6,7 @@ export * from "./Input";
 export * from "./breadcrupms";
 export * from "./ErrorMessage";
 
-export * from "./Card/SkillsCard/SkillsCard";
 export * from "./HeadingSection/HeadingSection";
 export * from "./Checkbox/CheckboxInput";
 
-export * from "./Modal/ModalComp";
-export * from "./Card/index";
+export * from "./Modal/Modal";
