@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { ActiveSectionProvider } from "../context";
+import { ActiveSectionProvider } from "../context/sectionContex";
 import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "./ThemeProvider";
 
