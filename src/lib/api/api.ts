@@ -1,4 +1,4 @@
-import ReadToken from "../Actions/readToken.actions";
+import ReadToken from "../actions/readToken.actions";
 import { ApiConfig, DEFAULT_API_CONFIG } from "./api-config";
 import axios, { AxiosError, AxiosInstance } from "axios";
 

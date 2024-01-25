@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import { callApi } from "../../../../lib/Actions/__api.actions";
+import { callApi } from "../../../../lib/actions/__api.actions";
 import { notFound } from "next/navigation";
 
 import { ClientSingleBlogPage } from "@/container/ClientBlogPage/ClientSingleBlogPage";

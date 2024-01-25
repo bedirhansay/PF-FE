@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { callApi } from "@/lib/Actions/__api.actions";
+import { callApi } from "@/lib/actions/__api.actions";
 
 export async function generateSitemaps() {
   const { data } = await callApi({ method: "get", path: "blog" });

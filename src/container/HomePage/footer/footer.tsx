@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 import style from "./footer.module.scss";
-import { NavLinks } from "@/lib/Constant";
-import { useActiveSection } from "@/lib/Hooks";
+import { NavLinks } from "@/lib/constant";
+import { useActiveSection } from "@/lib/hooks";
 const Footer = () => {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSection();

@@ -5,8 +5,8 @@ import toast from "react-hot-toast";
 import { useFormStatus } from "react-dom";
 import style from "./contact.module.scss";
 import { ContactAnimations } from "./animations";
-import { useSectionInView } from "@/lib/Hooks";
-import { sendEmail } from "@/lib/Actions";
+import { useSectionInView } from "@/lib/hooks";
+import { sendEmail } from "@/lib/actions";
 import { Button, Heading, Input } from "@/components/ui";
 
 const Contact = () => {

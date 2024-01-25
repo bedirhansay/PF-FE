@@ -1,7 +1,7 @@
 "use server";
 
 import { AxiosResponse, AxiosError } from "axios";
-import { apiWorker } from "@/lib/Api";
+import { apiWorker } from "@/lib/api";
 import { revalidatePath } from "next/cache";
 
 interface ApiFunctionProps {

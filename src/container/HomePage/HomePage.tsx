@@ -7,7 +7,7 @@ import Skills from "./skills/skills";
 import Deneyim from "./deneyim/deneyim";
 import Contact from "./contact/contact";
 import Footer from "./footer/footer";
-import { BlogDTO, ProjectDTO } from "@/lib/Types";
+import { BlogDTO, ProjectDTO } from "@/lib/types";
 import { FC } from "react";
 import { ClientOnly } from "@/components/ClientOnly";
 

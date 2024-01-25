@@ -7,10 +7,10 @@ import style from "./projeler.module.scss";
 import { ProjectsAnim } from "./animations";
 import "swiper/css";
 
-import { ProjectDTO } from "@/lib/Types";
-import { useSectionInView } from "@/lib/Hooks";
-import { projectDatas } from "@/lib/Constant";
-import { useFetch } from "@/lib/Hooks/useFetch";
+import { ProjectDTO } from "@/lib/types";
+import { useSectionInView } from "@/lib/hooks";
+import { projectDatas } from "@/lib/constant";
+import { useFetch } from "@/lib/hooks/useFetch";
 import { Heading } from "@/components/ui";
 
 export default function Projeler({ projects }: { projects: ProjectDTO[] }) {

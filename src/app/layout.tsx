@@ -1,6 +1,6 @@
 import { Urbanist } from "next/font/google";
 import { Metadata } from "next";
-import { GlobalProviders } from "@/lib/Providers/Providers";
+import { GlobalProviders } from "@/lib/providers/Providers";
 import "./global.scss";
 import "./tailwind.css";
 

@@ -1,7 +1,7 @@
-import { verifiedToken } from "@/lib/Utils";
+import { verifiedToken } from "@/lib/utils";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import ReadToken from "./lib/Actions/readToken.actions";
+import ReadToken from "./lib/actions/readToken.actions";
 import { redirect } from "next/navigation";
 export async function middleware(request: NextRequest, res: NextResponse) {
   const { url } = request;

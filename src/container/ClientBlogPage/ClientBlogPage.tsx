@@ -5,19 +5,19 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import style from "./blog.module.scss";
 import { Pagination } from "@/components/Pagination";
-import { BlogPageDTO } from "@/lib/Types";
+import { BlogPageDTO } from "@/lib/types";
 import { Filter } from "@/components/Filter/Filter";
 import { BlogCard } from "@/components/ui/card/BlogCard/BlogCard";
 import qs from "query-string";
-import { useFetch } from "@/lib/Hooks/useFetch";
+import { useFetch } from "@/lib/hooks/useFetch";
 import { MainBlogCard } from "@/components/ui/card/BlogCard/MainBlogCard";
 import Image from "next/image";
 import logo from "../../../public/favicon-300.png";
-import { ReadMin } from "@/lib/Utils/read.minute";
-import { FormatDate } from "@/lib/Utils";
+import { ReadMin } from "@/lib/utils/read.minute";
+import { FormatDate } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox/checkbox";
 import { BlogHeader } from "./BlogHeader";
-import { QueryHandler } from "@/lib/Utils/query.handler";
+import { QueryHandler } from "@/lib/utils/query.handler";
 
 export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
   const [blogsItems, setBlogsItems] = useState<BlogPageDTO>(blogs);

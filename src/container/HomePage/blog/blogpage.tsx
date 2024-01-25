@@ -5,8 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { BsEye, BsArrowRightShort } from "react-icons/bs";
 import style from "./blog.module.scss";
-import { useSectionInView } from "@/lib/Hooks";
-import { BlogDTO } from "@/lib/Types";
+import { useSectionInView } from "@/lib/hooks";
+import { BlogDTO } from "@/lib/types";
 
 import { ProfilePic } from "../../../../public";
 import { Button, Heading } from "@/components/ui";
@@ -14,7 +14,7 @@ import { Button, Heading } from "@/components/ui";
 import "swiper/css";
 import "swiper/css/navigation";
 import { BlogCardSkeleton } from "../../../components/Skeletons/BlogCardSkeleton";
-import { FormatDate } from "@/lib/Utils/format.date";
+import { FormatDate } from "@/lib/utils/format.date";
 
 export const BlogPage = ({ blogs }: { blogs: BlogDTO[] }) => {
   const { ref } = useSectionInView("Blog");

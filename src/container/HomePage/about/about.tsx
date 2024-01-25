@@ -5,11 +5,11 @@ import { motion, useAnimation } from "framer-motion";
 import { pAnim } from "./animations";
 import style from "./about.module.scss";
 import clsx from "clsx";
-import { useSectionInView } from "@/lib/Hooks";
+import { useSectionInView } from "@/lib/hooks";
 import { Heading } from "@/components/ui";
-import { AboutDTO } from "@/lib/Types";
+import { AboutDTO } from "@/lib/types";
 import { AboutSkeletons } from "../../../components/Skeletons/AboutSkeleton";
-import { useFetch } from "@/lib/Hooks/useFetch";
+import { useFetch } from "@/lib/hooks/useFetch";
 
 export default function AboutSection() {
   const [count, setCount] = useState(850);

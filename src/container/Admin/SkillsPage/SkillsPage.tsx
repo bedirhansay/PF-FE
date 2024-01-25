@@ -14,11 +14,11 @@ import {
   HeadingSection,
 } from "@/components/ui";
 import { SkillSchema } from "@/lib/validation";
-import { SkillsDTO } from "@/lib/Types";
+import { SkillsDTO } from "@/lib/types";
 import Image from "next/image";
-import { uploadImageToFirabase } from "../../../lib/Helper/UploadImageToFirabase";
-import { callApi } from "@/lib/Actions";
-import { StringToArray } from "@/lib/Utils";
+import { uploadImageToFirabase } from "../../../lib/helper/UploadImageToFirabase";
+import { callApi } from "@/lib/actions";
+import { StringToArray } from "@/lib/utils";
 import style from "../admin.module.scss";
 import { DeleteBox } from "../../../components/DeleteBox";
 

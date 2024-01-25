@@ -1,7 +1,7 @@
 "use client";
 
 import { Dispatch, FC, SetStateAction } from "react";
-import { SkillsDTO } from "@/lib/Types";
+import { SkillsDTO } from "@/lib/types";
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import Image from "next/image";

@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Button } from "./ui/Button";
 import { FaCaretDown, FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { Truncate } from "@/lib/Utils";
+import { Truncate } from "@/lib/utils";
 
 interface DataTablesProps {
   data: any[];

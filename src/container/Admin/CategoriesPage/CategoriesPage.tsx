@@ -10,10 +10,10 @@ import {
   Modal,
 } from "@/components/ui";
 import React, { useEffect, useState } from "react";
-import { CategoryDTO } from "@/lib/Types";
-import { callApi } from "@/lib/Actions";
+import { CategoryDTO } from "@/lib/types";
+import { callApi } from "@/lib/actions";
 import toast from "react-hot-toast";
-import { uploadImageToFirabase } from "@/lib/Helper";
+import { uploadImageToFirabase } from "@/lib/helper";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";

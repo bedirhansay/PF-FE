@@ -8,7 +8,7 @@ import { BsArrowRight, BsLinkedin, BsDownload, BsGithub } from "react-icons/bs";
 import { introAnimations } from "./animations";
 import style from "./intro.module.scss";
 import { motion } from "@/lib/motion/motion";
-import { useSectionInView } from "@/lib/Hooks";
+import { useSectionInView } from "@/lib/hooks";
 import profilePic from "../../../../public/profile-picc.png";
 
 export const Intro = () => {

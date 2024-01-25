@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { callApi } from "../Actions";
+import { callApi } from "../actions";
 
 export interface FetchResult<T> {
   data: T | null;

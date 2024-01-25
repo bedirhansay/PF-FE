@@ -1,17 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-
 import Link from "next/link";
 import { MdOutlineLogout } from "react-icons/md";
-
 import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion } from "framer-motion";
 import { HeaderAnimations } from "../container/HomePage/header/animation";
 import toast from "react-hot-toast";
-import { logout } from "@/lib/Actions";
-import { adminLinks } from "@/lib/Constant/admin.sidebar";
+import { logout } from "@/lib/actions";
+import { adminLinks } from "@/lib/constant/admin.sidebar";
 import { Button } from "./ui/Button";
 
 interface SidebarLinkProps {

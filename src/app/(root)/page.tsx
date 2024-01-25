@@ -1,5 +1,5 @@
 import { HomePage } from "@/container/HomePage/HomePage";
-import { callApi } from "@/lib/Actions/__api.actions";
+import { callApi } from "@/lib/actions/__api.actions";
 export const dynamic = "force-dynamic";
 
 import type { Metadata, ResolvingMetadata } from "next";

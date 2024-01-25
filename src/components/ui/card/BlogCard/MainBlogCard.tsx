@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import style from "./Blog.module.scss";
-import { FormatDate } from "@/lib/Utils";
+import { FormatDate } from "@/lib/utils";
 
 export const MainBlogCard = (item: any) => {
   return (

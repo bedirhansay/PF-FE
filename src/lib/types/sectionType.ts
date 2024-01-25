@@ -1,3 +1,3 @@
-import { NavLinks } from "../Constant/navLinks";
+import { NavLinks } from "../constant/navLinks";
 
 export type SectionName = (typeof NavLinks)[number]["name"];

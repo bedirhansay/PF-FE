@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import { SunSVG, MoonSVG } from "@SVG";
-import { MobileLink, NavLinks } from "@Constant";
+import { MobileLink, NavLinks } from "@/lib/constant";
 import { Button } from "@UIComponents";
 import { motion } from "framer-motion";
 import { FaUser } from "react-icons/fa";
 import style from "./header.module.scss";
 import { HeaderAnimations } from "./animation";
-import { useActiveSection } from "@/lib/Hooks";
+import { useActiveSection } from "@/lib/hooks";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -63,7 +63,7 @@ export const Header = () => {
               className={style["theme"]}
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
-              {theme === "dark" ? <MoonSVG  /> : <SunSVG />}
+              {theme === "dark" ? <MoonSVG /> : <SunSVG />}
             </Button>
           </ul>
         </nav>

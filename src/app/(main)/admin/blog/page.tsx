@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { callApi } from "../../../../lib/Actions/__api.actions";
+import { callApi } from "../../../../lib/actions/__api.actions";
 import { BlogPage } from "@/container/Admin/BlogPage/BlogPage";
 
 export const metadata: Metadata = {
