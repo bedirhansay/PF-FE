@@ -8,7 +8,6 @@ import {
   Button,
   ErrorMessage,
   Input,
-  SkillCard,
   Modal,
   Breadcrumb,
   HeadingSection,
@@ -21,6 +20,7 @@ import { callApi } from "@/lib/actions";
 import { StringToArray } from "@/lib/utils";
 import style from "../admin.module.scss";
 import { DeleteBox } from "../../../components/DeleteBox/DeleteBox";
+import { SkillCard } from "@/components";
 
 export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   const {
