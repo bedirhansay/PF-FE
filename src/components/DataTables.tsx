@@ -3,10 +3,11 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Truncate } from "../lib/Utils/truncate";
+
 import { Button } from "./ui/Button";
 import { FaCaretDown, FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { Truncate } from "@/lib/Utils";
 
 interface DataTablesProps {
   data: any[];
