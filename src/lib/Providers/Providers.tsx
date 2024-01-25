@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
-import { ActiveSectionProvider } from "../context/sectionContex";
+
 import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "./ThemeProvider";
+import { ActiveSectionProvider } from "../context/sectionContex";
 
 export const GlobalProviders = ({ children }: { children: ReactNode }) => {
   return (
