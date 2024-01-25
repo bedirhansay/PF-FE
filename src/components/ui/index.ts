@@ -5,9 +5,10 @@ export * from "./Button";
 export * from "./Input";
 export * from "./breadcrupms";
 export * from "./ErrorMessage";
-export * from "./Modal/modal";
-export * from "./Card/SkillsCard/Card";
+
+export * from "./Card/SkillsCard/SkillsCard";
 export * from "./HeadingSection/HeadingSection";
 export * from "./Checkbox/CheckboxInput";
-export * from "./Card/BlogCard/MainBlogCard";
-export * from "./Card/BlogCard/BlogCard";
+
+export * from "./Modal/ModalComp";
+export * from "./Card/index";

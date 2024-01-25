@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from "./checkbox.module.scss";
+import classes from "./Checkbox.module.scss";
 
 interface CheckboxProps {
   label: string;
