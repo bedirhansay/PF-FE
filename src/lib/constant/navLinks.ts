@@ -1,4 +1,4 @@
-import { HomeSVG, BookSVG, MailSVG, SkillsSVG, ProjectsSVG } from "@SVG";
+import { HomeSVG, BookSVG, MailSVG, SkillsSVG, ProjectsSVG } from "@/lib/SVG";
 
 export const NavLinks = [
   {

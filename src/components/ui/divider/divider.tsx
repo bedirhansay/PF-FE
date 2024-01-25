@@ -2,8 +2,9 @@
 
 import React from "react";
 import style from "./divider.module.scss";
-import { dividerAnimations } from "./animations";
+
 import { motion } from "@/lib/motion/motion";
+import { dividerAnimations } from "./animations";
 
 const Divider = ({ line }: { line?: boolean }) => {
   return (

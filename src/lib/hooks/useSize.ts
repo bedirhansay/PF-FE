@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 export const useSize = () => {
   const [width, setWidth] = useState(9999);

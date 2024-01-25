@@ -1,5 +1,6 @@
 @import "./tailwind.css";
 
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -49,20 +50,18 @@
   --layout: hsl(0, 0%, 100%);
   --background: hsl(218, 16%, 246%);
   --foreground: hsl(60, 8%, 82%)
-  --mask: hsl(240, 4%, 62%);
 
   --accent: hsl(220, 14%, 85%);
   --accent-foreground: hsl(240, 7%, 11%);
 
-  --muted: hsl(218, 16%, 246%);
+  --muted: hsl(60, 8%, 82%);
   --muted-foreground: hsl(0, 0%, 0%);
 
-  --primary: hsl(240, 35%, 21%);
+  --primary: hsl(221, 39%, 11%);
   --primary-foreground: hsl(234, 35%, 56%);
 
   --secondary: hsl(204, 100%, 33%);
   --secondary-foreground: hsl(204, 100%, 56%);
-
 
   --hero-primary: hsl(132, 6%, 83%);
   --hero-secondary: hsl(211, 12%, 48%);
@@ -83,7 +82,7 @@
   --muted: hsl(0, 0%, 0%);
   --muted-foreground: hsl(218, 16%, 126%);
 
-  --primary: hsl(234, 35%, 21%);
+  --primary: hsl(0, 0%, 0%);
   --primary-foreground: hsl(234, 35%, 56%);
 
   --secondary: hsl(204, 100%, 33%);
@@ -96,4 +95,9 @@
   --border: hsl(240, 7%, 0%)
   --input: hsl(0 0% 14.9%);
  
+}
+
+
+.swiper-slide{
+  display: flex;
 }

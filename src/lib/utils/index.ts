@@ -5,3 +5,5 @@ export * from "./Token/VerifiedToken";
 export * from "./tailwind.merge";
 export * from "./string.to.array";
 export * from "./format.date";
+export * from "./read.minute";
+export * from "./query.handler";

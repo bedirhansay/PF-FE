@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components/Sidebar";
+import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { Metadata } from "next";
 // import "../../global.css";
 

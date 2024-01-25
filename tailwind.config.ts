@@ -3,12 +3,7 @@ import type { Config } from "tailwindcss";
 const config = {
   darkMode: ["class"],
   jit: true,
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./src/app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       boxShadow: {

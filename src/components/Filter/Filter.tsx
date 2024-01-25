@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { Input } from "../ui/Input";
-import { Checkbox } from "../ui/checkbox/checkbox";
+import { Checkbox } from "../ui/Checkbox/checkbox";
 import { IoFilterSharp } from "react-icons/io5";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";

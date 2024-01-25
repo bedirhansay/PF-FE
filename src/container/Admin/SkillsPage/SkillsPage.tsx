@@ -20,7 +20,7 @@ import { uploadImageToFirabase } from "../../../lib/helper/UploadImageToFirabase
 import { callApi } from "@/lib/actions";
 import { StringToArray } from "@/lib/utils";
 import style from "../admin.module.scss";
-import { DeleteBox } from "../../../components/DeleteBox";
+import { DeleteBox } from "../../../components/DeleteBox/DeleteBox";
 
 export const SkillsPage = ({ skills }: { skills: SkillsDTO[] }) => {
   const {

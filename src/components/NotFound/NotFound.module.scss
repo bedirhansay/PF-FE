@@ -1,0 +1,7 @@
+.NotFoundWrapper {
+  @apply absolute text-center text-4xl bg-gray-900  inset-0;
+
+  &-sub {
+    @apply absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 text-white border p-20 rounded shadow-2xl;
+  }
+}

@@ -1,11 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-
-import { IoFilterSharp } from "react-icons/io5";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
-import { QueryHandler } from "@/lib/utils/query.handler";
-import { GrClose } from "react-icons/gr";
-import { cn } from "@/lib/utils";
 import { Button, Input } from "@/components/ui";
 import style from "./blog.module.scss";
 import { BsSearch } from "react-icons/bs";
@@ -125,7 +120,7 @@ export const BlogHeader: FC<FilterProps> = ({ categories }) => {
   return (
     <div className={style["filter-wrapper"]}>
       <div className="flex justify-between items-center">
-        <Link href="/" className="text-xl">
+        <Link href="/" className="text-xl  text-muted-foreground">
           Anasayfa
         </Link>
         <div className="flex gap-3 items-center">

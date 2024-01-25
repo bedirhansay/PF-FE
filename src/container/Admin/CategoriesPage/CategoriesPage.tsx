@@ -3,7 +3,6 @@
 import {
   Breadcrumb,
   Button,
-  DataTables,
   ErrorMessage,
   HeadingSection,
   Input,
@@ -18,8 +17,9 @@ import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { CategorySchema } from "@/lib/validation";
-import { DeleteBox } from "@/components/DeleteBox";
+
 import style from "../admin.module.scss";
+import { DataTables, DeleteBox } from "@/components";
 
 export const CategoriesPage = ({
   categories,

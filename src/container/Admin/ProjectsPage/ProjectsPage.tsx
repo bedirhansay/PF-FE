@@ -5,7 +5,6 @@ import { StringToArray } from "@/lib/utils";
 import {
   Breadcrumb,
   Button,
-  DataTables,
   ErrorMessage,
   HeadingSection,
   Input,
@@ -16,11 +15,11 @@ import { ProjectDTO } from "@/lib/types";
 import toast from "react-hot-toast";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { ProjectSchema } from "../../../lib/validation/_skills.validation";
-import { DeleteBox } from "@/components/DeleteBox";
 import style from "../admin.module.scss";
 import dynamic from "next/dynamic";
 import { callApi } from "@/lib/actions";
 import { uploadImageToFirabase } from "@/lib/helper";
+import { DataTables, DeleteBox } from "@/components";
 const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });

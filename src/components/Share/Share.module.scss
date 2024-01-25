@@ -1,0 +1,15 @@
+.share-wrapper {
+  @apply px-4 shadow-md mt-2 py-2 border flex flex-col items-center gap-4;
+
+  strong {
+    @apply flex items-center gap-2;
+  }
+}
+
+.platforms {
+  @apply flex gap-10 justify-center;
+
+  span {
+    @apply border p-4 bg-secondary-foreground rounded cursor-pointer;
+  }
+}

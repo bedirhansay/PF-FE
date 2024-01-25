@@ -1,5 +1,6 @@
-import { Header } from "../../container/HomePage/header/header";
+import { Header } from "../../components/HomePage/header/header";
 import "../global.scss";
+import "../tailwind.css";
 
 export default function RootLayout({
   children,

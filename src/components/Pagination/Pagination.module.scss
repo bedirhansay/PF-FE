@@ -1,0 +1,22 @@
+.pagination-wrapper {
+  @apply flex justify-center  pt-10 mt-20 pb-10 max-w-7xl bg-background text-accent-foreground items-center mx-auto gap-4 self-end px-4;
+}
+
+.arrow {
+  &[data-active="true"] {
+    @apply cursor-not-allowed text-gray-300;
+  }
+
+  &[data-active="false"] {
+    @apply cursor-pointer text-gray-900;
+  }
+}
+
+.currentPage {
+  &[data-number="true"] {
+    @apply bg-gray-900 text-white rounded-md px-4 py-2;
+  }
+  &[data-number="false"] {
+    @apply text-black;
+  }
+}

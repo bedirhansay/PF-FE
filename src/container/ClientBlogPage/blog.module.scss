@@ -77,7 +77,7 @@
 }
 
 .richText {
-  @apply flex flex-col gap-3 bg-gray-200 p-4;
+  @apply flex flex-col gap-3 rounded  bg-muted p-4;
 
   p {
     @apply italic;
@@ -121,7 +121,7 @@
     @apply flex flex-col gap-10;
 
     .blogHeader {
-      @apply bg-gray-900  text-white flex flex-col text-center font-bold  px-2 shadow-md text-base sm:text-3xl py-10;
+      @apply bg-primary text-white flex flex-col text-center font-bold  px-2 shadow-md text-base sm:text-3xl py-10;
 
       .blogTitle {
         @apply mt-2;
@@ -136,14 +136,13 @@
       @apply grid grid-cols-1 md:grid-cols-[1fr,350px] gap-2 text-justify;
 
       .leftContainer {
-        @apply bg-white;
+        @apply bg-background shadow-lg;
 
         .headerContainer {
           @apply flex items-center px-4;
 
           .goBackLink {
             @apply block bg-lightBlue p-2 my-4 rounded;
-
             .arrowIcon {
               @apply text-white;
             }
@@ -167,7 +166,7 @@
         @apply flex flex-col;
 
         .otherBlogsContainer {
-          @apply bg-white px-4 py-10 text-sm;
+          @apply bg-background shadow-lg px-4 py-10 text-sm;
 
           .otherBlogsHeader {
             @apply text-lg text-center font-bold mb-4;

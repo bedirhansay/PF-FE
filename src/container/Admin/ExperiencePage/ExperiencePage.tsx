@@ -3,7 +3,6 @@
 import {
   Breadcrumb,
   Button,
-  DataTables,
   ErrorMessage,
   HeadingSection,
   Input,
@@ -20,8 +19,9 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import style from "../admin.module.scss";
 import { ExperienceDTO } from "@/lib/types";
-import { DeleteBox } from "@/components/DeleteBox";
+
 import { ExperienceSchema } from "@/lib/validation";
+import { DataTables, DeleteBox } from "@/components";
 const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });

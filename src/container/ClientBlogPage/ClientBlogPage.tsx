@@ -1,23 +1,18 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import style from "./blog.module.scss";
-import { Pagination } from "@/components/Pagination";
-import { BlogPageDTO } from "@/lib/types";
-import { Filter } from "@/components/Filter/Filter";
-import { BlogCard } from "@/components/ui/card/BlogCard/BlogCard";
-import qs from "query-string";
-import { useFetch } from "@/lib/hooks/useFetch";
-import { MainBlogCard } from "@/components/ui/card/BlogCard/MainBlogCard";
 import Image from "next/image";
-import logo from "../../../public/favicon-300.png";
-import { ReadMin } from "@/lib/utils/read.minute";
-import { FormatDate } from "@/lib/utils";
-import { Checkbox } from "@/components/ui/checkbox/checkbox";
+import Link from "next/link";
+import qs from "query-string";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Pagination } from "@/components/Pagination/Pagination";
+import { BlogPageDTO } from "@/lib/types";
+import { useFetch } from "@/lib/hooks";
+import { MainBlogCard, BlogCard, Checkbox } from "@/components/ui";
+import { FormatDate, ReadMin, QueryHandler } from "@/lib/utils";
 import { BlogHeader } from "./BlogHeader";
-import { QueryHandler } from "@/lib/utils/query.handler";
+import logo from "../../../public/favicon-300.png";
+import style from "./blog.module.scss";
 
 export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
   const [blogsItems, setBlogsItems] = useState<BlogPageDTO>(blogs);

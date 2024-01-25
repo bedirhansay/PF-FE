@@ -1,0 +1,19 @@
+.sidebar-Link {
+  @apply flex justify-between items-center gap-2 mx-4 border-2 py-1 px-2 rounded-md bg-white  hover:bg-primary hover:text-white transition duration-0 ease-out;
+}
+
+.sidebar-wrapper {
+  @apply hidden sm:flex justify-between items-center py-6 flex-col h-screen bg-gray-200;
+
+  span {
+    @apply flex gap-4 flex-col;
+  }
+}
+
+.adminLink {
+  @apply flex sm:hidden justify-between items-center py-6 flex-col h-screen bg-gray-200;
+
+  span {
+    @apply flex gap-4 flex-col;
+  }
+}

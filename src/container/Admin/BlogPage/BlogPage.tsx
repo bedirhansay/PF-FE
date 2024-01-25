@@ -1,28 +1,28 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import { useSearchParams } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
+import toast from "react-hot-toast";
 import { BlogDTO, BlogPageDTO, CategoryDTO } from "@/lib/types";
 import {
   Breadcrumb,
   Button,
-  DataTables,
   ErrorMessage,
   HeadingSection,
   Input,
   Modal,
 } from "@/components/ui";
-import React, { useEffect, useState } from "react";
 import { callApi } from "@/lib/actions";
-import toast from "react-hot-toast";
 import { uploadImageToFirabase } from "@/lib/helper";
-import { useForm } from "react-hook-form";
-import { joiResolver } from "@hookform/resolvers/joi";
 import Image from "next/image";
 import { BlogSchema } from "@/lib/validation";
-import { DeleteBox } from "@/components/DeleteBox";
+import { DeleteBox } from "@/components/DeleteBox/DeleteBox";
+import { DataTables, Pagination } from "@/components";
 import style from "../admin.module.scss";
-import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
-import { Pagination } from "../../../components/Pagination";
+
 const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });
