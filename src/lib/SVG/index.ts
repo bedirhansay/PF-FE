@@ -5,3 +5,4 @@ export * from "./BookSvg";
 export * from "./MailSvg";
 export * from "./SkillsSvg";
 export * from "./ProjectsSvg";
+export * from "./ImagePlaceHolder";

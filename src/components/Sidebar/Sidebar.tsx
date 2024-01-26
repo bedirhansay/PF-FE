@@ -12,6 +12,7 @@ import { logout } from "@/lib/actions";
 import { adminLinks } from "@/lib/constant/admin.sidebar";
 import { Button } from "../ui/Button";
 import style from "./Sidebar.module.scss";
+import { useTheme } from "next-themes";
 
 interface SidebarLinkProps {
   href: string;
@@ -59,6 +60,8 @@ export const Sidebar: React.FC = () => {
     }
   };
 
+  const { setTheme, theme } = useTheme();
+
   return (
     <div>
       {/* Desktop Sidebar */}
@@ -68,6 +71,10 @@ export const Sidebar: React.FC = () => {
             <SidebarLink key={"admin" + i} {...item} />
           ))}
         </span>
+
+        <span onClick={() => setTheme("dark")}>dark</span>
+        <span onClick={() => setTheme("Light")}>Light</span>
+
         <Button onClick={handleLogout} variant="outline">
           <MdOutlineLogout size={24} />
           Logout

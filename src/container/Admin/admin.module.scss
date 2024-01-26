@@ -1,9 +1,9 @@
 .form-wrapper {
-  @apply flex flex-col lg:grid md:grid-cols-[400px,1fr] bg-white px-4 py-10 rounded-md  gap-8;
+  @apply flex flex-col lg:grid md:grid-cols-[400px,1fr] bg-background px-4 py-10 rounded-md  gap-8;
 }
 
 .image-section {
-  @apply flex h-1/3 flex-col w-auto relative overflow-hidden;
+  @apply flex py-4 flex-col w-auto relative bg-alternate h-fit overflow-hidden;
 
   img {
     @apply self-center object-cover rounded;
@@ -19,10 +19,10 @@
 }
 
 .main-area {
-  @apply bg-gray-100 p-4;
+  @apply bg-alternate p-4;
 }
 .hr {
-  @apply my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8;
+  @apply my-6 border-gray-200 sm:mx-auto  lg:my-8;
 }
 
 .image-url {
@@ -30,7 +30,7 @@
 }
 
 .page-form-wrapper {
-  @apply flex flex-col  bg-white px-4 py-10 rounded-md  gap-8;
+  @apply flex flex-col  bg-background px-4 py-10 rounded-md  gap-8;
 }
 
 .page-image-section {

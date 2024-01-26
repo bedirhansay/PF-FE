@@ -2,7 +2,7 @@
   @apply relative  max-w-7xl px-4  mx-auto scroll-mt-28;
 }
 .swiperSlide {
-  @apply flex flex-col sm:flex-row items-center shadow-lg  p-4 rounded-md bg-primary text-accent-foreground;
+  @apply flex flex-col sm:flex-row items-center shadow-lg  p-4 rounded-md bg-primary text-gray-300;
   display: flex !important;
   @media (min-width: 768px) {
     width: 600px !important;
@@ -28,7 +28,7 @@
 }
 
 .title {
-  @apply font-bold  mt-4 mb-4 bottom-6 text-sm sm:text-xl;
+  @apply font-bold text-gray-300 mt-4 mb-4 bottom-6 text-sm sm:text-xl;
 }
 
 .sliderImage {

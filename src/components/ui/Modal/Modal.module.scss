@@ -1,0 +1,7 @@
+.modal-overlay {
+  @apply fixed inset-0  overflow-scroll backdrop-blur-sm z-30 border rounded shadow-lg;
+}
+
+.modal {
+  @apply absolute top-2 left-2 right-2  sm:right-20 sm:left-20 sm:top-20  bg-alternate rounded-lg;
+}

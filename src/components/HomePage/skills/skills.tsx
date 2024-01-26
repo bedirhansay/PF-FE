@@ -9,9 +9,12 @@ import { SkillsDTO } from "@/lib/types";
 import { Title } from "@/components/ui";
 import { SkillCardSkeleton } from "../../Skeletons/SkillCardSekeleton";
 import { useFetch } from "@/lib/hooks/useFetch";
+import { useTheme } from "next-themes";
 
 export const Skills = () => {
   const { ref } = useSectionInView("Yetenekler");
+
+  const { theme } = useTheme();
 
   const { data, loading }: { data: SkillsDTO[] | null; loading: boolean } =
     useFetch({
@@ -30,11 +33,12 @@ export const Skills = () => {
                 key={index + "skills"}
                 variants={fadeInAnimationVariants(index)}
                 {...skillsAnim(index)}
+                style={{
+                  backgroundColor:
+                    theme === "dark" ? "var(--background)" : skill.bgColor,
+                }}
               >
-                <div
-                  className={style["card"]}
-                  style={{ backgroundColor: skill.bgColor }}
-                >
+                <div className={style["card"]}>
                   <h2
                     style={{
                       backgroundColor: skill.itemColor,

@@ -29,7 +29,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex bg-gray-100 gap-4 px-4 ">
+    <main className="flex bg-background gap-4 px-4 ">
       <div className="fixed z-10 left-0 top-0 bottom-0">
         <Sidebar />
       </div>

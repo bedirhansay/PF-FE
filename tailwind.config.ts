@@ -23,6 +23,7 @@ const config = {
         news: "var(--primary)",
         ring: "var(--ring)",
         mask: "var(--mask)",
+        alternate: "var(--alternate)",
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: {

@@ -18,7 +18,7 @@ export const HeadingSection: React.FC<HeadingSectionProps> = ({
   onButtonClick,
 }) => {
   return (
-    <div className="bg-white my-4 py-4 rounded-md shadow-lg flex-between px-4">
+    <div className="bg-alternate my-4 text-accent-foreground py-4 rounded-md shadow-lg flex-between px-4">
       <strong>{title}</strong>
       {showButton && (
         <Button

@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { Input } from "../ui/Input";
+import { Input } from "../ui/Input/Input";
 import { IoFilterSharp } from "react-icons/io5";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
