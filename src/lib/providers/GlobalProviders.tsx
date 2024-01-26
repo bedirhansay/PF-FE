@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react";
 
 import NextTopLoader from "nextjs-toploader";
-import { ThemeProvider } from "./ThemeProvider";
+import { ThemesProvider } from "./ThemeProvider";
 import { ActiveSectionProvider } from "./ActiveSectionProvider";
 
 export const GlobalProviders = ({ children }: { children: ReactNode }) => {
   return (
-    <ThemeProvider
+    <ThemesProvider
       attribute="class"
       defaultTheme="system"
       enableSystem
@@ -16,6 +16,6 @@ export const GlobalProviders = ({ children }: { children: ReactNode }) => {
         <NextTopLoader crawlSpeed={30} speed={50} showSpinner={false} />
         {children}
       </ActiveSectionProvider>
-    </ThemeProvider>
+    </ThemesProvider>
   );
 };

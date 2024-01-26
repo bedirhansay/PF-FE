@@ -3,7 +3,7 @@ export * from "./Title/Title";
 export * from "./button/button";
 export * from "./Button";
 export * from "./Input";
-export * from "./breadcrupms";
+export * from "./BreadCrump/breadcrupms";
 export * from "./ErrorMessage";
 
 export * from "./HeadingSection/HeadingSection";
