@@ -22,21 +22,13 @@ import { BlogSchema } from "@/lib/validation";
 import { DeleteBox } from "@/components/DeleteBox/DeleteBox";
 import { DataTables, Pagination } from "@/components";
 import style from "../admin.module.scss";
+import { useFetch } from "@/lib/hooks";
 
 const Editor = dynamic(() => import("../../../components/QuillEditor"), {
   ssr: false,
 });
 
 export const BlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<BlogDTO>({
-    resolver: joiResolver(BlogSchema),
-  });
-
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
@@ -52,6 +44,17 @@ export const BlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
 
   const formFields = [{ name: "title", label: "Title", type: "text" }];
 
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm<BlogDTO>({
+    resolver: joiResolver(BlogSchema),
+  });
+
   const onSubmit = async (data: BlogDTO) => {
     setLoading(true);
 
@@ -61,6 +64,8 @@ export const BlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
       category: catId,
       image: imageUrl?.toString(),
     };
+
+    console.log(data);
 
     try {
       const res = await callApi({
@@ -133,6 +138,12 @@ export const BlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
     }
   };
 
+  const { data } = useFetch({
+    path: "categories",
+    method: "get",
+  });
+  console.log(data);
+
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await callApi({ method: "get", path: "categories" });
@@ -183,7 +194,6 @@ export const BlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
         showButton
         onButtonClick={buttonHandler}
       />
-
       <DataTables
         setOperation={setOperation}
         setId={setSelectedId}
@@ -250,7 +260,7 @@ export const BlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
                 className={style["select-box"]}
               >
                 {categories?.map((item) => (
-                  <option key={item._id} value={item._id}>
+                  <option key={item._id + "cat"} value={item._id}>
                     {item.name}
                   </option>
                 ))}

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import style from "./projeler.module.scss";
@@ -17,8 +17,20 @@ export const Projeler = ({ projects }: { projects: ProjectDTO[] }) => {
 
   const { ref } = useSectionInView("Projeler");
 
+  const swiperRef = useRef(null);
+
   const handleClick = (index: number) => {
     setActiveProject(index);
+
+    if (swiperRef.current && index !== 1) {
+      const currentScrollLeft = (swiperRef.current as any).scrollLeft;
+      const scrollPosition = currentScrollLeft + 100;
+
+      (swiperRef.current as any).scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -27,6 +39,7 @@ export const Projeler = ({ projects }: { projects: ProjectDTO[] }) => {
 
       <div className="">
         <Swiper
+          ref={swiperRef}
           className={style["swiper-container"]}
           spaceBetween={10}
           slidesPerView={3}
@@ -34,7 +47,7 @@ export const Projeler = ({ projects }: { projects: ProjectDTO[] }) => {
           {projectDatas.map((item, index) => (
             <SwiperSlide
               key={"projeler" + index}
-              className={`  ml-2 !w-32 text-sm  sm:text-base cursor-pointer text-white  ${
+              className={`ml-2 !w-32 text-sm  sm:text-base cursor-pointer text-white  ${
                 index === activeProject ? "bg-gray-600 rounded-md " : ""
               }`}
               onClick={() => handleClick(index)}
@@ -45,12 +58,13 @@ export const Projeler = ({ projects }: { projects: ProjectDTO[] }) => {
         </Swiper>
       </div>
       <motion.div
+        key={activeProject}
         {...ProjectsAnim(activeProject)}
         className={style["active-project"]}
       >
         {activeProject !== null && (
           <div>
-            <motion.div className="sm:flex ">
+            <motion.div className="sm:flex">
               <div
                 className={style["image-wrapper"]}
                 style={{

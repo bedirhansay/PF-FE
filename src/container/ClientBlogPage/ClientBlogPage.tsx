@@ -135,7 +135,7 @@ export const ClientBlogPage = ({ blogs }: { blogs: BlogPageDTO }) => {
               </div>
               <div className={style["otherBlogs"]}>
                 {otherBlogs?.map((item) => (
-                  <BlogCard key={item._id} {...item} />
+                  <BlogCard key={item._id + "Blogs"} {...item} />
                 ))}
               </div>
             </div>

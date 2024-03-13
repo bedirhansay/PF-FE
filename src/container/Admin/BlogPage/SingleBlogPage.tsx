@@ -23,55 +23,71 @@ const Editor = dynamic(() => import("../../../components/QuillEditor"), {
 });
 
 export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<BlogDTO>({
-    resolver: joiResolver(BlogSchema),
-  });
-
+  const formFields = [
+    { name: "_id", label: "ID", type: "text", disabled: true },
+    { name: "title", label: "Title", type: "text", disabled: false },
+    { name: "category", label: "Category", type: "text", disabled: true },
+  ];
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>();
   const [loading, setLoading] = useState(false);
   const [model, setModel] = useState(blog.description);
 
-  const formFields = [
-    { name: "_id", label: "ID", type: "text" },
-    { name: "title", label: "Title", type: "text" },
-    { name: "category", label: "Category", type: "text" },
-  ];
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+
+    setValue,
+    formState: { errors },
+  } = useForm<BlogDTO>({
+    resolver: joiResolver(BlogSchema),
+    defaultValues: {
+      _id: blog._id,
+      title: blog.title,
+      slug: blog.slug,
+      description: model,
+      image: blog.image,
+      category: blog.category,
+    },
+  });
+
+  const category = watch("category");
+
+  const setCustomValue = (key: any, value: string) => {
+    setValue(key, value, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+  };
 
   const onSubmit = async (data: BlogDTO) => {
-    setLoading(true);
+    // setLoading(true);
 
-    const payloads = {
-      ...data,
-      description: model,
-      image: imageUrl?.toString() || blog.image,
-    };
+    console.log(data);
 
-    try {
-      const res = await callApi({
-        method: "patch",
-        path: `/blog/${blog._id}`,
-        payload: payloads,
-      });
+    // try {
+    //   const res = await callApi({
+    //     method: "patch",
+    //     path: `/blog/${blog._id}`,
+    //     payload: payloads,
+    //   });
 
-      if (res.kind === "ok") {
-        toast.success("Blog Güncellendi");
+    //   if (res.kind === "ok") {
+    //     toast.success("Blog Güncellendi");
 
-        reset();
-        setImageUrl("");
-      } else {
-        toast.error("Blog Güncellenemedi" + res.error.message);
-      }
-    } catch (error: any) {
-      toast.error(`Blog  Güncellenemedi: ${error.message}`);
-    } finally {
-      setLoading(false);
-    }
+    //     reset();
+    //     setImageUrl("");
+    //   } else {
+    //     toast.error("Blog Güncellenemedi" + res.error.message);
+    //   }
+    // } catch (error: any) {
+    //   toast.error(`Blog  Güncellenemedi: ${error.message}`);
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   const handleImageChange = async (
@@ -104,9 +120,7 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
   return (
     <div>
       <Breadcrumb page="blog" sub={blog.title} />
-
       <HeadingSection title="Blog Yazıları" />
-
       <form className={style["form-wrapper"]} onSubmit={handleSubmit(onSubmit)}>
         <div className={style["image-section"]}>
           <Image
@@ -146,9 +160,8 @@ export const SingleBlogPage = ({ blog }: { blog: BlogDTO }) => {
               <div key={field.name}>
                 <label htmlFor={field.name}>{field.label}</label>
                 <Input
-                  //@ts-ignore
-                  defaultValue={blog[field.name]}
                   {...register(field.name as any)}
+                  disabled={field.disabled}
                   type={field.type}
                 />
                 <ErrorMessage
